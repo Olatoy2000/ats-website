@@ -1,8 +1,35 @@
 /* @import url(); */
+
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  font-family: "Mulish", sans-serif !important;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.css-1nkfwl {
+  --ticker-duration: 50s;
+}
+
+.css-1nkfwl > ul {
+  width: fit-content;
+  will-change: transform;
+  animation-name: marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--ticker-duration);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0);
+  }
+
+  100% {
+    transform: translate(-100%);
+  }
 .bgHero {
 	background-image: url("../assets/bgimg.jpg");
 	background-size: cover;
