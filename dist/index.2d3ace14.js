@@ -27085,12 +27085,18 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _header = require("./components/Header");
+var _headerDefault = parcelHelpers.interopDefault(_header);
 function App() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex justify-center"
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
+            fileName: "src/App.tsx",
+            lineNumber: 5,
+            columnNumber: 8
+        }, this)
     }, void 0, false, {
         fileName: "src/App.tsx",
-        lineNumber: 3,
+        lineNumber: 4,
         columnNumber: 13
     }, this);
 }
@@ -27104,7 +27110,209 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Header":"35enc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"35enc":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d5a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d5a6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _afexLogoPng = require("../assets/afex-logo.png");
+var _afexLogoPngDefault = parcelHelpers.interopDefault(_afexLogoPng);
+var _s = $RefreshSig$();
+function Header() {
+    _s();
+    const navLinks = [
+        "Home",
+        "Courses",
+        "Xpert",
+        "Updates"
+    ];
+    const [active, setActive] = (0, _react.useState)(0);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+        className: "flex flex-col sticky top-0 z-20",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mantine-Group-root gap-2 border-b border-b-[#A0AEC0] flex w-full clump:pt-[clamp(1rem,4vw,4rem)] sm:flex-row overflow-hidden mantine-dghak8",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "mantine-Text-root p-3 leading-6 bg-[#DC372F] font-bold text-[#fff] mantine-ssm15l",
+                        children: "LATEST NEWS"
+                    }, void 0, false, {
+                        fileName: "src/components/Header.tsx",
+                        lineNumber: 8,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex-1 marquee flex overflow-hidden css-1nkfwl",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                            className: "flex gap-6 h-[3.5rem] leading-6 pt-3",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                    className: "whitespace-nowrap text-[#030000]",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-[#DC372F] text-[1.14rem] whitespace-nowrap font-bold",
+                                            children: "ADMINISTRATION:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header.tsx",
+                                            lineNumber: 11,
+                                            columnNumber: 70
+                                        }, this),
+                                        ' The future belongs to those who make their own rules and refuse to confine themselves. That\'s why at AFEX we do not ask "why" but rather "why not". Through our ATS program, we aspire to build an ecosystem of tech stars with the skills and mindset needed to thrive now and in the future'
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Header.tsx",
+                                    lineNumber: 11,
+                                    columnNumber: 21
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                    className: "whitespace-nowrap text-[#030000]",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-[#DC372F] text-[1.14rem] whitespace-nowrap font-bold",
+                                            children: "EVENTS:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header.tsx",
+                                            lineNumber: 12,
+                                            columnNumber: 70
+                                        }, this),
+                                        " Press Release: AFEX Code Cash Crop 3.0 Creates Solutions to Boost Agriculture, Finance, and Technology Sectors "
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Header.tsx",
+                                    lineNumber: 12,
+                                    columnNumber: 21
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                    className: "whitespace-nowrap text-[#030000]",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-[#DC372F] text-[1.14rem] whitespace-nowrap font-bold",
+                                            children: "ADMINISTRATION:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header.tsx",
+                                            lineNumber: 13,
+                                            columnNumber: 70
+                                        }, this),
+                                        " AFEX Celebrates World Food Day with the Launch of 100,000MT/ year Grain Quality Enhancement Center"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Header.tsx",
+                                    lineNumber: 13,
+                                    columnNumber: 21
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                    className: "whitespace-nowrap text-[#030000]",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-[#DC372F] text-[1.14rem] whitespace-nowrap font-bold",
+                                            children: "FINANCE:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header.tsx",
+                                            lineNumber: 14,
+                                            columnNumber: 70
+                                        }, this),
+                                        " AFEX Advocates for Financing of Agri-SMEs at AGRF 2022 Summit "
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Header.tsx",
+                                    lineNumber: 14,
+                                    columnNumber: 21
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                    className: "whitespace-nowrap text-[#030000] ",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-[#DC372F] text-[1.14rem] whitespace-nowrap font-bold",
+                                            children: "AGRICULTURE:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Header.tsx",
+                                            lineNumber: 15,
+                                            columnNumber: 71
+                                        }, this),
+                                        " Press Release: AFEX Commodity Exchanges can help Food Systems in Africa"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Header.tsx",
+                                    lineNumber: 15,
+                                    columnNumber: 21
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Header.tsx",
+                            lineNumber: 10,
+                            columnNumber: 17
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/components/Header.tsx",
+                        lineNumber: 9,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Header.tsx",
+                lineNumber: 7,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                className: "flex cursor-pointer items-center justify-between px-10 gap-10 py-4",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _afexLogoPngDefault.default),
+                        alt: "Afex-logo",
+                        className: "pl-4"
+                    }, void 0, false, {
+                        fileName: "src/components/Header.tsx",
+                        lineNumber: 20,
+                        columnNumber: 13
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "flex gap-5 justify-between items-center text-[1rem]",
+                        children: navLinks.map((item, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                onClick: ()=>setActive(idx),
+                                className: active === idx ? "bg-[#C81107] rounded-xl w-[7.5rem] text-white p-3 leading-6 text-center" : "rounded-xl w-[7.5rem] leading-6 text-black p-3 text-center",
+                                children: item
+                            }, void 0, false, {
+                                fileName: "src/components/Header.tsx",
+                                lineNumber: 22,
+                                columnNumber: 47
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "src/components/Header.tsx",
+                        lineNumber: 21,
+                        columnNumber: 13
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Header.tsx",
+                lineNumber: 19,
+                columnNumber: 8
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Header.tsx",
+        lineNumber: 6,
+        columnNumber: 13
+    }, this);
+}
+_s(Header, "LYMHw6xE17pbh6ai9qaw76OM0Ms=");
+_c = Header;
+exports.default = Header;
+var _c;
+$RefreshReg$(_c, "Header");
+
+  $parcel$ReactRefreshHelpers$d5a6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/afex-logo.png":"anGZ5"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27254,6 +27462,43 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"3frGm":[function() {},{}]},["1xC6H","6FqiZ","4aBH6"], "4aBH6", "parcelRequire9b3a")
+},{"react-refresh/runtime":"786KC"}],"anGZ5":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("6EXJA") + "afex-logo.e6acdfd7.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"3frGm":[function() {},{}]},["1xC6H","6FqiZ","4aBH6"], "4aBH6", "parcelRequire9b3a")
 
 //# sourceMappingURL=index.2d3ace14.js.map
