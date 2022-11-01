@@ -258,12 +258,91 @@ img, video {
   }
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .flex {
   display: flex;
 }
 
-.justify-center {
-  justify-content: center;
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.rounded-sm {
+  border-radius: .125rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.px-2 {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.py-1\.5 {
+  padding-top: .375rem;
+  padding-bottom: .375rem;
+}
+
+.py-1 {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-\[\#C81107\] {
+  --tw-text-opacity: 1;
+  color: rgb(200 17 7 / var(--tw-text-opacity));
+}
+
+.outline-none {
+  outline-offset: 2px;
+  outline: 2px solid #0000;
+}
+
+.bgHero {
+  background-image: url("bgimg.9de92a5b.jpg");
 }
 
 /*# sourceMappingURL=index.ebeadb08.css.map */
