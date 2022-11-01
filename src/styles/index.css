@@ -5,4 +5,5 @@
 
 .bgHero {
 	background-image: url("../assets/bgimg.jpg");
+	background-size: cover;
 }
