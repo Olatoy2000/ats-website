@@ -39,8 +39,15 @@
 }
 
 .join-button {
-  background: linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%);
+  background: linear-gradient(168.79deg, #e1261c 28.64%, #8a0b04 136.7%);
 }
 .join-button:hover {
   background: #312541;
+}
+
+.second-back {
+  background: url("../assets/Vector-3-t.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
 }

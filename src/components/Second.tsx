@@ -3,7 +3,9 @@ import BigRightBack from "../assets/Vector-3-t.png";
 
 function Second() {
   return (
-    <div>Second</div>
+    <section className="second-back">
+
+    </section>
   )
 }
 
