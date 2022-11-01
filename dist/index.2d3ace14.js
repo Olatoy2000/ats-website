@@ -27311,19 +27311,25 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _image1Png = require("../assets/image 1.png");
+var _image1PngDefault = parcelHelpers.interopDefault(_image1Png);
+var _image2Png = require("../assets/image 2.png");
+var _image2PngDefault = parcelHelpers.interopDefault(_image2Png);
+var _image3Png = require("../assets/image 3.png");
+var _image3PngDefault = parcelHelpers.interopDefault(_image3Png);
 function Main() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-        className: "flex-col m-auto",
+        className: "flex-col m-auto sticky",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex items-center justify-between w-[80%] m-auto pt-12",
+                className: "flex items-center justify-between w-[70%] m-auto pt-12 pb-5",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         className: "text-[#C81107] w-32 text-xl font-bold pl-",
                         children: "ATS Updates"
                     }, void 0, false, {
                         fileName: "src/components/Main.tsx",
-                        lineNumber: 5,
+                        lineNumber: 8,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27336,13 +27342,13 @@ function Main() {
                                 className: "px-2 py-1.5 border w-64 rounded-sm text-sm outline-none"
                             }, void 0, false, {
                                 fileName: "src/components/Main.tsx",
-                                lineNumber: 10,
+                                lineNumber: 13,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Main.tsx",
-                        lineNumber: 8,
+                        lineNumber: 11,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27350,7 +27356,7 @@ function Main() {
                         children: "Blogs"
                     }, void 0, false, {
                         fileName: "src/components/Main.tsx",
-                        lineNumber: 13,
+                        lineNumber: 16,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27358,7 +27364,7 @@ function Main() {
                         children: "News"
                     }, void 0, false, {
                         fileName: "src/components/Main.tsx",
-                        lineNumber: 14,
+                        lineNumber: 17,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27366,33 +27372,192 @@ function Main() {
                         children: "Gallery"
                     }, void 0, false, {
                         fileName: "src/components/Main.tsx",
-                        lineNumber: 15,
+                        lineNumber: 18,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Main.tsx",
-                lineNumber: 4,
+                lineNumber: 7,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "bgHero",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    children: " Happenings Around You "
-                }, void 0, false, {
+                className: "bgHero h-[37rem] w-[90rem] items-center flex justify-center m-auto",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            className: "text-center w-[28rem] text-7xl font-bold",
+                            children: [
+                                " ",
+                                "Happenings Around You",
+                                " "
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/Main.tsx",
+                            lineNumber: 23,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            className: "text-center text-4xl font-light pt-5 text-[#4A5568]",
+                            children: "Get Updated"
+                        }, void 0, false, {
+                            fileName: "src/components/Main.tsx",
+                            lineNumber: 27,
+                            columnNumber: 6
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "src/components/Main.tsx",
-                    lineNumber: 19,
+                    lineNumber: 22,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/Main.tsx",
-                lineNumber: 18,
+                lineNumber: 21,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "m-auto flex border border-solid border-[#E2E2E2] w-[75.5rem] rounded-sm my-10 justify-between",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex-col px-16 pt-14",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                className: "text-[#2D3748] text-4xl font-bold",
+                                children: "Ba Wasa! Long Established"
+                            }, void 0, false, {
+                                fileName: "src/components/Main.tsx",
+                                lineNumber: 35,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                className: "text-base text-[#718096] w-[31.5rem]",
+                                children: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that...."
+                            }, void 0, false, {
+                                fileName: "src/components/Main.tsx",
+                                lineNumber: 38,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex gap-3 pt-16 items-center",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                        src: (0, _image2PngDefault.default),
+                                        className: "h-10"
+                                    }, void 0, false, {
+                                        fileName: "src/components/Main.tsx",
+                                        lineNumber: 44,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "flex-col font-sans",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                className: "text-[#C81107] text-xs font-semibold",
+                                                children: "Gloria Erimosele"
+                                            }, void 0, false, {
+                                                fileName: "src/components/Main.tsx",
+                                                lineNumber: 46,
+                                                columnNumber: 8
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                className: "flex gap-[13.3rem] items-center",
+                                                children: [
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                        className: "text-[#6F6F70] font-semibold text-[10px]",
+                                                        children: "A month ago ꞏ 3 min read"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/Main.tsx",
+                                                        lineNumber: 50,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                        className: "text-[15px] text-[#2D3748] font-bold -mt-1",
+                                                        children: "Read more"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/Main.tsx",
+                                                        lineNumber: 53,
+                                                        columnNumber: 9
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/Main.tsx",
+                                                lineNumber: 49,
+                                                columnNumber: 8
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/Main.tsx",
+                                        lineNumber: 45,
+                                        columnNumber: 7
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Main.tsx",
+                                lineNumber: 43,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Main.tsx",
+                        lineNumber: 34,
+                        columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            src: (0, _image1PngDefault.default)
+                        }, void 0, false, {
+                            fileName: "src/components/Main.tsx",
+                            lineNumber: 61,
+                            columnNumber: 6
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/components/Main.tsx",
+                        lineNumber: 60,
+                        columnNumber: 5
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Main.tsx",
+                lineNumber: 33,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "flex",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex-col",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            src: (0, _image3PngDefault.default),
+                            className: "object-cover"
+                        }, void 0, false, {
+                            fileName: "src/components/Main.tsx",
+                            lineNumber: 66,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            className: "text-[#2D3748] text-xl font-bold w-72",
+                            children: "Ways Commodity Exchanges can help Food Systems in Africa"
+                        }, void 0, false, {
+                            fileName: "src/components/Main.tsx",
+                            lineNumber: 67,
+                            columnNumber: 6
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Main.tsx",
+                    lineNumber: 65,
+                    columnNumber: 5
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/Main.tsx",
+                lineNumber: 64,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Main.tsx",
-        lineNumber: 3,
+        lineNumber: 6,
         columnNumber: 13
     }, this);
 }
@@ -27406,6 +27571,49 @@ $RefreshReg$(_c, "Main");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3frGm":[function() {},{}]},["1xC6H","6FqiZ","4aBH6"], "4aBH6", "parcelRequire9b3a")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../assets/image 1.png":"egA0S","../assets/image 2.png":"cVtyL","../assets/image 3.png":"aVBBJ"}],"egA0S":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("6EXJA") + "image 1.bb1f9fb2.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"cVtyL":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("6EXJA") + "image 2.c6170e2d.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"aVBBJ":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("6EXJA") + "image 3.a587a3b4.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"3frGm":[function() {},{}]},["1xC6H","6FqiZ","4aBH6"], "4aBH6", "parcelRequire9b3a")
 
 //# sourceMappingURL=index.2d3ace14.js.map
