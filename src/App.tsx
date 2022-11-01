@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 function App() {
-  return (
-    <div className="flex justify-center">
-       
-    </div>
-  )
+	return (
+		//Updates of the landing page
+		<section>
+			<Header />
+			<Main />
+		</section>
+	);
 }
 
-export default App
+export default App;
