@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Header from './components/Header';
+import First from "./components/First";
+import Second from "./components/Second"
 
 function App() {
   return (
-    <div className="flex justify-center">
-       
+    <div>
+       <Header />
+       <First />
+       <Second />
     </div>
   )
 }
