@@ -68,14 +68,15 @@ type Props = {
 // const [listRef] = autoAnimate();
 
 function Testimonial({ selected }: Props) {
-  const [parent] = useAutoAnimate<HTMLDivElement>({ duration: 500 });
+  const [parent] = useAutoAnimate<HTMLDivElement>();
   const [testimonial, setTestimonial] = useState(testimony);
+
   return (
     <div className="grid items-center gap-6">
       <h2 className="text-center min-h-[2rem]">
         {testimonial[2]["testimony"]}
       </h2>
-      <article className="flex gap-8">
+      <article className="flex justify-between gap-8">
         <button
           onClick={() => {
             const juggle = [...testimonial];
@@ -101,7 +102,7 @@ function Testimonial({ selected }: Props) {
           </svg>
         </button>
         <section
-          className=" grid items-center flex-1 gap-6"
+          className="grid items-center w-8/12 gap-6"
           style={{ gridTemplateColumns: "repeat(2, 1fr) 3fr repeat(2, 1fr)" }}
           ref={parent}
         >

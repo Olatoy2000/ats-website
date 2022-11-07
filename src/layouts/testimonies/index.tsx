@@ -11,8 +11,13 @@ export default function Testimonies() {
 
   return (
     <Container
-      className="bg-no-repeat bg-cover flex flex-col justify-between mb-12"
-      style={{ backgroundImage: `url${TestimonyBack.src}` }}
+      className=" flex flex-col justify-between mb-12"
+      style={{
+        backgroundImage: `url(${TestimonyBack.src})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "25%",
+        backgroundPosition: "50px_50px",
+      }}
     >
       <article className="flex gap-2 mb-10 items-center">
         <div className="border-b border-b-[#9FA19C] flex-auto" />

@@ -1,6 +1,8 @@
 import React from "react";
 import Container from "../../../components/Container";
 import ThreeFriends from "./assets/three-friends.png";
+import FemaleTechBack from "./assets/second-down-bg.png";
+
 
 export default function TeamWork() {
   return (
@@ -8,6 +10,7 @@ export default function TeamWork() {
       width="w-5/6"
       className="flex items-center justify-between gap-20 p-10 pt-10"
       margin="ml-auto my-16"
+      style={{backgroundImage: `url(${FemaleTechBack.src})`, backgroundRepeat: "no-repeat", backgroundSize: "20%"}}
     >
       <img src={ThreeFriends.src} alt="three youth friends" className="w-[25rem]" />
       <div className=" flex flex-col w-[500px] text-[#343434] gap-4">

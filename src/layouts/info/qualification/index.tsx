@@ -1,10 +1,12 @@
 import React from "react";
 import Container from "../../../components/Container";
 import LadyInTech from "./assets/lady-in-tech.png";
+import WhiteFemaleBack from "./assets/third-bg.png";
 
 export default function Qualification() {
   return (
-    <Container className="flex items-center justify-between gap-14 my-[60px]">
+    <Container className="flex items-center justify-between gap-14 my-[60px] bg-right-top" 
+    style={{backgroundImage: `url(${WhiteFemaleBack.src})`, backgroundRepeat:"no-repeat", backgroundSize: "30%"}}>
       <div className="flex flex-col w-[43.75rem] text-[#343434] gap-4">
         <h2 className="font-bold leading-[3rem] text-[3rem]">
           Who is Qualified?
