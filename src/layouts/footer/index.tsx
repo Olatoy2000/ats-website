@@ -5,6 +5,7 @@ import Send from "./assets/send.png";
 import Instagram from "./assets/instagram.png";
 import Container from "../../components/Container";
 import Twitter from "../footer/assets/twitter.png";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -37,10 +38,18 @@ function Footer() {
         </h3>
         <div className="font-normal leading-6 text-white">
           <ul className="leading-6 font-bold text-[1rem]">
-            <li className="pb-4">Login</li>
-            <li className="pb-4">Courses</li>
-            <li className="pb-4">Terms & Conditions</li>
-            <li className="pb-4">Privacy Policy</li>
+            <Link href="/login">
+              <li className="pb-4">Login</li>
+            </Link>
+            <Link href="/courses">
+              <li className="pb-4">Courses</li>
+            </Link>
+            <Link href="/login">
+              <li className="pb-4">Terms & Conditions</li>
+            </Link>
+            <Link href="/login">
+              <li className="pb-4">Privacy Policy</li>
+            </Link>
           </ul>
         </div>
       </article>
