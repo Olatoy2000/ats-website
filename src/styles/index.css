@@ -1,9 +1,0 @@
-/* @import url(); */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.bgHero {
-	background-image: url("../assets/bgimg.jpg");
-	background-size: cover;
-}
