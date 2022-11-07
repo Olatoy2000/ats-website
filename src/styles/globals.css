@@ -43,6 +43,7 @@
   100% {
     transform: translate(-100%);
   }
+<<<<<<< HEAD:src/styles/globals.css
 }
 
 .join-button {
@@ -50,6 +51,11 @@
 }
 .join-button:hover {
   background: #312541;
+=======
+.bgHero {
+	background-image: url("../assets/bgimg.jpg");
+	background-size: cover;
+>>>>>>> origin/main:src/styles/index.css
 }
 
 .timer-gradient {

@@ -1,8 +1,7 @@
-.parcel-cache
-.coding-tracker
-.npm
-.next
 node_modules
+.parcel-cache
+.DS_Store
 dist
+.src/DS_Store
 
 
