@@ -4,9 +4,9 @@ import GalleryHero from "./assets/gallery-hero.png";
 import Link from "next/link";
 export default function BackToUpdate() {
   return (
-    <Container className="flex my-10 flex-col gap-8">
-      <Link href="/updates">
-        <button className="bg-[#C81107] flex gap-4 justify-between p-2 leading-6 text-white font-bold rounded-md items-center self-end">
+    <Container className="flex my-10 flex-col group gap-8 bg-white">
+      <Link href="/updates" className="self-end">
+        <button className="bg-[#C81107] flex gap-4 justify-between p-2 focus-within:bg-black leading-6 text-white font-bold rounded-md items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"

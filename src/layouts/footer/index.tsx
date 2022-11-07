@@ -8,7 +8,7 @@ import Twitter from "../footer/assets/twitter.png";
 
 function Footer() {
   return (
-    <Container className="bg-black grid grid-cols-4 sticky bottom-0 z-0 p-12 gap-12">
+    <Container className="bg-black grid grid-cols-4 p-12 gap-12">
       <article className="flex flex-col gap-4">
         <h3 className="text-[#A09D9D;] leading-7 uppercase text-[1.25rem] font-bold">
           address

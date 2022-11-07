@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Container from "../../../components/Container";
 import AfexLogo from "./assets/afex-logo.png";
 import { useRouter } from "next/router";
@@ -12,7 +12,7 @@ export default function NavBar() {
   let presentRoute = asPath.replace(asPath[0], "");
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     presentRoute
       ? setActive(
           presentRoute.replace(

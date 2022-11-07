@@ -7,7 +7,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 export default function Testimonies() {
   const [selected, setSelected] = useState(0);
 
-   const [parent] = useAutoAnimate<HTMLDivElement>();
+  const [parent] = useAutoAnimate<HTMLDivElement>();
 
   return (
     <Container
@@ -25,17 +25,6 @@ export default function Testimonies() {
         <div className="border-b border-b-[#9FA19C] flex-auto" />
       </article>
       <Testimonial selected={selected} />
-      
-      <button
-        className="p-4 mt-10 leading-6 text-white self-center"
-        style={{
-          background:
-            "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
-          borderRadius: "8px",
-        }}
-      >
-        More Testimonies
-      </button>
     </Container>
   );
 }
