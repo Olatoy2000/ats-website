@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import AfexLogo from "./assets/afex-logo.png";
 
@@ -61,15 +62,17 @@ function Header() {
 				/>
 				<ul className='flex gap-5 justify-between items-center text-[1rem]'>
 					{navLinks.map((item, idx) => (
-						<li
-							onClick={() => setActive(idx)}
-							className={
-								active === idx
-									? "bg-[#C81107] rounded-xl w-[7.5rem] text-white p-3 leading-6 text-center"
-									: "rounded-xl w-[7.5rem] leading-6 text-black p-3 text-center"
-							}>
-							{item}
-						</li>
+						<Link href={item.toLocaleLowerCase()}>
+							<li
+								onClick={() => setActive(idx)}
+								className={
+									active === idx
+										? "bg-[#C81107] rounded-xl w-[7.5rem] text-white p-3 leading-6 text-center"
+										: "rounded-xl w-[7.5rem] leading-6 text-black p-3 text-center"
+								}>
+								{item}
+							</li>
+						</Link>
 					))}
 				</ul>
 			</nav>
