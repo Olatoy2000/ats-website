@@ -55,7 +55,7 @@ function Header() {
 			</div>
 			<nav className='flex cursor-pointer items-center justify-between px-10 gap-10 py-4'>
 				<img
-					src={AfexLogo}
+					src={AfexLogo.src}
 					alt='Afex-logo'
 					className='pl-4'
 				/>
