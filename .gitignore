@@ -5,4 +5,5 @@
 .next
 node_modules
 dist
+src/.DS_Store
 
