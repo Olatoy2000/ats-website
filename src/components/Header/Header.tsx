@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import AfexLogo from "../assets/afex-logo.png";
+import AfexLogo from "./assets/afex-logo.png";
 
 function Header() {
 	const navLinks = ["Home", "Courses", "Xpert", "Updates"];
 
 	const [active, setActive] = useState(0);
 	return (
-		<section className='flex flex-col sticky top-0 z-20'>
+		<section className='flex flex-col bg-white sticky top-0 z-20'>
 			<div className='mantine-Group-root gap-2 border-b border-b-[#A0AEC0] flex w-full clump:pt-[clamp(1rem,4vw,4rem)] sm:flex-row overflow-hidden mantine-dghak8'>
 				<button className='mantine-Text-root p-3 leading-6 bg-[#DC372F] font-bold  text-[#fff] mantine-ssm15l'>
 					LATEST NEWS
@@ -53,9 +53,9 @@ function Header() {
 					</ul>
 				</div>
 			</div>
-			<nav className='flex cursor-pointer items-center justify-between px-10 gap-10 py-4'>
+			<nav className='flex cursor-pointer w-full mx-auto max-w-screen-2xl items-center justify-between px-10 gap-10 py-4'>
 				<img
-					src={AfexLogo}
+					src={AfexLogo.src}
 					alt='Afex-logo'
 					className='pl-4'
 				/>
