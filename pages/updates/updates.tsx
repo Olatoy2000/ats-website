@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../src/components/Footer/bFooter";
-import Updates from "../src/components/Updates";
+import Footer from "../../src/components/Footer/bFooter";
+import Updates from "../../src/components/Updates";
 
 function UpdatesPage() {
 	return (
