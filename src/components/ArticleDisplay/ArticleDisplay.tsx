@@ -114,7 +114,7 @@ function ArticleDisplay() {
 				className='grid overflow-x-scroll md:p-5 gap-8 grid-flow-col'
 				id='ArticleDisplay'>
 				{articles.map((item, idx) => (
-					<div className='flex-col shadow-xl md:w-96'>
+					<div className='flex-col pb-[15px] shadow-xl md:w-96'>
 						<img
 							src={item.articleImage}
 							className='object-cover md:w-full'
