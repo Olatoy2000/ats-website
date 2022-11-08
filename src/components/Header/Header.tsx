@@ -1,12 +1,13 @@
+import Link from "next/link";
 import React, { useState } from "react";
-import AfexLogo from "../assets/afex-logo.png";
+import AfexLogo from "./assets/afex-logo.png";
 
 function Header() {
 	const navLinks = ["Home", "Courses", "Xpert", "Updates"];
 
 	const [active, setActive] = useState(0);
 	return (
-		<section className='flex flex-col sticky top-0 z-20'>
+		<section className='flex flex-col bg-white sticky top-0 z-20'>
 			<div className='mantine-Group-root gap-2 border-b border-b-[#A0AEC0] flex w-full clump:pt-[clamp(1rem,4vw,4rem)] sm:flex-row overflow-hidden mantine-dghak8'>
 				<button className='mantine-Text-root p-3 leading-6 bg-[#DC372F] font-bold  text-[#fff] mantine-ssm15l'>
 					LATEST NEWS
@@ -53,7 +54,7 @@ function Header() {
 					</ul>
 				</div>
 			</div>
-			<nav className='flex cursor-pointer items-center justify-between px-10 gap-10 py-4'>
+			<nav className='flex cursor-pointer w-full mx-auto max-w-screen-2xl items-center justify-between px-10 gap-10 py-4'>
 				<img
 					src={AfexLogo.src}
 					alt='Afex-logo'
@@ -61,15 +62,17 @@ function Header() {
 				/>
 				<ul className='flex gap-5 justify-between items-center text-[1rem]'>
 					{navLinks.map((item, idx) => (
-						<li
-							onClick={() => setActive(idx)}
-							className={
-								active === idx
-									? "bg-[#C81107] rounded-xl w-[7.5rem] text-white p-3 leading-6 text-center"
-									: "rounded-xl w-[7.5rem] leading-6 text-black p-3 text-center"
-							}>
-							{item}
-						</li>
+						<Link href={item.toLocaleLowerCase()}>
+							<li
+								onClick={() => setActive(idx)}
+								className={
+									active === idx
+										? "bg-[#C81107] rounded-xl w-[7.5rem] text-white p-3 leading-6 text-center"
+										: "rounded-xl w-[7.5rem] leading-6 text-black p-3 text-center"
+								}>
+								{item}
+							</li>
+						</Link>
 					))}
 				</ul>
 			</nav>
