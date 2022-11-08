@@ -37,13 +37,10 @@ function Coursesb() {
 							customers' needs and follow the right workflow to collaborate with
 							other developers and designers.
 						</p>
-						<Link
-							href='/updates'
-							id='#ApplyNow'>
-							<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
-								<span className='text-white'>Click to Apply</span>
-							</button>
-						</Link>
+
+						<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+							<span className='text-white'>Click to Apply</span>
+						</button>
 					</div>
 				</div>
 
@@ -59,11 +56,10 @@ function Coursesb() {
 							the internet. You will learn how front-end developers create
 							websites and applications that work well and are easy to maintain.
 						</p>
-						<Link href='/updates'>
-							<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
-								<span className='text-white'>Click to Apply</span>
-							</button>
-						</Link>
+
+						<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+							<span className='text-white'>Click to Apply</span>
+						</button>
 					</div>
 
 					<div>
@@ -91,13 +87,10 @@ function Coursesb() {
 							the course, you will be able to build robust software that meets
 							business needs and management objectives
 						</p>
-						<Link
-							href='/updates'
-							id='#ApplyNow'>
-							<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
-								<span className='text-white'>Click to Apply</span>
-							</button>
-						</Link>
+
+						<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+							<span className='text-white'>Click to Apply</span>
+						</button>
 					</div>
 				</div>
 
@@ -114,13 +107,10 @@ function Coursesb() {
 							development, core coding concepts used to build simple iOS or
 							Android apps and exciting opportunities in the tech industry.
 						</p>
-						<Link
-							href='/updates'
-							id='#ApplyNow'>
-							<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
-								<span className='text-white'>Click to Apply</span>
-							</button>
-						</Link>
+
+						<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+							<span className='text-white'>Click to Apply</span>
+						</button>
 					</div>
 
 					<div>

@@ -3,7 +3,9 @@ import ATS1 from "./assets/image-25.png";
 
 function ATSGallery() {
 	return (
-		<div className='flex flex-col gap-4'>
+		<div
+			className='flex flex-col gap-4'
+			id='ATSGallery'>
 			<div>
 				<h1 className='text-2xl font-bold flex gap-1 md:py-7'>
 					<span className='bg-[#C81107] text-white'>ATS</span>Gallery

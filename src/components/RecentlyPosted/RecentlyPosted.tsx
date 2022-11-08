@@ -6,7 +6,9 @@ import Clock from "./assets/image 12.png";
 
 function RecentlyPosted() {
 	return (
-		<div className='grid grid-flow-row'>
+		<div
+			className='grid grid-flow-row'
+			id='RecentlyPosted'>
 			<h1 className='text-2xl font-bold flex gap-1'>
 				<span className='bg-[#C81107] text-white'>Recently</span>Posted
 			</h1>

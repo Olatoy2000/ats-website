@@ -1,6 +1,7 @@
 import { Children, Fragment, useEffect, useState } from "react";
 import { clsx, UnstyledButton } from "@mantine/core";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const menu: Array<
 	{
@@ -27,7 +28,9 @@ function Navbar() {
 	);
 
 	return (
-		<div className='flex items-center justify-between md:py-6 md:w-full max-w-screen-2xl'>
+		<div
+			className='flex items-center justify-between md:py-6 md:w-full max-w-screen-2xl'
+			id='Navbar'>
 			<span className='text-[#C81107] text-xl font-bold'>ATS Updates</span>
 
 			<div className='flex items-center gap-8'>
@@ -96,9 +99,15 @@ function Navbar() {
 			</div>
 
 			<div className='flex gap-16'>
-				<button className='text-[#C81107]'>Blogs</button>
-				<button className='text-[#C81107]'>News</button>
-				<button className='text-[#C81107]'>Gallery</button>
+				<a href='#ArticleDisplay'>
+					<button className='text-[#C81107]'>Blogs</button>
+				</a>
+				<a href='#RecentlyPosted'>
+					<button className='text-[#C81107]'>News</button>
+				</a>
+				<a href='#ATSGallery'>
+					<button className='text-[#C81107]'>Gallery</button>
+				</a>
 			</div>
 		</div>
 	);
