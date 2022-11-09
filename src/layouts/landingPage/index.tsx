@@ -1,13 +1,13 @@
 import React from "react";
 import GuyWithLaptop from "./assets/new-man-with-laptop.jpg";
-import PopUp from "../assets/group-pop.png";
-import Demo from "../../components/menuPopover";
 import Background from "./assets/background.png";
 import Container from "../../components/Container";
+import Link from "next/link";
 
 function LandingPage() {
   return (
-    <Container
+    <Container>
+      <section
       className="pt-[6.25rem] mt-8 relative flex justify-between gap-1 bg-no-repeat bg-cover items-center"
       style={{ backgroundImage: `url(${Background.src})` }}
     >
@@ -18,11 +18,14 @@ function LandingPage() {
         <div className="text-[1.25rem] text-[#313131] pb-8">
           Kickstart your tech career with our AFEX Tech Star program
         </div>
-        <button className="join-button rounded-xl w-[7.5rem] text-white p-3 mt-8 leading-6 text-center hover:bg-[#312541]">
-          Join Today
-        </button>
+        <Link href="/courses">
+          <button className="join-button rounded-xl w-[7.5rem] text-white p-3 mt-8 leading-6 text-center hover:bg-[#312541]">
+            Join Today
+          </button>
+        </Link>
       </article>
       <img src={GuyWithLaptop.src} alt="Man with Laptop" className="pt-3 " />
+      </section>
     </Container>
   );
 }

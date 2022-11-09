@@ -16,7 +16,6 @@ export default function Testimonies() {
         backgroundImage: `url(${TestimonyBack.src})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "25%",
-        backgroundPosition: "50px_50px",
       }}
     >
       <article className="flex gap-2 mb-10 items-center">

@@ -24,14 +24,16 @@ function Footer() {
           </p>
         </article>
         <article className="flex flex-col gap-4">
-          <h3 className="text-[#A09D9D;] leading-7 uppercase text-[1.25rem] font-bold">
+          <h3 className="text-[#A09D9D] leading-7 uppercase text-[1.25rem] font-bold">
             contact us
           </h3>
-          <p className="font-normal leading-6 text-white">
+          <div className="font-normal leading-6 text-[1rem] text-white">
+          <p className="font-normal leading-6 text-[1rem] text-white">
             07000CALLAFEX (+234 70 002 255 2339) For Inquiries
             (contactus@afexnigeria.com) For Complaints and Resolution updates
             (support@afexnigeria.com)
           </p>
+          </div>
         </article>
         <article className="flex flex-col gap-4">
           <h3 className="text-[#A09D9D;] leading-7 uppercase text-[1.25rem] font-bold">
@@ -45,8 +47,8 @@ function Footer() {
               <Link href="/courses">
                 <li className="pb-4">Courses</li>
               </Link>
-              <Link href="/login">
-                <li className="pb-4">Terms & Conditions</li>
+              <Link href="/contact us">
+                <li className="pb-4">Contact Us</li>
               </Link>
               <Link href="/login">
                 <li className="pb-4">Privacy Policy</li>
@@ -58,7 +60,10 @@ function Footer() {
           <div className="flex gap-4">
             <ul className="flex gap-6 justify-between">
               <li>
-                <a href="https://www.instagram.com/afexnigeria/">
+                <a
+                  href="https://www.instagram.com/afexnigeria/"
+                  target="_blank"
+                >
                   <img
                     src={Instagram.src}
                     alt="Instagram Logo"
@@ -67,7 +72,10 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://www.facebook.com/profile.php?id=100046536650064">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100046536650064"
+                  target="_blank"
+                >
                   <img
                     src={FaceBook.src}
                     alt="Instagram Logo"
@@ -76,7 +84,10 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/company/afex-commodities-exchange">
+                <a
+                  href="https://www.linkedin.com/company/afex-commodities-exchange"
+                  target="_blank"
+                >
                   <img
                     src={LinkedIn.src}
                     alt="Instagram Logo"
@@ -85,7 +96,7 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/AFEXNigeria">
+                <a href="https://twitter.com/AFEXNigeria" target="_blank">
                   <img
                     src={Twitter.src}
                     alt="Instagram Logo"
@@ -99,7 +110,7 @@ function Footer() {
             <input
               type="email"
               placeholder="Email Address"
-              className="outline-none border-none overflow-auto placeholder:text-[rgba(0, 0, 0, 0.5)] bg-inherit"
+              className="outline-none border-none overflow-auto text-white placeholder:text-[rgba(0, 0, 0, 0.5)] bg-inherit"
             />
             <img src={Send.src} alt="telegram logo" className="w-5" />
           </div>

@@ -42,13 +42,19 @@ export default function MenuPopover() {
             <input
               type="text"
               placeholder="Full Name"
-              className="w-full p-2 border"
+              className="w-full p-2 border outline-none text-[#C81107]"
               required
             />
             <input
               type="email"
               placeholder="Email Address"
-              className="w-full p-2 border"
+              className="w-full p-2 border outline-none text-[#C81107]"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Subject"
+              className="w-full p-2 border outline-none text-[#C81107]"
               required
             />
             <textarea
@@ -56,7 +62,7 @@ export default function MenuPopover() {
               name=""
               placeholder="Message"
               id=""
-              className="p-1 border"
+              className="p-1 border outline-none text-[#C81107]"
               cols={30}
               rows={6}
               required
