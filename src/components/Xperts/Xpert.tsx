@@ -1,4 +1,5 @@
 import React from "react";
+import { Select } from "@mantine/core";
 import Xpertsimg from "../Xperts/assets/xpertspic.png";
 import Xpertsimg2 from "../Xperts/assets/xpertspic2.png";
 
@@ -142,12 +143,28 @@ function Xpert() {
 		<div
 			className='flex flex-col gap-8 md:pt-28 md:pb-44 flex-1'
 			id='Xpert'>
-			<div className='flex flex-col items-center justify-center gap-4 pb-8'>
-				<h1 className='text-5xl font-bold flex gap-1 items-center'>
-					<span className='bg-[#C81107] text-white p-3'>Behind the Scenes</span>
-					Team
-				</h1>
-				<p className='text-center w-2/3 text-lg'>Meet our team of Xperts</p>
+			<div className='flex gap-20 justify-end pb-8'>
+				<article className='flex flex-col gap-3 justify-center items-center'>
+					<h1 className='text-5xl font-bold flex gap-1 items-center'>
+						<span className='bg-[#C81107] text-white p-3'>
+							Behind the Scenes
+						</span>
+						Team
+					</h1>
+					<p className='text-center text-lg'>Meet our team of Xperts</p>
+				</article>
+				<Select
+					allowDeselect
+					className='flex items-center gap-2 rounded-md focus:outline-none -mt-10'
+					label='Sort by'
+					placeholder='Year'
+					data={[
+						{ value: "2022", label: "2022" },
+						{ value: "2023", label: "2023" },
+						{ value: "2024", label: "2024" },
+						{ value: "2025", label: "2025" },
+					]}
+				/>
 			</div>
 			<div className='grid grid-cols-3 grid-rows-7 gap-8'>
 				{Xperts.map((item, idx) => (

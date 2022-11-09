@@ -73,7 +73,7 @@ function Navbar() {
 
 				<div className='relative flex w-52'>
 					<input
-						className='placeholder:italic placeholder:text-slate-400 block bg-[#EBEBEB] w-full border focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 shadow-sm sm:text-sm focus:border-[#D0D5DD]'
+						className=' placeholder:text-slate-400 block bg-[#F7F8F9] focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'
