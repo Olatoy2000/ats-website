@@ -13,7 +13,7 @@ export default function Container(props: IContainer) {
   return (
     <section
       className={clsx(
-        "max-w-screen-2xl px-10 mx-auto",
+        "max-w-screen-2xl px-[clamp(6rem,3vw,10rem)] mx-auto",
         width ?? "w-full",
         margin ?? "mx-auto",
         className

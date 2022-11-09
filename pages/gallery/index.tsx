@@ -66,12 +66,13 @@ const galleryData = [
 function index() {
   const [page, setPage] = useState(1);
   return (
-    <Container className="my-10 flex flex-col gap-8">
+    <article className="my-10 flex flex-col gap-8">
       <BackToUpdate />
+      <Container>
       <section className="flex flex-col gap-[30px]">
         {galleryData.map(({ date, picture }, idx) => (
           <section key={idx}>
-            <p className="text-[#C81107] pb-[1.125rem] text-[1.25rem] leading-7 font-bold">
+            <p className="text-[#C81107] w-full pb-[1.125rem] text-[1.25rem] leading-7 font-bold">
               {date}
             </p>
             <ul className="grid grid-cols-6 gap-[15px]">
@@ -143,7 +144,8 @@ function index() {
           </button>
         </article>
       </section>
-    </Container>
+      </Container>  
+    </article>
   );
 }
 

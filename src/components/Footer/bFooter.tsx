@@ -8,7 +8,7 @@ import send from "./assets/send.png";
 
 function Footer() {
 	return (
-		<footer className='m-auto gap-8 max-w-screen-2xl bg-black align-middle'>
+		<footer className='mx-auto gap-8 max-w-screen-2xl bg-black align-middle'>
 			<div className='md:w-[85%] mx-auto md:mt-48 grid gap-11 grid-flow-col md:py-28'>
 				<div>
 					<h1 className='uppercase text-[#A09D9D] text-xl font-bold'>
