@@ -16,7 +16,7 @@ function BaWasa() {
 				</p>
 				<div className='flex gap-3 pt-12 items-center'>
 					<img
-						src={MyImage2}
+						src={MyImage2.src}
 						className='h-10'
 					/>
 					<div className='flex-col font-sans'>
@@ -37,7 +37,7 @@ function BaWasa() {
 			<div className='flex-1'>
 				<img
 					className='md:w-full'
-					src={MyImage}
+					src={MyImage.src}
 				/>
 			</div>
 		</div>

@@ -3,6 +3,7 @@ import { clsx, UnstyledButton } from "@mantine/core";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 
+//Search Navbar
 const menu: Array<
 	{
 		label: string;
@@ -29,7 +30,7 @@ function Navbar() {
 
 	return (
 		<div
-			className='flex items-center justify-between md:py-6 md:w-full max-w-screen-2xl'
+			className='flex items-center justify-between md:py-6'
 			id='Navbar'>
 			<span className='text-[#C81107] text-xl font-bold'>ATS Updates</span>
 

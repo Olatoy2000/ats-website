@@ -4,7 +4,7 @@ import MyImage2 from "./assets/image 2.png";
 
 function BaWasa() {
 	return (
-		<div className='flex border border-solid border-[#E2E2E2] shadow-sm rounded md:gap-12'>
+		<div className='flex border border-solid border-[#E2E2E2] shadow rounded-md md:gap-12'>
 			<div className='md:pt-12 md:pl-8'>
 				<p className='text-[#2D3748] text-4xl font-bold md:py-4'>
 					Ba Wasa! Long Established

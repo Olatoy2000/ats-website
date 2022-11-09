@@ -4,6 +4,7 @@ import MyImage2 from "./assets/image 2.png";
 import SeeMore1 from "./assets/SeeMore3 icon.png";
 import SeeMore2 from "./assets/SeeLess icon.png";
 
+//Blogs part in the Updates page
 function ArticleDisplay() {
 	const articles = [
 		{
@@ -111,10 +112,12 @@ function ArticleDisplay() {
 	return (
 		<>
 			<div
-				className='grid overflow-x-scroll md:p-5 gap-8 grid-flow-col'
+				className='grid overflow-x-scroll md:py-5 gap-8 grid-flow-col'
 				id='ArticleDisplay'>
 				{articles.map((item, idx) => (
-					<div className='flex-col pb-[15px] shadow-xl md:w-96'>
+					<div
+						id={`#${idx}`}
+						className='flex-col pb-[15px] shadow-xl md:w-96 rounded-md'>
 						<img
 							src={item.articleImage}
 							className='object-cover md:w-full'
@@ -152,7 +155,6 @@ function ArticleDisplay() {
 					<span className='text-white'>See Less</span>
 					<img src={SeeMore2.src} />
 				</button>
-
 				<button className='flex gap-2 bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
 					<span className='text-white'>See More</span>
 					<img src={SeeMore1.src} />

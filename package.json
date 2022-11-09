@@ -27,6 +27,7 @@
     "tailwindcss": "^3.2.1"
   },
   "devDependencies": {
+    "@iconify/react": "^4.0.0",
     "@parcel/transformer-typescript-tsc": "^2.7.0",
     "@types/node": "18.11.9",
     "@types/react": "^18.0.24",

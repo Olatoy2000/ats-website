@@ -1,10 +1,11 @@
 import React from "react";
 
+//Scroll Up
 function SrollUpAnim() {
 	return (
 		<a href='#Navbar'>
-			<div className='flex md:h-1/6'>
-				<button className='flex items-center gap-3 md:m-0 animate-bounce'>
+			<div className='flex md:h-1/6 justify-end pb-44'>
+				<button className='flex gap-2 items-center animate-bounce'>
 					<div className='md:px-2 md:py-5 rounded-full border-[color:var(--afex-grey)] border-2'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'

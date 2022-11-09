@@ -6,7 +6,7 @@ function index() {
 	return (
 		//Courses page
 		<>
-			<div className='flex flex-col m-auto md:w-[85%] gap-9 max-w-screen-2xl'>
+			<div className='flex flex-col mx-auto md:w-[85%] gap-9 max-w-screen-2xl'>
 				<Courses />
 				<FAQ />
 			</div>
