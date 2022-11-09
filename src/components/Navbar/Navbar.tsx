@@ -1,7 +1,9 @@
 import { Children, Fragment, useEffect, useState } from "react";
 import { clsx, UnstyledButton } from "@mantine/core";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
+//Search Navbar
 const menu: Array<
 	{
 		label: string;
@@ -27,7 +29,9 @@ function Navbar() {
 	);
 
 	return (
-		<div className='flex items-center justify-between md:py-6 md:w-full max-w-screen-2xl'>
+		<div
+			className='flex items-center justify-between md:py-6'
+			id='Navbar'>
 			<span className='text-[#C81107] text-xl font-bold'>ATS Updates</span>
 
 			<div className='flex items-center gap-8'>
@@ -69,7 +73,7 @@ function Navbar() {
 
 				<div className='relative flex w-52'>
 					<input
-						className='placeholder:italic placeholder:text-slate-400 block bg-[#EBEBEB] w-full border focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 shadow-sm sm:text-sm focus:border-[#D0D5DD]'
+						className=' placeholder:text-slate-400 block bg-[#F7F8F9] focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'
@@ -96,9 +100,15 @@ function Navbar() {
 			</div>
 
 			<div className='flex gap-16'>
-				<button className='text-[#C81107]'>Blogs</button>
-				<button className='text-[#C81107]'>News</button>
-				<button className='text-[#C81107]'>Gallery</button>
+				<a href='#ArticleDisplay'>
+					<button className='text-[#C81107]'>Blogs</button>
+				</a>
+				<a href='#RecentlyPosted'>
+					<button className='text-[#C81107]'>News</button>
+				</a>
+				<a href='#ATSGallery'>
+					<button className='text-[#C81107]'>Gallery</button>
+				</a>
 			</div>
 		</div>
 	);
