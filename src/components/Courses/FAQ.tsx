@@ -46,7 +46,9 @@ function FAQ() {
 					</Accordion.Control>
 					<Accordion.Panel className='font-bold bg-neutral-100'>
 						You can send a mail to{" "}
-						<Link href='mailto:contactus@afexnigeria.com'>
+						<Link
+							href='mailto:contactus@afexnigeria.com'
+							target='_blank'>
 							<span className='text-[#C81107]'>
 								(contactus@afexnigeria.com)
 							</span>

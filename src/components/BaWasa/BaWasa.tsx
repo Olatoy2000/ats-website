@@ -1,6 +1,7 @@
 import React from "react";
 import MyImage from "./assets/image 5.png";
 import MyImage2 from "./assets/image 2.png";
+import Link from "next/link";
 
 function BaWasa() {
 	return (
@@ -27,9 +28,11 @@ function BaWasa() {
 							<p className='text-[#6F6F70] font-semibold text-[10px]'>
 								A month ago ꞏ 3 min read
 							</p>
-							<p className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
-								Read more
-							</p>
+							<Link href='LongEstablished'>
+								<p className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
+									Read more
+								</p>
+							</Link>
 						</span>
 					</div>
 				</div>
