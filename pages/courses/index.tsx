@@ -11,9 +11,6 @@ function index() {
 				<Courses />
 				<FAQ />
 			</div>
-			<div>
-				<Footer />
-			</div>
 		</>
 	);
 }

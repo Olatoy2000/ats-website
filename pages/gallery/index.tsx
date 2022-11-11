@@ -69,7 +69,7 @@ function index() {
     <article className="my-10 flex flex-col gap-8">
       <BackToUpdate />
       <Container>
-      <section className="flex flex-col gap-[30px]">
+      <section className="flex flex-col mb-8 gap-[30px]">
         {galleryData.map(({ date, picture }, idx) => (
           <section key={idx}>
             <p className="text-[#C81107] w-full pb-[1.125rem] text-[1.25rem] leading-7 font-bold">
@@ -93,7 +93,7 @@ function index() {
       <section className="flex justify-between">
         <div style={{borderRadius: "5px", border: "1px solid #C4C4C4"}} className="p-3">1-8 of 200 Entries</div>
         <article className="flex gap-3">
-          <button className="bg-[#C81107] border flex justify-between p-2 gap-2 items-center rounded-md text[0.9374rem] text-white font-normal">
+          <button className="bg-[#C81107] border flex justify-between px-2 gap-2 items-center rounded-md text[0.9374rem] text-white font-normal">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -123,7 +123,7 @@ function index() {
             }}
             withControls={false}
           />
-          <button className="bg-[#C81107] border flex justify-between p-2 gap-2 items-center rounded-md text[0.9374rem] text-white font-normal">
+          <button className="bg-[#C81107] border flex justify-between px-2 gap-2 items-center rounded-md text[0.9374rem] text-white font-normal">
             Next
             <svg
               xmlns="http://www.w3.org/2000/svg"

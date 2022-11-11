@@ -40,10 +40,28 @@ function MyTimer({ expiryTimestamp }: ICountDown) {
           }}
           className="timer box w-max flex gap-8  timer-gradient py-20 p-[30px]"
         >
-          <span className="timer bg-black py-2 px-4 rounded-lg">{days}</span>
-          <span className="timer bg-black py-2 px-4 rounded-lg">{hours}</span>
-          <span className="timer bg-black py-2 px-4 rounded-lg">{minutes}</span>
-          <span className="timer bg-black py-2 px-4 rounded-lg">{seconds}</span>
+          <div className="flex flex-col">
+            <span className="timer bg-black py-2 px-4 rounded-lg">{days}</span>
+            <span className="text-[12px] text-[black]">DAYS</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="timer bg-black py-2 px-4 rounded-lg">
+              {hours < 10 ? `0${hours}` : hours}
+            </span>
+            <span className="text-[12px] text-[black]">HOURS</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="timer bg-black py-2 px-4 rounded-lg">
+              {minutes < 10 ? `0${minutes}` : minutes}
+            </span>
+            <span className="text-[12px] text-[black]">MINUTES</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="timer bg-black py-2 px-4 rounded-lg">
+              {seconds < 10 ? `0${seconds}` : seconds}
+            </span>
+            <span className="text-[12px] text-[black]">SECONDS</span>
+          </div>
         </div>
       </div>
     </div>

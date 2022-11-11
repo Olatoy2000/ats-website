@@ -58,7 +58,7 @@ export default function CommentBlog() {
                   {item.author}
                 </h3>
                 <p className="flex text-light-darkSilver leading-6 font-normal text-[1.18rem]">
-                  {item.date_published} &nbsp; . {item.read_time}
+                  {item.date_published} &nbsp; &#8226; {item.read_time}
                 </p>
               </div>
             </article>
@@ -133,7 +133,8 @@ export default function CommentBlog() {
                     <input
                       type="text"
                       className="bg-[#F9FAFB] align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md border border-[#DEDDDC]"
-                      placeholder="Full Name" required
+                      placeholder="Full Name"
+                      required
                     />
                     <br />
                     <textarea
@@ -142,7 +143,8 @@ export default function CommentBlog() {
                       placeholder="Enter comment"
                       className="bg-[#F9FAFB] align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md mt-4 border border-[#DEDDDC]"
                       cols={30}
-                      rows={10} required
+                      rows={10}
+                      required
                     ></textarea>
                     <button
                       type="submit"
