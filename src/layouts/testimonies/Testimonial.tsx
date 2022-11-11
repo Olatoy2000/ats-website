@@ -111,7 +111,7 @@ function Testimonial({ selected }: Props) {
               <div
                 key={id}
                 className={clsx(
-                  "items-center gap-6 grid rounded-full aspect-square border-white overflow-hidden border-4"
+                  "items-center gap-6 grid shadow-2xl rounded-full aspect-square border-white overflow-hidden border-4"
                 )}
               >
                 <img

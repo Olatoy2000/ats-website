@@ -58,7 +58,7 @@ export default function AllowCommentBlog() {
                   {item.author}
                 </h3>
                 <p className="flex text-light-darkSilver leading-6 font-normal text-[1.18rem]">
-                  {item.date_published} &nbsp; . {item.read_time}
+                  {item.date_published} &nbsp; &#8226; {item.read_time}
                 </p>
               </div>
             </article>
@@ -75,7 +75,11 @@ export default function AllowCommentBlog() {
                     {item.comments.map((el, id) => (
                       <Fragment key={id}>
                         <div className="flex gap-6 items-center">
-                          <img src={el.picture} alt="" className="w-20 shadow-md border rounded-full" />
+                          <img
+                            src={el.picture}
+                            alt=""
+                            className="w-20 shadow-md border rounded-full"
+                          />
                           <p className="text-bold-blackOlive flex flex-col">
                             <span className="block text-[1rem] font-bold">
                               {el.contributor}
