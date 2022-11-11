@@ -26,14 +26,11 @@ export default function Qualification() {
           <button
             style={{
               backgroundImage:
-                "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
-            }}
-            className="self-start p-4 rounded-lg font-bold text-white hover:bg- leading-6"
-          >
+                "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",}}
+            className="self-start p-4 rounded-lg font-bold text-white hover:bg-[#312541] leading-6">
             Register Now
           </button>
         </Link>
-        ;
       </div>
       <img src={LadyInTech.src} alt="lady in tech" className="w-[300px]" />
     </Container>

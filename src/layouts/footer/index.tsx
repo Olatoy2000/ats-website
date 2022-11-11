@@ -27,13 +27,12 @@ function Footer() {
           <h3 className="text-[#A09D9D] leading-7 uppercase text-[1.25rem] font-bold">
             contact us
           </h3>
-          <div className="font-normal leading-6 text-[1rem] text-white">
-          <p className="font-normal leading-6 text-[1rem] text-white">
-            07000CALLAFEX (+234 70 002 255 2339) For Inquiries
-            (contactus@afexnigeria.com) For Complaints and Resolution updates
-            (support@afexnigeria.com)
-          </p>
-          </div>
+          <ul className="font-normal list-none leading-6 text-[1rem] text-white">
+            <li>07000CALLAFEX (+234 70 002 255 2339)</li>
+            <li>For Inquiries (contactus@afexnigeria.com)</li>
+            <li> For Complaints and Resolution updates</li>
+            <li>(support@afexnigeria.com)</li>
+          </ul>
         </article>
         <article className="flex flex-col gap-4">
           <h3 className="text-[#A09D9D;] leading-7 uppercase text-[1.25rem] font-bold">
@@ -41,7 +40,7 @@ function Footer() {
           </h3>
           <div className="font-normal leading-6 text-white">
             <ul className="leading-6 font-bold text-[1rem]">
-              <Link href="/login">
+              <Link href="/atslogin">
                 <li className="pb-4">Login</li>
               </Link>
               <Link href="/courses">
