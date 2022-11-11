@@ -5,106 +5,75 @@ import Twitter from "./assets/Twitter.png";
 import Instagram from "./assets/Instagram.png";
 
 function TopAuthors() {
+	const authors = [
+		{
+			authorImage: Gloria.src,
+			authorName: "Gloria Erimosele",
+			authorTwitter: Twitter.src,
+			authorInstagram: Instagram.src,
+			authorFacebook: Facebook.src,
+			authorPosition: "Analyst, Talent Manager",
+		},
+		{
+			authorImage: Gloria.src,
+			authorName: "Gloria Erimosele",
+			authorTwitter: Twitter.src,
+			authorInstagram: Instagram.src,
+			authorFacebook: Facebook.src,
+			authorPosition: "Analyst, Talent Manager",
+		},
+		{
+			authorImage: Gloria.src,
+			authorName: "Gloria Erimosele",
+			authorTwitter: Twitter.src,
+			authorInstagram: Instagram.src,
+			authorFacebook: Facebook.src,
+			authorPosition: "Analyst, Talent Manager",
+		},
+	];
+
 	return (
 		<div className='grid grid-flow-row'>
 			<h1 className='text-2xl font-bold flex gap-1'>
 				<span className='bg-[#C81107] text-white'>Top</span>Authors
 			</h1>
-			<div className='flex md:py-9 gap-5 items-center'>
-				<img
-					className='h-[4.5rem]'
-					src={Gloria.src}
-				/>
-				<div className='flex-col'>
-					<p className='text-[#222222] text-base font-bold'>Gloria Erimosele</p>
-					<p className='text-[#666666] text-base'>Analyst, Talent Manager</p>
-					<span className='flex gap-2 md:pt-1'>
-						<button className='bg-[#C81107] md:w-5 md:p-1'>
-							<img
-								className='m-auto'
-								src={Facebook.src}
-							/>
-						</button>
-						<button className='bg-[transparent] md:w-5 md:p-1 border'>
-							<img
-								className='m-auto md:h-2'
-								src={Twitter.src}
-							/>
-						</button>
+			{authors.map((item, idx) => (
+				<div
+					id={`#${idx}`}
+					className='flex md:py-9 gap-5 items-center'>
+					<img
+						className='h-[4.5rem]'
+						src={item.authorImage}
+					/>
+					<div className='flex-col'>
+						<p className='text-[#222222] text-base font-bold'>
+							{item.authorName}
+						</p>
+						<p className='text-[#666666] text-base'>{item.authorPosition}</p>
+						<span className='flex gap-2 md:pt-1'>
+							<button className='bg-[#C81107] md:w-5 md:p-1'>
+								<img
+									className='m-auto'
+									src={item.authorFacebook}
+								/>
+							</button>
+							<button className='bg-[transparent] md:w-5 md:p-1 border'>
+								<img
+									className='m-auto md:h-2'
+									src={item.authorTwitter}
+								/>
+							</button>
 
-						<button className='bg-[transparent] md:w-5 md:p-1 border'>
-							<img
-								className='m-auto md:h-2'
-								src={Instagram.src}
-							/>
-						</button>
-					</span>
+							<button className='bg-[transparent] md:w-5 md:p-1 border'>
+								<img
+									className='m-auto md:h-2'
+									src={item.authorInstagram}
+								/>
+							</button>
+						</span>
+					</div>
 				</div>
-			</div>
-
-			<div className='flex md:py-9 gap-5 items-center'>
-				<img
-					className='h-[4.5rem]'
-					src={Gloria.src}
-				/>
-				<div className='flex-col'>
-					<p className='text-[#222222] text-base font-bold'>Gloria Erimosele</p>
-					<p className='text-[#666666] text-base'>Analyst, Talent Manager</p>
-					<span className='flex gap-2 md:pt-1'>
-						<button className='bg-[#C81107] md:w-5 md:p-1'>
-							<img
-								className='m-auto'
-								src={Facebook.src}
-							/>
-						</button>
-						<button className='bg-[transparent] md:w-5 md:p-1 border'>
-							<img
-								className='m-auto md:h-2'
-								src={Twitter.src}
-							/>
-						</button>
-
-						<button className='bg-[transparent] md:w-5 md:p-1 border'>
-							<img
-								className='m-auto md:h-2'
-								src={Instagram.src}
-							/>
-						</button>
-					</span>
-				</div>
-			</div>
-
-			<div className='flex md:py-9 gap-5 items-center'>
-				<img
-					className='h-[4.5rem]'
-					src={Gloria.src}
-				/>
-				<div className='flex-col'>
-					<p className='text-[#222222] text-base font-bold'>Gloria Erimosele</p>
-					<p className='text-[#666666] text-base'>Analyst, Talent Manager</p>
-					<span className='flex gap-2 md:pt-1'>
-						<button className='bg-[#C81107] md:w-5 md:p-1'>
-							<img
-								className='m-auto'
-								src={Facebook.src}
-							/>
-						</button>
-						<button className='bg-[transparent] md:w-5 md:p-1 border'>
-							<img
-								className='m-auto md:h-2'
-								src={Twitter.src}
-							/>
-						</button>
-
-						<button className='bg-[transparent] md:w-5 md:p-1 border'>
-							<img
-								className='m-auto md:h-2'
-								src={Instagram.src}
-							/>
-						</button>
-					</span>
-				</div>
-			</div>
+			))}
 		</div>
 	);
 }

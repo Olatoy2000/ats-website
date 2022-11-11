@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function FAQ() {
 	return (
-		<>
+		<div className='pb-44'>
 			<div className='flex flex-col items-center justify-center gap-4 pt-24 pb-16'>
 				<h1 className='text-5xl font-bold flex gap-1 items-center'>
 					<span className='bg-[#C81107] text-white p-3'>Frequently Asked</span>
@@ -54,7 +54,7 @@ function FAQ() {
 					</Accordion.Panel>
 				</Accordion.Item>
 			</Accordion>
-		</>
+		</div>
 	);
 }
 

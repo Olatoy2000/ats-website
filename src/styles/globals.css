@@ -7,8 +7,8 @@
 @tailwind utilities;
 
 * {
-  font-family: "Mulish", sans-serif;
-  scroll-behavior: smooth;
+	font-family: "Mulish", sans-serif;
+	scroll-behavior: smooth;
 }
 
 .timer {
@@ -19,43 +19,60 @@
 }
 
 .ats-address {
-  font-family: "Inter", sans-serif;
+	font-family: "Inter", sans-serif;
 }
 
 .css-1nkfwl {
-  --ticker-duration: 50s;
+	--ticker-duration: 50s;
 }
 
 .css-1nkfwl > ul {
-  width: fit-content;
-  will-change: transform;
-  animation-name: marquee;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: var(--ticker-duration);
+	width: fit-content;
+	will-change: transform;
+	animation-name: marquee;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-duration: var(--ticker-duration);
 }
 
 @keyframes marquee {
-  0% {
-    transform: translate(0);
-  }
+	0% {
+		transform: translate(0);
+	}
 
-  100% {
-    transform: translate(-100%);
-  }
+	100% {
+		transform: translate(-100%);
+	}
 }
 
 .join-button {
-  background: linear-gradient(168.79deg, #e1261c 28.64%, #8a0b04 136.7%);
+	background: linear-gradient(168.79deg, #e1261c 28.64%, #8a0b04 136.7%);
 }
 .join-button:hover {
-  background: #312541;
+	background: #312541;
 }
 
 .timer-gradient {
-  background: linear-gradient(
-    201.92deg,
-    rgba(255, 255, 255, 0.032) 0%,
-    rgba(255, 255, 255, 0.224) 104.47%
-  );
+	background: linear-gradient(
+		201.92deg,
+		rgba(255, 255, 255, 0.032) 0%,
+		rgba(255, 255, 255, 0.224) 104.47%
+	);
+}
+
+.bggradi {
+	background: linear-gradient(168.79deg, #e1261c 28.64%, #8a0b04 136.7%);
+}
+.bggradi:hover {
+	background: black;
+}
+
+.bggrad {
+	background: linear-gradient(168.79deg, #e1261c 28.64%, #8a0b04 136.7%);
+}
+
+.ATSgal:hover {
+	transition: all 700ms;
+	transition-timing-function: ease-in-out;
+	transform: scale(1.1);
 }

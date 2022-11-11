@@ -1,7 +1,6 @@
 import { clsx } from "@mantine/core";
 import React, { useState } from "react";
 
-//Search with Tags
 const SearchTagLinks1 = [
 	"Agriculture",
 	"Lifestyle",
@@ -13,17 +12,19 @@ const SearchTagLinks1 = [
 function SearchTagsi() {
 	const [active, setActive] = useState(0);
 	return (
-		<div className='py-8'>
-			<h1 className='text-2xl font-bold flex gap-1 md:py-8'>
+		<div>
+			<p className='text-2xl font-bold flex gap-1 py-8'>
 				<span className='bg-[#C81107] text-white'>Search</span>With Tags
-			</h1>
+			</p>
 			<ul className='flex gap-4 flex-wrap'>
 				{SearchTagLinks1.map((item, idx) => (
 					<li
 						onClick={() => setActive(idx)}
 						className={clsx(
-							"rounded text-center leading-6 text-base p-3 flex-1",
-							active === idx ? "bg-[#C81107] text-white" : "text-[#666] border"
+							"rounded text-center leading-6 text-base flex-1",
+							active === idx
+								? "bg-[#C81107] text-white p-3"
+								: "text-[#666] p-3 border"
 						)}>
 						{item}
 					</li>
