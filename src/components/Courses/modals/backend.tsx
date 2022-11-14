@@ -69,6 +69,7 @@ function BackEnd() {
         </section>
         <section className="flex flex-col mb-8 items-center justify-center gap-4">
           <div className="flex gap-6">
+<<<<<<< Updated upstream
             <EmailShareButton
               url={
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
@@ -78,6 +79,11 @@ function BackEnd() {
                 Refer a friend
               </button>
             </EmailShareButton>
+=======
+            <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
+              Refer a friend
+            </button>
+>>>>>>> Stashed changes
             <a href="#app">
               <button
                 className="p-3 text-white rounded-md"
@@ -248,7 +254,10 @@ function BackEnd() {
           <h4 className="uppercase font-bold">Requirement</h4>
           <p>{setupfour.data.job.requirement}</p>
         </div>
+<<<<<<< Updated upstream
         <a href={setupfour.data.job.apply_link}></a>
+=======
+>>>>>>> Stashed changes
         <button
           id="app"
           className="self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3"

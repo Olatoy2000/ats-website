@@ -11,6 +11,7 @@ import axios from "axios";
 import Placeholder from "./assets/placeholder.png";
 
 //Courses page
+<<<<<<< Updated upstream
 
 const CoursesSample = {
   success: true,
@@ -171,6 +172,105 @@ function Coursesb() {
         "REQUEST-TS": "1667549939702",
         "API-KEY":
           "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+=======
+function Coursesb() {
+  const coursesb: Array<{
+    coursesImage: string;
+    title: string;
+    coursesSnippets: string;
+    modal: ModalSettings;
+  }> = [
+    {
+      coursesImage: MyImage.src,
+      title: "Product Management",
+      coursesSnippets:
+        "Our Product Management course exposes you to organizational functions that guide every step of the product's lifecycle. You will learn how to develop and position products that meet customers' needs and follow the right workflow to collaborate with other developers and designers.",
+      modal: {
+        children: <ProductManagement />,
+        classNames: {
+          inner: "rounded-none",
+          header: "hidden",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
+        },
+        styles: {
+          modal: {
+            marginTop: "auto",
+            marginBottom: "auto",
+            width: "70vw",
+            height: "80vh",
+            padding: "0",
+          },
+        },
+      },
+    },
+    {
+      coursesImage: MyImage.src,
+      title: "Frontend Development",
+      coursesSnippets:
+        "With our Frontend Developemnt course, you will learn about the day-to-day responsibilities of a web developer and get a general understanding of the core and underlying technologies that power the internet. You will learn how front-end developers create websites and applications that work well and are easy to maintain.",
+      modal: {
+        title: "Subscribe to newsletter",
+        children: <Frontend />,
+        classNames: {
+          header: "hidden",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
+        },
+        styles: {
+          modal: {
+            marginTop: "auto",
+            marginBottom: "auto",
+            width: "70vw",
+            height: "80vh",
+            padding: "0",
+          },
+        },
+      },
+    },
+    {
+      coursesImage: MyImage.src,
+      title: "Backend Development",
+      coursesSnippets:
+        "Our Backend Development course expose participants from entry-level to intermediate software engineering. At the tail of the course, you will be able to build robust software that meets business needs and management objectives",
+      modal: {
+        title: "Subscribe to newsletter",
+        children: <Backend />,
+        classNames: {
+          header: "hidden",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
+        },
+        styles: {
+          modal: {
+            marginTop: "auto",
+            marginBottom: "auto",
+            width: "70vw",
+            height: "80vh",
+            padding: "0",
+          },
+        },
+      },
+    },
+    {
+      coursesImage: MyImage.src,
+      title: "Mobile Management",
+      coursesSnippets:
+        "Introduces students to the complete process of mobile application development: covering design, planning, implementation, and testing. Includes panel events with professional software engineers, giving students a well-rounded exploration into app development, core coding concepts used to build simple iOS or Android apps and exciting opportunities in the tech industry.",
+      modal: {
+        title: "Subscribe to newsletter",
+        children: <MobileApp />,
+        classNames: {
+          header: "hidden",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
+        },
+        styles: {
+          modal: {
+            marginTop: "auto",
+            marginBottom: "auto",
+            width: "70vw",
+            height: "80vh",
+            padding: "0",
+          },
+        },
+>>>>>>> Stashed changes
       },
       method: "get",
     })

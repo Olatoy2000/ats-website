@@ -5,6 +5,7 @@ import { Whatsapp, Link } from "iconsax-react";
 import ProductManagementBack from "./assets/pmback.png";
 import setup from "./setup.json";
 import moment from "moment";
+<<<<<<< Updated upstream
 import useClipboard from "react-use-clipboard";
 import { Popover, Text, Button } from "@mantine/core";
 
@@ -47,6 +48,10 @@ function ProductManagement({ id, title }: Props) {
   const [isCopied, setCopied] = useClipboard(
     "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
   );
+=======
+
+function ProductManagement() {
+>>>>>>> Stashed changes
   return (
     <Fragment>
       <article
@@ -59,7 +64,11 @@ function ProductManagement({ id, title }: Props) {
       >
         <section className="flex flex-col items-center gap-1">
           <h1 className="font-extrabold text-[clamp(1rem,4vw,4.5rem)] leading-[4.75rem] text-semiBold-gostWhite">
+<<<<<<< Updated upstream
             {title} {id}
+=======
+            {setup.data.title}
+>>>>>>> Stashed changes
           </h1>
           <div className="flex items-center gap-1">
             <Icon
@@ -69,7 +78,11 @@ function ProductManagement({ id, title }: Props) {
                   +moment().format("x") >
                 0
                   ? "#00ff38"
+<<<<<<< Updated upstream
                   : "#C81107"
+=======
+                  : "red"
+>>>>>>> Stashed changes
               }
               width="35"
               height="35"
@@ -81,7 +94,11 @@ function ProductManagement({ id, title }: Props) {
                   +moment().format("x") >
                 0
                   ? "text-bold-malachite"
+<<<<<<< Updated upstream
                   : "text-light-internationalOrange font-bold")
+=======
+                  : "text-light-internationalOrange")
+>>>>>>> Stashed changes
               }
             >
               {+moment(setup.data.job.application_end_date).format("x") -
@@ -221,11 +238,41 @@ function ProductManagement({ id, title }: Props) {
         <div className="flex flex-col gap-1">
           <h3 className="text-light-quickSilver uppercase">active cohort</h3>
           <Divider />
+<<<<<<< Updated upstream
+=======
         </div>
         <div>
           <div className="flex flex-col gap-4 justify-start mb-6">
             <h5 className="font-bold">
               Cohort:{" "}
+              <span className="font-light">
+                {setup.data.active_cohort.name}
+              </span>
+            </h5>
+            <h5 className="font-bold">
+              Starting Date:{" "}
+              <span className="font-light">
+                {moment(setup.data.active_cohort.start_date).format("LL")}
+              </span>
+            </h5>
+            <h5 className="font-bold">
+              Ending Date:
+              <span className="font-normal">
+                {moment(setup.data.active_cohort.end_date).format("LL")}
+              </span>
+            </h5>
+          </div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className="uppercase text-light-darkSilver">open application</h3>
+          <Divider />
+>>>>>>> Stashed changes
+        </div>
+        <div>
+          <div className="flex flex-col gap-4 justify-start mb-6">
+            <h5 className="font-bold">
+              Cohort:{" "}
+<<<<<<< Updated upstream
               <span className="font-light">
                 {setup.data.active_cohort.name}
               </span>
@@ -284,6 +331,53 @@ function ProductManagement({ id, title }: Props) {
           <h4 className="uppercase font-bold">Requirement</h4>
           <p>{setup.data.job.requirement}</p>
         </div>
+=======
+              <span className="font-normal">{setup.data.job.cohort}</span>
+            </h5>
+            <h5 className="font-bold">
+              Starting Date:{" "}
+              <span className="font-normal">
+                {moment(setup.data.job.start_date).format("LL")}
+              </span>
+            </h5>
+            <h5 className="font-bold">
+              Ending Date:{" "}
+              <span className="font-normal">
+                {moment(setup.data.job.end_date).format("LL")}
+              </span>
+            </h5>
+            <h5 className="font-bold">
+              Application Starting Date:
+              <span className="text-light-malachite">
+                {moment(setup.data.job.application_start_date).format("LL")}
+              </span>
+            </h5>
+            <h5 className="font-bold">
+              Application Ending Date:{" "}
+              <span className="font-normal text-">
+                {moment(setup.data.job.application_end_date).format("LL")}
+              </span>
+            </h5>
+          </div>
+        </div>
+        <div>
+          <h4 className="uppercase font-bold">Requirement</h4>
+          <p>{setup.data.job.requirement}</p>
+        </div>
+        {/* <div>
+          <h4 className="uppercase font-bold">how to apply</h4>
+          <p>
+            Click "Apply now" Lorem ipsum dolor sit, amet consectetur
+            adipisicing elit. Quisquam, culpa non sunt, nisi quos ipsum totam
+            magnam excepturi voluptate voluptatem nesciunt distinctio
+            praesentium explicabo sit animi eum, autem rem velit. Dignissimos,
+            aliquid. Provident aspernatur distinctio modi autem, necessitatibus
+            repellat in ullam, deserunt exercitationem dolores est delectus.
+            Enim in nam hic, dolorum fugiat, perspiciatis distinctio eaque ea
+            sunt molestiae iure quam.
+          </p>
+        </div> */}
+>>>>>>> Stashed changes
         <a href={setup.data.job.apply_link}>
           <button
             id="app"

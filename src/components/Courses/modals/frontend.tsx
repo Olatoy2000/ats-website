@@ -191,6 +191,7 @@ function FrontEnd() {
           <h3 className="text-light-quickSilver uppercase">course detail</h3>
           <Divider />
         </div>
+<<<<<<< Updated upstream
         <p className="text-justify">{setuptwo.data.description}</p>
         <div className="flex flex-col gap-1">
           <h3 className="text-light-quickSilver uppercase">active cohort</h3>
@@ -221,6 +222,79 @@ function FrontEnd() {
         <div className="flex flex-col gap-1">
           <h3 className="text-light-quickSilver uppercase">open application</h3>
           <Divider />
+=======
+        <p className="text-justify">
+          References in these Terms of Service ("Terms") to "AFEX", "Exchange,"
+          "Company," "we," "our" or "us," are to AFEX Commodities Exchange
+          Limited depending on the context, and references to you or your are to
+          the persons with whom the Exchange enters into these Terms. Please
+          read these Terms and Conditions carefully. You are not permitted to
+          link any other website to the Platform without obtaining the express
+          prior written consent of the Exchange. Access to the Platform is at
+          your own risk. The Exchange does not represent or warrant that the use
+          of the Platform or any material downloaded from it will not cause
+          damage to property, including but not limited to loss of data or
+          computer virus infection. The Exchange shall not be responsible for
+          any loss, omission or damage that may arise in connection with your
+          use of the Platform due to IT or network downtime. The responsibility
+          for the security of your password associated with the Platform shall
+          solely be yours at all times. The Exchange will make all reasonable
+          attempts to ensure that the Platform is fully operational at all
+          times. However, the Exchange makes no guarantees as to fitness for
+          purpose of the Platform.
+        </p>
+        <div className="flex flex-col gap-1">
+          <h3 className="text-light-quickSilver uppercase">active cohort</h3>
+          <Divider />
+        </div>
+        <div>
+          {COHORT_COUNT.map((item, idx) => (
+            <div key={idx} className="flex flex-col gap-4 justify-start mb-6">
+              <h5 className="font-bold">
+                Cohort: <span className="font-light">{item.cohortBatch}</span>
+              </h5>
+              <h5 className="font-bold">
+                Starting Date:{" "}
+                <span className="font-light">{item.startingDate}</span>
+              </h5>
+              <h5 className="font-bold">
+                Ending Date:
+                <span className="font-normal">{item.endingDate}</span>
+              </h5>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <h3 className="text-light-quickSilver uppercase">open application</h3>
+          <Divider />
+        </div>
+        <div>
+          {COHORT_APPLICATION.map((el, idx) => (
+            <div key={idx} className="flex flex-col gap-4 justify-start mb-6">
+              <h5 className="font-bold">
+                Cohort: <span className="font-normal">{el.cohortBatch}</span>
+              </h5>
+              <h5 className="font-bold">
+                Starting Date:{" "}
+                <span className="font-normal">{el.startDate}</span>
+              </h5>
+              <h5 className="font-bold">
+                Ending Date: <span className="font-normal">{el.endDate}</span>
+              </h5>
+              <h5 className="font-bold">
+                Application Starting Date:
+                <span className="text-light-malachite font-normal">
+                  {el.applicationStartingDate}
+                </span>
+              </h5>
+              <h5 className="font-bold">
+                Application Ending Date:{" "}
+                <span className="font-normal">{el.applicationEndingDate}</span>
+              </h5>
+            </div>
+          ))}
+>>>>>>> Stashed changes
         </div>
         <div>
           <div className="flex flex-col gap-4 justify-start mb-6">
@@ -254,6 +328,7 @@ function FrontEnd() {
             </h5>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div>
           <h4 className="uppercase font-bold">Requirement</h4>
           <p>{setuptwo.data.job.requirement}</p>
@@ -266,6 +341,15 @@ function FrontEnd() {
             Apply now
           </button>
         </a>
+=======
+        
+        <button
+          id="app"
+          className="self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3"
+        >
+          Apply now
+        </button>
+>>>>>>> Stashed changes
       </article>
     </Fragment>
   );

@@ -67,7 +67,12 @@ function AdminLogin() {
   useEffect(() => {
     const date = new Date();
     setTime(date.getHours());
+<<<<<<< Updated upstream
   }, [time]);
+=======
+    console.log(time);
+  }, []);
+>>>>>>> Stashed changes
   return (
     <div
       style={{

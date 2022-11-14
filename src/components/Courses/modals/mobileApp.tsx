@@ -33,7 +33,11 @@ function MobileApplication() {
       >
         <section className="flex flex-col items-center gap-1">
           <h1 className="font-extrabold text-[clamp(1rem,4vw,4.5rem)] leading-[4.75rem] text-semiBold-gostWhite">
+<<<<<<< Updated upstream
             {setupthree.data.title}
+=======
+            Mobile Aplication
+>>>>>>> Stashed changes
           </h1>
           <div className="flex items-center gap-1">
             <Icon
@@ -69,6 +73,7 @@ function MobileApplication() {
         </section>
         <section className="flex flex-col mb-8 items-center justify-center gap-4">
           <div className="flex gap-6">
+<<<<<<< Updated upstream
             <EmailShareButton
               url={
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
@@ -79,6 +84,12 @@ function MobileApplication() {
               </button>
             </EmailShareButton>
             <a href="#app">
+=======
+            <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
+              Refer a friend
+            </button>
+            <a href="#pp">
+>>>>>>> Stashed changes
               <button
                 className="p-3 text-white rounded-md"
                 style={{
@@ -241,6 +252,7 @@ function MobileApplication() {
           <h4 className="uppercase font-bold">Requirement</h4>
           <p>{setupthree.data.job.requirement}</p>
         </div>
+<<<<<<< Updated upstream
         <a href={setupthree.data.job.apply_link}>
           <button
             id="app"
@@ -249,6 +261,14 @@ function MobileApplication() {
             Apply now
           </button>
         </a>
+=======
+        <button
+          id="app"
+          className="self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3"
+        >
+          Apply now
+        </button>
+>>>>>>> Stashed changes
       </article>
     </Fragment>
   );
