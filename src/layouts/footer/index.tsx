@@ -147,3 +147,5 @@ function Footer() {
 }
 
 export default Footer;
+
+// 1095px
