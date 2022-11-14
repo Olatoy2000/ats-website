@@ -5,6 +5,13 @@ import { PasswordInput } from "@mantine/core";
 import { useRef, useState, useEffect } from "react";
 
 function index() {
+  const [time, setTime] = useState(0);
+  useEffect(() => {
+    const date = new Date();
+    setTime(date.getHours());
+
+    console.log(typeof time);
+  }, []);
   return (
     <div
       style={{
@@ -14,12 +21,12 @@ function index() {
         paddingBlock: "80px",
       }}
     >
-      <section className="grid grid-cols-[3fr_1fr] w-[85%] mx-auto gap-4">
+      <section className="grid md:grid-cols-[3fr_1fr] w-5/6 mx-auto md:gap-4 gap-8">
         <article className="flex flex-col bg-[#1B1B1B] p-8">
           <h1 className="text-white font-bold text-[2rem] leading-10 pb-5">
             Admin Login
           </h1>
-          <section className="gap-8 grid grid-cols-2">
+          <section className="gap-8 grid md:grid-cols-2">
             <div className="flex gap-6 bg-white justify-between p-3">
               <input
                 type="text"
@@ -28,20 +35,23 @@ function index() {
                 required
               />
             </div>
-            <div className="flex items-center gap-3 bg-white px-3 py-2">
+            <div className=" sm:flex sm:items-center sm:bg-white  sm:px-3 sm:py-2">
               <PasswordInput
                 placeholder="Enter your Password"
                 className="text-semiBold-chineseSilver placeholder:leading-6 placeholder:text-semiBold-chineseSilver w-full"
                 classNames={{
-                  input: "border-none font-['Mulish']",
-                  innerInput: "pl-0 placeholder:leading-6 font-['Mulish]",
-                  //   innerInput:
+                  input:
+                    "border-none rounded-none flex items-center py-6 font-['Mulish']",
+                  rightSection: "p-3",
+                  innerInput:
+                    "placeholder:text-[1rem] pt-[10px] align-baseline font-['Mulish]",
+                  root: "",
                 }}
                 withAsterisk
               />
               <button
                 type="submit"
-                className="text-white py-2 px-4 rounded-md leading-6 font-bold text-[1rem]"
+                className="text-white py-2 px-4 mt-4 w-full sm:w-max sm:mt-0 rounded-md leading-6 font-bold text-[1rem]"
                 style={{
                   background:
                     "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
@@ -62,15 +72,21 @@ function index() {
                 <p className="text-light-eerieBlack leading-6 whitespace-nowrap font-normal">
                   Login access
                 </p>
-                <span className="text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal">
+                <span
+                  className={`${
+                    time >= 8 && time <= 17
+                      ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                      : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                  }`}
+                >
                   <Icon
                     icon="ci:dot-01-xs"
-                    color="#C81107"
+                    color={time >= 8 && time <= 17 ? `#498e00` : "#C81107"}
                     width="40"
                     height="40"
                     className="inline"
                   />
-                  Closed now
+                  {time >= 8 && time <= 17 ? "opened now" : "closed now"}
                 </span>
               </div>
               <p className="text-[#54565B] leading-4 text-[0.75rem]">

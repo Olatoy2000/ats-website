@@ -3,7 +3,6 @@ import MenuPopover from "../src/components/menuPopover";
 import Timer from "../src/components/timer/Timer";
 import Information from "../src/layouts/info";
 import Testimonies from "../src/layouts/testimonies";
-import Footer from "../src/layouts/footer";
 import AfexStory from "../src/layouts/afexstory";
 
 function Main() {

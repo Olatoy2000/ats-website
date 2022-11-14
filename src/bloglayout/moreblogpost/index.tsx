@@ -1,5 +1,6 @@
 import { Divider } from "@mantine/core";
 import { ArrowCircleRight2, ArrowCircleLeft2 } from "iconsax-react";
+import { useRef } from "react";
 import Container from "../../components/Container";
 import GrassLand from "./assets/grassland.png";
 
@@ -77,6 +78,18 @@ export default function MORE_BLOG_POST() {
     },
   ];
 
+  const scrollRefs = useRef<HTMLDivElement>(null);
+
+  const moveRight = () => {
+    const width = scrollRefs.current!.clientWidth;
+    scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft + width;
+  };
+
+  const moveLeft = () => {
+    const width = scrollRefs.current!.clientWidth;
+    scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
+  };
+
   return (
     <Container>
       <section className="flex flex-col gap-2">
@@ -85,15 +98,19 @@ export default function MORE_BLOG_POST() {
             More Blog Posts
           </h2>
           <div className="flex gap-3">
-            <ArrowCircleLeft2 size="32" color="#000" />
-            <ArrowCircleRight2 size="32" color="#000" />
+            <ArrowCircleLeft2 size="32" color="#000" onClick={moveLeft} />
+            <ArrowCircleRight2 size="32" color="#000" onClick={moveRight} />
           </div>
         </article>
         <Divider />
-        <article className="mb-6 overflow-x-scroll gap-8 flex">
+        <div
+          id="slider"
+          ref={scrollRefs}
+          className="mb-6 overflow-x-hidden scroll  scroll-smooth  gap-8 flex"
+        >
           {MORE_BLOG_POST.map((item, idx) => (
             <article
-              className="grid gap-4 py-4 grid-cols-[150px_150px]"
+              className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
               key={idx}
             >
               <img src={item.picture} alt="" className="w-full" />
@@ -107,7 +124,7 @@ export default function MORE_BLOG_POST() {
               </div>
             </article>
           ))}
-        </article>
+        </div>
       </section>
     </Container>
   );

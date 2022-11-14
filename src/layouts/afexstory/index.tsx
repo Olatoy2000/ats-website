@@ -9,7 +9,7 @@ export default function AfexStory() {
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        className="aspect-video w-[80vw] mx-auto my-10 z-20"
+        className="aspect-video w-[80vw] mx-auto my-10"
       ></iframe>
     </section>
   );

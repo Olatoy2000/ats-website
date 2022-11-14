@@ -6,9 +6,7 @@ module.exports = {
       boxShadow: {
         sm: "0px 4px 12px 1px rgba(0, 0, 0, 0.25)",
       },
-      backgroundGradient: {
-        butBag: "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
-      },
+
       colors: {
         light: {
           antiFlashWhite: "#F2F2F2",
@@ -17,7 +15,9 @@ module.exports = {
           completeBlack: "#000000",
           eerieBlack: "#1B1B1B",
           metallicGreen: "#3D7500",
-           gray: "#7C827D",
+          gray: "#7C827D",
+          butBag: "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
+          quickSilver: "#A29F9F",
         },
         semiBold: {
           chineseSilver: "#C9C8C6",
@@ -28,9 +28,13 @@ module.exports = {
           maastrichtBlue: "#352B0F",
           eerieBlack: "#1B1B1B",
           jet: "#343434",
+          malachite: "#00FF38",
+        },
+        semiBold: {
+          gostWhite: "#F9FAFB",
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };
