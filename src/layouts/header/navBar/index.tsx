@@ -14,27 +14,25 @@ function MenuList() {
 
   return (
     <ul className="flex flex-col md:flex-row min-w-[200px] md:items-center justify-between gap-3">
-      {navLinks.map((item, idx) => (
+      {navLinks.map((el, idx) => (
         <li
           key={idx}
           className={clsx(
             "md:rounded-xl leading-6 p-3 md:px-6 md:text-center",
-            item.toLocaleLowerCase() === asPath.slice(1) ||
-              (item === "Home" && asPath === "/")
+            el.toLocaleLowerCase() === asPath.slice(1) ||
+              (el === "Home" && asPath === "/")
               ? "bg-[#C81107]  text-[#F2F2F2]"
               : "text-black"
           )}
         >
-          <Link href={item === "Home" ? "/" : item.toLocaleLowerCase()}>
-            {item}
-          </Link>
+          <Link href={el === "Home" ? "/" : el.toLocaleLowerCase()}>{el}</Link>
         </li>
       ))}
     </ul>
   );
 }
 
-export default function NavBar() {
+export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const matches = useMediaQuery("(min-width: 768px)");
 
@@ -44,9 +42,9 @@ export default function NavBar() {
 
   return (
     <Container>
-      <nav className="cursor-pointer flex items-center justify-between">
+      <nav className="flex items-center cursor-pointer justify-between">
         <Link href="/">
-          <img src={AfexLogo.src} alt="Afex-logo" />
+          <img src={AfexLogo.src} alt="Afex landing page logo" />
         </Link>
 
         {matches ? (

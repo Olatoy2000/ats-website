@@ -105,8 +105,10 @@ function FrontEnd() {
         </section>
       </article>
       <article className="flex flex-col gap-6 p-10">
-        <h3 className="text-light-quickSilver uppercase">course detail</h3>
-        <Divider />
+        <div className="flex flex-col gap-1">
+          <h3 className="text-light-quickSilver uppercase">course detail</h3>
+          <Divider />
+        </div>
         <p className="text-justify">
           References in these Terms of Service ("Terms") to "AFEX", "Exchange,"
           "Company," "we," "our" or "us," are to AFEX Commodities Exchange
@@ -127,8 +129,10 @@ function FrontEnd() {
           times. However, the Exchange makes no guarantees as to fitness for
           purpose of the Platform.
         </p>
-        <h3 className="text-light-quickSilver uppercase">active cohort</h3>
-        <Divider />
+        <div className="flex flex-col gap-1">
+          <h3 className="text-light-quickSilver uppercase">active cohort</h3>
+          <Divider />
+        </div>
         <div>
           {COHORT_COUNT.map((item, idx) => (
             <div key={idx} className="flex flex-col gap-4 justify-start mb-6">
@@ -147,28 +151,32 @@ function FrontEnd() {
           ))}
         </div>
 
-        <h3 className="uppercase text-light-darkSilver">open application</h3>
-        <Divider />
+        <div className="flex flex-col gap-1">
+          <h3 className="text-light-quickSilver uppercase">open application</h3>
+          <Divider />
+        </div>
         <div>
           {COHORT_APPLICATION.map((el, idx) => (
             <div key={idx} className="flex flex-col gap-4 justify-start mb-6">
-              <h5>
-                Cohort: <span>{el.cohortBatch}</span>
+              <h5 className="font-bold">
+                Cohort: <span className="font-normal">{el.cohortBatch}</span>
               </h5>
-              <h5>
-                Starting Date: <span>{el.startDate}</span>
+              <h5 className="font-bold">
+                Starting Date:{" "}
+                <span className="font-normal">{el.startDate}</span>
               </h5>
-              <h5>
-                Ending Date: <span>{el.endDate}</span>
+              <h5 className="font-bold">
+                Ending Date: <span className="font-normal">{el.endDate}</span>
               </h5>
-              <h5>
+              <h5 className="font-bold">
                 Application Starting Date:
-                <span className="text-light-malachite">
+                <span className="text-light-malachite font-normal">
                   {el.applicationStartingDate}
                 </span>
               </h5>
-              <h5>
-                Application Ending Date: <span>{el.applicationEndingDate}</span>
+              <h5 className="font-bold">
+                Application Ending Date:{" "}
+                <span className="font-normal">{el.applicationEndingDate}</span>
               </h5>
             </div>
           ))}
@@ -214,19 +222,7 @@ function FrontEnd() {
             voluptates dicta?
           </p>
         </div>
-        <div>
-          <h4 className="uppercase font-bold">how to apply</h4>
-          <p>
-            Click "Apply now" Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Quisquam, culpa non sunt, nisi quos ipsum totam
-            magnam excepturi voluptate voluptatem nesciunt distinctio
-            praesentium explicabo sit animi eum, autem rem velit. Dignissimos,
-            aliquid. Provident aspernatur distinctio modi autem, necessitatibus
-            repellat in ullam, deserunt exercitationem dolores est delectus.
-            Enim in nam hic, dolorum fugiat, perspiciatis distinctio eaque ea
-            sunt molestiae iure quam.
-          </p>
-        </div>
+        
         <button
           id="app"
           className="self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3"

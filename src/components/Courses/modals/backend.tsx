@@ -49,15 +49,17 @@ function BackEnd() {
             <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
               Refer a friend
             </button>
-            <button
-              className="p-3 text-white rounded-md"
-              style={{
-                background:
-                  "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
-              }}
-            >
-              Apply now
-            </button>
+            <a href="#app">
+              <button
+                className="p-3 text-white rounded-md"
+                style={{
+                  background:
+                    "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
+                }}
+              >
+                Apply now
+              </button>
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <Icon
@@ -225,7 +227,10 @@ function BackEnd() {
             sunt molestiae iure quam.
           </p>
         </div>
-        <button className="self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3">
+        <button
+          id="app"
+          className="self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3"
+        >
           Apply now
         </button>
       </article>

@@ -9,8 +9,7 @@ function index() {
   useEffect(() => {
     const date = new Date();
     setTime(date.getHours());
-
-    console.log(typeof time);
+    console.log(time);
   }, []);
   return (
     <div

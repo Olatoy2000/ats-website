@@ -48,8 +48,7 @@ function Coursesb() {
         children: <Frontend />,
         classNames: {
           header: "hidden",
-          modal: "p-0 overflow-y-scroll rounded-none",
-          body: "",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
         },
         styles: {
           modal: {
@@ -72,8 +71,7 @@ function Coursesb() {
         children: <Backend />,
         classNames: {
           header: "hidden",
-          modal: "p-0 overflow-y-scroll rounded-none",
-          body: "",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
         },
         styles: {
           modal: {
@@ -96,8 +94,7 @@ function Coursesb() {
         children: <MobileApp />,
         classNames: {
           header: "hidden",
-          modal: "p-0 overflow-y-scroll rounded-none",
-          body: "",
+          modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
         },
         styles: {
           modal: {
