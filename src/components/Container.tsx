@@ -13,7 +13,11 @@ export default function Container(props: IContainer) {
   return (
     <section
       className={clsx(
+<<<<<<< HEAD
         "max-w-screen-2xl px-[clamp(1rem,6vw,6rem)] w-10/12 mx-auto",
+=======
+        "max-w-screen-2xl px-[clamp(6rem,3vw,10rem)] mx-auto",
+>>>>>>> Odebunmi
         width ?? "w-full",
         margin ?? "mx-auto",
         className

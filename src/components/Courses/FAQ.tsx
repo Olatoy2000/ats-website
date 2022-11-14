@@ -33,6 +33,7 @@ function FAQ() {
           </Accordion.Panel>
         </Accordion.Item>
 
+<<<<<<< HEAD
         <Accordion.Item value="focus-ring" className="border shadow-xl py-3">
           <Accordion.Control>
             Whom do I contact for further enquiries?
@@ -49,6 +50,28 @@ function FAQ() {
       </Accordion>
     </div>
   );
+=======
+				<Accordion.Item
+					value='focus-ring'
+					className='border shadow-xl py-3'>
+					<Accordion.Control>
+						Whom do I contact for further enquiries?
+					</Accordion.Control>
+					<Accordion.Panel className='font-bold bg-neutral-100'>
+						You can send a mail to{" "}
+						<Link
+							href='mailto:contactus@afexnigeria.com'
+							target='_blank'>
+							<span className='text-[#C81107]'>
+								(contactus@afexnigeria.com)
+							</span>
+						</Link>
+					</Accordion.Panel>
+				</Accordion.Item>
+			</Accordion>
+		</div>
+	);
+>>>>>>> Odebunmi
 }
 
 export default FAQ;

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { useRouter } from "next/router";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { clsx, ActionIcon, Popover } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+=======
+>>>>>>> Odebunmi
 import Container from "../../../components/Container";
 import AfexLogo from "./assets/afex-logo.png";
 import Link from "next/link";
@@ -12,6 +15,7 @@ const navLinks = ["Home", "Courses", "Xpert", "Updates"];
 function MenuList() {
   const { asPath } = useRouter();
 
+<<<<<<< HEAD
   return (
     <ul className="flex flex-col md:flex-row min-w-[200px] md:items-center justify-between gap-3">
       {navLinks.map((item, idx) => (
@@ -41,6 +45,18 @@ export default function NavBar() {
   useEffect(() => {
     if (matches) setIsMenuOpen(false);
   }, [matches]);
+=======
+  useEffect(() => {
+    presentRoute
+      ? setActive(
+          presentRoute.replace(
+            presentRoute[0],
+            presentRoute[0].toLocaleUpperCase()
+          )
+        )
+      : setActive("Home");
+  }, [presentRoute]);
+>>>>>>> Odebunmi
 
   return (
     <Container>

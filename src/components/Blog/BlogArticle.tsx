@@ -132,11 +132,11 @@ function index() {
 			<h1 className='flex bg-[#C81107] w-20 md:p-3 text-white text-2xl font-bold'>
 				Blog
 			</h1>
-			<div className='grid gap-8 grid-cols-3 grid-rows-4'>
+			<div className='grid gap-9 grid-cols-3 grid-rows-4'>
 				{blogarticles.map((item, idx) => (
 					<div
 						id={`#${idx}`}
-						className='flex-col pb-[15px] shadow-xl md:w-96 rounded-md'>
+						className='flex-col pb-[15px] shadow rounded-md'>
 						<img
 							src={item.articleImage}
 							className='object-cover md:w-full'
@@ -156,7 +156,7 @@ function index() {
 								<p className='text-[#C81107] text-xs font-semibold'>
 									{item.authorName}
 								</p>
-								<span className='flex gap-16 items-center'>
+								<span className='flex gap-24 items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										{item.datePublished} &nbsp;&nbsp; {item.readTime} read
 									</p>

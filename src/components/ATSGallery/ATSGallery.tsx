@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import ATS1 from "./assets/image-25.png";
 
 //Gallery in the Updates page
@@ -49,11 +50,13 @@ function ATSGallery() {
 					</div>
 				))}
 			</div>
-			<div className='flex justify-end'>
-				<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
-					<span className='text-white'>See More</span>
-				</button>
-			</div>
+			<Link href='/gallery'>
+				<div className='flex justify-end'>
+					<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+						<span className='text-white'>See More</span>
+					</button>
+				</div>
+			</Link>
 		</div>
 	);
 }

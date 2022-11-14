@@ -49,8 +49,8 @@ function Navbar() {
 											: undefined
 									}
 									className={clsx(
-										"flex justify-between focus:outline-none rounded-md shadow-sm font-bold sm:text-sm focus:border-[#D0D5DD]",
-										visible ? "black" : "#C81107"
+										"focus:outline-none",
+										visible ? "black" : "bg-white"
 									)}>
 									{children ? (
 										<Icon icon={visible ? "bx:caret-up" : "bx:caret-down"} />
@@ -61,7 +61,7 @@ function Navbar() {
 									? children.map((item, idx) => (
 											<UnstyledButton
 												key={idx}
-												className='flex flex-col md:py-2 font-extrabold md:text-base text-[#EBEBEB]'>
+												className='md:pb-2 flex md:text-base'>
 												{item}
 											</UnstyledButton>
 									  ))
@@ -73,7 +73,7 @@ function Navbar() {
 
 				<div className='relative flex w-52'>
 					<input
-						className=' placeholder:text-slate-400 block bg-[#F7F8F9] focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 sm:text-sm'
+						className=' placeholder:text-slate-400 block bg-[#F7F8F9] border focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'

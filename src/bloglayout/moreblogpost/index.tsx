@@ -1,6 +1,9 @@
 import { Divider } from "@mantine/core";
 import { ArrowCircleRight2, ArrowCircleLeft2 } from "iconsax-react";
+<<<<<<< HEAD
 import { useRef } from "react";
+=======
+>>>>>>> Odebunmi
 import Container from "../../components/Container";
 import GrassLand from "./assets/grassland.png";
 
@@ -78,6 +81,7 @@ export default function MORE_BLOG_POST() {
     },
   ];
 
+<<<<<<< HEAD
   const scrollRefs = useRef<HTMLDivElement>(null);
 
   const moveRight = () => {
@@ -90,6 +94,8 @@ export default function MORE_BLOG_POST() {
     scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
   };
 
+=======
+>>>>>>> Odebunmi
   return (
     <Container>
       <section className="flex flex-col gap-2">
@@ -98,6 +104,7 @@ export default function MORE_BLOG_POST() {
             More Blog Posts
           </h2>
           <div className="flex gap-3">
+<<<<<<< HEAD
             <ArrowCircleLeft2 size="32" color="#000" onClick={moveLeft} />
             <ArrowCircleRight2 size="32" color="#000" onClick={moveRight} />
           </div>
@@ -111,6 +118,17 @@ export default function MORE_BLOG_POST() {
           {MORE_BLOG_POST.map((item, idx) => (
             <article
               className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
+=======
+            <ArrowCircleLeft2 size="32" color="#000" />
+            <ArrowCircleRight2 size="32" color="#000" />
+          </div>
+        </article>
+        <Divider />
+        <article className="mb-6 overflow-x-scroll gap-8 flex">
+          {MORE_BLOG_POST.map((item, idx) => (
+            <article
+              className="grid gap-4 py-4 grid-cols-[150px_150px]"
+>>>>>>> Odebunmi
               key={idx}
             >
               <img src={item.picture} alt="" className="w-full" />
@@ -124,7 +142,11 @@ export default function MORE_BLOG_POST() {
               </div>
             </article>
           ))}
+<<<<<<< HEAD
         </div>
+=======
+        </article>
+>>>>>>> Odebunmi
       </section>
     </Container>
   );

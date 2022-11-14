@@ -210,19 +210,21 @@ function Xpert() {
 						<p className='text-[#47494E] text-base'>{weekXpert.Year}</p>
 					</div>
 				</div>
-				<h2 className='font-bold text-2xl text-[#343434]'>About Myself:</h2>
-				<p className='text-2xl pb-6'>
+				<h2 className='font-bold text-2xl text-[#343434] pb-2'>
+					About Myself:
+				</h2>
+				<p className='text-2xl pb-12 leading-9'>
 					My name is Ayodele Davies. I’m from Ojirami, Edo State. I work as a
 					Product Management Intern at AFEX, and I love sports, art,
 					volunteering, adventures, going out of fun dates, meeting new people,
 					and watching Lionel Messi.
 				</p>
 
-				<h2 className='font-bold text-2xl text-[#343434]'>
+				<h2 className='font-bold text-2xl text-[#343434] pb-2'>
 					If you could hang out with any famous person, who would you choose and
 					why?
 				</h2>
-				<p className='text-2xl pb-6'>
+				<p className='text-2xl pb-12 leading-9'>
 					Two words - Lionel Messi!!!!!!!! As a football enthusiast, I fell in
 					love with Messi’s alien and magical way of playing football very early
 					in my teenage years. He is simply from another planet!!! I watch him
@@ -235,25 +237,25 @@ function Xpert() {
 					TIME!!!!!!!!!!
 				</p>
 
-				<h2 className='font-bold text-2xl text-[#343434]'>
+				<h2 className='font-bold text-2xl text-[#343434] pb-2'>
 					The Zombie apocalypse is coming, mention three Xperts you want on your
 					team.
 				</h2>
-				<p className='text-2xl pb-6'>
+				<p className='text-2xl pb-12 leading-9'>
 					Danladi, Similoluwa (Peace), and Abimbola
 				</p>
 
-				<h2 className='font-bold text-2xl text-[#343434]'>
+				<h2 className='font-bold text-2xl text-[#343434] pb-2'>
 					What would you like Xperts to remember you by when you leave AFEX?
 				</h2>
-				<p className='text-2xl pb-6'>
+				<p className='text-2xl pb-12 leading-9'>
 					I believe work is about people, especially the people we live and work
 					with every day. Outside of family and close friends, our co-workers
 					likely are the most important people in our lives considering the
 					incredible amount of time we spend with one another every day. Based
 					on this, I’m chiefly interested in being remembered for three things.
 				</p>
-				<ol className='text-2xl list-decimal list-inside'>
+				<ol className='text-2xl list-decimal list-inside leading-9'>
 					<li>Being a kind and compasionate person</li>
 					<li>Being eager to help others; and</li>
 					<li>

@@ -112,7 +112,7 @@ function ArticleDisplay() {
 	return (
 		<>
 			<div
-				className='grid overflow-x-scroll md:py-5 gap-8 grid-flow-col'
+				className='grid overflow-x-scroll md:py-5 gap-9 grid-flow-col scrollbar-hide'
 				id='ArticleDisplay'>
 				{articles.map((item, idx) => (
 					<div
@@ -137,7 +137,7 @@ function ArticleDisplay() {
 								<p className='text-[#C81107] text-xs font-semibold'>
 									{item.authorName}
 								</p>
-								<span className='flex gap-16 items-center'>
+								<span className='flex gap-20 items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										{item.datePublished} &nbsp;&nbsp; {item.readTime} read
 									</p>

@@ -28,9 +28,13 @@ function Footer() {
             contact us
           </h3>
           <ul className="font-normal list-none leading-6 text-[1rem] text-white">
+<<<<<<< HEAD
             <li className="whitespace-nowrap">
               07000CALLAFEX (+234 70 002 255 2339)
             </li>
+=======
+            <li>07000CALLAFEX (+234 70 002 255 2339)</li>
+>>>>>>> Odebunmi
             <li>For Inquiries (contactus@afexnigeria.com)</li>
             <li> For Complaints and Resolution updates</li>
             <li>(support@afexnigeria.com)</li>
@@ -77,6 +81,7 @@ function Footer() {
                   href="https://www.facebook.com/profile.php?id=100046536650064"
                   target="_blank"
                 >
+<<<<<<< HEAD
                   <img src={FaceBook.src} alt="Facebook" className="w-10" />
                 </a>
               </li>
@@ -169,6 +174,8 @@ function Footer() {
                   href="https://www.instagram.com/afexnigeria/"
                   target="_blank"
                 >
+=======
+>>>>>>> Odebunmi
                   <img
                     src={Instagram.src}
                     alt="Instagram Logo"
@@ -178,6 +185,7 @@ function Footer() {
               </li>
               <li>
                 <a
+<<<<<<< HEAD
                   href="https://www.facebook.com/profile.php?id=100046536650064"
                   target="_blank"
                 >
@@ -186,6 +194,8 @@ function Footer() {
               </li>
               <li>
                 <a
+=======
+>>>>>>> Odebunmi
                   href="https://www.linkedin.com/company/afex-commodities-exchange"
                   target="_blank"
                 >
