@@ -30,12 +30,12 @@ const CORE_VALUES = [
 
 function OurValues() {
   return (
-    <Container className="flex flex-col items-center gap-8 pt-10">
+    <Container className="flex flex-col justify-center items-center gap-8 pt-10">
       <h2 className="font-bold text-[3.5rem] text-[#313131] pt-8 align-middle leading-[3rem]">
         Our Values
       </h2>
 
-      <div className="grid items-center justify-center w-full grid-cols-3 gap-10 pt-8 duration-300 ease-in-out">
+      <div className="sm:grid sm:items-center flex flex-col gap-8 items-center justify-center sm:w-full sm:grid-cols-3 sm:gap-10 pt-8 duration-300 ease-in-out">
         {CORE_VALUES.map((props, idx) => (
           <Card key={idx} {...props} />
         ))}

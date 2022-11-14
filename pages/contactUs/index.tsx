@@ -52,13 +52,13 @@ function ContactUs() {
         paddingBlock: "80px",
       }}
     >
-      <section className="text-center text-[clamp(1.5rem,3rem,3.5rem)] font-bold text-bold-jet leading-[3.5rem] pb-[3rem]">
+      <section className="text-center text-[clamp(1rem,3rem,3.5rem)] font-bold text-bold-jet leading-[3.5rem] pb-[3rem]">
         <span className="bg-light-internationalOrange text-white p-2">
           Contact
         </span>{" "}
         Us
       </section>
-      <section className="grid grid-cols-[2fr_1fr] w-[85%] gap-4 max-w-screen-2xl mx-auto">
+      <section className="grid md:grid-cols-[2fr_1fr] gap-4 max-w-screen-2xl mx-auto w-5/6">
         <article
           className="flex bg-white rounded-md flex-col px-6 py-8"
           style={{ boxShadow: "0px 4px 12px 1px rgba(0, 0, 0, 0.25)" }}

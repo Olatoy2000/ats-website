@@ -1,56 +1,68 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { clsx, ActionIcon, Popover } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import Container from "../../../components/Container";
 import AfexLogo from "./assets/afex-logo.png";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const navLinks = ["Home", "Courses", "Xpert", "Updates"];
 
-export default function NavBar() {
-  const [active, setActive] = useState("Home");
+function MenuList() {
   const { asPath } = useRouter();
-  let presentRoute = asPath.replace(asPath[0], "");
+
+  return (
+    <ul className="flex flex-col md:flex-row min-w-[200px] md:items-center justify-between gap-3">
+      {navLinks.map((item, idx) => (
+        <li
+          key={idx}
+          className={clsx(
+            "md:rounded-xl leading-6 p-3 md:px-6 md:text-center",
+            item.toLocaleLowerCase() === asPath.slice(1) ||
+              (item === "Home" && asPath === "/")
+              ? "bg-[#C81107]  text-[#F2F2F2]"
+              : "text-black"
+          )}
+        >
+          <Link href={item === "Home" ? "/" : item.toLocaleLowerCase()}>
+            {item}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const matches = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
-    presentRoute
-      ? setActive(
-          presentRoute.replace(
-            presentRoute[0],
-            presentRoute[0].toLocaleUpperCase()
-          )
-        )
-      : setActive("Home");
-  }, [presentRoute]);
+    if (matches) setIsMenuOpen(false);
+  }, [matches]);
 
   return (
     <Container>
-      <nav className="flex items-center justify-between cursor-pointer gap-10 py-4">
-        <img src={AfexLogo.src} alt="Afex-logo" className="pl-4" />
-        <ul className="flex gap-5 justify-between items-center text-[1rem]">
-          {navLinks.map((item, idx) => (
-            <li
-              key={idx}
-              onClick={() => {
-                setActive(item);
-              }}
-              className={
-                active === item
-                  ? "bg-[#C81107] rounded-xl w-[7.5rem] text-[#F2F2F2] p-3 leading-6 text-center"
-                  : "rounded-xl w-[7.5rem] leading-6 text-black p-3 text-center"
-              }
-            >
-              <Link
-                href={
-                  item === "Home"
-                    ? "/"
-                    : item.replace(item[0], item[0].toLocaleLowerCase())
-                }
-              >
-                {item}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <nav className="cursor-pointer flex items-center justify-between">
+        <Link href="/">
+          <img src={AfexLogo.src} alt="Afex-logo" />
+        </Link>
+
+        {matches ? (
+          <MenuList />
+        ) : (
+          <Popover position="bottom-end" opened={isMenuOpen}>
+            <Popover.Target>
+              <ActionIcon onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <FaTimes /> : <FaBars />}
+              </ActionIcon>
+            </Popover.Target>
+            <Popover.Dropdown p="xs">
+              <MenuList />
+            </Popover.Dropdown>
+          </Popover>
+        )}
       </nav>
     </Container>
   );

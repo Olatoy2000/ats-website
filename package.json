@@ -18,14 +18,20 @@
     "@mantine/dates": "^5.6.3",
     "@mantine/form": "^5.6.3",
     "@mantine/hooks": "^5.6.3",
+    "@mantine/modals": "^5.7.1",
     "dayjs": "^1.11.6",
     "iconsax-react": "^0.0.8",
     "next": "^13.0.1",
     "react": "^18.2.0",
     "react-countdown": "^2.3.3",
     "react-dom": "^18.2.0",
+    "react-icon": "^1.0.0",
+    "react-icons": "^4.6.0",
+    "react-qrcode-js": "^1.1.2",
+    "react-qrcode-logo": "^2.8.0",
     "react-spring": "^9.5.5",
     "react-timer-hook": "^3.0.5",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.2.1"
   },
   "devDependencies": {
@@ -45,7 +51,6 @@
   },
   "homepage": "https://github.com/Olatoy2000/website-building#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
