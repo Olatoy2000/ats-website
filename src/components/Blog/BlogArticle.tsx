@@ -2,6 +2,7 @@ import React from "react";
 import MyImage from "../../components/Blog/assets/image-5.png";
 import MyImage2 from "../../components/Blog/assets/image-2.png";
 
+
 //Blog Search page
 function index() {
 	const blogarticles = [

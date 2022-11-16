@@ -2,15 +2,15 @@ import { Icon } from "@iconify/react";
 import LoginBakground from "./assets/atslogin.png";
 import Link from "next/link";
 import { PasswordInput } from "@mantine/core";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function index() {
   const [time, setTime] = useState(0);
   useEffect(() => {
     const date = new Date();
     setTime(date.getHours());
-    console.log(time);
-  }, []);
+  }, [time]);
   return (
     <div
       style={{
@@ -50,6 +50,7 @@ function index() {
               />
               <button
                 type="submit"
+                disabled={time >= 8 && time <= 16 ? false : true}
                 className="text-white py-2 px-4 mt-4 w-full sm:w-max sm:mt-0 rounded-md leading-6 font-bold text-[1rem]"
                 style={{
                   background:
@@ -110,5 +111,4 @@ function index() {
     </div>
   );
 }
-
 export default index;

@@ -42,7 +42,7 @@ export default function NavigationBar() {
 
   return (
     <Container>
-      <nav className="flex items-center cursor-pointer justify-between">
+      <nav className="flex items-center cursor-pointer py-2 justify-between">
         <Link href="/">
           <img src={AfexLogo.src} alt="Afex landing page logo" />
         </Link>
@@ -52,7 +52,10 @@ export default function NavigationBar() {
         ) : (
           <Popover position="bottom-end" opened={isMenuOpen}>
             <Popover.Target>
-              <ActionIcon onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <ActionIcon
+                sx={{ border: "2px solid" }}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
                 {isMenuOpen ? <FaTimes /> : <FaBars />}
               </ActionIcon>
             </Popover.Target>

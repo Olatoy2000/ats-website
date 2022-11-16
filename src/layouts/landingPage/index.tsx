@@ -23,7 +23,7 @@ function LandingPage() {
             Kickstart your tech career with our AFEX Tech Star program
           </div>
           <Link href="/courses">
-            <button className="join-button rounded-xl  text-white p-6 mt-8 leading-6 text-center hover:bg-[#312541]">
+            <button className="join-button rounded-xl  text-white p-4 mt-8 leading-6 text-center hover:bg-[#312541]">
               Join Today
             </button>
           </Link>

@@ -5,8 +5,22 @@ import { Whatsapp, Link } from "iconsax-react";
 import ProductManagementBack from "./assets/pmback.png";
 import setup from "./setup.json";
 import moment from "moment";
+import useClipboard from "react-use-clipboard";
+import { Popover, Text, Button } from "@mantine/core";
+
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+} from "react-share";
+import { url } from "inspector";
 
 function ProductManagement() {
+  const [isCopied, setCopied] = useClipboard(
+    "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+  );
   return (
     <Fragment>
       <article
@@ -29,7 +43,7 @@ function ProductManagement() {
                   +moment().format("x") >
                 0
                   ? "#00ff38"
-                  : "red"
+                  : "#C81107"
               }
               width="35"
               height="35"
@@ -55,9 +69,15 @@ function ProductManagement() {
         </section>
         <section className="flex flex-col mb-8 items-center justify-center gap-4">
           <div className="flex gap-6">
-            <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
-              Refer a friend
-            </button>
+            <EmailShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
+            >
+              <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
+                Refer a friend
+              </button>
+            </EmailShareButton>
             <a href="#app">
               <button
                 className="p-3 text-white rounded-md"
@@ -77,39 +97,80 @@ function ProductManagement() {
               width="32"
               height="32"
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="#fff"
+            <FacebookShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
             >
-              <path
-                fill="#FFF"
-                d="M22 16.19c0 3.64-2.17 5.81-5.81 5.81H15c-.55 0-1-.45-1-1v-5.77c0-.27.22-.5.49-.5l1.76-.03c.14-.01.26-.11.29-.25l.35-1.91a.303.303 0 00-.3-.35l-2.13.03c-.28 0-.5-.22-.51-.49l-.04-2.45c0-.16.13-.3.3-.3l2.4-.04c.17 0 .3-.13.3-.3l-.04-2.4c0-.17-.13-.3-.3-.3l-2.7.04a2.996 2.996 0 00-2.95 3.05l.05 2.75c.01.28-.21.5-.49.51l-1.2.02c-.17 0-.3.13-.3.3l.03 1.9c0 .17.13.3.3.3l1.2-.02c.28 0 .5.22.51.49l.09 5.7c.01.56-.44 1.02-1 1.02h-2.3C4.17 22 2 19.83 2 16.18V7.81C2 4.17 4.17 2 7.81 2h8.38C19.83 2 22 4.17 22 7.81v8.38z"
-              ></path>
-            </svg>
-            <Whatsapp size="32" color="#ffffff" variant="Bold" />
-            <Icon
-              icon="carbon:logo-instagram"
-              color="white"
-              width="32"
-              height="32"
-            />
-            <Icon
-              icon="icon-park-solid:instagram-one"
-              color="white"
-              width="32"
-              height="32"
-            />
-
-            <Icon
-              icon="bytesize:twitter"
-              color="white"
-              width="32"
-              height="32"
-            />
-            <Link size="32" color="#ffffff" variant="Bold" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="#fff"
+              >
+                <path
+                  fill="#FFF"
+                  d="M22 16.19c0 3.64-2.17 5.81-5.81 5.81H15c-.55 0-1-.45-1-1v-5.77c0-.27.22-.5.49-.5l1.76-.03c.14-.01.26-.11.29-.25l.35-1.91a.303.303 0 00-.3-.35l-2.13.03c-.28 0-.5-.22-.51-.49l-.04-2.45c0-.16.13-.3.3-.3l2.4-.04c.17 0 .3-.13.3-.3l-.04-2.4c0-.17-.13-.3-.3-.3l-2.7.04a2.996 2.996 0 00-2.95 3.05l.05 2.75c.01.28-.21.5-.49.51l-1.2.02c-.17 0-.3.13-.3.3l.03 1.9c0 .17.13.3.3.3l1.2-.02c.28 0 .5.22.51.49l.09 5.7c.01.56-.44 1.02-1 1.02h-2.3C4.17 22 2 19.83 2 16.18V7.81C2 4.17 4.17 2 7.81 2h8.38C19.83 2 22 4.17 22 7.81v8.38z"
+                ></path>
+              </svg>
+            </FacebookShareButton>
+            <WhatsappShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
+            >
+              <Whatsapp size="32" color="#ffffff" variant="Bold" />
+            </WhatsappShareButton>
+            <TelegramShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
+            >
+              <Icon
+                icon="akar-icons:telegram-fill"
+                color="white"
+                width="32"
+                height="32"
+              />
+            </TelegramShareButton>
+            <TwitterShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
+            >
+              <Icon
+                icon="bytesize:twitter"
+                color="white"
+                width="32"
+                height="32"
+              />
+            </TwitterShareButton>
+            {isCopied ? (
+              <Popover width={150} position="bottom" withArrow shadow="md">
+                <Popover.Target>
+                  <Link
+                    onClick={() => setCopied()}
+                    size="32"
+                    color="#fff"
+                    variant="Bold"
+                    className="cursor-pointer"
+                  />
+                </Popover.Target>
+                <Popover.Dropdown
+                  sx={{ textAlign: "center", cursor: "pointer" }}
+                >
+                  <Text size="sm">Link copied</Text>
+                </Popover.Dropdown>
+              </Popover>
+            ) : (
+              <Link
+                onClick={() => setCopied()}
+                size="32"
+                color="#fff"
+                variant="Bold"
+              />
+            )}
           </div>
         </section>
       </article>
@@ -168,14 +229,14 @@ function ProductManagement() {
               </span>
             </h5>
             <h5 className="font-bold">
-              Application Starting Date:
-              <span className="text-light-malachite">
+              Application Starting Date:{" "}
+              <span className="text-bold-malachite">
                 {moment(setup.data.job.application_start_date).format("LL")}
               </span>
             </h5>
             <h5 className="font-bold">
               Application Ending Date:{" "}
-              <span className="font-normal text-">
+              <span className="font-normal text-light-internationalOrange">
                 {moment(setup.data.job.application_end_date).format("LL")}
               </span>
             </h5>
@@ -185,19 +246,6 @@ function ProductManagement() {
           <h4 className="uppercase font-bold">Requirement</h4>
           <p>{setup.data.job.requirement}</p>
         </div>
-        {/* <div>
-          <h4 className="uppercase font-bold">how to apply</h4>
-          <p>
-            Click "Apply now" Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Quisquam, culpa non sunt, nisi quos ipsum totam
-            magnam excepturi voluptate voluptatem nesciunt distinctio
-            praesentium explicabo sit animi eum, autem rem velit. Dignissimos,
-            aliquid. Provident aspernatur distinctio modi autem, necessitatibus
-            repellat in ullam, deserunt exercitationem dolores est delectus.
-            Enim in nam hic, dolorum fugiat, perspiciatis distinctio eaque ea
-            sunt molestiae iure quam.
-          </p>
-        </div> */}
         <a href={setup.data.job.apply_link}>
           <button
             id="app"
@@ -210,5 +258,4 @@ function ProductManagement() {
     </Fragment>
   );
 }
-
 export default ProductManagement;

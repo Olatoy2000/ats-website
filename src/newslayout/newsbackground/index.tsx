@@ -45,7 +45,7 @@ export default function NewsBackground() {
           }}
         >
           <div className="absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-40"></div>
-          <p className=" text-light-antiFlashWhite leading-[4rem] font-bold text-[clamp(1.5rem,4vw,4.5rem)]">
+          <p className=" text-light-antiFlashWhite leading-[4rem] z-20 text-center font-bold text-[clamp(1.5rem,3.5vw,4rem)]">
             AFEX Celebrates World Investor Week 2022 with the Securities and
             Exchange Commission of Nigeria
           </p>
