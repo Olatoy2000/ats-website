@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MyImage from "../../components/Blog/assets/image-5.png";
 import MyImage2 from "../../components/Blog/assets/image-2.png";
 
@@ -127,12 +127,21 @@ function index() {
 		},
 	];
 
+	let blogAreaRef = useRef(null);
+	let searchWord = "ways";
+
+	useEffect(() => {
+		console.log(blogAreaRef.current.innerText);
+	}, []);
+
 	return (
 		<div className='flex flex-col gap-8'>
-			<h1 className='flex bg-[#C81107] w-20 md:p-3 text-white text-2xl font-bold'>
+			<h1 className='flex bg-[#C81107] w-20 lg:p-3 p-2 text-white text-2xl font-bold'>
 				Blog
 			</h1>
-			<div className='grid gap-9 grid-cols-3 grid-rows-4'>
+			<div
+				ref={blogAreaRef}
+				className='grid gap-9 lg:grid-cols-3 lg:grid-rows-4 md:grid-cols-2 md:grid-flow-row'>
 				{blogarticles.map((item, idx) => (
 					<div
 						id={`#${idx}`}
@@ -156,7 +165,7 @@ function index() {
 								<p className='text-[#C81107] text-xs font-semibold'>
 									{item.authorName}
 								</p>
-								<span className='flex gap-24 items-center'>
+								<span className='flex lg:gap-20 md:gap-4 items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										{item.datePublished} &nbsp;&nbsp; {item.readTime} read
 									</p>

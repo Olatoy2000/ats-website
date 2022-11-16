@@ -1,75 +1,83 @@
-import { Children, Fragment, useEffect, useState } from "react";
-import { clsx, UnstyledButton } from "@mantine/core";
-import { Icon } from "@iconify/react";
+import { useState } from "react";
+import axios from "axios";
+import Blog from "../../../pages/blog/index";
+import { Menu, Button } from "@mantine/core";
 import Link from "next/link";
-
-//Search Navbar
-const menu: Array<
-	{
-		label: string;
-	} & Partial<{
-		children?: Array<string>;
-		visible: boolean;
-	}>
-> = [
-	{
-		label: "Blog",
-		children: ["Blog", "News"],
-		visible: false,
-	},
-];
-
+import { Icon } from "@iconify/react";
 function Navbar() {
-	const [subMenu, setsubMenu] = useState(
-		Object.fromEntries(
-			menu
-				.filter(({ visible }) => visible !== undefined)
-				.map(({ label, visible }) => [label, visible])
-		)
-	);
+	const [query, setQuery] = useState("");
+	const [result, setResult] = useState({
+		blogs: [],
+		loading: false,
+	});
+	const handleChange = async (e: any) => {
+		const { value } = e.target;
+		setQuery(value);
+		if (value.length > 1) {
+			try {
+				axios.defaults.headers.common["API-KEY"] = process.env.APP_API_KEY;
+				axios.defaults.headers.common["HASH-KEY"] = process.env.HASH_KEY;
+				axios.defaults.headers.common["REQUEST-TS"] = process.env.REQUEST_TS;
+				const response = await axios.get(
+					`http://578c-41-184-122-5.eu.ngrok.io/api/v1/search-news/?q=${value}`
+				);
+				console.log(response);
+				console.log("Hello from Nav");
+				const blogs = await response.data.data.hits;
+				console.log(blogs);
+				// const blogs = await response.data.data.hits;
+				setResult({ blogs, loading: false });
+				renderSearch();
+			} catch (error) {
+				console.log(error, "Error during fetch");
+			}
+		}
+	};
+	const renderSearch = () => {
+		let blogs = <h1>We couldn't find any blog with your search query</h1>;
+		if (result.blogs.length > 1) {
+			blogs = <Blog />;
+			//  bloglist={result.blogs}
+		}
+		return blogs;
+	};
 
+	const [isOpened, setIsOpened] = useState(false);
 	return (
 		<div
-			className='flex items-center justify-between md:py-6'
+			className='flex items-center justify-between md:py-10'
 			id='Navbar'>
-			<span className='text-[#C81107] text-xl font-bold'>ATS Updates</span>
-
+			<span className='text-[#C81107] lg:text-xl md:text-lg font-bold'>
+				ATS Updates
+			</span>
 			<div className='flex items-center gap-8'>
-				<menu>
-					{menu.map(({ label, children }, idx) => {
-						const visible = subMenu[label];
-						return (
-							<Fragment key={idx}>
-								<UnstyledButton
-									onClick={
-										children
-											? () => {
-													setsubMenu({ ...subMenu, [label]: !visible });
-											  }
-											: undefined
-									}
-									className={clsx(
-										"focus:outline-none",
-										visible ? "black" : "bg-white"
-									)}>
-									{children ? (
-										<Icon icon={visible ? "bx:caret-up" : "bx:caret-down"} />
-									) : null}
-								</UnstyledButton>
+				<Menu
+					width={100}
+					shadow='md'>
+					<Menu.Target>
+						<button
+							onClick={() => setIsOpened(!isOpened)}
+							className='border w-5'>
+							{isOpened ? (
+								<Icon
+									icon='ph:caret-up-bold'
+									color='#C81107'
+								/>
+							) : (
+								<Icon icon='ph:caret-down-bold' />
+							)}
+						</button>
+					</Menu.Target>
 
-								{children && visible
-									? children.map((item, idx) => (
-											<UnstyledButton
-												key={idx}
-												className='md:pb-2 flex md:text-base'>
-												{item}
-											</UnstyledButton>
-									  ))
-									: null}
-							</Fragment>
-						);
-					})}
-				</menu>
+					<Menu.Dropdown>
+						<Link href='/blog'>
+							<Menu.Item>Blog</Menu.Item>
+						</Link>
+						<Link href='/news'>
+							<Menu.Item>News</Menu.Item>
+						</Link>
+					</Menu.Dropdown>
+				</Menu>
 
 				<div className='relative flex w-52'>
 					<input
@@ -77,8 +85,9 @@ function Navbar() {
 						placeholder='Search'
 						type='text'
 						name='search'
+						value={query}
+						onChange={handleChange}
 					/>
-
 					<button className='absolute right-3 top-2'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
@@ -98,14 +107,15 @@ function Navbar() {
 					</button>
 				</div>
 			</div>
-
-			<div className='flex gap-16'>
+			<div className='gap-16 lg:flex hidden'>
 				<a href='#ArticleDisplay'>
 					<button className='text-[#C81107]'>Blogs</button>
 				</a>
+
 				<a href='#RecentlyPosted'>
 					<button className='text-[#C81107]'>News</button>
 				</a>
+
 				<a href='#ATSGallery'>
 					<button className='text-[#C81107]'>Gallery</button>
 				</a>
@@ -113,5 +123,4 @@ function Navbar() {
 		</div>
 	);
 }
-
 export default Navbar;

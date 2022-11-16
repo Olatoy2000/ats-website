@@ -6,7 +6,7 @@ function Categories() {
 			<h1 className='flex bg-[#C81107] md:w-32 text-white text-2xl font-bold'>
 				Categories
 			</h1>
-			<div className='text-sm grid grid-flow-row md:pt-6'>
+			<div className='md:text-sm lg:text-base grid grid-flow-row md:pt-6'>
 				<ul className='flex justify-between border-b-[#D1E7E5] border-b md:py-2'>
 					<li>Lifestyle</li>
 					<li>09</li>

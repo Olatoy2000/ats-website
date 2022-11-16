@@ -1,17 +1,33 @@
-import React from "react";
 import { Pagination } from "@mantine/core";
+import { usePagination } from "@mantine/hooks";
+import React, { useState } from "react";
 
 //Pagination
 function SearchEntries() {
+	const [page, onChange] = useState(1);
+
+	const pagination = usePagination({ total: 10, page, onChange });
+	const nextHandler = () => {
+		pagination.setPage(page + 1);
+		pagination.range;
+	};
+
+	const prevHandler = () => {
+		pagination.setPage(page - 1);
+		pagination.range;
+	};
+
 	return (
-		<section className='flex justify-between pb-44'>
+		<section className='grid lg:grid-flow-col justify-between md:pb-44'>
 			<div
 				style={{ borderRadius: "5px", border: "1px solid #C4C4C4" }}
 				className='p-3'>
 				1-8 of 200 Entries
 			</div>
 			<article className='flex gap-5'>
-				<button className='bg-[#C81107] border flex justify-between px-2 gap-1 items-center rounded-md text[0.9374rem] text-white font-normal'>
+				<button
+					onClick={prevHandler}
+					className='bg-[#C81107] border flex justify-between px-2 gap-1 items-center rounded-md text[0.9374rem] text-white font-normal'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='20'
@@ -29,6 +45,7 @@ function SearchEntries() {
 					Prev
 				</button>
 				<Pagination
+					page={pagination.active}
 					total={10}
 					styles={{
 						item: {
@@ -40,7 +57,9 @@ function SearchEntries() {
 					}}
 					withControls={false}
 				/>
-				<button className='bg-[#C81107] border flex justify-between px-2 gap-1 items-center rounded-md text[0.9374rem] text-white font-normal'>
+				<button
+					onClick={() => nextHandler()}
+					className='bg-[#C81107] border flex justify-between px-2 gap-1 items-center rounded-md text[0.9374rem] text-white font-normal'>
 					Next
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
