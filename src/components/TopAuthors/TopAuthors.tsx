@@ -39,6 +39,7 @@ function TopAuthors() {
 			</h1>
 			{authors.map((item, idx) => (
 				<div
+					key={idx}
 					id={`#${idx}`}
 					className='md:flex  md:py-9 gap-5 items-center'>
 					<img

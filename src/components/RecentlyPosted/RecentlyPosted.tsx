@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import MyImage from "./assets/image 5.png";
 import Gloria from "./assets/image 10.png";
 import Calendar from "./assets/image 11.png";
@@ -91,7 +91,7 @@ function RecentlyPosted() {
 			<div className=''>
 				{articlesData.map((item, idx) =>
 					idx === 3 ? (
-						<>
+						<Fragment key={idx}>
 							<ApplyNow />
 							<Link href='/readnewsonly'>
 								<div
@@ -143,7 +143,7 @@ function RecentlyPosted() {
 									</div>
 								</div>
 							</Link>
-						</>
+						</Fragment>
 					) : (
 						<Link href='/readnewsonly'>
 							<div

@@ -181,6 +181,7 @@ function Xpert() {
 			<div className='grid grid-cols-3 grid-rows-7 gap-8'>
 				{Xperts.map((item, idx) => (
 					<div
+						key={idx}
 						id={`#${idx}`}
 						className='place-items-center grid border-2 rounded-2xl shadow md:py-10'>
 						<img

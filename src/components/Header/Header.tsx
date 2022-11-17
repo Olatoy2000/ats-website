@@ -62,7 +62,9 @@ function Header() {
 				/>
 				<ul className='flex gap-5 justify-between items-center text-[1rem]'>
 					{navLinks.map((item, idx) => (
-						<Link href={item.toLocaleLowerCase()}>
+						<Link
+							key={idx}
+							href={item.toLocaleLowerCase()}>
 							<li
 								onClick={() => setActive(idx)}
 								className={

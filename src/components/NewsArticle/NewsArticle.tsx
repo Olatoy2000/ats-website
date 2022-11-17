@@ -136,6 +136,7 @@ function index() {
 			<div className='grid gap-9 lg:grid-cols-3 lg:grid-rows-4 md:grid-cols-2 md:grid-flow-row'>
 				{newsarticles.map((item, idx) => (
 					<div
+						key={idx}
 						id={`#${idx}`}
 						className='flex-col pb-[15px] shadow rounded-md'>
 						<img

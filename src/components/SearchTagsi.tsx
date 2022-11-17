@@ -20,6 +20,7 @@ function SearchTagsi() {
 			<ul className='lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-4 md:grid md:grid-cols-2 md:grid-rows-3'>
 				{SearchTagLinks1.map((item, idx) => (
 					<li
+						key={idx}
 						onClick={() => setActive(idx)}
 						className={clsx(
 							"rounded text-center leading-6 lg:text-base md:text-sm md:p-3 flex-1 cursor-pointer",

@@ -42,7 +42,9 @@ function ATSGallery() {
 			</h1>
 			<div className='grid grid-cols-3 grid-rows-3 gap-2'>
 				{gallery.map((item, idx) => (
-					<div id={`#${idx}`}>
+					<div
+						id={`#${idx}`}
+						key={idx}>
 						<img
 							className='md:w-full ATSgal ATSgal:hover object-cover'
 							src={item.atsImage}

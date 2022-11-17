@@ -116,6 +116,7 @@ function ArticleDisplay() {
 				id='ArticleDisplay'>
 				{articles.map((item, idx) => (
 					<div
+						key={idx}
 						id={`#${idx}`}
 						className='flex-col md:pb-[15px] shadow-xl lg:w-96 md:w-80 rounded-md'>
 						<img
