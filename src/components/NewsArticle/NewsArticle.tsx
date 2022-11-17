@@ -3,6 +3,7 @@ import MyImage from "../../components/Blog/assets/image-5.png";
 import MyImage2 from "../../components/Blog/assets/image-2.png";
 
 //News Search page
+// function index({ newsarticles }) {
 function index() {
   const newsarticles = [
     {

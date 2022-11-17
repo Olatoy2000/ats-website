@@ -7,16 +7,16 @@ import { useRouter } from "next/router";
 import { ModalsProvider } from "@mantine/modals";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { pathname } = useRouter();
-  return pathname === "/404" ? (
-    <Component {...pageProps} />
-  ) : (
-    <ModalsProvider>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </ModalsProvider>
-  );
+	const { pathname } = useRouter();
+	return pathname === "/404" ? (
+		<Component {...pageProps} />
+	) : (
+		<ModalsProvider>
+			<Header />
+			<Component {...pageProps} />
+			<Footer />
+		</ModalsProvider>
+	);
 }
 
 export default MyApp;

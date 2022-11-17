@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import ATS1 from "./assets/image-25.png";
 
 //Gallery in the Updates page
@@ -41,7 +42,9 @@ function ATSGallery() {
 			</h1>
 			<div className='grid grid-cols-3 grid-rows-3 gap-2'>
 				{gallery.map((item, idx) => (
-					<div id={`#${idx}`}>
+					<div
+						id={`#${idx}`}
+						key={idx}>
 						<img
 							className='md:w-full ATSgal ATSgal:hover object-cover'
 							src={item.atsImage}
@@ -49,11 +52,13 @@ function ATSGallery() {
 					</div>
 				))}
 			</div>
-			<div className='flex justify-end'>
-				<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
-					<span className='text-white'>See More</span>
-				</button>
-			</div>
+			<Link href='/gallery'>
+				<div className='flex justify-end'>
+					<button className='bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+						<span className='text-white'>See More</span>
+					</button>
+				</div>
+			</Link>
 		</div>
 	);
 }

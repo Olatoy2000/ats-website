@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import LoginBakground from "./assets/atslogin.png";
 import Link from "next/link";
 import QrCodeScanner from "./assets/qr code.png";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "@mantine/form";
 import { TextInput } from "@mantine/core";
 import QrCodeScan from "../../src/components/qrcode";
@@ -20,12 +20,12 @@ function index() {
   });
 
   // const [pass, setPass] = useState("");
-  const [time, setTime] = useState(0);
+	const [time, setTime] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    const date = new Date();
-    setTime(date.getHours());
+	useEffect(() => {
+		const date = new Date();
+		setTime(date.getHours());
 
     console.log(time);
   }, [time]);

@@ -19,6 +19,7 @@ function SearchTagsi() {
 			<ul className='flex gap-4 flex-wrap'>
 				{SearchTagLinks1.map((item, idx) => (
 					<li
+						key={idx}
 						onClick={() => setActive(idx)}
 						className={clsx(
 							"rounded text-center leading-6 text-base flex-1",

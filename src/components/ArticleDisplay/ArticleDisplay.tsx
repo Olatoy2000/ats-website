@@ -112,17 +112,18 @@ function ArticleDisplay() {
 	return (
 		<>
 			<div
-				className='grid overflow-x-scroll md:py-5 gap-8 grid-flow-col'
+				className='grid overflow-x-scroll md:py-5 md:gap-4 lg:gap-9 grid-flow-col scrollbar-hide'
 				id='ArticleDisplay'>
 				{articles.map((item, idx) => (
 					<div
+						key={idx}
 						id={`#${idx}`}
-						className='flex-col pb-[15px] shadow-xl md:w-96 rounded-md'>
+						className='flex-col md:pb-[15px] shadow-xl lg:w-96 md:w-80 rounded-md'>
 						<img
 							src={item.articleImage}
 							className='object-cover md:w-full'
 						/>
-						<p className='text-[#2D3748] text-xl font-bold md:p-4'>
+						<p className='text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold md:p-4'>
 							{item.title}
 						</p>
 						<p className='text-[#718096] text-sm md:px-4'>
@@ -133,11 +134,11 @@ function ArticleDisplay() {
 								src={item.authorImage}
 								className='h-10'
 							/>
-							<div className='font-sans'>
+							<div className='font-sans flex-1'>
 								<p className='text-[#C81107] text-xs font-semibold'>
 									{item.authorName}
 								</p>
-								<span className='flex gap-16 items-center'>
+								<span className='flex justify-between items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										{item.datePublished} &nbsp;&nbsp; {item.readTime} read
 									</p>

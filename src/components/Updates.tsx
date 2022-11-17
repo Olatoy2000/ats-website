@@ -17,19 +17,17 @@ import Navbar from "./Navbar/Navbar";
 //Updates page
 function Updates() {
 	return (
-		<main className='flex flex-col mx-auto md:w-[85%] gap-9 max-w-screen-2xl'>
+		<main className='flex flex-col md:mx-auto md:w-[85%] gap-9 md:max-w-screen-2xl'>
 			<Navbar />
 			<BaWasa />
 			<ArticleDisplay />
 			<AfexNewsPic />
-			<div className='flex gap-40'>
-				<div className='flex-1'>
-					<RecentlyPosted />
-					<ApplyNow />
+			<div className='md:flex md:gap-44'>
+				<div className='lg:w-max flex-1 md:w-44'>
 					<RecentlyPosted />
 					<SearchEntries />
 				</div>
-				<div className='md:w-96'>
+				<div className='lg:w-96 md:w-96 w-max lg:p-0 sm:pl-24'>
 					<TopAuthors />
 					<AFEXLearnMore />
 					<Categories />

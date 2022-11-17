@@ -10,7 +10,7 @@ import Link from "next/link";
 const navLinks = ["Home", "Courses", "Xpert", "Updates"];
 
 function MenuList() {
-  const { asPath } = useRouter();
+	const { asPath } = useRouter();
 
   return (
     <ul className="flex flex-col md:flex-row min-w-[200px] md:items-center justify-between gap-3">
@@ -36,9 +36,9 @@ export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const matches = useMediaQuery("(min-width: 768px)");
 
-  useEffect(() => {
-    if (matches) setIsMenuOpen(false);
-  }, [matches]);
+	useEffect(() => {
+		if (matches) setIsMenuOpen(false);
+	}, [matches]);
 
   return (
     <Container>
