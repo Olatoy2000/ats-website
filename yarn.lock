@@ -307,7 +307,7 @@
   dependencies:
     "@mantine/utils" "5.7.2"
 
-"@mantine/form@^5.6.3":
+"@mantine/form@^5.7.2":
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/@mantine/form/-/form-5.7.2.tgz#5c2ec95065db944ef8fd3dec5db46dccf81e581b"
   integrity sha512-FmjnTX6Xm24rpfJjR2sebamgzskiCGb4fmOPKyDc5wThnCr2VnPJjlUOg2FOeQjE+C6kr5Jw+QrXPpG4kVyh0A==
@@ -2079,15 +2079,20 @@ minimist@^1.2.6:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
   integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==
 
-msgpackr-extract@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/msgpackr-extract/-/msgpackr-extract-2.2.0.tgz#4bb749b58d9764cfdc0d91c7977a007b08e8f262"
-  integrity sha512-0YcvWSv7ZOGl9Od6Y5iJ3XnPww8O7WLcpYMDwX+PAA/uXLDtyw94PJv9GLQV/nnp3cWlDhMoyKZIQLrx33sWog==
+msgpackr-extract@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/msgpackr-extract/-/msgpackr-extract-2.1.2.tgz"
+  integrity sha512-cmrmERQFb19NX2JABOGtrKdHMyI6RUyceaPBQ2iRz9GnDkjBWFjNJC0jyyoOfZl2U/LZE3tQCCQc4dlRyA8mcA==
   dependencies:
     node-gyp-build-optional-packages "5.0.3"
   optionalDependencies:
@@ -2356,7 +2361,7 @@ process@^0.11.10:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-prop-types@^15.6.0, prop-types@^15.7.2:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2389,6 +2394,14 @@ quick-lru@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
+
+react-copy-to-clipboard@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
+  integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
+  dependencies:
+    copy-to-clipboard "^3.3.1"
+    prop-types "^15.8.1"
 
 react-countdown@^2.3.3:
   version "2.3.3"
@@ -2462,6 +2475,13 @@ react-share@^4.4.1:
   dependencies:
     classnames "^2.3.2"
     jsonp "^0.2.1"
+
+react-slider@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-2.0.4.tgz#21c656ffabc3bb4481cf6b49e6d647baeda83572"
+  integrity sha512-sWwQD01n6v+MbeLCYthJGZPc0kzOyhQHyd0bSo0edg+IAxTVQmj3Oy4SBK65eX6gNwS9meUn6Z5sIBUVmwAd9g==
+  dependencies:
+    prop-types "^15.8.1"
 
 react-spring@^9.5.5:
   version "9.5.5"

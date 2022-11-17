@@ -12,62 +12,59 @@ const navLinks = ["Home", "Courses", "Xpert", "Updates"];
 function MenuList() {
 	const { asPath } = useRouter();
 
-	return (
-		<ul className='flex flex-col md:flex-row min-w-[200px] md:items-center justify-between gap-3'>
-			{navLinks.map((item, idx) => (
-				<li
-					key={idx}
-					className={clsx(
-						"md:rounded-xl leading-6 p-3 md:px-6 md:text-center",
-						item.toLocaleLowerCase() === asPath.slice(1) ||
-							(item === "Home" && asPath === "/")
-							? "bg-[#C81107]  text-[#F2F2F2]"
-							: "text-black"
-					)}>
-					<Link href={item === "Home" ? "/" : item.toLocaleLowerCase()}>
-						{item}
-					</Link>
-				</li>
-			))}
-		</ul>
-	);
+  return (
+    <ul className="flex flex-col md:flex-row min-w-[200px] md:items-center justify-between gap-3">
+      {navLinks.map((el, idx) => (
+        <li
+          key={idx}
+          className={clsx(
+            "md:rounded-xl leading-6 p-3 md:px-6 md:text-center",
+            el.toLocaleLowerCase() === asPath.slice(1) ||
+              (el === "Home" && asPath === "/")
+              ? "bg-[#C81107]  text-[#F2F2F2]"
+              : "text-black"
+          )}
+        >
+          <Link href={el === "Home" ? "/" : el.toLocaleLowerCase()}>{el}</Link>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
-export default function NavBar() {
-	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-	const matches = useMediaQuery("(min-width: 768px)");
+export default function NavigationBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const matches = useMediaQuery("(min-width: 768px)");
 
 	useEffect(() => {
 		if (matches) setIsMenuOpen(false);
 	}, [matches]);
 
-	return (
-		<Container>
-			<nav className='cursor-pointer flex items-center justify-between'>
-				<Link href='/'>
-					<img
-						src={AfexLogo.src}
-						alt='Afex-logo'
-					/>
-				</Link>
+  return (
+    <Container>
+      <nav className="flex items-center cursor-pointer py-2 justify-between">
+        <Link href="/">
+          <img src={AfexLogo.src} alt="Afex landing page logo" />
+        </Link>
 
-				{matches ? (
-					<MenuList />
-				) : (
-					<Popover
-						position='bottom-end'
-						opened={isMenuOpen}>
-						<Popover.Target>
-							<ActionIcon onClick={() => setIsMenuOpen(!isMenuOpen)}>
-								{isMenuOpen ? <FaTimes /> : <FaBars />}
-							</ActionIcon>
-						</Popover.Target>
-						<Popover.Dropdown p='xs'>
-							<MenuList />
-						</Popover.Dropdown>
-					</Popover>
-				)}
-			</nav>
-		</Container>
-	);
+        {matches ? (
+          <MenuList />
+        ) : (
+          <Popover position="bottom-end" opened={isMenuOpen}>
+            <Popover.Target>
+              <ActionIcon
+                sx={{ border: "2px solid" }}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <FaTimes /> : <FaBars />}
+              </ActionIcon>
+            </Popover.Target>
+            <Popover.Dropdown p="xs">
+              <MenuList />
+            </Popover.Dropdown>
+          </Popover>
+        )}
+      </nav>
+    </Container>
+  );
 }

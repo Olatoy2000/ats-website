@@ -119,6 +119,23 @@
 	grid-column-end: 2;
 }
 
+.footer_responsiveness {
+  display: grid;
+}
+
+.footer_responsiveness_2 {
+  display: none;
+}
+
+@media screen and (max-width: 1030px) {
+  .footer_responsiveness {
+    display: none;
+  }
+  .footer_responsiveness_2 {
+    display: grid;
+  }
+}
+
 @media screen and (max-width: 768px) {
 	.footer {
 		display: grid;

@@ -18,6 +18,7 @@ module.exports = {
 					gray: "#7C827D",
 					butBag: "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
 					quickSilver: "#A29F9F",
+          dimGray: "#656C6C",
 				},
 				semiBold: {
 					chineseSilver: "#C9C8C6",
