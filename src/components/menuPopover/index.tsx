@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PopUp from "./assets/group-pop.png";
 import BoyLaptop from "./assets/boy-with-nosemark.png";
 import RedOverlay from "./assets/red-overlay.png";
-import WrongLoginMessage from "./assets/wrong-login.png";
+import ReceivedMessage from "./assets/receivedmess.png";
 
 export default function MenuPopover() {
   const [values, setValues] = useState({
@@ -77,16 +77,16 @@ export default function MenuPopover() {
           <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
             {submitted && valid ? (
               <div
-                className="leading-6 text-[1rem] rounded-md flex p-3 items-center justify-start gap-3"
+                className="leading-6 text-[1rem] border-2 rounded-md flex p-3 items-center justify-start gap-3"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(250, 240, 234, 0.78) 0%, rgba(252, 239, 234, 0.99) 19.26%)",
-                  border: "1.8px solid #DE6D69",
+                    "linear-gradient(180deg, #EEFDF7 0%, #EBFDF5 19.26%);",
+                  border: "1.83447px solid #76AD94",
                   boxShadow:
                     "inset 0px 0px 3.66893px rgba(255, 255, 255, 0.63)",
                 }}
               >
-                <img src={WrongLoginMessage.src} alt="" className="w-5" />
+                <img src={ReceivedMessage.src} alt="" className="w-5" />
                 <h5>Thanks, your message was received</h5>
               </div>
             ) : null}
@@ -95,7 +95,7 @@ export default function MenuPopover() {
               value={values.fullName}
               type="text"
               placeholder="Full Name"
-              className="w-full p-2 border outline-none text-[#C81107]"
+              className="w-full p-2 border outline-none text-black"
             />
             {submitted && !values.fullName ? (
               <span className="text-light-internationalOrange">
@@ -107,7 +107,7 @@ export default function MenuPopover() {
               value={values.email}
               type="email"
               placeholder="Email Address"
-              className="w-full p-2 border outline-none text-[#C81107]"
+              className="w-full p-2 border outline-none text-black"
             />
             {submitted && !values.email ? (
               <span className="text-light-internationalOrange">
@@ -119,7 +119,7 @@ export default function MenuPopover() {
               value={values.subject}
               type="text"
               placeholder="Subject"
-              className="w-full p-2 border outline-none text-[#C81107]"
+              className="w-full p-2 border outline-none text-black"
             />
             {submitted && !values.subject ? (
               <span className="text-light-internationalOrange">
@@ -133,7 +133,7 @@ export default function MenuPopover() {
               id=""
               onChange={handleMessageInputChange}
               value={values.message}
-              className="p-1 border outline-none text-[#C81107]"
+              className="p-1 border  outline-none text-black"
               cols={30}
               rows={6}
             ></textarea>

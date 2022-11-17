@@ -14,6 +14,7 @@ import {
   TelegramShareButton,
   WhatsappShareButton,
   EmailShareButton,
+  LinkedinShareButton,
 } from "react-share";
 import { url } from "inspector";
 
@@ -24,7 +25,7 @@ function ProductManagement() {
   return (
     <Fragment>
       <article
-        className="flex flex-col items-center gap-6"
+        className="flex flex-col items-center py-6 gap-6"
         style={{
           backgroundImage: `url(${ProductManagementBack.src})`,
           backgroundRepeat: "no-repeat",
@@ -55,7 +56,7 @@ function ProductManagement() {
                   +moment().format("x") >
                 0
                   ? "text-bold-malachite"
-                  : "text-light-internationalOrange")
+                  : "text-light-internationalOrange font-bold")
               }
             >
               {+moment(setup.data.job.application_end_date).format("x") -
@@ -90,12 +91,12 @@ function ProductManagement() {
               </button>
             </a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center mt-4 gap-2">
             <Icon
               icon="material-symbols:share"
               color="white"
-              width="32"
-              height="32"
+              width="12"
+              height="12"
             />
             <FacebookShareButton
               url={
@@ -104,8 +105,8 @@ function ProductManagement() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="#fff"
               >
@@ -115,25 +116,33 @@ function ProductManagement() {
                 ></path>
               </svg>
             </FacebookShareButton>
+
             <WhatsappShareButton
               url={
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
               }
             >
-              <Whatsapp size="32" color="#ffffff" variant="Bold" />
+              <Whatsapp size="24" color="#ffffff" variant="Bold" />
             </WhatsappShareButton>
+
             <TelegramShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
+              children={undefined}
+            ></TelegramShareButton>
+            <LinkedinShareButton
               url={
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
               }
             >
               <Icon
-                icon="akar-icons:telegram-fill"
+                icon="ri:linkedin-fill"
                 color="white"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
               />
-            </TelegramShareButton>
+            </LinkedinShareButton>
             <TwitterShareButton
               url={
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
@@ -142,8 +151,8 @@ function ProductManagement() {
               <Icon
                 icon="bytesize:twitter"
                 color="white"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
               />
             </TwitterShareButton>
             {isCopied ? (
@@ -151,7 +160,7 @@ function ProductManagement() {
                 <Popover.Target>
                   <Link
                     onClick={() => setCopied()}
-                    size="32"
+                    size="24"
                     color="#fff"
                     variant="Bold"
                     className="cursor-pointer"
@@ -166,7 +175,7 @@ function ProductManagement() {
             ) : (
               <Link
                 onClick={() => setCopied()}
-                size="32"
+                size="24"
                 color="#fff"
                 variant="Bold"
               />
@@ -230,13 +239,13 @@ function ProductManagement() {
             </h5>
             <h5 className="font-bold">
               Application Starting Date:{" "}
-              <span className="text-bold-malachite">
+              <span className="text-bold-malachite font-bold">
                 {moment(setup.data.job.application_start_date).format("LL")}
               </span>
             </h5>
             <h5 className="font-bold">
               Application Ending Date:{" "}
-              <span className="font-normal text-light-internationalOrange">
+              <span className="font-bold text-light-internationalOrange">
                 {moment(setup.data.job.application_end_date).format("LL")}
               </span>
             </h5>

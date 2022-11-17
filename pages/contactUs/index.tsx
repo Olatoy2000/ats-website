@@ -4,9 +4,8 @@ import WrongLoginMessage from "./assets/wrong-login.png";
 import InstagramHandle from "./assets/ig.png";
 import FacebookHandle from "./assets/fb.png";
 import LinkedinHandle from "./assets/linkedinpage.png";
-import TwitterHandle from "./assets/tweethandle.png"
-
-
+import TwitterHandle from "./assets/tweethandle.png";
+import ReceivedMessage from "./assets/receivedmess.png";
 
 function ContactUs() {
   const [values, setValues] = useState({
@@ -69,13 +68,13 @@ function ContactUs() {
                 className="leading-6 text-[1rem] rounded-md flex p-3 items-center justify-start gap-3"
                 style={{
                   background:
-                    "linear-gradient(180deg, rgba(250, 240, 234, 0.78) 0%, rgba(252, 239, 234, 0.99) 19.26%)",
-                  border: "1.8px solid #DE6D69",
+                    "linear-gradient(180deg, #EEFDF7 0%, #EBFDF5 19.26%);",
+                  border: "1.83447px solid #76AD94",
                   boxShadow:
                     "inset 0px 0px 3.66893px rgba(255, 255, 255, 0.63)",
                 }}
               >
-                <img src={WrongLoginMessage.src} alt="" className="w-5" />
+                <img src={ReceivedMessage.src} alt="" className="w-5" />
                 <h5>Thanks, your message was received</h5>
               </div>
             ) : null}
@@ -85,7 +84,7 @@ function ContactUs() {
                 value={values.fullName}
                 type="text"
                 placeholder="Full Name"
-                className="w-full p-2 border outline-none text-[#C81107] inline-block"
+                className="w-full p-2 border outline-none text-black inline-block"
               />
               {submitted && !values.fullName ? (
                 <span className="text-light-internationalOrange">
@@ -97,7 +96,7 @@ function ContactUs() {
                 value={values.email}
                 type="email"
                 placeholder="Email Address"
-                className="w-full p-2 border outline-none text-[#C81107]"
+                className="w-full p-2 border outline-none text-black"
               />
               {submitted && !values.email ? (
                 <span className="text-light-internationalOrange">
@@ -110,7 +109,7 @@ function ContactUs() {
               value={values.subject}
               type="text"
               placeholder="Subject"
-              className="w-full p-2 border outline-none text-[#C81107]"
+              className="w-full p-2 border outline-none text-black"
             />
             {submitted && !values.subject ? (
               <span className="text-light-internationalOrange">
@@ -124,7 +123,7 @@ function ContactUs() {
               id=""
               onChange={handleMessageInputChange}
               value={values.message}
-              className="p-1 border outline-none text-[#C81107]"
+              className="p-1 border outline-none text-black"
               cols={30}
               rows={6}
             ></textarea>
@@ -133,15 +132,18 @@ function ContactUs() {
                 Kindly leave a message
               </span>
             ) : null}
-            <button
-              type="submit"
-              className="bg-[#C81107] self-start rounded-xl text-white py-3 px-6"
-            >
-              Submit
-            </button>
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className="bg-[#C81107] self-start rounded-xl text-white py-3 px-6"
+              >
+                Submit
+              </button>
+              <p className="leading-4 text-[0.75rem] font-normal text-light-dimGray">All fields are required</p>
+            </div>
           </form>
         </article>
-        <article className="flex flex-col gap-4 p-4">
+        <article className="flex flex-col place-self-center gap-8 px-4">
           <div className="flex flex-col pt-8 gap-2">
             <h4 className="font-bold leading-6 text-bold-eerieBlack">
               Address
@@ -156,10 +158,10 @@ function ContactUs() {
               Contact Us
             </h4>
             <p className="text-light-gray font-normal leading-6">
-              +234 (0) 903 003 1333
+              <a href="tel:+234(0)9030031333">+234 (0) 903 003 1333</a>
             </p>
             <p className="text-light-gray font-normal leading-6">
-              contact us@afexnigeria.com
+              <a href="afexnigeria.com">contact us@afexnigeria.com</a>
             </p>
           </div>
           <div className="font-bold leading-6 text-bold-eerieBlack">

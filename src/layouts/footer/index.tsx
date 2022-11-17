@@ -5,11 +5,12 @@ import Send from "./assets/send.png";
 import Instagram from "./assets/instagram.png";
 import Twitter from "../footer/assets/twitter.png";
 import Link from "next/link";
+import Container from "../../components/Container";
 
 function Footer() {
   return (
     <section className="bg-black w-full">
-      <div className="px-[clamp(1.5rem,6vw,6rem)] max-w-screen-2xl">
+      <Container className="px-[clamp(1.5rem,6vw,6rem)] mx-auto max-w-screen-2xl">
         <article className="footer_responsiveness footer max-w-screen-2xl w-[83%] mx-auto footer">
           <div className="footer_add">
             <h3 className="text-[#A09D9D] mb-4 leading-7 uppercase text-[1.25rem] font-bold">
@@ -229,11 +230,10 @@ function Footer() {
             </div>
           </div>
         </article>
-      </div>
+      </Container>
     </section>
   );
 }
 
 export default Footer;
 
-// 1095px

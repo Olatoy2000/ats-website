@@ -31,6 +31,7 @@
     "react-qrcode-js": "^1.1.2",
     "react-qrcode-logo": "^2.8.0",
     "react-share": "^4.4.1",
+    "react-slider": "^2.0.4",
     "react-spring": "^9.5.5",
     "react-timer-hook": "^3.0.5",
     "react-use-clipboard": "^1.0.9",

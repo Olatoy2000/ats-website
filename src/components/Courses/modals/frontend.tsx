@@ -9,6 +9,7 @@ import useClipboard from "react-use-clipboard";
 import { Popover, Text, Button } from "@mantine/core";
 import {
   FacebookShareButton,
+  LinkedinShareButton,
   TwitterShareButton,
   TelegramShareButton,
   WhatsappShareButton,
@@ -23,7 +24,7 @@ function FrontEnd() {
   return (
     <Fragment>
       <article
-        className="flex flex-col items-center gap-6"
+        className="flex flex-col items-center py-6 gap-6"
         style={{
           backgroundImage: `url(${FrontEndBack.src})`,
           backgroundRepeat: "no-repeat",
@@ -53,8 +54,8 @@ function FrontEnd() {
                 (+moment(setuptwo.data.job.application_end_date).format("x") -
                   +moment().format("x") >
                 0
-                  ? "text-bold-malachite"
-                  : "text-light-internationalOrange")
+                  ? "text-bold-malachite font-bold"
+                  : "text-light-internationalOrange font-bold")
               }
             >
               {+moment(setuptwo.data.job.application_end_date).format("x") -
@@ -93,8 +94,8 @@ function FrontEnd() {
             <Icon
               icon="material-symbols:share"
               color="white"
-              width="32"
-              height="32"
+              width="12"
+              height="12"
             />
             <FacebookShareButton
               url={
@@ -103,8 +104,8 @@ function FrontEnd() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="#fff"
               >
@@ -119,7 +120,7 @@ function FrontEnd() {
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
               }
             >
-              <Whatsapp size="32" color="#ffffff" variant="Bold" />
+              <Whatsapp size="24" color="#ffffff" variant="Bold" />
             </WhatsappShareButton>
             <TelegramShareButton
               url={
@@ -129,10 +130,22 @@ function FrontEnd() {
               <Icon
                 icon="akar-icons:telegram-fill"
                 color="white"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
               />
             </TelegramShareButton>
+            <LinkedinShareButton
+              url={
+                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+              }
+            >
+              <Icon
+                icon="ri:linkedin-fill"
+                color="white"
+                width="24"
+                height="24"
+              />
+            </LinkedinShareButton>
             <TwitterShareButton
               url={
                 "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
@@ -141,8 +154,8 @@ function FrontEnd() {
               <Icon
                 icon="bytesize:twitter"
                 color="white"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
               />
             </TwitterShareButton>
             {isCopied ? (
@@ -150,7 +163,7 @@ function FrontEnd() {
                 <Popover.Target>
                   <Link
                     onClick={() => setCopied()}
-                    size="32"
+                    size="24"
                     color="#fff"
                     variant="Bold"
                     className="cursor-pointer"
@@ -165,7 +178,7 @@ function FrontEnd() {
             ) : (
               <Link
                 onClick={() => setCopied()}
-                size="32"
+                size="24"
                 color="#fff"
                 variant="Bold"
               />
@@ -229,13 +242,13 @@ function FrontEnd() {
             </h5>
             <h5 className="font-bold">
               Application Starting Date:
-              <span className="text-light-malachite font-normal">
+              <span className="text-bold-malachite font-bold">
                 {moment(setuptwo.data.job.application_start_date).format("LL")}
               </span>
             </h5>
             <h5 className="font-bold">
               Application Ending Date:{" "}
-              <span className="font-normal">
+              <span className="font-bold text-light-internationalOrange">
                 {moment(setuptwo.data.job.application_end_date).format("LL")}
               </span>
             </h5>

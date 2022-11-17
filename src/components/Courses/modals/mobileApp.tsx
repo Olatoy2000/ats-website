@@ -24,7 +24,7 @@ function MobileApplication() {
   return (
     <Fragment>
       <article
-        className="flex flex-col items-center gap-6"
+        className="flex flex-col py-6 items-center gap-6"
         style={{
           backgroundImage: `url(${MobileAppBack.src})`,
           backgroundRepeat: "no-repeat",
@@ -54,8 +54,8 @@ function MobileApplication() {
                 (+moment(setupthree.data.job.application_end_date).format("x") -
                   +moment().format("x") >
                 0
-                  ? "text-bold-malachite"
-                  : "text-light-internationalOrange")
+                  ? "text-bold-malachite font-bold"
+                  : "text-light-internationalOrange font-bold")
               }
             >
               {+moment(setupthree.data.job.application_end_date).format("x") -
@@ -94,8 +94,8 @@ function MobileApplication() {
             <Icon
               icon="material-symbols:share"
               color="white"
-              width="32"
-              height="32"
+              width="12"
+              height="12"
             />
             <FacebookShareButton
               url={
@@ -104,8 +104,8 @@ function MobileApplication() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="#fff"
               >
@@ -116,7 +116,7 @@ function MobileApplication() {
               </svg>
             </FacebookShareButton>
             <WhatsappShareButton url="https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite">
-              <Whatsapp size="32" color="#ffffff" variant="Bold" />
+              <Whatsapp size="24" color="#ffffff" variant="Bold" />
             </WhatsappShareButton>
             <TelegramShareButton
               url={
@@ -126,16 +126,16 @@ function MobileApplication() {
               <Icon
                 icon="akar-icons:telegram-fill"
                 color="white"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
               />
             </TelegramShareButton>
             <TwitterShareButton url="https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite">
               <Icon
                 icon="bytesize:twitter"
                 color="white"
-                width="32"
-                height="32"
+                width="24"
+                height="24"
               />
             </TwitterShareButton>
 
@@ -144,7 +144,7 @@ function MobileApplication() {
                 <Popover.Target>
                   <Link
                     onClick={() => setCopied()}
-                    size="32"
+                    size="24"
                     color="#fff"
                     variant="Bold"
                     className="cursor-pointer"
@@ -159,7 +159,7 @@ function MobileApplication() {
             ) : (
               <Link
                 onClick={() => setCopied()}
-                size="32"
+                size="24"
                 color="#fff"
                 variant="Bold"
               />
