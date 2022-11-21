@@ -1,11 +1,11 @@
 import AfexNewsUpdate from "./assets/afexnewsupdate.png";
-import{ ArrowCircleLeft2, ArrowCircleRight2 } from "iconsax-react";
+import { ArrowCircleLeft2, ArrowCircleRight2 } from "iconsax-react";
 import { Divider } from "@mantine/core";
+import { useRef } from "react";
 import Container from "../components/Container";
 export default function READ_NEWS_ARTICLE() {
-
-    const READ_NEWS_ARTICLE = [
-        {
+  const READ_NEWS_ARTICLE = [
+    {
       id: 1,
       picture: AfexNewsUpdate.src,
       title: "Ways Commodity Exchanges can help...",
@@ -77,23 +77,39 @@ export default function READ_NEWS_ARTICLE() {
     },
   ];
 
+  const scrollRefs = useRef<HTMLDivElement>(null);
+
+  const moveRight = () => {
+    const width = scrollRefs.current!.clientWidth;
+    scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft + width;
+  };
+
+  const moveLeft = () => {
+    const width = scrollRefs.current!.clientWidth;
+    scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
+  };
+
   return (
     <Container>
       <section className="flex flex-col gap-2">
         <article className="flex justify-between items-center">
           <h2 className="text-bold-maastrichtBlue font-bold text-[1.5rem] leading-8">
-            More Blog Posts
+            More News Posts
           </h2>
           <div className="flex gap-3">
-            <ArrowCircleLeft2 size="32" color="#000" />
-            <ArrowCircleRight2 size="32" color="#000" />
+            <ArrowCircleLeft2 size="32" color="#000" onClick={moveLeft} className="cursor-pointer" />
+            <ArrowCircleRight2 size="32" color="#000" onClick={moveRight} className="cursor-pointer" />
           </div>
         </article>
         <Divider />
-        <article className="mb-6 overflow-x-scroll gap-8 flex">
+        <article
+          id="slider"
+          ref={scrollRefs}
+          className="mb-6 overflow-x-hidden scroll-smooth gap-8 flex"
+        >
           {READ_NEWS_ARTICLE.map((item, idx) => (
             <article
-              className="grid gap-4 py-4 grid-cols-[150px_150px]"
+              className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
               key={idx}
             >
               <img src={item.picture} alt="" className="w-full" />

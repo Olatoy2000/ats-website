@@ -7,6 +7,7 @@ import { useForm } from "@mantine/form";
 import { TextInput } from "@mantine/core";
 import QrCodeScan from "../../src/components/qrcode";
 import Loading from "../../src/components/loading";
+import axios from "axios";
 
 function index() {
   const form = useForm({
@@ -20,22 +21,54 @@ function index() {
   });
 
   // const [pass, setPass] = useState("");
-	const [time, setTime] = useState(0);
+  // const [value, setValue] = useState('')
+  const [time, setTime] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-	useEffect(() => {
-		const date = new Date();
-		setTime(date.getHours());
+  const [err, setErr] = useState(false);
 
+  useEffect(() => {
+    const date = new Date();
+    setTime(date.getHours());
     console.log(time);
   }, [time]);
 
   const setModalTrue = () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    setShowModal(true);
+    // navigator.geolocation.getCurrentPosition(
+    //   (position: any) => {
+    // console.log(position.coord.lat)
+    // },
+    //   (error: any) => console.log(error)
+    // );
+    let email = form.values.email;
+
+    var data = JSON.stringify({
+      email: email,
+      location: "ibadan",
+      date_time: new Date().toISOString(),
+    });
+
+    var config = {
+      method: "post",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        if (response.data.status_code === 201) {
+          setIsLoading(false);
+          setShowModal(true);
+        }
+      })
+      .catch(function (error) {
+        setErr(true);
+        setIsLoading(false);
+      });
   };
 
   const setModalFalse = () => {
@@ -50,7 +83,7 @@ function index() {
           <QrCodeScan onClicks={setModalFalse} />
         </div>
       ) : (
-        <div></div> 
+        <div></div>
       )}
       <div
         style={{
@@ -70,23 +103,35 @@ function index() {
               className="sm:flex bg-white justify-between py-2 px-3"
               onSubmit={form.onSubmit((values: any) => console.log(values))}
             >
-              <TextInput
-                className="md:w-full sm:w-full"
-                classNames={{
-                  label: "hidden",
-                  input: "self-middle",
-                }}
-                styles={{ input: { paddingBlock: "26px", border: "none" } }}
-                withAsterisk
-                label="Email"
-                placeholder="Enter your working email address"
-                {...form.getInputProps("email")}
-              />
+              <div>
+                <TextInput
+                  className="md:w-full sm:w-full"
+                  classNames={{
+                    label: "hidden",
+                    input: "self-middle",
+                  }}
+                  styles={{ input: { paddingBlock: "26px", border: "none" } }}
+                  withAsterisk
+                  label="Email"
+                  value={{}}
+                  placeholder="Enter your working email address"
+                  {...form.getInputProps("email")}
+                />
+                {err ? (
+                  <p className="text-light-internationalOrange text-xs">
+                    email does not exist
+                  </p>
+                ) : null}
+              </div>
               <button
                 type="submit"
                 onClick={setModalTrue}
-                disabled={time >= 8 && time <= 16 ? false : true}
-                className="text-white w-full sm:w-fit px-10 py-4 rounded-md leading-6 font-bold text-[1rem]"
+                disabled={time >= 8 && time <= 13 ? false : true}
+                className={
+                  time >= 8 && time <= 13
+                    ? "text-white w-full sm:w-fit px-10 py-4 rounded-md leading-6 font-bold text-[1rem]"
+                    : "opacity-20 text-[white] w-full sm:w-fit px-10 py-4 rounded-md leading-6 font-bold text-[1rem]"
+                }
                 style={{
                   background:
                     "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
@@ -123,8 +168,14 @@ function index() {
                     {time >= 8 && time <= 16 ? "opened now" : "closed now"}
                   </span>
                 </div>
-                <p className="text-[#54565B] leading-4 text-[0.75rem]">
-                  Opens at 8am
+                <p
+                  className={`${
+                    time >= 8 && time <= 16
+                      ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                      : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                  }`}
+                >
+                  {time >= 8 && time < 16 ? "opens at 8am" : "closes at 5pm"}
                 </p>
               </div>
             </div>
