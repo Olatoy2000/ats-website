@@ -74,17 +74,17 @@ export default function CommentBlog() {
                   <article className="flex gap-4 flex-col">
                     {item.comments.map((el, id) => (
                       <Fragment key={id}>
-                        <div className="flex gap-4 justify-start items-start">
+                        <div className="flex gap-4 justify-start items-center">
                           <img
                             src={el.picture}
                             alt=""
-                            className="w-20 shadow-md border rounded-full"
+                            className="w-16 shadow-md border rounded-full"
                           />
                           <p className="text-bold-blackOlive flex justify-start flex-col">
-                            <span className="text-[1rem] leading-6 font-bold">
+                            <span className="text-[1rem] font-bold">
                               {el.contributor}
                             </span>{" "}
-                            &nbsp;{" "}
+                            
                             <span className="leading-4 text-[0.625rem] font-normal text-bold-blackOlive">
                               {el.date}
                             </span>
