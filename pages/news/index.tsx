@@ -6,10 +6,10 @@ import axios from "axios";
 
 //The newssearch in the Updates of the landing page
 function index() {
-	const [newsResult, setNewsResult] = useState({
-		news: [],
-		loading: false,
-	});
+	// const [newsResult, setNewsResult] = useState({
+	// 	news: [],
+	// 	loading: false,
+	// });
 
 	// const fetchNews = async () => {
 	// 	axios.defaults.headers.common["API-KEY"] =
@@ -33,7 +33,6 @@ function index() {
 
 	// async function fetchNews() {
 	// 	let headersList = {
-	// 		Accept: "*/*",
 	// 		"API-KEY":
 	// 			"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
 	// 		"HASH-KEY":
@@ -65,17 +64,17 @@ function index() {
 	);
 }
 
-export async function getServerSideProps() {
-  axios.defaults.headers.common["API-KEY"] = process.env.NEXT_PULIC_APP_API_KEY;
-  axios.defaults.headers.common["HASH-KEY"] = process.env.NEXT_PUBLIC_HASH_KEY;
-  axios.defaults.headers.common["REQUEST-TS"] =
-    process.env.NEXT_PUBLIC_REQUEST_TS;
-  const response = await axios.get(`${process.env.BASE_URL}/api/v1/news`);
-  console.log(response);
-  console.log("Hello from Nav");
-  const news = await response.data;
-  return {
-    props: news,
-  };
-}
+// export async function getServerSideProps() {
+//   axios.defaults.headers.common["API-KEY"] = process.env.NEXT_PULIC_APP_API_KEY;
+//   axios.defaults.headers.common["HASH-KEY"] = process.env.NEXT_PUBLIC_HASH_KEY;
+//   axios.defaults.headers.common["REQUEST-TS"] =
+//     process.env.NEXT_PUBLIC_REQUEST_TS;
+//   const response = await axios.get(`${process.env.BASE_URL}/api/v1/news`);
+//   console.log(response);
+//   console.log("Hello from Nav");
+//   const news = await response.data;
+//   return {
+//     props: news,
+//   };
+// }
 export default index;

@@ -19,7 +19,7 @@ function Navbar() {
 				axios.defaults.headers.common["HASH-KEY"] = process.env.HASH_KEY;
 				axios.defaults.headers.common["REQUEST-TS"] = process.env.REQUEST_TS;
 				const response = await axios.get(
-					`http://578c-41-184-122-5.eu.ngrok.io/api/v1/search-news/?q=${value}`
+					`http://atsbk.afexats.com/api/v1/search-news/?q=${value}#:~:text=ways`
 				);
 				console.log(response);
 				console.log("Hello from Nav");
@@ -45,12 +45,13 @@ function Navbar() {
 	const [isOpened, setIsOpened] = useState(false);
 	return (
 		<div
-			className='flex items-center justify-between md:py-10'
+			className='flex items-center justify-between py-10 pl-8 md:px-0 lg:px-0'
 			id='Navbar'>
 			<span className='text-[#C81107] lg:text-xl md:text-lg font-bold'>
 				ATS Updates
 			</span>
-			<div className='flex items-center gap-8'>
+			<div className='flex items-center text-sm'>
+				Sort by &nbsp;&nbsp;
 				<Menu
 					width={100}
 					shadow='md'>
@@ -70,7 +71,7 @@ function Navbar() {
 					</Menu.Target>
 
 					<Menu.Dropdown>
-						<Link href='/blog'>
+						<Link href='/blog#:~:text=ways'>
 							<Menu.Item>Blog</Menu.Item>
 						</Link>
 						<Link href='/news'>
@@ -78,10 +79,10 @@ function Navbar() {
 						</Link>
 					</Menu.Dropdown>
 				</Menu>
-
+				&nbsp;&nbsp;
 				<div className='relative flex w-52'>
 					<input
-						className=' placeholder:text-slate-400 block bg-[#F7F8F9] border focus:outline-none rounded-md md:py-2 md:pl-9 md:pr-3 sm:text-sm'
+						className=' placeholder:text-slate-400 block bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'

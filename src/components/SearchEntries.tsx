@@ -18,7 +18,7 @@ function SearchEntries() {
 	};
 
 	return (
-		<section className='grid lg:grid-flow-col justify-between md:pb-44'>
+		<section className='grid grid-flow-col  gap-6 justify-between pl-8 lg:px-0 md:px-0 pb-44'>
 			<div
 				style={{ borderRadius: "5px", border: "1px solid #C4C4C4" }}
 				className='p-3'>

@@ -17,7 +17,7 @@ import Navbar from "./Navbar/Navbar";
 //Updates page
 function Updates() {
 	return (
-		<main className='flex flex-col md:mx-auto md:w-[85%] gap-9 md:max-w-screen-2xl'>
+		<main className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
 			<Navbar />
 			<BaWasa />
 			<ArticleDisplay />

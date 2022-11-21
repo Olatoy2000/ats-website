@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Newsletter() {
 	return (
-		<div className='md:pt-10 md:pb-20 w-full'>
+		<div className='pt-10 pb-16 w-full lg:px-0 md:px-0 pl-8'>
 			<img
 				className='object-cover pb-8'
 				src={AFEXLogo.src}
@@ -52,7 +52,7 @@ function Newsletter() {
 				</span>
 			</article>
 			<Link href='/courses'>
-				<button className='bggradi rounded-lg lg:py-5 lg:px-8 md:p-4 items-center group-hover:bg-black'>
+				<button className='bggradi rounded-lg p-5 items-center group-hover:bg-black'>
 					<span className='text-white'>Apply Now</span>
 				</button>
 			</Link>

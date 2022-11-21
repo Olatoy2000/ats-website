@@ -10,7 +10,7 @@ function index() {
 				</h1>
 			</div>
 
-			<div className='pt-4'>
+			<div className='pt-4 lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>Introduction</h2>
 				<p className=''>
 					References in these Terms of Service ("Terms") to "AFEX", "Exchange,"
@@ -32,7 +32,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					General Conditions
 				</h2>
@@ -56,7 +56,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					Permisions and Warranties
 				</h2>
@@ -93,7 +93,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					Third Parties
 				</h2>
@@ -105,7 +105,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					Refusal or Discontinuance of Service
 				</h2>
@@ -123,7 +123,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>Security</h2>
 				<p className=''>
 					SECURITY You agree that the security of your account password is
@@ -145,7 +145,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					Authorization of Electronic Mandates
 				</h2>
@@ -160,7 +160,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>Terms of Use</h2>
 				<p className=''>
 					It is your responsibility to keep your profile details, including but
@@ -188,7 +188,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<div>
 					<h2 className='font-bold text-xl uppercase leading-10'>
 						Proprietary Rights to Content
@@ -227,7 +227,7 @@ function index() {
 				</ol>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					Disclaimer of Warranties
 				</h2>
@@ -308,7 +308,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					INDEMNIFICATION
 				</h2>
@@ -329,7 +329,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					YOUR ACCEPTANCE OF THESE TERMS AND CONDITIONS
 				</h2>
@@ -340,7 +340,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>Survival</h2>
 				<p className=''>
 					Any Term or Condition or part of any Term or Condition herein is found
@@ -352,7 +352,7 @@ function index() {
 				</p>
 			</div>
 
-			<div className=''>
+			<div className='lg:p-0 md:p-0 px-8'>
 				<h2 className='font-bold text-xl uppercase leading-10'>
 					GOVERNING LAW
 				</h2>

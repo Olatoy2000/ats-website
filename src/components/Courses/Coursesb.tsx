@@ -113,13 +113,13 @@ function Coursesb() {
 	];
 
 	return (
-		<div className='md:pt-28'>
+		<div className='pt-24 lg:px-0 md:px-0 pl-8'>
 			<div className='flex flex-col items-center justify-center gap-4'>
-				<h1 className='lg:text-5xl md:text-3xl font-bold flex gap-1 items-center'>
-					<span className='bg-[#C81107] text-white md:p-3'>Our Featured</span>
+				<h1 className='lg:text-5xl md:text-3xl sm:text-xl font-bold flex gap-1 items-center'>
+					<span className='bg-[#C81107] text-white p-3'>Our Featured</span>
 					Courses
 				</h1>
-				<p className='text-center md:w-2/3 lg:text-lg md:text-base'>
+				<p className='text-center w-2/3 sm:w-3/4 lg:text-lg md:text-base sm:text-xs'>
 					The future belongs to those who make their own rules and refuse to
 					confine themselves. That’s why at AFEX we do not ask "why" but rather
 					"why not". Through our ATS program, we aspire to build an ecosystem of
@@ -130,12 +130,12 @@ function Coursesb() {
 			{coursesb.map((item, idx) => (
 				<div
 					key={idx}
-					className='grid grid-flow-row md:pt-16'>
+					className='grid grid-flow-row pt-16'>
 					<div
 						className={
 							idx % 2 === 0
-								? "flex flex-row  border-2 rounded-2xl shadow h-max"
-								: "flex flex-row-reverse border-2 rounded-2xl shadow h-max"
+								? "flex lg:flex-row md:flex-row sm:flex-col flex-col border-2 rounded-2xl shadow h-max"
+								: "flex lg:flex-row-reverse md:flex-row-reverse sm:flex-col flex-col border-2 rounded-2xl shadow h-max"
 						}>
 						<div className='min-w-[40%]'>
 							<img
@@ -143,17 +143,17 @@ function Coursesb() {
 								src={item.coursesImage}
 							/>
 						</div>
-						<div className='md:px-9 max-w-[60%] lg:pt-16 md:pt-7 md:pb-24 md:w-3/4'>
+						<div className='px-9 max-w-[60%] sm:max-w-full lg:pt-16 pt-7 pb-24 md:w-3/4 sm:pt-7 sm:pb-24'>
 							<h1 className='text-[#343434] lg:text-5xl md:text-3xl font-bold'>
 								{item.title}
 							</h1>
-							<p className='lg:text-lg md:text-base pt-5 lg:pb-10 md:pb-10'>
+							<p className='lg:text-lg md:text-base pt-5 pb-10'>
 								{item.coursesSnippets}
 							</p>
 
 							<button
 								onClick={() => openModal(item.modal)}
-								className='bggradi rounded-lg lg:p-4 md:p-2 items-center group-hover:bg-black'>
+								className='bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black'>
 								<span className='text-white'>Read More</span>
 							</button>
 						</div>

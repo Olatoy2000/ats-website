@@ -3,6 +3,8 @@ import MyImage from "./assets/image 5.png";
 import MyImage2 from "./assets/image 2.png";
 import SeeMore1 from "./assets/SeeMore3 icon.png";
 import SeeMore2 from "./assets/SeeLess icon.png";
+import { useRef } from "react";
+import Link from "next/link";
 
 //Blogs part in the Updates page
 function ArticleDisplay() {
@@ -108,10 +110,24 @@ function ArticleDisplay() {
 			readTime: "3 min",
 		},
 	];
+	const scrollRefs = useRef<HTMLDivElement>(null);
+
+	const moveRight = () => {
+		const width = scrollRefs.current!.clientWidth;
+
+		scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft + width;
+	};
+
+	const moveLeft = () => {
+		const width = scrollRefs.current!.clientWidth;
+
+		scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
+	};
 
 	return (
 		<>
 			<div
+				ref={scrollRefs}
 				className='grid overflow-x-scroll md:py-5 md:gap-4 lg:gap-9 grid-flow-col scrollbar-hide'
 				id='ArticleDisplay'>
 				{articles.map((item, idx) => (
@@ -123,9 +139,11 @@ function ArticleDisplay() {
 							src={item.articleImage}
 							className='object-cover md:w-full'
 						/>
-						<p className='text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold md:p-4'>
-							{item.title}
-						</p>
+						<Link href='/readblogwithoutcomment'>
+							<p className='text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold md:p-4'>
+								{item.title}
+							</p>
+						</Link>
 						<p className='text-[#718096] text-sm md:px-4'>
 							{item.articleSnippets}
 						</p>
@@ -142,9 +160,11 @@ function ArticleDisplay() {
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										{item.datePublished} &nbsp;&nbsp; {item.readTime} read
 									</p>
-									<p className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
-										Read more
-									</p>
+									<Link href='/readblogwithoutcomment'>
+										<p className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
+											Read more
+										</p>
+									</Link>
 								</span>
 							</div>
 						</div>
@@ -152,11 +172,15 @@ function ArticleDisplay() {
 				))}
 			</div>
 			<div className='flex justify-between'>
-				<button className='flex gap-2 bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+				<button
+					className='flex gap-2 bggradi rounded-lg md:p-4 items-center group-hover:bg-black'
+					onClick={moveLeft}>
 					<span className='text-white'>See Less</span>
 					<img src={SeeMore2.src} />
 				</button>
-				<button className='flex gap-2 bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
+				<button
+					onClick={moveRight}
+					className='flex gap-2 bggradi rounded-lg md:p-4 items-center group-hover:bg-black'>
 					<span className='text-white'>See More</span>
 					<img src={SeeMore1.src} />
 				</button>

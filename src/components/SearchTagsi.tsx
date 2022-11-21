@@ -11,7 +11,7 @@ const SearchTagLinks1 = [
 	"Design",
 ];
 function SearchTagsi() {
-	const [active, setActive] = useState(null);
+	const [active, setActive] = useState<null | number>(null);
 	return (
 		<div className='py-8'>
 			<h1 className='lg:text-2xl md:text-lg font-bold flex gap-1 md:py-8 py-8'>

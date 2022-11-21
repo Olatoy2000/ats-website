@@ -1,137 +1,154 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Select } from "@mantine/core";
 import Xpertsimg from "../Xperts/assets/xpertspic.png";
 import Xpertsimg2 from "../Xperts/assets/xpertspic2.png";
+import axios from "axios";
 
 function Xpert() {
-	const Xperts = [
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-		{
-			XpertsImg: Xpertsimg.src,
-			XpertsName: "Oluwatosin Olabanji",
-			XpertsTeam: "Product Management",
-			Year: "2022",
-		},
-	];
+	// const Xperts = [
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// 	{
+	// 		XpertsImg: Xpertsimg.src,
+	// 		XpertsName: "Oluwatosin Olabanji",
+	// 		XpertsTeam: "Product Management",
+	// 		Year: "2022",
+	// 	},
+	// ];
+
+	const [xperts, setXperts] = useState<any>([]);
+
+	const fetchBlogs = () => {
+		axios(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/testimonial-list-create/`
+		)
+			.then((response) => {
+				console.log(response.data);
+			})
+			.catch(console.log);
+	};
+
+	useEffect(() => {
+		fetchBlogs();
+	}, []);
 
 	const data = Array(50).map((_, index) => `Item ${index}`);
 
@@ -178,8 +195,8 @@ function Xpert() {
 					]}
 				/>
 			</div>
-			<div className='grid grid-cols-3 grid-rows-7 gap-8'>
-				{Xperts.map((item, idx) => (
+			<div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8'>
+				{xperts.map((item: any, idx: number) => (
 					<div
 						key={idx}
 						id={`#${idx}`}
