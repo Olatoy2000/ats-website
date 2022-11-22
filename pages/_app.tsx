@@ -10,6 +10,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const { pathname } = useRouter();
 	return pathname === "/404" ? (
 		<Component {...pageProps} />
+	) : pathname === "/newsletter" ? (
+		<Component {...pageProps} />
 	) : (
 		<ModalsProvider>
 			<Header />

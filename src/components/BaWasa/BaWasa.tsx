@@ -26,7 +26,7 @@ function BaWasa() {
 						<p className='text-[#C81107] text-xs font-semibold'>
 							Gloria Erimosele
 						</p>
-						<span className='flex gap-3 justify-between items-center pr-8'>
+						<span className='flex justify-between items-center'>
 							<p className='text-[#6F6F70] font-semibold text-[10px]'>
 								A month ago ꞏ 3 min read
 							</p>

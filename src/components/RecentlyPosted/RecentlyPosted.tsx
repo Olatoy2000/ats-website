@@ -13,7 +13,6 @@ import { Divider, Group, Text } from "@mantine/core";
 
 function RecentlyPosted() {
 	const [newsArticle, setNewsArticles] = useState<any>([]);
-	console.log(newsArticle);
 
 	const fetchBlogs = () => {
 		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/news`)
@@ -35,14 +34,14 @@ function RecentlyPosted() {
 			<h1 className='text-2xl font-bold flex gap-1'>
 				<span className='bg-[#C81107] text-white'>Recently</span>Posted
 			</h1>
-			<div className='flex flex-col gap-9'>
+			<div className='flex flex-col gap-9 pt-6'>
 				{newsArticle.map((item: any, idx: number) =>
 					idx === 3 ? (
 						<Fragment key={idx}>
 							<ApplyNow />
 							<div
 								key={idx}
-								className='flex items-center gap-4'>
+								className='flex gap-4'>
 								<img
 									className='w-[52%]'
 									src={item.image ? item.image : Placeholder.src}
@@ -51,7 +50,6 @@ function RecentlyPosted() {
 								<div className='md:h-max h-max flex-1'>
 									<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 										{item.category.name}
-										{console.log(item.category.name)}
 									</span>
 									<Link href={`/news/${item.id}`}>
 										<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
@@ -61,10 +59,10 @@ function RecentlyPosted() {
 									<div className='flex gap-1 items-center py-1'>
 										<img
 											className='h-5'
-											src={item.authorImage}
+											src={item.author.profile_pics}
 										/>
 										<div className='grid grid-flow-col items-center'>
-											<p className='text-[#777777] text-xs'>{item.author}</p>
+											<p className='text-[#777777] text-xs'>{`${item.author.first_name} ${item.author.last_name}`}</p>
 											<span className='text-[#999999] font-thin'>|</span>
 											&nbsp;&nbsp;
 											<img
@@ -95,7 +93,7 @@ function RecentlyPosted() {
 					) : (
 						<div
 							key={idx}
-							className='flex items-center gap-4'>
+							className='flex gap-4'>
 							<img
 								className='w-[52%]'
 								src={item.image ? item.image : Placeholder.src}
@@ -104,7 +102,6 @@ function RecentlyPosted() {
 							<div className='md:h-max h-max flex-1'>
 								<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 									{item.category.name}
-									{/* {console.log(item.category.name)} */}
 								</span>
 								<Link href={`/news/${item.id}`}>
 									<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
@@ -114,10 +111,10 @@ function RecentlyPosted() {
 								<div className='flex gap-1 items-center py-1'>
 									<img
 										className='h-5'
-										src={item.authorImage}
+										src={item.author.profile_pics}
 									/>
 									<div className='grid grid-flow-col items-center'>
-										<p className='text-[#777777] text-xs'>{item.author}</p>
+										<p className='text-[#777777] text-xs'>{`${item.author.first_name} ${item.author.last_name}`}</p>
 										<span className='text-[#999999] font-thin'>|</span>
 										&nbsp;&nbsp;
 										<img
@@ -136,7 +133,7 @@ function RecentlyPosted() {
 										<p className='text-[#777777] text-xs'>{item.min_read}</p>
 									</div>
 								</div>
-								<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
+								<p className='text-[#555555] lg:text-base md:text-sm md:py-1'>
 									{item.intro + "..."}&nbsp;&nbsp;
 									<Link href={`/news/${item.id}`}>
 										<span className='text-[#C81107]'>Read more</span>

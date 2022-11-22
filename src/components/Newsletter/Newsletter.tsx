@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AFEXLogo from "./assets/afex-logo.png";
 import Link from "next/link";
+import axios from "axios";
 
 function Newsletter() {
+	const [newsLetter, setNewsLetter] = useState<any>([]);
+
+	const fetchNewsLetter = () => {
+		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/newsletter`)
+			.then((response) => {
+				setNewsLetter(response.data.data.results);
+			})
+			.catch(console.log);
+	};
+
+	useEffect(() => {
+		fetchNewsLetter();
+	}, []);
 	return (
 		<div className='pt-10 pb-16 w-full lg:px-0 md:px-0 pl-8'>
 			<img
@@ -10,7 +24,7 @@ function Newsletter() {
 				src={AFEXLogo.src}
 			/>
 
-			<article className='lg:text-base md:text-sm pb-12'>
+			<article className='lg:text-base text-sm pb-12'>
 				<p className='py-3'>Dear Davies Ayodele,</p>
 				<p className='py-3'>
 					Applications for the 2nd Cohort of ATS (AFEX Tech Star) is currently
@@ -52,7 +66,7 @@ function Newsletter() {
 				</span>
 			</article>
 			<Link href='/courses'>
-				<button className='bggradi rounded-lg p-5 items-center group-hover:bg-black'>
+				<button className='bggradi rounded-lg lg:p-5 p-3 items-center group-hover:bg-black'>
 					<span className='text-white'>Apply Now</span>
 				</button>
 			</Link>

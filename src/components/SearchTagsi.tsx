@@ -8,7 +8,6 @@ import Link from "next/link";
 function SearchTagsi() {
 	const [active, setActive] = useState<null | number>(null);
 	const [tagCategory, setTagCategory] = useState<any>([]);
-	console.log(tagCategory);
 
 	const fetchSearchTagsi = () => {
 		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/category`)
