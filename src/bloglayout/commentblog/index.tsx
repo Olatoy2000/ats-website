@@ -141,10 +141,11 @@ export default function CommentBlog() {
                       name=""
                       id=""
                       placeholder="Enter comment"
-                      className="bg-[#F9FAFB] align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md mt-4 border border-[#DEDDDC]"
+                      className="bg-[#F9FAFB] resize-none align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md mt-4 border border-[#DEDDDC]"
                       cols={30}
                       rows={10}
                       required
+                    
                     ></textarea>
                     <button
                       type="submit"

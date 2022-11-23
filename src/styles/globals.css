@@ -11,13 +11,6 @@
   scroll-behavior: smooth;
 }
 
-.timer {
-  font-family: "Jura", sans-serif;
-  font-weight: 700;
-  font-size: 50px;
-  line-height: 50px;
-}
-
 .ats-address,
 .qr-code {
   font-family: "Inter", sans-serif;

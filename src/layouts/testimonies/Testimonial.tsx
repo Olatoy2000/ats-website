@@ -78,8 +78,7 @@ function Testimonial({ selected }: Props) {
             const juggle = [...testimonial];
             juggle.unshift(juggle.pop() as Testimony[number]);
             setTestimonial(juggle);
-          }}
-        >
+          }}>
           <ArrowLeft2 size={32} />
         </button>
         <section
