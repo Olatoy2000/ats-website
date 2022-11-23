@@ -5,7 +5,7 @@ import Send from "./assets/send.png";
 import Instagram from "./assets/instagram.png";
 import Twitter from "../footer/assets/twitter.png";
 import Link from "next/link";
-import { clsx } from "@mantine/core";
+import { clsx, Divider } from "@mantine/core";
 
 function Footer() {
   return (
@@ -27,7 +27,7 @@ function Footer() {
               Road, Ibadan.
             </p>
           </section>
-          <p className="text-[0.8125rem] text-white font-normal leading-10 ats-address">
+          <p className="hidden md:flex text-[0.8125rem] text-white font-normal leading-10">
             &copy; 2022 AFEX NIGERIA
           </p>
         </div>
@@ -64,7 +64,7 @@ function Footer() {
               <Link href="/courses">
                 <li className="pb-2">Courses</li>
               </Link>
-              <Link href="/contact us">
+              <Link href="/contactUs">
                 <li className="pb-2">Contact Us</li>
               </Link>
               <Link href="/privacyPolicy">
@@ -80,7 +80,7 @@ function Footer() {
             "md:col-start-2 md:col-span-2 md:flex md:justify-between"
           )}
         >
-          <ul className="flex gap-4 justify-between">
+          <ul className="flex gap-4 justify-end">
             <li>
               <a href="https://www.instagram.com/afexnigeria/" target="_blank">
                 <img
@@ -112,17 +112,24 @@ function Footer() {
               </a>
             </li>
           </ul>
-          <div className="flex bg-[#383838] w-fit justify-between gap-2 rounded-md align-center p-2">
+          <div className="flex bg-[#383838] w-fit justify-between justify-self-end gap-2 rounded-md p-2">
             <input
               type="email"
               placeholder="Email Address"
               className="outline-none border-none overflow-auto text-white placeholder:text-[rgba(0, 0, 0, 0.5)] bg-inherit"
             />
-            <img src={Send.src} alt="telegram logo" className="w-4" />
+            <img
+              src={Send.src}
+              alt="telegram logo"
+              className="w-4 h-fit self-center"
+            />
           </div>
+          <div className="justify-self-end border border-[#B4B4B0] w-full md:hidden"></div>
+          <p className="text-[0.8125rem] text-white font-normal justify-self-end md:hidden leading-10">
+            &copy; 2022 AFEX NIGERIA
+          </p>
         </div>
       </article>
-      
     </section>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-
 function QrCodeScan(props: any) {
   const [qrcode, setQrcode] = useState<any>(null);
 
@@ -27,7 +26,6 @@ function QrCodeScan(props: any) {
   };
   useEffect(() => {
     fetchQrCode();
-    console.log(qrcode);
   }, []);
 
   return (

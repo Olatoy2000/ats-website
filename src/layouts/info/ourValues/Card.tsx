@@ -7,7 +7,7 @@ function Card(props: {
   subtitle: any;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 py-12 bg-white shadow-sm rounded-xl min-w-fit px-9 group hover:scale-110">
+    <div className="flex flex-col items-center justify-center gap-4 py-16 bg-white shadow-sm rounded-xl mx-auto  px-20 group hover:scale-110">
       <div className="relative w-24 h-24">
         <div className="absolute grid">
           <img
@@ -25,7 +25,7 @@ function Card(props: {
       <p className="font-bold md:leading-10 leading-3 text-[2rem] text-[#47494E] group-hover:text-[#B2241C]">
         {props.title}
       </p>
-      <p className="text-base text-[#47494E] whitespace-nowrap font-normal leading-7 group-hover:text-[#B2241C]">
+      <p className="text-base text-[#47494E] font-normal leading-7 group-hover:text-[#B2241C]">
         {props.subtitle}
       </p>
     </div>

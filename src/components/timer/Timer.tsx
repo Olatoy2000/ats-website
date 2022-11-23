@@ -26,7 +26,7 @@ function MyTimer({ expiryTimestamp }: ICountDown) {
         marginBottom: "200px",
       }}
     >
-      <h1 className="text-[clamp(0.75rem,2.5vw,3rem)] leading-[3.5rem] font-bold">
+      <h1 className="text-[clamp(0.75rem,2.5vw,3rem)] md:leading-[3.5rem] font-bold">
         Registration Ends
       </h1>
       <div className="flex justify-center sm:leading-6">

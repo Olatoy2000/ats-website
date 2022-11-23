@@ -1,9 +1,10 @@
 import { Menu } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PopUp from "./assets/group-pop.png";
 import BoyLaptop from "./assets/boy-with-nosemark.png";
 import RedOverlay from "./assets/red-overlay.png";
 import ReceivedMessage from "./assets/receivedmess.png";
+import axios from "axios";
 
 export default function MenuPopover() {
   const [values, setValues] = useState({
@@ -13,31 +14,75 @@ export default function MenuPopover() {
     message: "",
   });
 
+  const [success, setSuccess] = useState(false);
+
+  const sendMessage = () => {
+    console.log({ ...values });
+    axios({
+      method: "post",
+      url: "http://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
+      data: JSON.stringify({
+        ...values,
+      }),
+    })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        if (response.status === 201) setSuccess(true);
+      })
+      .catch((error) => console.error(error));
+  };
+  // const sendMessage = () => {
+  //   axios(
+  //     `${process.env.NEXT_PUBLIIC_BASE_URL}/api/v1/support/contact-us-list-create/`
+  //   ).then((response) => {
+  //     sendMessage(response.data.data);
+  //   });
+  // };
+
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (
+      values.fullName === "" &&
+      values.email === "" &&
+      values.subject === "" &&
+      values.message === ""
+    )
+      setSubmitted(false);
+  }, [values.fullName, values.email, values.subject, values.message]);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     if (values.fullName && values.email && values.subject && values.message) {
       setValid(true);
-    }
-    setSubmitted(true);
+      sendMessage();
+      setValues({
+        ...values,
+        fullName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setSubmitted(true);
+    } else setSubmitted(true);
   };
 
-  const handleFullNameInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, fullName: event.target.value });
+  const handleInputChange = (eventVal: string, valuekey: string) => {
+    setValues({ ...values, [valuekey]: eventVal });
   };
 
-  const handleEmailInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, email: event.target.value });
-  };
+  // const handleEmailInputChange = (event: { target: { value: any } }) => {
+  //   setValues({ ...values, email: event.target.value });
+  // };
 
-  const handleSubjectInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, subject: event.target.value });
-  };
+  // const handleSubjectInputChange = (event: { target: { value: any } }) => {
+  //   setValues({ ...values, subject: event.target.value });
+  // };
 
-  const handleMessageInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, message: event.target.value });
-  };
+  // const handleMessageInputChange = (event: { target: { value: any } }) => {
+  //   setValues({ ...values, message: event.target.value });
+  // };
 
   const [valid, setValid] = useState(false);
 
@@ -75,7 +120,7 @@ export default function MenuPopover() {
             as possible.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
-            {submitted && valid ? (
+            {success ? (
               <div
                 className="leading-6 text-[1rem] border-2 rounded-md flex p-3 items-center justify-start gap-3"
                 style={{
@@ -91,7 +136,9 @@ export default function MenuPopover() {
               </div>
             ) : null}
             <input
-              onChange={handleFullNameInputChange}
+              onChange={(event) =>
+                handleInputChange(event.target.value, "fullName")
+              }
               value={values.fullName}
               type="text"
               placeholder="Full Name"
@@ -103,7 +150,9 @@ export default function MenuPopover() {
               </span>
             ) : null}
             <input
-              onChange={handleEmailInputChange}
+              onChange={(event) =>
+                handleInputChange(event.target.value, "email")
+              }
               value={values.email}
               type="email"
               placeholder="Email Address"
@@ -115,7 +164,9 @@ export default function MenuPopover() {
               </span>
             ) : null}
             <input
-              onChange={handleSubjectInputChange}
+              onChange={(event) =>
+                handleInputChange(event.target.value, "subject")
+              }
               value={values.subject}
               type="text"
               placeholder="Subject"
@@ -123,7 +174,7 @@ export default function MenuPopover() {
             />
             {submitted && !values.subject ? (
               <span className="text-light-internationalOrange">
-                Please enter a subject
+                This field is required
               </span>
             ) : null}
             <textarea
@@ -131,7 +182,9 @@ export default function MenuPopover() {
               name=""
               placeholder="Message"
               id=""
-              onChange={handleMessageInputChange}
+              onChange={(event) =>
+                handleInputChange(event.target.value, "message")
+              }
               value={values.message}
               className="p-1 border  outline-none text-black"
               cols={30}
@@ -139,7 +192,7 @@ export default function MenuPopover() {
             ></textarea>
             {submitted && !values.message ? (
               <span className="text-light-internationalOrange">
-                Kindly leave a message
+                All fields are required
               </span>
             ) : null}
             <button

@@ -14,10 +14,6 @@ function index() {
     initialValues: {
       email: "",
     },
-
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-    },
   });
 
   // const [pass, setPass] = useState("");
@@ -25,7 +21,7 @@ function index() {
   const [time, setTime] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState("");
 
   useEffect(() => {
     const date = new Date();
@@ -33,8 +29,11 @@ function index() {
     console.log(time);
   }, [time]);
 
+  useEffect(() => {
+    if(form.values.email === '') setErr('')
+  }, [form.values])
+
   const setModalTrue = () => {
-    setIsLoading(true);
     // navigator.geolocation.getCurrentPosition(
     //   (position: any) => {
     // console.log(position.coord.lat)
@@ -42,33 +41,37 @@ function index() {
     //   (error: any) => console.log(error)
     // );
     let email = form.values.email;
-
-    var data = JSON.stringify({
-      email: email,
-      location: "ibadan",
-      date_time: new Date().toISOString(),
-    });
-
-    var config = {
-      method: "post",
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        if (response.data.status_code === 201) {
-          setIsLoading(false);
-          setShowModal(true);
-        }
-      })
-      .catch(function (error) {
-        setErr(true);
-        setIsLoading(false);
+    if (/^\S+@\S+$/.test(email)) {
+      setIsLoading(true);
+      var data = JSON.stringify({
+        email: email,
+        location: "ibadan",
+        date_time: new Date().toISOString(),
       });
+
+      var config = {
+        method: "post",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          if (response.data.status_code === 201) {
+            setIsLoading(false);
+            setShowModal(true);
+          }
+        })
+        .catch(function (error) {
+          setErr("Email does not exist");
+          setIsLoading(false);
+        });
+    } else {
+      setErr("Invalid Email");
+    }
   };
 
   const setModalFalse = () => {
@@ -103,7 +106,7 @@ function index() {
               className="sm:flex bg-white justify-between py-2 px-3"
               onSubmit={form.onSubmit((values: any) => console.log(values))}
             >
-              <div>
+              <div className="flex-1">
                 <TextInput
                   className="md:w-full sm:w-full"
                   classNames={{
@@ -119,16 +122,16 @@ function index() {
                 />
                 {err ? (
                   <p className="text-light-internationalOrange text-xs">
-                    email does not exist
+                    {err}
                   </p>
                 ) : null}
               </div>
               <button
                 type="submit"
                 onClick={setModalTrue}
-                disabled={time >= 8 && time <= 13 ? false : true}
+                disabled={time >= 8 && time <= 16 ? false : true}
                 className={
-                  time >= 8 && time <= 13
+                  time >= 8 && time <= 16
                     ? "text-white w-full sm:w-fit px-10 py-4 rounded-md leading-6 font-bold text-[1rem]"
                     : "opacity-20 text-[white] w-full sm:w-fit px-10 py-4 rounded-md leading-6 font-bold text-[1rem]"
                 }
@@ -181,7 +184,6 @@ function index() {
             </div>
             <Link href="/adminlogin">
               <button
-                // <button onClick={() => loginWithRedirect()}>
                 type="submit"
                 style={{
                   background:
@@ -194,12 +196,12 @@ function index() {
             </Link>
           </article>
         </section>
-        <section className="flex md:gap-6 flex-col md:flex-row gap-4 items-center qr-code justify-center">
-          <div className="flex flex-col gap-4">
+        <section className="flex pl-4 md:gap-6 flex-col md:flex-row gap-4 items-center qr-code justify-center">
+          <div className="flex items-center flex-col gap-4">
             <h5 className="font-bold font-inherit leading-6">
               How to scan QR code:
             </h5>
-            <dl className="list">
+            <dl className="list items">
               <li>Login with your email</li>
               <li>System generates QR code</li>
               <li>Open the ATS scanner mobile app</li>
@@ -209,7 +211,6 @@ function index() {
           <img src={QrCodeScanner.src} alt="qr code image" className="w-40" />
         </section>
       </div>
-      {/* )} */}
     </div>
   );
 }
