@@ -47,10 +47,10 @@ function Navbar() {
 		<div
 			className='flex items-center justify-between py-10 pl-8 md:px-0 lg:px-0'
 			id='Navbar'>
-			<span className='text-[#C81107] lg:text-xl md:text-lg font-bold'>
+			<span className='text-[#C81107] flex-1 lg:text-xl md:text-lg lg:flex md:flex sm:hidden font-bold'>
 				ATS Updates
 			</span>
-			<div className='flex items-center text-sm'>
+			<div className='flex lg:gap-0 md:gap-0 sm:flex flex-1 gap-16 items-center text-sm'>
 				Sort by &nbsp;&nbsp;
 				<Menu
 					width={100}
@@ -82,7 +82,7 @@ function Navbar() {
 				&nbsp;&nbsp;
 				<div className='relative flex w-52'>
 					<input
-						className=' placeholder:text-slate-400 block bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
+						className=' placeholder:text-slate-400 flex flex-1 items-end bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'

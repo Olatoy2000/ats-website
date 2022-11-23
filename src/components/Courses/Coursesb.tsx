@@ -115,11 +115,11 @@ function Coursesb() {
 	return (
 		<div className='pt-24 lg:px-0 md:px-0 pl-8'>
 			<div className='flex flex-col items-center justify-center gap-4'>
-				<h1 className='lg:text-5xl md:text-3xl sm:text-xl font-bold flex gap-1 items-center'>
+				<h1 className='lg:text-5xl md:text-3xl text-xl font-bold flex gap-1 items-center'>
 					<span className='bg-[#C81107] text-white p-3'>Our Featured</span>
 					Courses
 				</h1>
-				<p className='text-center w-2/3 sm:w-3/4 lg:text-lg md:text-base sm:text-xs'>
+				<p className='text-center w-2/3 sm:w-3/4 lg:text-lg md:text-base text-xs'>
 					The future belongs to those who make their own rules and refuse to
 					confine themselves. That’s why at AFEX we do not ask "why" but rather
 					"why not". Through our ATS program, we aspire to build an ecosystem of
@@ -134,8 +134,8 @@ function Coursesb() {
 					<div
 						className={
 							idx % 2 === 0
-								? "flex lg:flex-row md:flex-row sm:flex-col flex-col border-2 rounded-2xl shadow h-max"
-								: "flex lg:flex-row-reverse md:flex-row-reverse sm:flex-col flex-col border-2 rounded-2xl shadow h-max"
+								? "flex lg:flex-row md:flex-row flex-col border-2 rounded-2xl shadow h-max"
+								: "flex lg:flex-row-reverse md:flex-row-reverse flex-col border-2 rounded-2xl shadow h-max"
 						}>
 						<div className='min-w-[40%]'>
 							<img
@@ -143,7 +143,7 @@ function Coursesb() {
 								src={item.coursesImage}
 							/>
 						</div>
-						<div className='px-9 max-w-[60%] sm:max-w-full lg:pt-16 pt-7 pb-24 md:w-3/4 sm:pt-7 sm:pb-24'>
+						<div className='px-9 max-w-[60%] sm:max-w-full lg:pt-16 pt-7 pb-24 md:w-3/4'>
 							<h1 className='text-[#343434] lg:text-5xl md:text-3xl font-bold'>
 								{item.title}
 							</h1>

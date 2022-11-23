@@ -30,8 +30,7 @@ function index() {
 				{newsArticle.map((item: any, idx: number) => (
 					<div
 						key={idx}
-						id={`#${idx}`}
-						className='flex flex-col pb-[15px] shadow rounded-md'>
+						className='flex flex-col pb-4 shadow rounded-md'>
 						<img
 							src={item.image ? item.image : Placeholder.src}
 							className='h-64 object-cover md:w-full'
@@ -63,21 +62,21 @@ function index() {
 								src={item.authorImage}
 								className='h-10'
 							/>
-							<div className='font-sans'>
+							<div className='font-sans flex-1'>
 								<p className='text-[#C81107] text-xs font-semibold'>
-									{item.author_fullname}
+									{item.author}
 								</p>
-								<span className='flex gap-20 md:gap-4 items-center'>
+								<span className='flex gap-3 justify-between items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										<span>
 											{moment(item.created_at).format("ll").split(",")[0]}
 										</span>{" "}
 										&nbsp;&nbsp; {item.min_read}
 									</p>
-									<Link href='/readblogwithoutcomment'>
-										<p className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
+									<Link href={`/news/${item.id}`}>
+										<span className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
 											Read more
-										</p>
+										</span>
 									</Link>
 								</span>
 							</div>

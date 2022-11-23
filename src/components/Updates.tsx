@@ -22,12 +22,12 @@ function Updates() {
 			<BaWasa />
 			<ArticleDisplay />
 			<AfexNewsPic />
-			<div className='md:flex md:gap-44'>
-				<div className='lg:w-max flex-1 md:w-44'>
+			<div className='flex md:gap-20'>
+				<div className='lg:w-max flex-1'>
 					<RecentlyPosted />
 					<SearchEntries />
 				</div>
-				<div className='lg:w-96 md:w-96 w-max lg:p-0 sm:pl-24'>
+				<div className='lg:w-96 lg:p-0'>
 					<TopAuthors />
 					<AFEXLearnMore />
 					<Categories />
