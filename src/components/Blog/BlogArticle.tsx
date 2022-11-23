@@ -34,7 +34,7 @@ function index({ text = "", search = "" }: IHighlighted) {
 	}, []);
 
 	return (
-		<div className='flex flex-col gap-9 pl-8 md:px-0 lg:px-0'>
+		<div className='flex flex-col gap-9 px-8 md:px-0 lg:px-0'>
 			<h1 className='flex bg-[#C81107] w-20 lg:p-3 p-2 text-white text-2xl font-bold'>
 				Blog
 			</h1>

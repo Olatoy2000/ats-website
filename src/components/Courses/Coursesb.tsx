@@ -113,7 +113,7 @@ function Coursesb() {
 	];
 
 	return (
-		<div className='pt-24 lg:px-0 md:px-0 pl-8'>
+		<div className='pt-24 lg:px-0 md:px-0 px-8'>
 			<div className='flex flex-col items-center justify-center gap-4'>
 				<h1 className='lg:text-5xl md:text-3xl text-xl font-bold flex gap-1 items-center'>
 					<span className='bg-[#C81107] text-white p-3'>Our Featured</span>

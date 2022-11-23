@@ -47,10 +47,10 @@ function Navbar() {
 		<div
 			className='flex items-center justify-between py-10 pl-8 md:px-0 lg:px-0'
 			id='Navbar'>
-			<span className='text-[#C81107] flex-1 lg:text-xl md:text-lg lg:flex md:flex sm:hidden font-bold'>
+			<span className='text-[#C81107] flex-1 lg:text-xl md:text-lg lg:flex md:flex hidden font-bold'>
 				ATS Updates
 			</span>
-			<div className='flex lg:gap-0 md:gap-0 sm:flex flex-1 gap-16 items-center text-sm'>
+			<div className='flex lg:gap-0 md:gap-0 sm:flex flex-1 items-center text-sm'>
 				Sort by &nbsp;&nbsp;
 				<Menu
 					width={100}

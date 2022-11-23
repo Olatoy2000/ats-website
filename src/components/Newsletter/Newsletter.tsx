@@ -18,7 +18,7 @@ function Newsletter() {
 		fetchNewsLetter();
 	}, []);
 	return (
-		<div className='pt-10 pb-16 w-full lg:px-0 md:px-0 pl-8'>
+		<div className='pt-10 pb-16 w-full lg:px-0 md:px-0 px-8'>
 			<img
 				className='object-cover pb-8'
 				src={AFEXLogo.src}

@@ -22,7 +22,7 @@ function index() {
 	}, []);
 
 	return (
-		<div className='flex flex-col gap-9 pl-8 md:px-0 lg:px-0'>
+		<div className='flex flex-col gap-9 px-8 md:px-0 lg:px-0'>
 			<h1 className='flex bg-[#C81107] w-20 lg:p-3 p-2 text-white text-2xl font-bold'>
 				News
 			</h1>
@@ -53,18 +53,22 @@ function index() {
 											)
 										)} */}
 
-						<p className='text-[#2D3748] text-xl font-bold p-4'>{item.title}</p>
+						<Link href={`/news/${item.id}`}>
+							<p className='text-[#2D3748] text-xl font-bold p-4'>
+								{item.title}
+							</p>
+						</Link>
 						<p className='text-[#718096] flex-1 text-sm px-4'>
 							{item.intro + "..."}
 						</p>
 						<div className='flex gap-3 pt-10 items-center px-4'>
 							<img
-								src={item.authorImage}
+								src={item.author.profile_pics}
 								className='h-10'
 							/>
 							<div className='font-sans flex-1'>
 								<p className='text-[#C81107] text-xs font-semibold'>
-									{item.author}
+									{`${item.author.first_name} ${item.author.last_name}`}
 								</p>
 								<span className='flex gap-3 justify-between items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
