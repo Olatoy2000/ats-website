@@ -6,34 +6,34 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 function index() {
-	const router = useRouter();
-	const [blogDetail, setBlogDetail] = useState(null);
+  const router = useRouter();
+  const [blogDetail, setBlogDetail] = useState(null);
 
-	const fetchBlogDetails = () => {
-		let config = {
-			method: "get",
-			url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
-		};
+  const fetchBlogDetails = () => {
+    let config = {
+      method: "get",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
+    };
 
-		axios(config)
-			.then((response) => {
-				setBlogDetail(response.data.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+    axios(config)
+      .then((response) => {
+        setBlogDetail(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-	useEffect(() => {
-		if (router.query.blogId) fetchBlogDetails();
-	}, [router.query.blogId]);
-	return blogDetail ? (
-		<div>
-			<Xpertbackestablished blogDetail={blogDetail} />
-			<CommentBlog blogDetail={blogDetail} />
-			<MORE_BLOG_POST />
-		</div>
-	) : null;
+  useEffect(() => {
+    if (router.query.blogId) fetchBlogDetails();
+  }, [router.query.blogId]);
+  return blogDetail ? (
+    <div>
+      <Xpertbackestablished blogDetail={blogDetail} />
+      <CommentBlog blogDetail={blogDetail} />
+      <MORE_BLOG_POST routeId={router.query.blogId} />
+    </div>
+  ) : null;
 }
 
 export default index;

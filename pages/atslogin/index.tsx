@@ -30,8 +30,8 @@ function index() {
   }, [time]);
 
   useEffect(() => {
-    if(form.values.email === '') setErr('')
-  }, [form.values])
+    if (form.values.email === "") setErr("");
+  }, [form.values]);
 
   const setModalTrue = () => {
     // navigator.geolocation.getCurrentPosition(
@@ -83,7 +83,7 @@ function index() {
         <Loading />
       ) : showModal ? (
         <div className="z-10 absolute top-0 left-0 right-0 bottom-0">
-          <QrCodeScan onClicks={setModalFalse} />
+          <QrCodeScan opened={showModal} onClicks={setModalFalse} />
         </div>
       ) : (
         <div></div>

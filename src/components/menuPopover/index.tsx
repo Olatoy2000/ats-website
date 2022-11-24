@@ -32,13 +32,6 @@ export default function MenuPopover() {
       })
       .catch((error) => console.error(error));
   };
-  // const sendMessage = () => {
-  //   axios(
-  //     `${process.env.NEXT_PUBLIIC_BASE_URL}/api/v1/support/contact-us-list-create/`
-  //   ).then((response) => {
-  //     sendMessage(response.data.data);
-  //   });
-  // };
 
   const [submitted, setSubmitted] = useState(false);
 

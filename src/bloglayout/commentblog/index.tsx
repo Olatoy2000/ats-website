@@ -10,7 +10,7 @@ export default function CommentBlog({ blogDetail }: any) {
       <section>
         <section className="mb-12">
           <article className="flex items-center mb-8 gap-5">
-            <img src={XpertLogo.src} alt="" className="w-20" />
+            <img src={XpertLogo.src} alt="xpert logo" className="w-20" />
             <div className="flex gap-2 flex-col">
               <h3 className="text-light-internationalOrange text-[1.25rem] font-bold leading-7">
                 {blogDetail.author_fullname}
