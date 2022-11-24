@@ -64,8 +64,9 @@ function index({ text = "", search = "" }: IHighlighted) {
 												part
 											)
 										)} */}
-
+					<Link href={`/blogs/${item.id}`}>
 						<p className='text-[#2D3748] text-xl font-bold p-4'>{item.title}</p>
+					</Link>
 						<p className='text-[#718096] flex-1 text-sm px-4'>
 							{item.intro + "..."}
 						</p>
@@ -78,7 +79,7 @@ function index({ text = "", search = "" }: IHighlighted) {
 								<p className='text-[#C81107] text-xs font-semibold'>
 									{item.author_fullname}
 								</p>
-								<span className='flex gap-3 justify-between items-center'>
+								<div className='flex gap-3 justify-between items-center'>
 									<p className='text-[#6F6F70] font-semibold text-[10px]'>
 										<span>
 											{moment(item.created_at).format("ll").split(",")[0]}
@@ -90,7 +91,7 @@ function index({ text = "", search = "" }: IHighlighted) {
 											Read more
 										</span>
 									</Link>
-								</span>
+								</div>
 							</div>
 						</div>
 						{/* </span> */}

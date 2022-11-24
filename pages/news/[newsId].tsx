@@ -31,7 +31,7 @@ function index() {
 		<div>
 			<NewsBackground newsDetail={newsDetail} />
 			<NewsPost newsDetail={newsDetail} />
-			<READ_NEWS_ARTICLE />
+			<READ_NEWS_ARTICLE routeId={router.query.newsId} />
 		</div>
 	) : null;
 }

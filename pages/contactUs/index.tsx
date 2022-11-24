@@ -1,10 +1,11 @@
 import LoginBakground from "./assets/atslogin.png";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InstagramHandle from "./assets/ig.png";
 import FacebookHandle from "./assets/fb.png";
 import LinkedinHandle from "./assets/linkedinpage.png";
 import TwitterHandle from "./assets/tweethandle.png";
 import ReceivedMessage from "./assets/receivedmess.png";
+import axios from "axios";
 
 function ContactUs() {
   const [values, setValues] = useState({
@@ -13,31 +14,54 @@ function ContactUs() {
     subject: "",
     message: "",
   });
+  const [success, setSuccess] = useState(false);
 
+  const sendMessage = () => {
+    console.log({ ...values });
+    axios({
+      method: "post",
+      url: "http://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
+      data: JSON.stringify({
+        ...values,
+      }),
+    })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        if (response.status === 201) setSuccess(true);
+      })
+      .catch((error) => console.error(error));
+  };
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (
+      values.fullName === "" &&
+      values.email === "" &&
+      values.subject === "" &&
+      values.message === ""
+    )
+      setSubmitted(false);
+  }, [values.fullName, values.email, values.subject, values.message]);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     if (values.fullName && values.email && values.subject && values.message) {
       setValid(true);
-    }
-    setSubmitted(true);
+      sendMessage();
+      setValues({
+        ...values,
+        fullName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setSubmitted(true);
+    } else setSubmitted(true);
   };
 
-  const handleFullNameInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, fullName: event.target.value });
-  };
-
-  const handleEmailInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, email: event.target.value });
-  };
-
-  const handleSubjectInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, subject: event.target.value });
-  };
-
-  const handleMessageInputChange = (event: { target: { value: any } }) => {
-    setValues({ ...values, message: event.target.value });
+  const handleInputChange = (eventVal: string, valuekey: string) => {
+    setValues({ ...values, [valuekey]: eventVal });
   };
 
   const [valid, setValid] = useState(false);
@@ -62,7 +86,7 @@ function ContactUs() {
           style={{ boxShadow: "0px 4px 12px 1px rgba(0, 0, 0, 0.25)" }}
         >
           <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
-            {submitted && valid ? (
+            {success ? (
               <div
                 className="leading-6 text-[1rem] border-2 rounded-md flex p-3 items-center justify-start gap-3"
                 style={{
@@ -79,12 +103,13 @@ function ContactUs() {
             ) : null}
             <div className="flex flex-col md:flex-row gap-6 md:gap-2">
               <input
-                onChange={handleFullNameInputChange}
+                onChange={(event) =>
+                  handleInputChange(event.target.value, "fullName")
+                }
                 value={values.fullName}
                 type="text"
                 placeholder="Full Name"
-                className="w-full p-2 border outline-none text-black 
-				"
+                className="w-full p-2 border outline-none text-black"
                 style={{
                   backgroundColor: "#FBFAF9",
                   borderRadius: "5px",
@@ -96,7 +121,9 @@ function ContactUs() {
                 </span>
               ) : null}
               <input
-                onChange={handleEmailInputChange}
+                onChange={(event) =>
+                  handleInputChange(event.target.value, "email")
+                }
                 value={values.email}
                 type="email"
                 placeholder="Email Address"
@@ -113,7 +140,9 @@ function ContactUs() {
               ) : null}
             </div>
             <input
-              onChange={handleSubjectInputChange}
+              onChange={(event) =>
+                handleInputChange(event.target.value, "subject")
+              }
               value={values.subject}
               type="text"
               placeholder="Subject"
@@ -143,7 +172,9 @@ function ContactUs() {
               name=""
               placeholder="Message"
               id=""
-              onChange={handleMessageInputChange}
+              onChange={(event) =>
+                handleInputChange(event.target.value, "message")
+              }
               value={values.message}
               className="p-1 border outline-none text-black"
               cols={30}
@@ -151,7 +182,7 @@ function ContactUs() {
             ></textarea>
             {submitted && !values.message ? (
               <span className="text-light-internationalOrange">
-               All fields are required
+                All fields are required
               </span>
             ) : null}
             <button
