@@ -15,7 +15,7 @@ function RecentlyPosted() {
 	const [newsArticle, setNewsArticles] = useState<any>([]);
 
 	const fetchBlogs = () => {
-		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/news`)
+		axios(`/news`)
 			.then((response) => {
 				setNewsArticles(response.data.data.results);
 			})

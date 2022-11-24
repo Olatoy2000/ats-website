@@ -4,9 +4,9 @@ import React from "react";
 function SrollUpAnim() {
 	return (
 		<a href='#Navbar'>
-			<div className='flex md:h-1/6 justify-end pb-44'>
+			<div className='flex h-1/6 lg:mt-0 md:mt-0 mt-16 lg:justify-end md:justify-end justify-center lg:pb-44 md:pb-44 pb-28'>
 				<button className='flex gap-2 items-center animate-bounce'>
-					<div className='md:px-2 md:py-5 rounded-full border-[color:var(--afex-grey)] border-2'>
+					<div className='px-2 py-5 rounded-full border-[color:var(--afex-grey)] border-2'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							height='32'

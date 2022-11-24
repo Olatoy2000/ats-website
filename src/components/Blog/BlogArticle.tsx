@@ -22,7 +22,7 @@ function index({ text = "", search = "" }: IHighlighted) {
 		// 	data: data,
 		// };
 
-		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs`)
+		axios(`/blogs`)
 			.then((response) => {
 				setBlogArticles(response.data.data.results);
 			})
@@ -34,7 +34,7 @@ function index({ text = "", search = "" }: IHighlighted) {
 	}, []);
 
 	return (
-		<div className='flex flex-col gap-9 px-8 md:px-0 lg:px-0'>
+		<div className='flex flex-col gap-9'>
 			<h1 className='flex bg-[#C81107] w-20 lg:p-3 p-2 text-white text-2xl font-bold'>
 				Blog
 			</h1>

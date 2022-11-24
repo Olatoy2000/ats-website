@@ -55,7 +55,7 @@ function index() {
 	// }, []);
 
 	return (
-		<div className='flex flex-col mx-auto md:w-[85%] gap-9 max-w-screen-2xl'>
+		<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
 			<Navbar />
 			{/* <News newsarticles={newsResult.news} /> */}
 			<News />

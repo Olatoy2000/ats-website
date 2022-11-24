@@ -19,7 +19,7 @@ function Navbar() {
 				axios.defaults.headers.common["HASH-KEY"] = process.env.HASH_KEY;
 				axios.defaults.headers.common["REQUEST-TS"] = process.env.REQUEST_TS;
 				const response = await axios.get(
-					`http://atsbk.afexats.com/api/v1/search-news/?q=${value}#:~:text=ways`
+					`/search-news/?q=${value}#:~:text=ways`
 				);
 				console.log(response);
 				console.log("Hello from Nav");

@@ -7,7 +7,7 @@ function index() {
 	return (
 		//The blogsearch in the Updates of the landing page
 		<>
-			<div className='flex flex-col mx-auto md:w-[85%] gap-9 max-w-screen-2xl'>
+			<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
 				<Navbar />
 				<Blog />
 				<SearchEntries />

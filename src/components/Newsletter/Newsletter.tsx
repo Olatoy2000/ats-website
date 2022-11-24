@@ -7,7 +7,7 @@ function Newsletter() {
 	const [newsLetter, setNewsLetter] = useState<any>([]);
 
 	const fetchNewsLetter = () => {
-		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/newsletter`)
+		axios(`/newsletter`)
 			.then((response) => {
 				setNewsLetter(response.data.data.results);
 			})
@@ -18,7 +18,7 @@ function Newsletter() {
 		fetchNewsLetter();
 	}, []);
 	return (
-		<div className='pt-10 pb-16 w-full lg:px-0 md:px-0 px-8'>
+		<div className='pt-10 pb-16'>
 			<img
 				className='object-cover pb-8'
 				src={AFEXLogo.src}

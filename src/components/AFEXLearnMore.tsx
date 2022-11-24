@@ -2,7 +2,7 @@ import React from "react";
 
 function AFEXLearnMore() {
 	return (
-		<div className='bggrad flex flex-col md:p-10 gap-5 rounded-md'>
+		<div className='bggrad flex flex-col p-10 gap-5 rounded-md'>
 			<h2 className='text-white lg:text-2xl md:text-xl font-bold'>
 				Learn more about AFEX
 			</h2>
@@ -13,7 +13,7 @@ function AFEXLearnMore() {
 			<a
 				href='https://africaexchange.com/'
 				target='_blank'>
-				<button className='flex bg-[#F9FAFB] group md:w-24 md:p-2 rounded items-center justify-center hover:bg-[#312541]'>
+				<button className='flex bg-[#F9FAFB] group w-24 p-2 rounded items-center justify-center hover:bg-[#312541]'>
 					<span className='text-[#312541] group-hover:text-[white]'>
 						Visit Us
 					</span>

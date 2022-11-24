@@ -12,7 +12,7 @@ function index() {
 	const fetchBlogDetails = () => {
 		let config = {
 			method: "get",
-			url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
+			url: `blogs/${router.query.blogId}`,
 		};
 
 		axios(config)
