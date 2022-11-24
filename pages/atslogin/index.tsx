@@ -10,69 +10,69 @@ import Loading from "../../src/components/loading";
 import axios from "axios";
 
 function index() {
-  const form = useForm({
-    initialValues: {
-      email: "",
-    },
-  });
+	const form = useForm({
+		initialValues: {
+			email: "",
+		},
+	});
 
-  // const [pass, setPass] = useState("");
-  // const [value, setValue] = useState('')
-  const [time, setTime] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState("");
+	// const [pass, setPass] = useState("");
+	// const [value, setValue] = useState('')
+	const [time, setTime] = useState(0);
+	const [showModal, setShowModal] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [err, setErr] = useState("");
 
-  useEffect(() => {
-    const date = new Date();
-    setTime(date.getHours());
-    console.log(time);
-  }, [time]);
+	useEffect(() => {
+		const date = new Date();
+		setTime(date.getHours());
+		console.log(time);
+	}, [time]);
 
   useEffect(() => {
     if (form.values.email === "") setErr("");
   }, [form.values]);
 
-  const setModalTrue = () => {
-    // navigator.geolocation.getCurrentPosition(
-    //   (position: any) => {
-    // console.log(position.coord.lat)
-    // },
-    //   (error: any) => console.log(error)
-    // );
-    let email = form.values.email;
-    if (/^\S+@\S+$/.test(email)) {
-      setIsLoading(true);
-      var data = JSON.stringify({
-        email: email,
-        location: "ibadan",
-        date_time: new Date().toISOString(),
-      });
+	const setModalTrue = () => {
+		// navigator.geolocation.getCurrentPosition(
+		//   (position: any) => {
+		// console.log(position.coord.lat)
+		// },
+		//   (error: any) => console.log(error)
+		// );
+		let email = form.values.email;
+		if (/^\S+@\S+$/.test(email)) {
+			setIsLoading(true);
+			var data = JSON.stringify({
+				email: email,
+				location: "ibadan",
+				date_time: new Date().toISOString(),
+			});
 
-      var config = {
-        method: "post",
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
+			var config = {
+				method: "post",
+				url: `tech-stars/QR-code-generator/`,
+				headers: {
+					"Content-Type": "application/json",
+				},
+				data: data,
+			};
 
-      axios(config)
-        .then(function (response) {
-          if (response.data.status_code === 201) {
-            setIsLoading(false);
-            setShowModal(true);
-          }
-        })
-        .catch(function (error) {
-          setErr("Email does not exist");
-          setIsLoading(false);
-        });
-    } else {
-      setErr("Invalid Email");
-    }
-  };
+			axios(config)
+				.then(function (response) {
+					if (response.data.status_code === 201) {
+						setIsLoading(false);
+						setShowModal(true);
+					}
+				})
+				.catch(function (error) {
+					setErr("Email does not exist");
+					setIsLoading(false);
+				});
+		} else {
+			setErr("Invalid Email");
+		}
+	};
 
   const setModalFalse = () => {
     setShowModal(false);

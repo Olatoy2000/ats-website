@@ -10,7 +10,7 @@ function TopAuthors() {
 	const [topAuthor, setTopAuthors] = useState<any>([]);
 
 	const fetchAuthor = () => {
-		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/author`)
+		axios(`/author`)
 			.then((response) => {
 				setTopAuthors(response.data.data.results);
 			})
@@ -29,9 +29,9 @@ function TopAuthors() {
 			{topAuthor.map((item: any, idx: number) => (
 				<div
 					key={idx}
-					className='md:flex  md:py-9 gap-5 items-center'>
+					className='flex py-9 gap-5 items-center'>
 					<img
-						className='md:h-[2.5rem] lg:h-[4.5rem]'
+						className='md:h-[2.5rem] h-[4.5rem]'
 						src={item.profile_pics ? item.profile_pics : Placeholder.src}
 					/>
 					<div className='flex-col'>

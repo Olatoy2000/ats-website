@@ -6,18 +6,18 @@ import Testimonies from "../src/layouts/testimonies";
 import AfexStory from "../src/layouts/afexstory";
 
 function Main() {
-  return (
-    <div className="relative">
-      {/* <Header /> */}
-      <LandingPage />
-      <MenuPopover />
-      <Information />
-      <Timer />
-      <Testimonies />
-      <AfexStory />
-      {/* <Footer /> */}
-    </div>
-  );
+	return (
+		<div className='relative'>
+			{/* <Header /> */}
+			<LandingPage />
+			<MenuPopover />
+			<Information />
+			<Timer />
+			<Testimonies />
+			<AfexStory />
+			{/* <Footer /> */}
+		</div>
+	);
 }
 
 export default Main;

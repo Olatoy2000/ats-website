@@ -137,9 +137,7 @@ function Xpert() {
 	const [xperts, setXperts] = useState<any>([]);
 
 	const fetchBlogs = () => {
-		axios(
-			`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/testimonial-list-create/`
-		)
+		axios(`/tech-stars/testimonial-list-create/`)
 			.then((response) => {
 				console.log(response.data.data.results);
 			})

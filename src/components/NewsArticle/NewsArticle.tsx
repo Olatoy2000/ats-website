@@ -11,7 +11,7 @@ function index() {
   const [newsArticle, setNewsArticles] = useState<any>([]);
 
   const fetchNews = () => {
-    axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/news`)
+    axios(`/news`)
       .then((response) => {
         setNewsArticles(response.data.data.results);
       })

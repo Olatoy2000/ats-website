@@ -26,7 +26,7 @@ function ArticleDisplay() {
 	const [blogArticle, setBlogArticles] = useState<any>([]);
 
 	const fetchBlogs = () => {
-		axios(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs`)
+		axios(`/blogs`)
 			.then((response) => {
 				setBlogArticles(response.data.data.results);
 			})

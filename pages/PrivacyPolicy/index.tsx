@@ -3,7 +3,7 @@ import React from "react";
 function index() {
 	return (
 		//Privacy Policy page
-		<div className='flex flex-col mx-auto md:w-[85%] gap-9 max-w-screen-2xl pt-20 pb-44'>
+		<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl pt-20 pb-44'>
 			<div className=''>
 				<h1 className='lg:text-5xl md:text-3xl text-xl font-bold flex gap-1 justify-center items-center'>
 					<span className='bg-[#C81107] text-white p-3'>Privacy</span>Policy
