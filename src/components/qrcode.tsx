@@ -3,50 +3,51 @@ import Link from "next/link";
 import { QRCodeCanvas } from "qrcode.react";
 import { Modal } from "@mantine/core";
 import axios from "axios";
+import { json } from "stream/consumers";
 
 function QrCodeScan(_props: any) {
-  const [qrcode, setQrcode] = useState<any>(null);
+  // const fetchQrCode = async () => {
+  //   let config = {
+  //     method: "POST",
+  //     url: "http://atsbk.afexats.com/api/v1/tech-stars/QR-code-generator/",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: "lokon@afexnigeria.com",
+  //       date_time: "2022-11-20 19:12:03.090852",
+  //       location: "ibadan",
+  //     }),
+  //   };
+  //   axios(config)
+  //     .then((response: { data: { data: any } }) =>
+  //       console.log(JSON.stringify(response.data.data))
+  //     )
+  //     .catch(console.log);
+  // };
 
-  const fetchQrCode = async () => {
-      let config = {
-        method: "POST",
-        headers: {
-           "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "lokon@afexnigeria.com",
-          date_time: "2022-11-20 19:12:03.090852",
-          location: "ibadan",
-        }),
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
-      }
-       
-      axios(config)
-      .then((response) => setQrcode(JSON.stringify(response.data.data))).catch(console.log);
-    };
+  // useEffect(() => {
+  //   fetchQrCode();
+  // }, []);
 
-    useEffect(() => {
-    fetchQrCode();
-  }, []);
-    
-      // "http://atsbk.afexats.com/api/v1/tech-stars/QR-code-generator/",
-      // {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     email: "lokon@afexnigeria.com",
-      //     date_time: "2022-11-20 19:12:03.090852",
-      //     location: "ibadan",
-      //   }),
-      // }
-    
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   setQrcode(JSON.stringify(data.data));
-      // });
+  // "http://atsbk.afexats.com/api/v1/tech-stars/QR-code-generator/",
+  // {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     email: "lokon@afexnigeria.com",
+  //     date_time: "2022-11-20 19:12:03.090852",
+  //     location: "ibadan",
+  //   }),
+  // }
 
+  // .then((response) => response.json())
+  // .then((data) => {
+  //   setQrcode(JSON.stringify(data.data));
+  // });
+  console.log(_props.query);
   return (
     <Modal
       classNames={{
@@ -82,15 +83,16 @@ function QrCodeScan(_props: any) {
           </p>
         </div>
         <div className="w-fit">
-          {qrcode ? (
-            <QRCodeCanvas
-              id="qrCode"
-              value={qrcode}
-              size={300}
-              bgColor={"#FFF"}
-              level="H"
-            />
-          ) : null}
+          {_props.qrcode ? (
+            <img src={`data:image/png;base64, ${_props.qrCode}`} alt="" />
+          ) : // <QRCodeCanvas
+          //   id="qrCode"
+          //   value={_props.qrcode}
+          //   size={300}
+          //   bgColor={"#FFF"}
+          //   level="H"
+          // />
+          null}
         </div>
       </article>
       <Link href="atslogin">

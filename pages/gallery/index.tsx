@@ -1,70 +1,95 @@
 import React, { useState } from "react";
 import BackToUpdate from "../../src/components/backToUpdates";
-import GroupPicture from "../../src/components/backToUpdates/assets/group-picture.png";
-import GroupPicture2 from "../../src/components/backToUpdates/assets/group-picture2.png";
+// import GroupPicture from "../../src/components/backToUpdates/assets/group-picture.png";
+// import GroupPicture2 from "../../src/components/backToUpdates/assets/group-picture2.png";
 import { Pagination } from "@mantine/core";
 import Container from "../../src/components/Container";
 import { usePagination } from "@mantine/hooks";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-const galleryData = [
-	{
-		date: "11/2022",
-		picture: [
-			GroupPicture.src,
-			GroupPicture.src,
-			GroupPicture.src,
-			GroupPicture.src,
-			GroupPicture.src,
-			GroupPicture.src,
-		],
-	},
-	{
-		date: "12/2022",
-		picture: [
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-		],
-	},
-	{
-		date: "1/2023",
-		picture: [
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-		],
-	},
-	{
-		date: "2/2023",
-		picture: [
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-		],
-	},
-	{
-		date: "3/2023",
-		picture: [
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-			GroupPicture2.src,
-		],
-	},
-];
+// const galleryData = [
+// 	{
+// 		date: "11/2022",
+// 		picture: [
+// 			GroupPicture.src,
+// 			GroupPicture.src,
+// 			GroupPicture.src,
+// 			GroupPicture.src,
+// 			GroupPicture.src,
+// 			GroupPicture.src,
+// 		],
+// 	},
+// 	{
+// 		date: "12/2022",
+// 		picture: [
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 		],
+// 	},
+// 	{
+// 		date: "1/2023",
+// 		picture: [
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 		],
+// 	},
+// 	{
+// 		date: "2/2023",
+// 		picture: [
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 		],
+// 	},
+// 	{
+// 		date: "3/2023",
+// 		picture: [
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 			GroupPicture2.src,
+// 		],
+// 	},
+// ];
+
+const galleryData = {
+  status: "success",
+  status_code: 200,
+  data: [
+    {
+      image: "/media/Tech_Stars/ATS-Gallery/im1.jpg",
+      alt: null,
+      date_created: "2022-11-24",
+    },
+  ],
+  message: "Successfully Retrieved",
+};
+type GalleryImages = typeof galleryData;
+//Gallery in the Updates page
 
 function index() {
+
+	const { data: atsgallery, isLoading } = useQuery<GalleryImages>(
+    ["gallery-images"],
+    async () =>
+      axios("/images")
+        .then(({ data }) => data)
+        .catch((e) => e)
+  );
 	const [page, onChange] = useState(1);
 
 	const pagination = usePagination({ total: 20, page, onChange });
@@ -77,6 +102,9 @@ function index() {
 		pagination.setPage(page - 1);
 		pagination.range;
 	};
+
+
+	// 
 	return (
 		<article className='my-10 flex flex-col gap-8'>
 			<BackToUpdate />
