@@ -1,51 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
 import { QRCodeCanvas } from "qrcode.react";
 import { Modal } from "@mantine/core";
 import axios from "axios";
+import { json } from "stream/consumers";
 
-function QrCodeScan(_props: any) {
-  const [qrcode, setQrcode] = useState<any>(null);
+interface IQrCodeScan {
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  qrcode: string;
+}
 
-  const fetchQrCode = async () => {
-      let config = {
-        method: "POST",
-        headers: {
-           "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "lokon@afexnigeria.com",
-          date_time: "2022-11-20 19:12:03.090852",
-          location: "ibadan",
-        }),
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
-      }
-       
-      axios(config)
-      .then((response) => setQrcode(JSON.stringify(response.data.data))).catch(console.log);
-    };
+function QrCodeScan({ qrcode, showModal, setShowModal }: IQrCodeScan) {
+  // const fetchQrCode = async () => {
+  //   let config = {
+  //     method: "POST",
+  //     url: "http://atsbk.afexats.com/api/v1/tech-stars/QR-code-generator/",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: "lokon@afexnigeria.com",
+  //       date_time: "2022-11-20 19:12:03.090852",
+  //       location: "ibadan",
+  //     }),
+  //   };
+  //   axios(config)
+  //     .then((response: { data: { data: any } }) =>
+  //       console.log(JSON.stringify(response.data.data))
+  //     )
+  //     .catch(console.log);
+  // };
 
-    useEffect(() => {
-    fetchQrCode();
-  }, []);
-    
-      // "http://atsbk.afexats.com/api/v1/tech-stars/QR-code-generator/",
-      // {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     email: "lokon@afexnigeria.com",
-      //     date_time: "2022-11-20 19:12:03.090852",
-      //     location: "ibadan",
-      //   }),
-      // }
-    
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   setQrcode(JSON.stringify(data.data));
-      // });
+  // useEffect(() => {
+  //   fetchQrCode();
+  // }, []);
+
+  // "http://atsbk.afexats.com/api/v1/tech-stars/QR-code-generator/",
+  // {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     email: "lokon@afexnigeria.com",
+  //     date_time: "2022-11-20 19:12:03.090852",
+  //     location: "ibadan",
+  //   }),
+  // }
+
+  // .then((response) => response.json())
+  // .then((data) => {
+  //   setQrcode(JSON.stringify(data.data));
+  // });
 
   return (
     <Modal
@@ -69,8 +76,9 @@ function QrCodeScan(_props: any) {
           paddingBlock: "20px",
         },
       }}
-      opened={_props.opened}
-      onClose={() => _props.setOpened(false)}
+      opened={showModal}
+      onClose={() => setShowModal(false)}
+      closeOnClickOutside
     >
       <article className="w-fit box-border h-max p-6 bg-white items-center flex flex-col gap-2 justify-center rounded-xl">
         <div className="flex w-fit items-center justify-center flex-col">
@@ -83,19 +91,20 @@ function QrCodeScan(_props: any) {
         </div>
         <div className="w-fit">
           {qrcode ? (
-            <QRCodeCanvas
-              id="qrCode"
-              value={qrcode}
-              size={300}
-              bgColor={"#FFF"}
-              level="H"
-            />
-          ) : null}
+            <img src={`data:image/png;base64, ${qrcode}`} alt="" />
+          ) : // <QRCodeCanvas
+          //   id="qrCode"
+          //   value={props.qrcode}
+          //   size={300}
+          //   bgColor={"#FFF"}
+          //   level="H"
+          // />
+          null}
         </div>
       </article>
       <Link href="atslogin">
         <button
-          onClick={_props.onClicks}
+          onClick={() => setShowModal(false)}
           className="border justify-self-center border-light-internationalOrange bg-white leading-6 font-bold px-12 text-light-internationalOrange rounded-md py-4 hover:bg-light-internationalOrange hover:text-white"
         >
           Dismiss

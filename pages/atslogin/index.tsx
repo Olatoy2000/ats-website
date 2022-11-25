@@ -10,80 +10,86 @@ import Loading from "../../src/components/loading";
 import axios from "axios";
 
 function index() {
-	const form = useForm({
-		initialValues: {
-			email: "",
-		},
-	});
+  const form = useForm({
+    initialValues: {
+      email: "",
+    },
+  });
 
-	// const [pass, setPass] = useState("");
-	// const [value, setValue] = useState('')
-	const [time, setTime] = useState(0);
-	const [showModal, setShowModal] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const [err, setErr] = useState("");
+  // const [pass, setPass] = useState("");
+  // const [value, setValue] = useState('')
+  const [time, setTime] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const [qrcode, setQrcode] = useState<any>(null);
 
-	useEffect(() => {
-		const date = new Date();
-		setTime(date.getHours());
-		console.log(time);
-	}, [time]);
+  useEffect(() => {
+    const date = new Date();
+    setTime(date.getHours());
+    console.log(time);
+  }, [time]);
 
   useEffect(() => {
     if (form.values.email === "") setErr("");
   }, [form.values]);
 
-	const setModalTrue = () => {
-		// navigator.geolocation.getCurrentPosition(
-		//   (position: any) => {
-		// console.log(position.coord.lat)
-		// },
-		//   (error: any) => console.log(error)
-		// );
-		let email = form.values.email;
-		if (/^\S+@\S+$/.test(email)) {
-			setIsLoading(true);
-			var data = JSON.stringify({
-				email: email,
-				location: "ibadan",
-				date_time: new Date().toISOString(),
-			});
+  const setModalTrue = () => {
+    // navigator.geolocation.getCurrentPosition(
+    //   (position: any) => {
+    // console.log(position.coord.lat)
+    // },
+    //   (error: any) => console.log(error)
+    // );
 
-			var config = {
-				method: "post",
-				url: `tech-stars/QR-code-generator/`,
-				headers: {
-					"Content-Type": "application/json",
-				},
-				data: data,
-			};
+    let email = form.values.email;
+    if (/^\S+@\S+$/.test(email)) {
+      setIsLoading(true);
+      var data = JSON.stringify({
+        email: email,
+        location: "ibadan",
+        date_time: new Date().toISOString(),
+      });
 
-			axios(config)
-				.then(function (response) {
-					if (response.data.status_code === 201) {
-						setIsLoading(false);
-						setShowModal(true);
-					}
-				})
-				.catch(function (error) {
-					setErr("Email does not exist");
-					setIsLoading(false);
-				});
-		} else {
-			setErr("Invalid Email");
-		}
-	};
+      var config = {
+        method: "post",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
 
-  const setModalFalse = () => {
-    setShowModal(false);
+      axios(config)
+        .then(function (response) {
+          if (response.data.status_code === 201) {
+            setQrcode(response.data.data.image_base64);
+            setIsLoading(false);
+            setShowModal(true);
+          }
+        })
+        .catch(function (error) {
+          setErr("Email does not exist");
+          setIsLoading(false);
+        });
+    } else {
+      setErr("Invalid Email");
+    }
   };
+
+
   return (
     <div className="relative">
       {isLoading === true ? (
         <Loading />
-      ) : showModal ? (
+      ) : showModal && qrcode ? (
         <div className="z-10 absolute top-0 left-0 right-0 bottom-0">
-          <QrCodeScan opened={showModal} onClicks={setModalFalse} />
+          <QrCodeScan
+            qrcode={qrcode}
+            showModal={showModal}
+            setShowModal={setShowModal}
+
+          />
         </div>
       ) : (
         <div></div>
@@ -116,6 +122,7 @@ function index() {
                   styles={{ input: { paddingBlock: "26px", border: "none" } }}
                   withAsterisk
                   label="Email"
+        
                   value={{}}
                   placeholder="Enter your working email address"
                   {...form.getInputProps("email")}

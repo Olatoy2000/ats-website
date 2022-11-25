@@ -1,11 +1,41 @@
 import { Icon } from "@iconify/react";
 import LoginBakground from "./assets/atslogin.png";
 import Link from "next/link";
-import { PasswordInput } from "@mantine/core";
+import { PasswordInput, TextInput } from "@mantine/core";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useForm } from "@mantine/form";
 
-function index() {
+interface FormValues {
+  email: string;
+  password: string;
+}
+
+function AdminLogin() {
+  const form = useForm<FormValues>({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+  });
+  const [success, setSuccess] = useState(false);
+
+  const sendAdminLogin = (values: FormValues) => {
+    console.log(values);
+    axios({
+      method: "post",
+      url: "http://atsbk.afexats.com/api/v1/account/admin/login",
+      data: JSON.stringify({
+        ...values,
+      }),
+    }).then((response) => {
+      if (response.status === 201) {
+        console.log(response.data);
+        form.reset();
+      }
+    });
+  };
+
   const [time, setTime] = useState(0);
   useEffect(() => {
     const date = new Date();
@@ -25,11 +55,16 @@ function index() {
           <h1 className="text-white font-bold text-[2rem] leading-10 pb-5">
             Admin Login
           </h1>
-          <section className="gap-8 grid md:grid-cols-2">
+          <form
+            onSubmit={form.onSubmit(sendAdminLogin)}
+            className="gap-8 grid md:grid-cols-2"
+          >
             <div className="flex gap-6 bg-white justify-between p-3">
-              <input
-                type="text"
-                placeholder="Enter your username"
+              <TextInput
+                classNames={{ input: "border-none outline-none " }}
+                styles={{ root: { border: "none", outline: "none" } }}
+                type="email"
+                placeholder="Enter your email"
                 className="w-full outline-none"
                 required
               />
@@ -59,7 +94,7 @@ function index() {
                 Login
               </button>
             </div>
-          </section>
+          </form>
         </article>
         <article className="flex flex-col gap-3 justify-start">
           <div className="bg-[#E2E9EB] flex flex-col gap-4 justify-start p-4">
@@ -116,4 +151,4 @@ function index() {
     </div>
   );
 }
-export default index;
+export default AdminLogin;
