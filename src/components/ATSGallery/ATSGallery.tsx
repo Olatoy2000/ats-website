@@ -21,10 +21,10 @@ type GalleryImages = typeof galleryImagesSample;
 
 //Gallery in the Updates page
 function ATSGallery() {
-	const { data: gallery, isLoading } = useQuery<GalleryImages>(
+	const { data: atsgallery, isLoading } = useQuery<GalleryImages>(
 		["gallery-images"],
 		async () =>
-			axios("/images")
+			axios("/api/v1/images")
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
@@ -37,7 +37,7 @@ function ATSGallery() {
 				<span className='bg-[#C81107] text-white'>ATS</span>Gallery
 			</h1>
 			<div className='grid grid-cols-3 grid-flow-row gap-2'>
-				{gallery?.data?.map(({ image }: any, idx: number) => (
+				{atsgallery?.data?.map(({ image }: any, idx: number) => (
 					<div key={idx}>
 						<img
 							className='w-full ATSgal ATSgal:hover object-cover'

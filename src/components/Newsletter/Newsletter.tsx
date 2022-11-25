@@ -7,7 +7,7 @@ function Newsletter() {
 	const [newsLetter, setNewsLetter] = useState<any>([]);
 
 	const fetchNewsLetter = () => {
-		axios(`/newsletter`)
+		axios(`/api/v1/newsletter`)
 			.then((response) => {
 				setNewsLetter(response.data.data.results);
 			})

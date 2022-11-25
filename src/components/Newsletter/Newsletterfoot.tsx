@@ -23,9 +23,11 @@ function Newsletterfoot() {
 					</li>
 				</Link>
 				<li className=''>|</li>
-				<li className='underline hover:underline-offset-2 hover:underline-white'>
-					Unsubscribe
-				</li>
+				<Link href='/unsubscribe'>
+					<li className='underline hover:underline-offset-2 hover:underline-white'>
+						Unsubscribe
+					</li>
+				</Link>
 			</ul>
 		</div>
 	);
