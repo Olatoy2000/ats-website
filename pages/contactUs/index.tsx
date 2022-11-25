@@ -6,65 +6,105 @@ import LinkedinHandle from "./assets/linkedinpage.png";
 import TwitterHandle from "./assets/tweethandle.png";
 import ReceivedMessage from "./assets/receivedmess.png";
 import axios from "axios";
+import { useForm } from "@mantine/form";
+import { Button, Textarea, TextInput } from "@mantine/core";
+
+interface FormValues {
+  fullName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 function ContactUs() {
-  const [values, setValues] = useState({
-    fullName: "",
-    email: "",
-    subject: "",
-    message: "",
+  const form = useForm<FormValues>({
+    initialValues: {
+      fullName: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
   });
+
+  // const [values, setValues] = useState({
+  //   full_name: "",
+  //   email: "",
+  //   subject: "",
+  //   message: "",
+  // });
   const [success, setSuccess] = useState(false);
 
-  const sendMessage = () => {
-    console.log({ ...values });
+  const sendMessage = (values: FormValues) => {
+    console.log(values);
     axios({
       method: "post",
       url: "http://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
       data: JSON.stringify({
         ...values,
       }),
-    })
-      .then((response) => {
-        console.log(response);
+    }).then((response) => {
+      if (response.status === 201) {
+        setSuccess(true);
         console.log(response.data);
-        if (response.status === 201) setSuccess(true);
-      })
-      .catch((error) => console.error(error));
+        form.reset();
+        setTimeout(() => {
+          setSuccess(false)
+        }, 5000)
+      }
+    });
   };
-  const [submitted, setSubmitted] = useState(false);
+  // const sendMessage = (obj: {
+  //   full_name: string;
+  //   email: string;
+  //   subject: string;
+  //   message: string;
+  // }) => {
+  //   console.log(obj);
+  //   // axios({
+  //   //   method: "post",
+  //   //   url: "http://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
+  //   //   data: JSON.stringify(obj),
+  //   // })
+  //   //   .then((response) => {
+  //   //     console.log(response);
+  //   //     console.log(response.data);
+  //   //     if (response.status === 201) setSuccess(true);
+  //   //   })
+  //   //   .catch((error) => console.error(error));
+  // };
+  // const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (
-      values.fullName === "" &&
-      values.email === "" &&
-      values.subject === "" &&
-      values.message === ""
-    )
-      setSubmitted(false);
-  }, [values.fullName, values.email, values.subject, values.message]);
+  // useEffect(() => {
+  //   if (
+  //     values.full_name === "" &&
+  //     values.email === "" &&
+  //     values.subject === "" &&
+  //     values.message === ""
+  //   )
+  //     setSubmitted(false);
+  // }, [values.full_name, values.email, values.subject, values.message]);
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    if (values.fullName && values.email && values.subject && values.message) {
-      setValid(true);
-      sendMessage();
-      setValues({
-        ...values,
-        fullName: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-      setSubmitted(true);
-    } else setSubmitted(true);
-  };
+  // const handleSubmit = (event: { preventDefault: () => void }) => {
+  //   event.preventDefault();
+  //   if (values.full_name && values.email && values.subject && values.message) {
+  //     setValid(true);
+  //     sendMessage(values);
+  //     setValues({
+  //       ...values,
+  //       full_name: "",
+  //       email: "",
+  //       subject: "",
+  //       message: "",
+  //     });
+  //     setSubmitted(true);
+  //   } else setSubmitted(true);
+  // };
 
-  const handleInputChange = (eventVal: string, valuekey: string) => {
-    setValues({ ...values, [valuekey]: eventVal });
-  };
+  // const handleInputChange = (eventVal: string, valuekey: string) => {
+  //   setValues({ ...values, [valuekey]: eventVal });
+  // };
 
-  const [valid, setValid] = useState(false);
+  // const [valid, setValid] = useState(false);
   return (
     <div
       style={{
@@ -74,8 +114,8 @@ function ContactUs() {
         paddingBlock: "80px",
       }}
     >
-      <section className="text-center text-[clamp(1.5rem,3rem,3.5rem)] font-bold text-bold-jet leading-[3.5rem] pb-[3rem]">
-        <span className="bg-light-internationalOrange text-white p-2">
+      <section className="text-center text-[clamp(1.2rem,3rem,3.5rem)] font-bold text-bold-jet leading-[3.5rem] pb-[3rem]">
+        <span className="bg-light-internationalOrange w-fit text-white p-2">
           Contact
         </span>{" "}
         Us
@@ -85,7 +125,7 @@ function ContactUs() {
           className="flex bg-white rounded-md flex-col px-6 py-8"
           style={{ boxShadow: "0px 4px 12px 1px rgba(0, 0, 0, 0.25)" }}
         >
-          <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
+          {/* <form onSubmit={handleSubmit} className="flex flex-col w-full gap-6">
             {success ? (
               <div
                 className="leading-6 text-[1rem] border-2 rounded-md flex p-3 items-center justify-start gap-3"
@@ -104,9 +144,9 @@ function ContactUs() {
             <div className="flex flex-col md:flex-row gap-6 md:gap-2">
               <input
                 onChange={(event) =>
-                  handleInputChange(event.target.value, "fullName")
+                  handleInputChange(event.target.value, "full_name")
                 }
-                value={values.fullName}
+                value={values.full_name}
                 type="text"
                 placeholder="Full Name"
                 className="w-full p-2 border outline-none text-black"
@@ -115,7 +155,7 @@ function ContactUs() {
                   borderRadius: "5px",
                 }}
               />
-              {submitted && !values.fullName ? (
+              {submitted && !values.full_name ? (
                 <span className="text-light-internationalOrange">
                   Please enter your full name
                 </span>
@@ -191,6 +231,81 @@ function ContactUs() {
             >
               Submit
             </button>
+          </form> */}
+          <form
+            className="flex flex-col gap-2"
+            onSubmit={form.onSubmit(sendMessage)}
+          >
+            {success ? (
+              <div
+                className="leading-6 text-[1rem] border-2 rounded-md flex p-3 items-center justify-start gap-3"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #EEFDF7 0%, #EBFDF5 19.26%);",
+                  border: "1.83447px solid #76AD94",
+                  boxShadow:
+                    "inset 0px 0px 3.66893px rgba(255, 255, 255, 0.63)",
+                }}
+              >
+                <img src={ReceivedMessage.src} alt="" className="w-5" />
+                <h5>Thanks, your message was received</h5>
+              </div>
+            ) : null}
+            <div className="flex flex-col md:flex md:flex-row md:gap-2 md:items-center md:justify-center">
+              <TextInput
+                styles={{
+                  input: { backgroundColor: "#FBFAF9" },
+                  root: { flex: "1", marginTop: "0px" },
+                  justifySelf: "center",
+                  alignSelf: "center",
+                }}
+                type="text"
+                required
+                placeholder="Full name"
+                {...form.getInputProps("fullName")}
+              />
+              <TextInput
+                classNames={{ root: "md:mt-0 md:flex-1 w-full" }}
+                styles={{
+                  input: { backgroundColor: "#FBFAF9" },
+                  root: {
+                    marginTop: "0px",
+                    justifySelf: "center",
+                    alignSelf: "center",
+                  },
+                }}
+                type="email"
+                required
+                placeholder="Email"
+                mt="md"
+                {...form.getInputProps("email")}
+              />
+            </div>
+            <TextInput
+              styles={{ input: { backgroundColor: "#FBFAF9" } }}
+              type="text"
+              placeholder="Subject"
+              required
+              mt="md"
+              {...form.getInputProps("subject")}
+            />
+            <Textarea
+              styles={{ input: { backgroundColor: "#FBFAF9" } }}
+              error="All fields are required"
+              placeholder="Message"
+              className="font-['Mulish']"
+              mt="md"
+              required
+              size="xl"
+              {...form.getInputProps("message")}
+            />
+            <Button
+              className="bg-[#C81107] self-end hover:bg-[#C81107] font-['Mulish'] rounded-xl text-white py-3 px-6"
+              type="submit"
+              mt="md"
+            >
+              Submit
+            </Button>
           </form>
         </article>
         <article className="flex flex-col gap-8 md:flex md:flex-row md:items-baseline lg:flex-col lg:self-center md:gap-8 lg:p-4">
@@ -268,5 +383,4 @@ function ContactUs() {
     </div>
   );
 }
-
 export default ContactUs;

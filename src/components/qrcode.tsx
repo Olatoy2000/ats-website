@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
 import { QRCodeCanvas } from "qrcode.react";
 import { Modal } from "@mantine/core";
 import axios from "axios";
 import { json } from "stream/consumers";
 
-function QrCodeScan(_props: any) {
+interface IQrCodeScan {
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  qrcode: string;
+}
+
+function QrCodeScan({ qrcode, showModal, setShowModal }: IQrCodeScan) {
   // const fetchQrCode = async () => {
   //   let config = {
   //     method: "POST",
@@ -47,7 +53,7 @@ function QrCodeScan(_props: any) {
   // .then((data) => {
   //   setQrcode(JSON.stringify(data.data));
   // });
-  console.log(_props.query);
+
   return (
     <Modal
       classNames={{
@@ -70,8 +76,9 @@ function QrCodeScan(_props: any) {
           paddingBlock: "20px",
         },
       }}
-      opened={_props.opened}
-      onClose={() => _props.setOpened(false)}
+      opened={showModal}
+      onClose={() => setShowModal(false)}
+      closeOnClickOutside
     >
       <article className="w-fit box-border h-max p-6 bg-white items-center flex flex-col gap-2 justify-center rounded-xl">
         <div className="flex w-fit items-center justify-center flex-col">
@@ -83,11 +90,11 @@ function QrCodeScan(_props: any) {
           </p>
         </div>
         <div className="w-fit">
-          {_props.qrcode ? (
-            <img src={`data:image/png;base64, ${_props.qrCode}`} alt="" />
+          {qrcode ? (
+            <img src={`data:image/png;base64, ${qrcode}`} alt="" />
           ) : // <QRCodeCanvas
           //   id="qrCode"
-          //   value={_props.qrcode}
+          //   value={props.qrcode}
           //   size={300}
           //   bgColor={"#FFF"}
           //   level="H"
@@ -97,7 +104,7 @@ function QrCodeScan(_props: any) {
       </article>
       <Link href="atslogin">
         <button
-          onClick={_props.onClicks}
+          onClick={() => setShowModal(false)}
           className="border justify-self-center border-light-internationalOrange bg-white leading-6 font-bold px-12 text-light-internationalOrange rounded-md py-4 hover:bg-light-internationalOrange hover:text-white"
         >
           Dismiss

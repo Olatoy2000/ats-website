@@ -53,7 +53,7 @@ function index() {
 
       var config = {
         method: "post",
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/tech-stars/QR-code-generator/`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,9 +63,9 @@ function index() {
       axios(config)
         .then(function (response) {
           if (response.data.status_code === 201) {
-            console.log(response.data.data.image_base64);
+            setQrcode(response.data.data.image_base64);
             setIsLoading(false);
-            // setShowModal(true);
+            setShowModal(true);
           }
         })
         .catch(function (error) {
@@ -77,9 +77,7 @@ function index() {
     }
   };
 
-  const setModalFalse = () => {
-    setShowModal(false);
-  };
+
   return (
     <div className="relative">
       {isLoading === true ? (
@@ -88,8 +86,9 @@ function index() {
         <div className="z-10 absolute top-0 left-0 right-0 bottom-0">
           <QrCodeScan
             qrcode={qrcode}
-            opened={showModal}
-            onClicks={setModalFalse}
+            showModal={showModal}
+            setShowModal={setShowModal}
+
           />
         </div>
       ) : (
@@ -123,6 +122,7 @@ function index() {
                   styles={{ input: { paddingBlock: "26px", border: "none" } }}
                   withAsterisk
                   label="Email"
+        
                   value={{}}
                   placeholder="Enter your working email address"
                   {...form.getInputProps("email")}
