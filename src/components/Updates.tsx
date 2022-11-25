@@ -1,5 +1,5 @@
 import React from "react";
-import ArticleDisplay from "./ArticleDisplay/ArticleDisplay";
+import BlogArticle from "./BlogArticle/BlogArticle";
 import AfexNewsPic from "./AfexNewsPic/AfexNewsPic";
 import AFEXLearnMore from "./AFEXLearnMore";
 import TodayUpdates from "./TodayUpdates";
@@ -20,7 +20,7 @@ function Updates() {
 		<main className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
 			<Navbar />
 			<BaWasa />
-			<ArticleDisplay />
+			<BlogArticle />
 			<AfexNewsPic />
 			<div className='lg:flex lg:flex-row md:flex md:flex-row flex flex-col md:gap-20 '>
 				<div className='flex-1'>

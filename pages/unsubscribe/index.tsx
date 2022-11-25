@@ -25,7 +25,7 @@ function index() {
 					<li>I no longer want to receive these mails</li>
 					<li>Others</li>
 				</ul>
-				<Link href='/'>
+				<Link href=''>
 					<button className='bggradi rounded-lg p-3 group-hover:bg-black'>
 						<span className='text-white'>Unsubscribe</span>
 					</button>

@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 export default function NewsBar() {
 	const [newsBar, setNewsBar] = useState<any>(null);
 	const fetchNewsBar = () => {
-		axios(`/nav-news`)
+		axios(`/api/v1/nav-news`)
 			.then((response) => {
 				setNewsBar(response.data.data);
 			})

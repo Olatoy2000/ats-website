@@ -10,7 +10,7 @@ function SearchTagsi() {
 	const [tagCategory, setTagCategory] = useState<any>([]);
 
 	const fetchSearchTagsi = () => {
-		axios(`/category`)
+		axios(`/api/v1/category`)
 			.then((response) => {
 				setTagCategory(response.data.data.results);
 			})

@@ -1,64 +1,60 @@
-import { useState } from "react";
-import axios from "axios";
-import Blog from "../../../pages/blog/index";
-import { Menu, Button } from "@mantine/core";
-import Link from "next/link";
+import {
+	Dispatch,
+	ReactNode,
+	SetStateAction,
+	useEffect,
+	useState,
+} from "react";
+import { Menu, ActionIcon, Group, Button } from "@mantine/core";
 import { Icon } from "@iconify/react";
-function Navbar() {
-	const [query, setQuery] = useState("");
-	const [result, setResult] = useState({
-		blogs: [],
-		loading: false,
-	});
-	const handleChange = async (e: any) => {
-		const { value } = e.target;
-		setQuery(value);
-		if (value.length > 1) {
-			try {
-				axios.defaults.headers.common["API-KEY"] = process.env.APP_API_KEY;
-				axios.defaults.headers.common["HASH-KEY"] = process.env.HASH_KEY;
-				axios.defaults.headers.common["REQUEST-TS"] = process.env.REQUEST_TS;
-				const response = await axios.get(
-					`/search-news/?q=${value}#:~:text=ways`
-				);
-				console.log(response);
-				console.log("Hello from Nav");
-				const blogs = await response.data.data.hits;
-				console.log(blogs);
-				// const blogs = await response.data.data.hits;
-				setResult({ blogs, loading: false });
-				renderSearch();
-			} catch (error) {
-				console.log(error, "Error during fetch");
-			}
-		}
-	};
-	const renderSearch = () => {
-		let blogs = <h1>We couldn't find any blog with your search query</h1>;
-		if (result.blogs.length > 1) {
-			blogs = <Blog />;
-			//  bloglist={result.blogs}
-		}
-		return blogs;
-	};
+import { useRouter } from "next/router";
 
+import axios from "axios";
+import Link from "next/link";
+
+function Navbar() {
+	// const renderSearch = () => {
+	// 	let blogs = <h1>We couldn't find any blog with your search query</h1>;
+	// 	if (result.blogs.length > 1) {
+	// 		blogs = <Blog />;
+	// 		//  bloglist={result.blogs}
+	// 	}
+	// 	return blogs;
+	// };
+	const [query, setQuery] = useState("");
 	const [isOpened, setIsOpened] = useState(false);
+	const { pathname, ...items } = useRouter();
+	const path = pathname.slice(1);
+
+	useEffect(() => {
+		items.push({ hash: `:~:text=${query}` });
+	}, [query]);
+
 	return (
-		<div
-			className='flex items-center justify-between py-10 pl-8 md:px-0 lg:px-0'
+		<Group
+			position='apart'
+			className='items-center py-10 pl-8 md:px-0 lg:px-0'
 			id='Navbar'>
-			<span className='text-[#C81107] flex-1 lg:text-xl md:text-lg lg:flex md:flex hidden font-bold'>
+			<span className='text-[#C81107] lg:text-xl md:text-lg lg:flex md:flex hidden font-bold'>
 				ATS Updates
 			</span>
-			<div className='flex lg:gap-0 md:gap-0 sm:flex flex-1 items-center text-sm'>
-				Sort by &nbsp;&nbsp;
+
+			<div className='flex gap-4 items-center text-sm'>
+				<p>Sort by</p>
 				<Menu
 					width={100}
-					shadow='md'>
+					shadow='md'
+					opened={isOpened}>
 					<Menu.Target>
-						<button
+						<Button
+							color='gray.3'
+							variant='outline'
 							onClick={() => setIsOpened(!isOpened)}
-							className='border w-5'>
+							classNames={{
+								label: "flex gap-3 items-center flex-nowrap font-normal",
+								root: "bg-[#F7F8F9] border text-[black]",
+							}}>
+							{["blog", "news"].includes(path) ? path : ""}
 							{isOpened ? (
 								<Icon
 									icon='ph:caret-up-bold'
@@ -67,29 +63,35 @@ function Navbar() {
 							) : (
 								<Icon icon='ph:caret-down-bold' />
 							)}
-						</button>
+						</Button>
 					</Menu.Target>
 
 					<Menu.Dropdown>
-						<Link href='/blog#:~:text=ways'>
-							<Menu.Item>Blog</Menu.Item>
+						<Link
+							passHref
+							href={{
+								pathname: "/blog",
+								search: query,
+							}}>
+							<Menu.Item component='a'>Blog</Menu.Item>
 						</Link>
-						<Link href='/news'>
-							<Menu.Item>News</Menu.Item>
+						<Link
+							passHref
+							href='/news'>
+							<Menu.Item component='a'>News</Menu.Item>
 						</Link>
 					</Menu.Dropdown>
 				</Menu>
-				&nbsp;&nbsp;
-				<div className='relative flex w-52'>
+				<div className='flex w-52'>
 					<input
-						className=' placeholder:text-slate-400 flex flex-1 items-end bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
+						onChange={(e) => setQuery(e.target.value)}
+						className='placeholder:text-slate-400 flex flex-1 items-end bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'
 						value={query}
-						onChange={handleChange}
 					/>
-					<button className='absolute right-3 top-2'>
+					<button className='-ml-10'>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							height='20'
@@ -108,8 +110,9 @@ function Navbar() {
 					</button>
 				</div>
 			</div>
+
 			<div className='gap-16 lg:flex hidden'>
-				<a href='#ArticleDisplay'>
+				<a href='#BlogArticle'>
 					<button className='text-[#C81107]'>Blogs</button>
 				</a>
 
@@ -121,7 +124,7 @@ function Navbar() {
 					<button className='text-[#C81107]'>Gallery</button>
 				</a>
 			</div>
-		</div>
+		</Group>
 	);
 }
 export default Navbar;
