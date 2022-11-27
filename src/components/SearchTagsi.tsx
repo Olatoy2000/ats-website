@@ -25,7 +25,7 @@ function SearchTagsi() {
 			<h1 className='lg:text-2xl md:text-lg font-bold flex gap-1 py-8'>
 				<span className='bg-[#C81107] text-white'>Search</span>With Tags
 			</h1>
-			<ul className='grid lg:grid-cols-3 grid-cols-3 grid-flow-row gap-4 md:grid md:grid-cols-2 md:grid-rows-3 leading-6'>
+			<ul className='grid lg:grid-flow-row lg:grid-cols-3 grid-cols-3 grid-flow-row gap-4 md:grid md:grid-cols-2 md:grid-rows-3'>
 				{tagCategory.map((item: any, idx: number) => (
 					<Link
 						href={`/category/${item.id}`}

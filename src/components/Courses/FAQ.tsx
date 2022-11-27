@@ -58,7 +58,7 @@ function FAQ() {
 					variant='separated'
 					defaultValue='customization'>
 					<Accordion.Item
-						value='customization'
+						value='no-focus-ring'
 						className='border shadow-lg py-3'>
 						<Accordion.Control>
 							What is the duration of the program?

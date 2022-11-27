@@ -40,9 +40,9 @@ function Navbar() {
 			</span>
 
 			<div className='flex gap-4 items-center text-sm'>
-				<p>Sort by</p>
+				<p>Search by</p>
 				<Menu
-					width={100}
+					width={120}
 					shadow='md'
 					opened={isOpened}>
 					<Menu.Target>
@@ -51,9 +51,10 @@ function Navbar() {
 							variant='outline'
 							onClick={() => setIsOpened(!isOpened)}
 							classNames={{
-								label: "flex gap-3 items-center flex-nowrap font-normal",
-								root: "bg-[#F7F8F9] border text-[black]",
+								label: "flex gap-3 flex-nowrap font-normal bg-[#F7F8F9]",
+								root: "flex bg-[#F7F8F9] border text-black",
 							}}>
+							{" "}
 							{["blog", "news"].includes(path) ? path : ""}
 							{isOpened ? (
 								<Icon
