@@ -294,6 +294,7 @@ function ContactUs() {
               error="All fields are required"
               placeholder="Message"
               className="font-['Mulish']"
+              minRows={8}
               mt="md"
               required
               size="xl"

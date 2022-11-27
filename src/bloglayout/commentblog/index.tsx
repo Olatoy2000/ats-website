@@ -1,9 +1,43 @@
+import { Textarea, TextInput } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import axios from "axios";
+import moment from "moment";
 import { Fragment, useState } from "react";
 import Container from "../../components/Container";
 import XpertLogo from "./assets/newxpert.png";
 
 export default function CommentBlog({ blogDetail }: any) {
   const [paginate, setPaginate] = useState(5);
+  const [blogComment, setBlogComment] = useState(blogDetail.few_comments);
+
+  const form = useForm({
+    initialValues: {
+      name: "",
+      description: "",
+      blog_article: blogDetail.id,
+    },
+  });
+
+  const handleSubmit = (e: { preventDefault: () => any }) => {
+    e.preventDefault();
+    var data = form.values;
+
+    var config = {
+      method: "post",
+      url: "http://atsbk.afexats.com/api/v1/comment",
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        if (response.statusText === "Created") {
+          form.reset();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <Container>
@@ -16,7 +50,8 @@ export default function CommentBlog({ blogDetail }: any) {
                 {blogDetail.author_fullname}
               </h3>
               <p className="flex text-light-darkSilver leading-6 font-normal text-[1.18rem]">
-                {blogDetail.created_at} &nbsp; &#8226; {blogDetail.min_read}
+                {moment(blogDetail.created_at).format("ll").split(",")[0]}{" "}
+                &nbsp; &#8226; {blogDetail.min_read}
               </p>
             </div>
           </article>
@@ -29,55 +64,71 @@ export default function CommentBlog({ blogDetail }: any) {
                 Comments
               </h3>
               <div className="flex flex-col gap-12">
-                <article className="flex gap-4 flex-col">
-                  {blogDetail.few_comments.map((el: any, id: number) =>
+                <article className="flex gap-12 flex-col">
+                  {blogComment.map((el: any, id: number) =>
                     id < paginate ? (
                       <Fragment key={id}>
                         <div className="flex gap-4 justify-start items-start">
                           <img
-                            src={el.picture}
+                            src={XpertLogo.src}
                             alt=""
                             className="w-20 shadow-md border rounded-full"
                           />
-                          <p className="text-bold-blackOlive flex justify-start flex-col">
-                            <span className="text-[1rem] leading-6 font-bold">
-                              {el.contributor}
-                            </span>{" "}
-                            &nbsp;{" "}
-                            <span className="leading-4 text-[0.625rem] font-normal text-bold-blackOlive">
-                              {el.date}
-                            </span>
-                          </p>
+                          <div className="flex self-center flex-col gap-4">
+                            <p className="text-bold-blackOlive justify-start">
+                              <span className="text-[1rem] block font-bold">
+                                {el.name}
+                              </span>{" "}
+                              &nbsp;{" "}
+                              <span className="leading-4 text-[0.625rem] font-normal text-bold-blackOlive">
+                                {
+                                  moment(el.created_at)
+                                    .format("ll")
+                                    .split(",")[0]
+                                }
+                              </span>
+                            </p>
+                            <p>{el.description}</p>
+                          </div>
                         </div>
-                        <div>{el.comment}</div>
                       </Fragment>
                     ) : null
                   )}
-                  {Array(4 - blogDetail.few_comments.length).fill(
-                    <Fragment>
-                      <div className="flex gap-6 items-center">
-                        <img
-                          src={XpertLogo.src}
-                          alt=""
-                          className="w-20 shadow-md border rounded-full"
-                        />
-                        <p className="text-bold-blackOlive flex flex-col">
-                          <span className="block text-[1rem] font-bold">
-                            ---------------
-                          </span>{" "}
-                          &nbsp;{" "}
-                          <span className="text-[0.625rem] font-normal  text-bold-blackOlive">
-                            ----------
-                          </span>
-                        </p>
-                      </div>
-                      <div className="break-words">
-                        ...............................................................................................................................................................................................................................................................................................................................
-                      </div>
-                    </Fragment>
-                  )}
+                  {blogComment.length < 5 &&
+                    Array(4 - blogComment.length).fill(
+                      <Fragment>
+                        <div className="flex gap-6 items-center">
+                          <img
+                            src={XpertLogo.src}
+                            alt=""
+                            className="w-20 shadow-md border rounded-full"
+                          />
+                          <p className="text-bold-blackOlive flex flex-col">
+                            <span className="block text-[1rem] font-bold">
+                              ---------------
+                            </span>{" "}
+                            &nbsp;{" "}
+                            <span className="text-[0.625rem] font-normal  text-bold-blackOlive">
+                              ----------
+                            </span>
+                          </p>
+                        </div>
+                        <div className="break-words">
+                          ...............................................................................................................................................................................................................................................................................................................................
+                        </div>
+                      </Fragment>
+                    )}
                   <button
-                    onClick={() => setPaginate(10)}
+                    onClick={() => {
+                      setPaginate(10);
+                      axios(
+                        `http://atsbk.afexats.com/api/v1/blogs-comments/${blogDetail.id}`
+                      )
+                        .then((res) => {
+                          setBlogComment(res.data.data);
+                        })
+                        .catch(console.error);
+                    }}
                     className="flex gap-3 justify-center text-white p-3 rounded-md items-center"
                     style={{
                       background:
@@ -114,22 +165,32 @@ export default function CommentBlog({ blogDetail }: any) {
                   Comment
                 </h2>
                 <form>
-                  <input
+                  <TextInput
+                    {...form.getInputProps("name")}
+                    classNames={{
+                      root: "!p-0",
+                      input: "!border-none !p-2 !bg-transparent",
+                    }}
                     type="text"
                     className="bg-[#F9FAFB] align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md border border-[#DEDDDC]"
                     placeholder="Full Name"
                     required
                   />
                   <br />
-                  <textarea
+                  <Textarea
+                    {...form.getInputProps("description")}
+                    classNames={{
+                      root: "!mt-0 !p-0",
+                      input: "!bg-transparent !border-none",
+                    }}
                     name=""
                     id=""
                     placeholder="Enter comment"
                     className="bg-[#F9FAFB] resize-none align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md mt-4 border border-[#DEDDDC]"
                     cols={30}
-                    rows={10}
+                    minRows={10}
                     required
-                  ></textarea>
+                  />
                   <button
                     type="submit"
                     className="flex gap-3 mt-6 justify-center text-white p-3 w-full rounded-md items-center"
@@ -137,6 +198,7 @@ export default function CommentBlog({ blogDetail }: any) {
                       background:
                         "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
                     }}
+                    onClick={(e) => handleSubmit(e)}
                   >
                     Comment
                   </button>

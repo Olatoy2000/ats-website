@@ -37,13 +37,13 @@ export default function MenuPopover() {
     }).then((response) => {
       if (response.status === 201) {
         setSuccess(true);
-        console.log(response.data)
+        console.log(response.data);
         form.reset();
         setTimeout(() => {
-          setSuccess(false)
-        }, 5000)
+          setSuccess(false);
+        }, 5000);
       }
-    })
+    });
   }
 
   return (
@@ -51,7 +51,7 @@ export default function MenuPopover() {
       <Menu.Target>
         <img
           src={PopUp.src}
-          className="hidden sm:block sm:fixed w-10 bottom-6 right-6 z-[400]"
+          className="hidden sm:block sm:fixed w-20 bottom-6 right-6 z-[400]"
           alt="pop-up"
         />
       </Menu.Target>
@@ -79,7 +79,7 @@ export default function MenuPopover() {
             Please fill out the form below and we will get back to you as soon
             as possible.
           </p>
-         
+
           <form
             className="flex flex-col gap-1"
             onSubmit={form.onSubmit(sendMessage)}
@@ -131,6 +131,8 @@ export default function MenuPopover() {
               }}
               placeholder="Message"
               mt="md"
+              cols={20}
+              minRows={8}
               {...form.getInputProps("message")}
             />
             <Button

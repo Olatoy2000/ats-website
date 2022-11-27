@@ -1,21 +1,14 @@
 import React, { useEffect } from "react";
 import Container from "../../../components/Container";
 import LadyInTech from "./assets/lady-in-tech.png";
-import WhiteFemaleBack from "./assets/third-bg.png";
+import LadyTechWithWhiteBack from "./assets/ladywithwhiteback.png"
 import Link from "next/link";
 import LadyInTechPhone from "./assets/ladyfriendphone.png";
 
 export default function Qualification() {
   return (
     <Container>
-      <section
-        className="hidden md:flex md:items-center md:justify-between md:gap-14 md:my-[60px] md:bg-right-top"
-        style={{
-          backgroundImage: `url(${WhiteFemaleBack.src})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "25%",
-        }}
-      >
+      <section className="hidden md:flex md:items-center md:justify-between md:gap-14 md:my-[60px] md:bg-right-top">
         <div className="flex flex-col w-[43.75rem] text-[#343434] gap-4">
           <h2 className="font-bold leading-[3rem] text-[clamp(1.2rem,3vw,3rem)]">
             Who is Qualified?
@@ -30,10 +23,14 @@ export default function Qualification() {
             </button>
           </Link>
         </div>
-        <img src={LadyInTech.src} alt="lady in tech" className="w-[300px]" />
+        <img
+          src={LadyTechWithWhiteBack.src}
+          alt="lady in tech"
+          className="w-[300px] self-center"
+        />
       </section>
       <section className="md:hidden flex flex-col gap-4">
-        <img src={LadyInTechPhone.src} alt="" className="w-28 self-end" />
+        <img src={LadyTechWithWhiteBack.src} alt="" className="w-28 self-end" />
         <div>
           <h2 className="font-bold leading-10 text-bold-darkCharcoal text-[2rem]">
             Who Is Qualified?

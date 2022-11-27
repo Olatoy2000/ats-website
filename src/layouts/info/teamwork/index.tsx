@@ -4,23 +4,17 @@ import ThreeFriends from "./assets/three-friends.png";
 import FemaleTechBack from "./assets/second-down-bg.png";
 import BackFriendPhone from "./assets/iPhone 13/recphone.png";
 import ThreFriendPhone from "./assets/iPhone 13/threfriendphone.png";
+import backgroundFriendsWithArrow from "./assets/back-three-arrow.png";
 export default function TeamWork() {
   return (
     <Container>
-      <section
-        className="hidden md:flex md:items-center md:justify-between md:gap-20 md:pt-10"
-        style={{
-          backgroundImage: `url(${FemaleTechBack.src})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "20%",
-        }}
-      >
+      <section className="hidden md:flex md:justify-between md:gap-[8.25rem]">
         <img
-          src={ThreeFriends.src}
+          src={backgroundFriendsWithArrow.src}
           alt="three youth friends"
           className="md:w-[20rem] w-[6.25rem]"
         />
-        <div className=" flex flex-col md:text-[#343434] text-bold-darkCharcoal gap-4">
+        <div className="flex flex-col md:text-[#343434] text-bold-darkCharcoal gap-4">
           <h2 className="font-bold leading-[3rem] text-[clamp(1.2rem,3vw,3rem)]">
             Teamwork
           </h2>
@@ -31,15 +25,8 @@ export default function TeamWork() {
         </div>
       </section>
       <section className="md:hidden flex flex-col gap-4">
-        <div
-          className=""
-          style={{
-            backgroundImage: `url(${BackFriendPhone.src})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "20%",
-          }}
-        >
-          <img src={ThreFriendPhone.src} alt="" />
+        <div>
+          <img src={backgroundFriendsWithArrow.src} alt="" />
         </div>
         <div>
           <h2 className="text-bold-darkCharcoal text-end text-[2rem] leading-10 font-bold">
