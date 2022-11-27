@@ -18,7 +18,7 @@ function MenuList() {
         <li
           key={idx}
           className={clsx(
-            "md:rounded-xl leading-6 p-3 md:px-6 md:text-center",
+            "md:rounded-xl leading-6 p-3 md:px-8 md:py-4 md:text-center",
             el.toLocaleLowerCase() === asPath.slice(1) ||
               (el === "Home" && asPath === "/")
               ? "bg-[#C81107]  text-[#F2F2F2]"
@@ -42,7 +42,7 @@ export default function NavigationBar() {
 
   return (
     <Container>
-      <nav className="flex items-center cursor-pointer py-2 justify-between">
+      <nav className="flex items-center cursor-pointer py-4 justify-between">
         <Link href="/">
           <img src={AfexLogo.src} alt="Afex landing page logo" />
         </Link>

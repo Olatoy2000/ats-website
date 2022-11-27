@@ -14,7 +14,7 @@ function LandingPage() {
         style={{ backgroundImage: `url(${Background.src})` }}
       >
         <article className="flex flex-col md:mx-auto md:w-[30.625rem] pt-14 w-60 justify-start gap-3">
-          <div className="pt-6 text-[#313131] lg:leading-[100px] leading-[3.125rem] md:leading-[4.625rem] md:text-[3.875rem] tracking-[-1.5px] text-[clamp(2.5rem,4vw,4.68rem)] font-black">
+          <div className="pt-6 text-[#313131] leading-[3.125rem] md:leading-[4.625rem] md:text-[3.875rem] lg:leading-[6.25rem] lg:text-[4.125rem] tracking-[-1.5px] font-black">
             Begin Your Tech Journey
           </div>
           <div className="text-[clamp(0.875rem,1.125vw,1.125rem)] font-bold text-[#313131] pb-8">

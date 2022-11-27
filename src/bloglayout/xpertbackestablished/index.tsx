@@ -4,6 +4,7 @@ import Link from "next/link";
 import XpertBack from "./assets/xpertback.png";
 
 export default function Xpertbackestablished({ blogDetail }: any) {
+
 	return (
 		<Container>
 			<section className='flex flex-col gap-8 mb-10'>
@@ -34,7 +35,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 					</button>
 				</Link>
 				<article
-					className='flex z-[-1] justify-center items-center pt-28 flex-col gap-8'
+					className='flex z-[-1] justify-center pb-4 items-center pt-28 flex-col gap-8'
 					style={{
 						background: `url(${blogDetail.image})`,
 						backgroundRepeat: "no-repeat",
@@ -42,10 +43,10 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 						position: "relative",
 					}}>
 					<div className='absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-40'></div>
-					<p className=' text-light-antiFlashWhite z-20 leading-4  font-bold text-[clamp(1.5rem,4vw,3.5rem)] pb-32'>
+					<p className=' text-light-antiFlashWhite leading-10 z-20 text-center  font-bold text-[clamp(1.5rem,4vw,3.5rem)] pb-32'>
 						{blogDetail.title}
 					</p>
-					<section className='flex gap-5 pb-10 items-center justify-center'>
+					<section className='flex gap-5 items-center justify-center'>
 						<div className='flex gap-2 items-center z-20'>
 							<Like1
 								size={30}
