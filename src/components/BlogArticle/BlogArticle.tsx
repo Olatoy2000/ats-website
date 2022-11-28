@@ -46,108 +46,107 @@ const blogArticleSample = {
 };
 type Blogs = typeof blogArticleSample;
 function BlogArticle() {
-  const scrollRefs = useRef<HTMLDivElement>(null);
+	const scrollRefs = useRef<HTMLDivElement>(null);
 
-  const moveRight = () => {
-    const width = scrollRefs.current!.clientWidth;
+	const moveRight = () => {
+		const width = scrollRefs.current!.clientWidth;
 
-    scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft + width;
-  };
+		scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft + width;
+	};
 
-  const moveLeft = () => {
-    const width = scrollRefs.current!.clientWidth;
+	const moveLeft = () => {
+		const width = scrollRefs.current!.clientWidth;
 
-    scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
-  };
+		scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
+	};
 
-  const { data: blogArticle, isLoading } = useQuery<Blogs>(
-    ["Blog-Article"],
-    async () =>
-      axios("/api/v1/blogs")
-        .then(({ data }) => data)
-        .catch((e) => e)
-  );
+	const { data: blogArticle, isLoading } = useQuery<Blogs>(
+		["Blog-Article"],
+		async () =>
+			axios("/api/v1/blogs")
+				.then(({ data }) => data)
+				.catch((e) => e)
+	);
 
-  return (
-    <>
-      <div
-        ref={scrollRefs}
-        className="grid overflow-x-scroll py-5 gap-9 grid-flow-col scrollbar-hide"
-        id="BlogArticle"
-      >
-        {blogArticle?.data?.results.map(
-          (
-            {
-              id,
-              title,
-              intro,
-              created_at,
-              author,
-              image,
-              min_read,
-              author_fullname,
-            }: any,
-            idx: number
-          ) => (
-            <div
-              key={idx}
-              className="flex flex-col pb-[15px] shadow-xl lg:w-96 md:w-80 w-64 rounded-md"
-            >
-              <img
-                src={image ? image : Placeholder.src}
-                className="h-96 object-cover w-full"
-              />
-              <Link href={`/blog/${id}`}>
-                <p className="text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold p-4">
-                  {title}
-                </p>
-              </Link>
-              <p className="text-[#718096] flex-1 text-sm px-4">
-                {intro + "..."}
-              </p>
-              <div className="flex gap-3 pt-10 items-center px-4">
-                <img src={author} className="h-10" />
-                <div className="font-sans flex-1">
-                  <p className="text-[#C81107] text-xs font-semibold">
-                    {author_fullname}
-                  </p>
-                  <span className="flex justify-between items-center">
-                    <p className="text-[#6F6F70] font-semibold text-[10px]">
-                      <span>
-                        {moment(created_at).format("ll").split(",")[0]}
-                      </span>{" "}
-                      &nbsp;&nbsp; {min_read}
-                    </p>
-                    <Link href={`/blog/${id}`}>
-                      <span className="text-[15px] text-[#2D3748] font-bold -mt-1">
-                        Read more
-                      </span>
-                    </Link>
-                  </span>
-                </div>
-              </div>
-            </div>
-          )
-        )}
-      </div>
-      <div className="flex justify-between">
-        <button
-          className="flex gap-2 bggradi rounded-lg lg:p-4 md:p-4 p-2 items-center group-hover:bg-black"
-          onClick={moveLeft}
-        >
-          <span className="text-white">See Less</span>
-          <img src={SeeMore2.src} />
-        </button>
-        <button
-          onClick={moveRight}
-          className="flex gap-2 bggradi rounded-lg lg:p-4 md:p-4 p-2 items-center group-hover:bg-black"
-        >
-          <span className="text-white">See More</span>
-          <img src={SeeMore1.src} />
-        </button>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div
+				ref={scrollRefs}
+				className='grid overflow-x-scroll py-5 gap-9 grid-flow-col scrollbar-hide'
+				id='BlogArticle'>
+				{blogArticle?.data?.results.map(
+					(
+						{
+							id,
+							title,
+							intro,
+							created_at,
+							author,
+							image,
+							min_read,
+							author_fullname,
+						}: any,
+						idx: number
+					) => (
+						<div
+							key={idx}
+							className='flex flex-col pb-[15px] shadow-xl lg:w-96 md:w-80 w-64 rounded-md'>
+							<img
+								src={image ? image : Placeholder.src}
+								className='h-96 object-cover w-full'
+							/>
+							<Link href={`/blogs/${id}`}>
+								<p className='text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold p-4'>
+									{title}
+								</p>
+							</Link>
+							<p className='text-[#718096] flex-1 text-sm px-4'>
+								{intro + "..."}
+							</p>
+							<div className='flex gap-3 pt-10 items-center px-4'>
+								<img
+									src={author}
+									className='h-10'
+								/>
+								<div className='font-sans flex-1'>
+									<p className='text-[#C81107] text-xs font-semibold'>
+										{author_fullname}
+									</p>
+									<span className='flex justify-between items-center'>
+										<p className='text-[#6F6F70] font-semibold text-[10px]'>
+											<span>
+												{moment(created_at).format("ll").split(",")[0]}
+											</span>{" "}
+											&nbsp;&nbsp; {min_read}
+										</p>
+										<Link href={`/blogs/${id}`}>
+											<span className='text-[15px] text-[#2D3748] font-bold -mt-1'>
+												Read more
+											</span>
+										</Link>
+									</span>
+								</div>
+							</div>
+						</div>
+					)
+				)}
+			</div>
+			<div className='flex justify-between'>
+				<button
+					className='flex gap-2 bggradi rounded-lg lg:p-4 md:p-4 p-2 items-center group-hover:bg-black'
+					onClick={moveLeft}>
+					<span className='text-white'>See Less</span>
+					<img src={SeeMore2.src} />
+				</button>
+				<button
+					onClick={moveRight}
+					className='flex gap-2 bggradi rounded-lg lg:p-4 md:p-4 p-2 items-center group-hover:bg-black'>
+					<span className='text-white'>See More</span>
+					<img src={SeeMore1.src} />
+				</button>
+			</div>
+		</>
+	);
 }
 
 export default BlogArticle;
