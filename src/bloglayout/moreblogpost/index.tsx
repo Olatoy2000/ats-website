@@ -142,7 +142,7 @@ export default function MORE_BLOG_POST() {
           ref={scrollRefs}
           className="mb-6 overflow-x-hidden scroll-smooth  gap-8 flex"
         >
-          {blogDetail.map((item: any, idx: number) => (
+          {blogDetail?.map((item: any, idx: number) => (
             <article
               className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
               key={idx}
