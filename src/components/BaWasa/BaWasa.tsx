@@ -96,7 +96,7 @@ function BaWasa() {
 												</span>{" "}
 												&nbsp;&nbsp; {min_read}
 											</p>
-											<Link href={`/blog/${id}`}>
+											<Link href={`/blogs/${id}`}>
 												<p className='text-[15px] text-[#2D3748] font-bold -mt-1'>
 													Read more
 												</p>

@@ -194,7 +194,7 @@ function Blog({ query }: IBlog) {
 											</span>{" "}
 											&nbsp;&nbsp; {min_read}
 										</p>
-										<Link href={`/blog/${id}`}>
+										<Link href={`/blogs/${id}`}>
 											<span className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
 												Read more
 											</span>
