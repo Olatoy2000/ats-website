@@ -45,7 +45,7 @@ function XpertsWeek() {
 					<h2 className='font-bold lg:text-2xl md:text-xl text-[#343434] pb-2'>
 						About Myself:
 					</h2>
-					<p className='lg:text-2xl md:text-xl pb-10 lg:leading-9 md:leading-9 leading-9'>
+					<p className='lg:text-2xl md:text-xl pb-8 lg:leading-9 md:leading-9 leading-9'>
 						My name is Ayodele Davies. I’m from Ojirami, Edo State. I work as a
 						Product Management Intern at AFEX, and I love sports, art,
 						volunteering, adventures, going out of fun dates, meeting new
@@ -56,7 +56,7 @@ function XpertsWeek() {
 						If you could hang out with any famous person, who would you choose
 						and why?
 					</h2>
-					<p className='lg:text-2xl md:text-xl pb-10 lg:leading-9 md:leading-9 leading-9'>
+					<p className='lg:text-2xl md:text-xl pb-8 lg:leading-9 md:leading-9 leading-9'>
 						Two words - Lionel Messi!!!!!!!! As a football enthusiast, I fell in
 						love with Messi’s alien and magical way of playing football very
 						early in my teenage years. He is simply from another planet!!! I
@@ -73,7 +73,7 @@ function XpertsWeek() {
 						The Zombie apocalypse is coming, mention three Xperts you want on
 						your team.
 					</h2>
-					<p className='lg:text-2xl md:text-xl pb-10 lg:leading-9 md:leading-9 leading-9'>
+					<p className='lg:text-2xl md:text-xl pb-8 lg:leading-9 md:leading-9 leading-9'>
 						Danladi, Similoluwa (Peace), and Abimbola
 					</p>
 

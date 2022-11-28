@@ -22,18 +22,45 @@ function AdminLogin() {
 
   const sendAdminLogin = (values: FormValues) => {
     console.log(values);
-    axios({
+    var data = JSON.stringify({
+      email: "toladejo@afexnigeria.com",
+      password: "password@1",
+    });
+
+    var config = {
       method: "post",
       url: "http://atsbk.afexats.com/api/v1/account/admin/login",
-      data: JSON.stringify({
-        ...values,
-      }),
-    }).then((response) => {
-      if (response.status === 201) {
-        console.log(response.data);
-        form.reset();
-      }
-    });
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        if (response.status === 201 || 200) {
+          console.log(values);
+          console.log(response.data);
+          form.reset();
+        }
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error: any) {
+        console.log(error);
+      });
+    // axios({
+    //   method: "post",
+    //   url: "http://atsbk.afexats.com/api/v1/account/admin/login",
+    //   data: JSON.stringify({
+    //     ...values,
+    //   }),
+    // }).then((response) => {
+    //   if (response.status === 201) {
+    //     console.log(values);
+    //     console.log(response.data);
+    //     form.reset();
+    //   }
+    // });
   };
 
   const [time, setTime] = useState(0);
@@ -67,6 +94,8 @@ function AdminLogin() {
                 placeholder="Enter your email"
                 className="w-full outline-none"
                 required
+                value={{}}
+                {...form.getInputProps("email")}
               />
             </div>
             <div className=" sm:flex sm:items-center sm:bg-white  sm:px-3 sm:py-2">
@@ -82,6 +111,8 @@ function AdminLogin() {
                   root: "",
                 }}
                 withAsterisk
+                value={{}}
+                {...form.getInputProps("password")}
               />
               <button
                 type="submit"

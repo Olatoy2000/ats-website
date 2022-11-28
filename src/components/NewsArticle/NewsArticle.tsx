@@ -57,7 +57,7 @@ function index() {
 
 	return (
 		<div className='flex flex-col gap-9'>
-			<h1 className='flex bg-[#C81107] w-20 lg:p-3 p-2 text-white text-2xl font-bold'>
+			<h1 className='flex bg-[#C81107] w-24 lg:p-3 p-2 text-white text-2xl font-bold'>
 				News
 			</h1>
 			<div className='grid gap-9 lg:grid-cols-3 md:grid-cols-2'>
@@ -80,7 +80,7 @@ function index() {
 							className='flex flex-col pb-4 shadow rounded-md'>
 							<img
 								src={image ? image : Placeholder.src}
-								className='h-64 object-cover md:w-full'
+								className='h-96 object-cover md:w-full'
 							/>
 							{/* <span>
 							{search === ""

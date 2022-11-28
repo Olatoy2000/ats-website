@@ -40,7 +40,7 @@ function ATSGallery() {
 				{atsgallery?.data?.map(({ image }: any, idx: number) => (
 					<div key={idx}>
 						<img
-							className='w-full ATSgal ATSgal:hover object-cover'
+							className='w-screen h-full ATSgal ATSgal:hover object-cover'
 							src={process.env.NEXT_PUBLIC_BASE_URL + image}
 						/>
 					</div>

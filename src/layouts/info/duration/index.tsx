@@ -5,7 +5,7 @@ import Clock from "./assets/Clock.png";
 export default function Duration() {
   return (
     <Container>
-      <section className="hidden sm:flex sm:items-center sm:justify-between sm:gap-12 my-[12.5rem]">
+      <section className="hidden sm:flex sm:items-center mx-auto sm:justify-center sm:gap-12 my-[12.5rem]">
         <div className="flex flex-col gap-10 text-[#343434]">
           <h2 className="font-bold text-bold-darkCharcoal sm:leading-[3rem] text-[clamp(1.2rem,3vw,3rem)]">
             Duration

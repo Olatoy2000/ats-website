@@ -27,7 +27,7 @@ function Updates() {
 					<RecentlyPosted />
 					<SearchEntries />
 				</div>
-				<div className='lg:w-[30%] lg:p-0'>
+				<div className='lg:w-[30%]'>
 					<TopAuthors />
 					<AFEXLearnMore />
 					<Categories />

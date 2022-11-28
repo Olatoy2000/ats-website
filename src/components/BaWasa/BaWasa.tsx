@@ -2,8 +2,55 @@ import React from "react";
 import MyImage from "./assets/image 5.png";
 import MyImage2 from "./assets/image 2.png";
 import Link from "next/link";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+
+const singleBlogSample = {
+	status: "success",
+	status_code: 200,
+	data: {
+		count: 3,
+		next: null,
+		previous: null,
+		results: [
+			{
+				id: 1,
+				title: "Yay! AFEX Grain Quality Enhancement Center",
+				intro:
+					"The Governor of Kaduna State, Nasir El-RufaiThanks to our partner Kaduna Investment Promotion Agency (KADIPA) and other stakeholders. The grain quality enhancement center will foster improvement on quality and quantity of supply, and cause more positive ripple effects in the agricultural value chain .",
+				description:
+					"The Governor of Kaduna State, Nasir El-RufaiThanks to our partner Kaduna Investment Promotion Agency (KADIPA) and other stakeholders. The grain quality enhancement center will foster improvement on quality and quantity of supply, and cause more positive ripple effects in the agricultural value chain .",
+				created_at: "2022-11-15T11:05:48.549589+01:00",
+				author: {
+					id: 1,
+					first_name: "Gloria",
+					last_name: "Eronmonsele",
+					email: "egloria@afexnigeria.com",
+					bio: "Talent Management Analyst",
+					profile_pics:
+						"http://atsbk.afexats.com/media/media/profile_pic/glo.jpg",
+				},
+				url: "http://atsbk.afexats.com/api/v1/blogs/1",
+				image:
+					"http://atsbk.afexats.com/media/media/blog_article/images/GrainQ.jpg",
+				min_read: "less than a minute read",
+				author_fullname: "Gloria Eronmonsele",
+			},
+		],
+	},
+	message: "Successfully Retrieved",
+};
+type Blogs = typeof singleBlogSample;
 
 function BaWasa() {
+	const { data: singleBlog, isLoading } = useQuery<Blogs>(
+		["Single-Blog-Article"],
+		async () =>
+			axios("/api/v1/blogs")
+				.then(({ data }) => data)
+				.catch((e) => e)
+	);
+
 	return (
 		<div className='lg:grid md:grid grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr] flex flex-col-reverse border border-[#E2E2E2] shadow rounded-md gap-12'>
 			<article className='md:pt-12 pl-8'>
