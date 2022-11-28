@@ -45,28 +45,28 @@ const blogArticleSample = {
 export type BlogArticle = typeof blogArticleSample;
 
 function index() {
-	const [page, setPage] = useState(1);
-	const [enabled, setEnabled] = useState(false);
-	const [query, setQuery] = useState("");
-	const { replace, pathname } = useRouter();
+	// const [page, setPage] = useState(1);
+	// const [enabled, setEnabled] = useState(false);
+	// const [query, setQuery] = useState("");
+	// const { replace, pathname } = useRouter();
 
-	const { data: blogData, isFetched } = useQuery<BlogArticle>(
-		["blog", "search", page, query],
-		async () => axios.get(`/search-blog/?q=${query}&page=${page}`),
-		{
-			enabled,
-		}
-	);
+	// const { data: blogData, isFetched } = useQuery<BlogArticle>(
+	// 	["blog", "search", page, query],
+	// 	async () => axios.get(`/search-blog/?q=${query}&page=${page}`),
+	// 	{
+	// 		enabled,
+	// 	}
+	// );
 
-	useEffect(() => {
-		replace(pathname + `#:~:text=${query}`);
-	}, [isFetched]);
+	// useEffect(() => {
+	// 	replace(pathname + `#:~:text=${query}`);
+	// }, [isFetched]);
 
 	return (
 		//The blogsearch in the Updates of the landing page
 		<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
 			<Navbar />
-			<Blog blogData={blogData} />
+			<Blog />
 			<SearchEntries />
 		</div>
 	);

@@ -27,25 +27,6 @@ function index() {
 	useEffect(() => {
 		if (router.query.blogId) fetchBlogDetails();
 	}, [router.query.blogId]);
-
-	// useEffect(() => {
-	//   router.query.id &&
-	//     $(function () {
-	//       setInterval(function () {
-	//         $.ajax({
-	//           type: "GET",
-	//           url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
-	//           success: (response) => {
-	//             console.log(response.data.data);
-	//           },
-	//           error: function (response) {
-	//             alert("an error occured");
-	//           },
-	//         });
-	//       }, 1000);
-	//     });
-	// }, []);
-
 	return blogDetail ? (
 		<div>
 			<Xpertbackestablished blogDetail={blogDetail} />

@@ -69,6 +69,7 @@ function index() {
 							id,
 							min_read,
 							created_at,
+							author_image,
 							author,
 							author_name,
 							image,

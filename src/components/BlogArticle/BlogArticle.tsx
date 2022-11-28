@@ -81,7 +81,7 @@ function BlogArticle() {
 							title,
 							intro,
 							created_at,
-							author,
+							author_image,
 							image,
 							min_read,
 							author_fullname,
@@ -105,7 +105,7 @@ function BlogArticle() {
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
-									src={author.profile_pics}
+									src={author_image}
 									className='h-10'
 								/>
 								<div className='font-sans flex-1'>

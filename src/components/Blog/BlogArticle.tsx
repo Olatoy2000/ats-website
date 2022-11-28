@@ -8,45 +8,52 @@ import { BlogArticle } from "../../../pages/blog";
 
 const blogSample = {
 	status: "success",
-	status_code: 201,
+	status_code: 200,
 	data: {
-		id: 7,
-		title: "AFEX Grain Quality Enhancement Center",
-		intro:
-			"AFEX 100,000MT/ year Grain Quality Enhancement Center and 30,000MT storage capacity warehouse was commissioned by His Excellency, the Governor of Kaduna State, Nasir El-RufaiThanks to our partner Kaduna Investment Promotion Agency (KADIPA) and other stakeholders. The grain quality enhancement center will foster improvement on quality and quantity of supply, and cause more positive ripple effects i",
-		description:
-			"AFEX 100,000MT/ year Grain Quality Enhancement Center and 30,000MT storage capacity warehouse was commissioned by His Excellency, the Governor of Kaduna State, Nasir El-RufaiThanks to our partner Kaduna Investment Promotion Agency (KADIPA) and other stakeholders. The grain quality enhancement center will foster improvement on quality and quantity of supply, and cause more positive ripple effects in the agricultural value chain and Nigeria at lar",
-		created_at: "2022-11-11T09:56:37.564134+01:00",
-		url: "http://localhost:8000/api/v1/blogs/7",
-		image:
-			"https://res.cloudinary.com/dhrksuz8n/image/upload/v1/media/AG_sif4av",
-		min_read: "less than a minute read",
-		author_fullname: "Sir Raheem Yusuf",
+		count: 10,
+		next: null,
+		previous: null,
+		results: [
+			{
+				id: 10,
+				title: "5 Investors Share The Best Investment Advice they’ve received",
+				intro:
+					"Perhaps you’ve heard it before “buy low and sell high” “save for the rainy days” and “apply the 50–30–20 rule”, everyone at some point has received a slice of wisdom that helped them make better financial decisions.\n\nWhen it comes to accumulating wealth, it’s important you stay in a constant learning mode grasping all the financial insights you can get. Also, if you take a closer look, most succes",
+				description:
+					"Perhaps you’ve heard it before “buy low and sell high” “save for the rainy days” and “apply the 50–30–20 rule”, everyone at some point has received a slice of wisdom that helped them make better financial decisions.\n\nWhen it comes to accumulating wealth, it’s important you stay in a constant learning mode grasping all the financial insights you can get. Also, if you take a closer look, most successful investors have one thing in common — they have rules which are simply a diverse set of information to help them make a fortune. However, until you implement that advice, it’s hard to know what will work for you.\n\nHence, we asked 5investors across various fields what is the absolute best investment advice they have ever received and learned from their own experiences.\n\nOlayemi, Businesswoman/ Fashion stylist\n\nFirstly, before you invest make sure you have an emergency fund so you won’t be forced to liquidate your investment when an emergency occurs. Outside the emergency fund, have a savings account and from the savings take out money for investment.\n\nInvestments are for the long term so be sure you are comfortable enough to allow the money set aside for it to grow and multiply over the years while you also add to it. Secondly, invest in foreign currency to hedge against naira devaluation.\n\nYusuf, Head, structuring, and Origination at AFEX\n\nThat would be, you put your money only in investments that you understand and can distinguish how the investments work.\n\nTaiwo, Financial Analyst\n\nOnly invest in something you understand. If the returns are ridiculously or not logically explained, run.\n\nMohammed, Senior Product Manager\n\nThe best advice I have learned is to never forget the market knows better than me. A lot of smart people fall for the trap of overestimating how smart they are and because of that, they think they know better than everyone else. At the bottom of it, a market is a place where buyers and sellers come together, and the market (the collection of all these buyers and sellers communicate through price and other data like trade volume, etc). Therefore, if the market is saying something through all those numbers, it’s important to not think you know better than the market.",
+				created_at: "2022-11-27T22:15:45.432734+01:00",
+				url: "http://atsbk.afexats.com/api/v1/blogs/10",
+				image:
+					"http://atsbk.afexats.com/media/media/blog_article/images/5.jpeg",
+				min_read: "1 Minute Read",
+				author_fullname: "Gloria Eronmonsele",
+				author_image: "/media/media/profile_pic/glo.jpg",
+			},
+		],
 	},
-	message: "Successfully Retrieved",
 };
 
 type BlogSample = typeof blogSample;
 
 //Blog Search page
 
-interface IBlog {
-	blogData?: BlogArticle;
-}
+// interface IBlog {
+// 	blogData?: BlogArticle;
+// }
 
-function Blog({ blogData }: IBlog) {
+// function Blog({ blogData }: IBlog) {
+function Blog() {
 	const { data: blogSearch, isLoading } = useQuery<BlogSample>(
-		["blogs"],
-		async () => {
-			return axios("/api/v1/blogs")
+		["News-Articles-Search"],
+		async () =>
+			axios("/api/v1/blogs")
 				.then(({ data }) => data)
-				.catch((e) => e);
-		},
-
-		{
-			enabled: !blogData,
-		}
+				.catch((e) => e)
 	);
+
+	// {
+	// 	enabled: !blogData,
+	// }
 
 	return (
 		<div className='flex flex-col gap-9'>
@@ -54,18 +61,19 @@ function Blog({ blogData }: IBlog) {
 				Blog
 			</h1>
 			<div className='grid gap-9 lg:grid-cols-3 md:grid-cols-2'>
-				{blogData?.data?.results?.map(
+				{/* {blogData?.data?.results?.map( */}
+				{blogSearch?.data?.results.map(
 					(
 						{
 							id,
 							title,
 							intro,
 							created_at,
-							author,
+							author_image,
 							image,
 							min_read,
 							author_fullname,
-						},
+						}: any,
 						idx: number
 					) => (
 						<div
@@ -99,7 +107,7 @@ function Blog({ blogData }: IBlog) {
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
-									src={author.profile_pics}
+									src={author_image}
 									className='h-10'
 								/>
 								<div className='font-sans flex-1'>
