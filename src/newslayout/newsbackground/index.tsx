@@ -1,4 +1,3 @@
-
 import Container from "../../components/Container";
 import Link from "next/link";
 import { TagRight } from "iconsax-react";
@@ -41,13 +40,15 @@ export default function NewsBackground({ newsDetail }: any) {
             backgroundRepeat: "no-repeat",
             backgroundSize: "100% 100%",
             position: "relative",
+            objectFit: "cover",
+            height: "40vh",
           }}
         >
           <div className="absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-50"></div>
           <p className=" text-light-antiFlashWhite leading-[4rem] z-20 text-center font-bold text-[clamp(1.5rem,3.5vw,4rem)]">
             {newsDetail.title}
           </p>
-          <div className="flex gap-2 items-center justify-center">
+          <div className="flex gap-2 items-center z-50 justify-center">
             <TagRight color="#9FA19C" variant="Bulk" size={24} />
             <h3 className="font-bold text-[clamp(0.625rem,1.5vw,1.5rem)] text-[#9FA19C] leading-7 font-['Poppins']">
               {newsDetail.category_name}
