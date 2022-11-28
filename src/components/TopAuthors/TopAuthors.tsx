@@ -92,7 +92,7 @@ function TopAuthors() {
 	);
 
 	return (
-		<div className='md:grid grid-flow-row'>
+		<div className='md:grid grid grid-flow-row'>
 			<h1 className='text-2xl font-bold flex gap-1'>
 				<span className='bg-[#C81107] text-white'>Top</span>Authors
 			</h1>

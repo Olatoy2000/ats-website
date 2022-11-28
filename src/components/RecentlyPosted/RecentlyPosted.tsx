@@ -89,11 +89,11 @@ function RecentlyPosted() {
 									key={idx}
 									className='flex gap-4'>
 									<img
-										className='w-1/2'
+										className='h-60 object-cover'
 										src={image ? image : Placeholder.src}
 									/>
 
-									<div className='md:h-max h-max flex-1'>
+									<div className='md:h-max h-max'>
 										<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 											{category_name}
 										</span>
@@ -135,11 +135,11 @@ function RecentlyPosted() {
 									key={idx}
 									className='flex gap-4'>
 									<img
-										className='w-[52%]'
+										className='object-cover h-60'
 										src={image ? image : Placeholder.src}
 									/>
 
-									<div className='md:h-max h-max flex-1'>
+									<div className='md:h-max h-max'>
 										<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 											{category_name}
 										</span>
@@ -179,11 +179,11 @@ function RecentlyPosted() {
 								key={idx}
 								className='flex gap-4'>
 								<img
-									className='w-1/2'
+									className='w-96'
 									src={image ? image : Placeholder.src}
 								/>
 
-								<div className='md:h-max h-max flex-1'>
+								<div className='md:h-max h-max'>
 									<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 										{category_name}
 									</span>

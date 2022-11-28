@@ -18,12 +18,12 @@ function SearchEntries() {
 	};
 
 	return (
-		<section className='grid grid-flow-col gap-6 justify-between pb-44'>
-			<div
+		<section className='grid grid-flow-col gap-6 justify-between lg:pb-44 md:pb-44 sm:pb-20'>
+			{/* <div
 				style={{ borderRadius: "5px", border: "1px solid #C4C4C4" }}
 				className='p-3'>
 				1-8 of 200 Entries
-			</div>
+			</div> */}
 			<article className='flex gap-5'>
 				<button
 					onClick={prevHandler}

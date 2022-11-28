@@ -5,14 +5,20 @@ import {
 	useEffect,
 	useState,
 } from "react";
-import { Menu, ActionIcon, Group, Button } from "@mantine/core";
+import { Menu, Group, Button, clsx, Input } from "@mantine/core";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/router";
 
 import axios from "axios";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
-function Navbar() {
+interface INavBar {
+	query: string;
+	setQuery: Dispatch<SetStateAction<string>>;
+}
+
+function Navbar({ query, setQuery }: INavBar) {
 	// const renderSearch = () => {
 	// 	let blogs = <h1>We couldn't find any blog with your search query</h1>;
 	// 	if (result.blogs.length > 1) {
@@ -21,14 +27,24 @@ function Navbar() {
 	// 	}
 	// 	return blogs;
 	// };
-	const [query, setQuery] = useState("");
+
 	const [isOpened, setIsOpened] = useState(false);
-	const { pathname, ...items } = useRouter();
+	const { pathname } = useRouter();
 	const path = pathname.slice(1);
 
-	useEffect(() => {
-		items.push({ hash: `:~:text=${query}` });
-	}, [query]);
+	const { data, isLoading } = useQuery([path, "filter"], async () =>
+		axios("/api/v1/" + path)
+			.then(({ data }) => data)
+			.catch((e) => e)
+	);
+
+	console.log(data);
+
+	// useEffect(() => {
+	// 	items.push({ hash: `:~:search=${query}` });
+	// }, [query]);
+
+	const noSearchBy = !["blogs", "news"].includes(path);
 
 	return (
 		<Group
@@ -44,7 +60,9 @@ function Navbar() {
 				<Menu
 					width={120}
 					shadow='md'
-					opened={isOpened}>
+					opened={isOpened}
+					closeOnClickOutside
+					onClose={() => setIsOpened(false)}>
 					<Menu.Target>
 						<Button
 							color='gray.3'
@@ -52,10 +70,9 @@ function Navbar() {
 							onClick={() => setIsOpened(!isOpened)}
 							classNames={{
 								label: "flex gap-3 flex-nowrap font-normal bg-[#F7F8F9]",
-								root: "flex bg-[#F7F8F9] border text-black",
+								root: "flex bg-[#F7F8F9] hover:bg-[#F7F8F9] border text-black",
 							}}>
-							{" "}
-							{["blog", "news"].includes(path) ? path : ""}
+							{!noSearchBy ? path.replace(/./, (e) => e.toUpperCase()) : ""}
 							{isOpened ? (
 								<Icon
 									icon='ph:caret-up-bold'
@@ -71,20 +88,25 @@ function Navbar() {
 						<Link
 							passHref
 							href={{
-								pathname: "/blog",
+								pathname: "/blogs",
 								search: query,
 							}}>
-							<Menu.Item component='a'>Blog</Menu.Item>
+							<Menu.Item component='a'>Blogs</Menu.Item>
 						</Link>
 						<Link
 							passHref
-							href='/news'>
+							href={{
+								pathname: "/news",
+								search: query,
+							}}>
 							<Menu.Item component='a'>News</Menu.Item>
 						</Link>
 					</Menu.Dropdown>
 				</Menu>
-				<div className='flex w-52'>
+				<Input.Wrapper
+					className={clsx("flex w-52", { "opacity-70": noSearchBy })}>
 					<input
+						disabled={noSearchBy}
 						onChange={(e) => setQuery(e.target.value)}
 						className='placeholder:text-slate-400 flex flex-1 items-end bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
 						placeholder='Search'
@@ -109,7 +131,7 @@ function Navbar() {
 							/>
 						</svg>
 					</button>
-				</div>
+				</Input.Wrapper>
 			</div>
 
 			<div className='gap-16 lg:flex hidden'>

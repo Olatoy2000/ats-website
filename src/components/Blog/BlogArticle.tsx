@@ -35,25 +35,96 @@ const blogSample = {
 
 type BlogSample = typeof blogSample;
 
-//Blog Search page
+const blogSearchSample = {
+	status: "success",
+	status_code: 200,
+	data: {
+		hits: [
+			{
+				title: "Crop Production Report Unveiling 2022",
+				intro:
+					"Our Crop Production Report unveiling event will have a panel session, where we’ll be discussing the report and relevant topics surrounding the Crop Production forecast for the 2022/2023 wet session. \n\nJoin our Head, Food Security Funds, Nathaniel Etim, alongside other experts on the 16th of November as we unveil our 2022 AFEX Crop Production Report.\n\nWe are excited and looking forward to seeing yo",
+				description:
+					"Our Crop Production Report unveiling event will have a panel session, where we’ll be discussing the report and relevant topics surrounding the Crop Production forecast for the 2022/2023 wet session. \n\nJoin our Head, Food Security Funds, Nathaniel Etim, alongside other experts on the 16th of November as we unveil our 2022 AFEX Crop Production Report.\n\nWe are excited and looking forward to seeing you.\n\nTo register, click on the link below.\nhttps://lnkd.in/dFhjmY35\n\n\n#cropproductionreport #AFEXCP #AFEX",
+				author: "Gloria Eronmonsele",
+				objectID: "2",
+				_highlightResult: {
+					title: {
+						value: "Crop Production Report Unveiling 2022",
+						matchLevel: "none",
+						matchedWords: [],
+					},
+					intro: {
+						value:
+							"Our Crop Production Report unveiling event will have a panel session, where we’ll be discussing <em>t</em>he report and relevant <em>t</em>opics surrounding <em>t</em>he Crop Production forecast for <em>t</em>he 2022/2023 wet session. \n\nJoin our Head, Food Security Funds, Nathaniel Etim, alongside other experts on <em>t</em>he 16th of November as we unveil our 2022 AFEX Crop Production Report.\n\nWe are excited and looking forward <em>t</em>o seeing yo",
+						matchLevel: "full",
+						fullyHighlighted: false,
+						matchedWords: ["t"],
+					},
+					description: {
+						value:
+							"Our Crop Production Report unveiling event will have a panel session, where we’ll be discussing <em>t</em>he report and relevant <em>t</em>opics surrounding <em>t</em>he Crop Production forecast for <em>t</em>he 2022/2023 wet session. \n\nJoin our Head, Food Security Funds, Nathaniel Etim, alongside other experts on <em>t</em>he 16th of November as we unveil our 2022 AFEX Crop Production Report.\n\nWe are excited and looking forward <em>t</em>o seeing you.\n\n<em>T</em>o register, click on <em>t</em>he link below.\nhttps://lnkd.in/dFhjmY35\n\n\n#cropproductionreport #AFEXCP #AFEX",
+						matchLevel: "full",
+						fullyHighlighted: false,
+						matchedWords: ["t"],
+					},
+					author: {
+						value: "Gloria Eronmonsele",
+						matchLevel: "none",
+						matchedWords: [],
+					},
+				},
+			},
+		],
+		nbHits: 10,
+		page: 0,
+		nbPages: 1,
+		hitsPerPage: 10,
+		exhaustiveNbHits: true,
+		exhaustiveTypo: true,
+		exhaustive: {
+			nbHits: true,
+			typo: true,
+		},
+		query: "t",
+		params: "query=t&hitsPerPage=10",
+		renderingContent: {},
+		processingTimeMS: 8,
+		processingTimingsMS: {
+			afterFetch: {
+				format: {
+					highlighting: 4,
+					total: 5,
+				},
+				total: 5,
+			},
+			getIdx: {
+				load: {
+					dicts: 1,
+					total: 2,
+				},
+				total: 3,
+			},
+			total: 9,
+		},
+	},
+	message: "Successfully Retrieved",
+};
 
-// interface IBlog {
-// 	blogData?: BlogArticle;
-// }
+type BlogSearchSample = typeof blogSearchSample;
 
-// function Blog({ blogData }: IBlog) {
-function Blog() {
-	const { data: blogSearch, isLoading } = useQuery<BlogSample>(
-		["News-Articles-Search"],
-		async () =>
-			axios("/api/v1/blogs")
-				.then(({ data }) => data)
-				.catch((e) => e)
+type BlogQuery = BlogSample | BlogSearchSample;
+
+interface IBlog {
+	query?: string;
+}
+
+function Blog({ query }: IBlog) {
+	const { data: blogs, isLoading } = useQuery(["blogs", query], async () =>
+		axios(query ? `/api/v1/search-blog/?q=${query}` : "/api/v1/blogs")
+			.then(({ data }) => data)
+			.catch((e) => e)
 	);
-
-	// {
-	// 	enabled: !blogData,
-	// }
 
 	return (
 		<div className='flex flex-col gap-9'>
@@ -61,8 +132,10 @@ function Blog() {
 				Blog
 			</h1>
 			<div className='grid gap-9 lg:grid-cols-3 md:grid-cols-2'>
-				{/* {blogData?.data?.results?.map( */}
-				{blogSearch?.data?.results.map(
+				{(query
+					? (blogs as BlogSearchSample)?.data?.hits
+					: (blogs as BlogSample)?.data?.results
+				)?.map(
 					(
 						{
 							id,
@@ -81,7 +154,7 @@ function Blog() {
 							className='flex flex-col pb-4 shadow rounded-md'>
 							<img
 								src={image ? image : Placeholder.src}
-								className='h-96 object-cover w-full'
+								className='h-96 object-cover'
 							/>
 							{/* <span>
 							{search === ""

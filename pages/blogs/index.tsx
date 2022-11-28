@@ -62,11 +62,16 @@ function index() {
 	// 	replace(pathname + `#:~:text=${query}`);
 	// }, [isFetched]);
 
+	const [query, setQuery] = useState("");
+
 	return (
 		//The blogsearch in the Updates of the landing page
 		<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
-			<Navbar />
-			<Blog />
+			<Navbar
+				query={query}
+				setQuery={setQuery}
+			/>
+			<Blog query={query} />
 			<SearchEntries />
 		</div>
 	);

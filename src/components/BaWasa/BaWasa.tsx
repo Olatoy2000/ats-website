@@ -69,8 +69,10 @@ function BaWasa() {
 					}: any,
 					idx: number
 				) =>
-					idx === 1 ? (
-						<div className='lg:grid md:grid grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr] flex flex-col-reverse border border-[#E2E2E2] shadow rounded-md gap-12'>
+					idx === 2 ? (
+						<div
+							className='lg:grid md:grid grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr] flex flex-col-reverse border border-[#E2E2E2] shadow rounded-md gap-12'
+							key={idx}>
 							<article className='md:pt-12 pl-8 flex flex-col gap-16'>
 								<div className='mb-10'>
 									<p className='text-[#2D3748] text-[clamp(1rem,2.5vw,2.25rem)] text-4xl font-bold py-4'>
@@ -111,7 +113,7 @@ function BaWasa() {
 							</div>
 						</div>
 					) : (
-						id === 1
+						id === 2
 					)
 			)}
 		</>
