@@ -124,7 +124,9 @@ export default function CommentBlog({ blogDetail }: any) {
                     onClick={() => {
                       setPaginate(10);
                       axios(
-                        `https://atsbk.afexats.com/api/v1/blogs-comments/${blogDetail.id}`
+                        `http://atsbk.afexats.com/api/v1/blogs-comments/${
+                          blogDetail?.id ?? ""
+                        }`
                       )
                         .then((res) => {
                           setBlogComment(res.data.data);
