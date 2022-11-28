@@ -8,13 +8,15 @@ import XpertLogo from "./assets/newxpert.png";
 
 export default function CommentBlog({ blogDetail }: any) {
   const [paginate, setPaginate] = useState(5);
-  const [blogComment, setBlogComment] = useState(blogDetail.few_comments);
+  const [blogComment, setBlogComment] = useState(
+    blogDetail?.few_comments ?? []
+  );
 
   const form = useForm({
     initialValues: {
       name: "",
       description: "",
-      blog_article: blogDetail.id,
+      blog_article: blogDetail?.id ?? "",
     },
   });
 
@@ -47,17 +49,17 @@ export default function CommentBlog({ blogDetail }: any) {
             <img src={XpertLogo.src} alt="xpert logo" className="w-20" />
             <div className="flex gap-2 flex-col">
               <h3 className="text-light-internationalOrange text-[1.25rem] font-bold leading-7">
-                {blogDetail.author_fullname}
+                {blogDetail?.author_fullname ?? ""}
               </h3>
               <p className="flex text-light-darkSilver leading-6 font-normal text-[1.18rem]">
-                {moment(blogDetail.created_at).format("ll").split(",")[0]}{" "}
-                &nbsp; &#8226; {blogDetail.min_read}
+                {moment(blogDetail?.created_at).format("ll").split(",")[0]}{" "}
+                &nbsp; &#8226; {blogDetail?.min_read ?? ""}
               </p>
             </div>
           </article>
           <section className="grid gap-16 grid-cols-[1fr_300px]">
             <article className="leading-8 text-justify text-[1.125rem] text-light-completeBlack font-normal">
-              {blogDetail.description}
+              {blogDetail?.description ?? ""}
             </article>
             <aside>
               <h3 className="leading-7 mb-10 text-[1.75rem] text-bold-japaneseIndigo font-bold">
@@ -65,7 +67,7 @@ export default function CommentBlog({ blogDetail }: any) {
               </h3>
               <div className="flex flex-col gap-12">
                 <article className="flex gap-12 flex-col">
-                  {blogComment.map((el: any, id: number) =>
+                  {blogComment?.map((el: any, id: number) =>
                     id < paginate ? (
                       <Fragment key={id}>
                         <div className="flex gap-4 justify-start items-start">
@@ -94,8 +96,8 @@ export default function CommentBlog({ blogDetail }: any) {
                       </Fragment>
                     ) : null
                   )}
-                  {blogComment.length < 5 &&
-                    Array(4 - blogComment.length).fill(
+                  {blogComment?.length < 5 &&
+                    Array(4 - blogComment?.length).fill(
                       <Fragment>
                         <div className="flex gap-6 items-center">
                           <img
