@@ -21,7 +21,7 @@ function SearchTagsi() {
 		fetchSearchTagsi();
 	}, []);
 	return (
-		<div className='pt-8'>
+		<div className='pt-8 lg:pb-0 pb-20'>
 			<h1 className='lg:text-2xl md:text-lg font-bold flex gap-1 py-8'>
 				<span className='bg-[#C81107] text-white'>Search</span>With Tags
 			</h1>

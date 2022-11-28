@@ -18,11 +18,16 @@ import Navbar from "./Navbar/Navbar";
 function Updates() {
 	return (
 		<main className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
-			<Navbar />
+			<Navbar
+				query={""}
+				setQuery={function (value: React.SetStateAction<string>): void {
+					throw new Error("Function not implemented.");
+				}}
+			/>
 			<BaWasa />
 			<BlogArticle />
 			<AfexNewsPic />
-			<div className='lg:flex lg:flex-row md:flex md:flex-row flex flex-col md:gap-20 '>
+			<div className='lg:flex lg:flex-row md:flex md:flex-row flex flex-col lg:gap-32 md:gap-56 '>
 				<div className='flex-1'>
 					<RecentlyPosted />
 					<SearchEntries />

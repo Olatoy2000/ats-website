@@ -40,7 +40,9 @@ function Categories() {
 			<div className='md:text-sm lg:text-base grid grid-flow-row pt-6'>
 				{categories?.data?.map(
 					({ name, category_news_count }: any, idx: number) => (
-						<ul className='flex justify-between border-b-[#D1E7E5] border-b py-2'>
+						<ul
+							className='flex justify-between border-b-[#D1E7E5] border-b py-2'
+							key={idx}>
 							<li>{name}</li>
 							<li>{category_news_count}</li>
 						</ul>
