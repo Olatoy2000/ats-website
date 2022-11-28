@@ -85,10 +85,9 @@ function Xpert() {
 					) => (
 						<div
 							key={idx}
-							id={`#${idx}`}
-							className='place-items-center grid border-2 rounded-2xl shadow py-10'>
+							className='place-items-center grid border-2 rounded-2xl shadow py-8'>
 							<img
-								className='object-cover w-3/4'
+								className='object-cover w-1/2 rounded-xl'
 								src={profile_picture}
 							/>
 

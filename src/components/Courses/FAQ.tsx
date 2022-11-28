@@ -58,7 +58,7 @@ function FAQ() {
 					variant='separated'
 					defaultValue='customization'>
 					<Accordion.Item
-						value='customization'
+						value='no-focus-ring'
 						className='border shadow-lg py-3'>
 						<Accordion.Control>
 							What is the duration of the program?
@@ -88,11 +88,13 @@ function FAQ() {
 						</Accordion.Control>
 						<Accordion.Panel className='font-bold bg-neutral-100'>
 							You can send a mail to{" "}
-							<Link href='mailto:contactus@afexnigeria.com'>
+							<a
+								href='mailto:contactus@afexnigeria.com'
+								target='_blank'>
 								<span className='text-[#C81107]'>
 									(contactus@afexnigeria.com)
 								</span>
-							</Link>
+							</a>
 						</Accordion.Panel>
 					</Accordion.Item>
 				</Accordion>
