@@ -7,7 +7,7 @@ function MobileValues() {
   return (
     <Carousel
       className="w-28 h-28"
-      sx={{ maxWidth: 320 }}
+     styles={{root: {}}}
       mx="auto"
       loop
       withControls={false}
