@@ -25,7 +25,7 @@ function Card(props: {
       <p className="font-bold md:leading-10 leading-3 text-[2rem] text-[#47494E] group-hover:text-[#B2241C]">
         {props.title}
       </p>
-      <p className="text-base text-[#47494E] font-normal leading-7 group-hover:text-[#B2241C]">
+      <p className="text-base text-[#47494E] text-center font-normal leading-7 group-hover:text-[#B2241C]">
         {props.subtitle}
       </p>
     </div>

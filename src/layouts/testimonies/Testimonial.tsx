@@ -9,6 +9,7 @@ import { StaticImageData } from "next/image";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { clsx } from "@mantine/core";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
+import axios from "axios";
 
 type Testimony = Array<{
   testimony: string;
@@ -38,7 +39,7 @@ const testimony: Testimony = [
     testimony: "I have always dreamed of making cool project",
     picture: Davies,
     name: "Davies",
-    title: "Backend developer",
+    title: "Product Management",
   },
   {
     testimony: "I have always dreamed of making cool project",
@@ -53,7 +54,7 @@ const testimony: Testimony = [
     picture: Blessing,
     style: { width: "100%" },
     name: "Davies",
-    title: "Backend developer",
+    title: "Frontend developer",
   },
 ];
 
@@ -67,6 +68,21 @@ function Testimonial({ selected }: Props) {
   const [parent] = useAutoAnimate<HTMLDivElement>();
   const [testimonial, setTestimonial] = useState(testimony);
 
+  // var config = {
+  //   method: "get",
+  //   url: "http://atsbk.afexats.com/api/v1/tech-stars/testimonial-frontpage-list/",
+  //   headers: {},
+   
+  // };
+
+  // axios(config)
+  //   .then(function (response) {
+  //     console.log(JSON.stringify(response.data));
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
   return (
     <div className="grid items-center gap-6">
       <h2 className="text-center min-h-[2rem]">
@@ -78,7 +94,8 @@ function Testimonial({ selected }: Props) {
             const juggle = [...testimonial];
             juggle.unshift(juggle.pop() as Testimony[number]);
             setTestimonial(juggle);
-          }}>
+          }}
+        >
           <ArrowLeft2 size={32} />
         </button>
         <section

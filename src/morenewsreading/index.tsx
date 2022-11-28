@@ -28,7 +28,7 @@ export default function READ_NEWS_ARTICLE({ routeId }: any) {
     };
     axios(config)
       .then((response) => {
-        setNewsDetail(response.data.data.results);
+       console.log(response.data.data.results);
       })
       .catch(console.log);
   };

@@ -51,7 +51,7 @@ export default function MenuPopover() {
       <Menu.Target>
         <img
           src={PopUp.src}
-          className="hidden sm:block sm:fixed w-20 bottom-6 right-6 z-[400]"
+          className="hidden sm:block sm:fixed w-14 bottom-6 right-6 z-[400]"
           alt="pop-up"
         />
       </Menu.Target>

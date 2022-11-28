@@ -7,7 +7,7 @@ function index() {
   return (
     <div>
       <NewsBackground />
-      <NewsPost />
+      {/* <NewsPost /> */}
       <READ_NEWS_ARTICLE />
     </div>
   );
