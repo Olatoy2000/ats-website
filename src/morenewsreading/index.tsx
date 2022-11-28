@@ -1,13 +1,13 @@
 import AfexNewsUpdate from "./assets/afexnewsupdate.png";
-import { ArrowCircleLeft2, ArrowCircleRight2, Link } from "iconsax-react";
+import { ArrowCircleLeft2, ArrowCircleRight2 } from "iconsax-react";
 import { Divider } from "@mantine/core";
 import { useEffect, useRef, useState } from "react";
 import Container from "../components/Container";
 import Placeholder from "./assets/placeholder.png";
 import axios from "axios";
+import Link from "next/link";
 
 export default function READ_NEWS_ARTICLE({ routeId }: any) {
-
   const scrollRefs = useRef<HTMLDivElement>(null);
 
   const moveRight = () => {
@@ -77,8 +77,8 @@ export default function READ_NEWS_ARTICLE({ routeId }: any) {
                     alt=""
                     className="w-full"
                   />
-                  <div className="flex justify-end items-end gap-2 flex-col">
-                    <h5 className="text-[#020202] text-[1rem] font-bold leading-6">
+                  <div className="flex justify-start items-end gap-2 flex-col">
+                    <h5 className="text-[#020202] self-start text-[14px] font-bold leading-4">
                       {item.title}
                     </h5>
                     <p className="flex text-[#020202] leading-4 font-normal text-[0.75rem]">

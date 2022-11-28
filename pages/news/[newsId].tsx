@@ -6,34 +6,34 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 function index() {
-	const router = useRouter();
-	const [newsDetail, setNewsDetail] = useState(null);
+  const router = useRouter();
+  const [newsDetail, setNewsDetail] = useState(null);
 
-	const fetchNewsDetails = () => {
-		let config = {
-			method: "get",
-			url: `news/${router.query.newsId}`,
-		};
+  const fetchNewsDetails = () => {
+    let config = {
+      method: "get",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/news/${router.query.newsId}`,
+    };
 
-		axios(config)
-			.then((response) => {
-				setNewsDetail(response.data.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+    axios(config)
+      .then((response) => {
+        setNewsDetail(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-	useEffect(() => {
-		if (router.query.newsId) fetchNewsDetails();
-	}, [router.query.newsId]);
-	return newsDetail ? (
-		<div>
-			<NewsBackground newsDetail={newsDetail} />
-			<NewsPost newsDetail={newsDetail} />
-			<READ_NEWS_ARTICLE routeId={router.query.newsId} />
-		</div>
-	) : null;
+  useEffect(() => {
+    if (router.query.newsId) fetchNewsDetails();
+  }, [router.query.newsId]);
+  return newsDetail ? (
+    <div>
+      <NewsBackground newsDetail={newsDetail} />
+      <NewsPost newsDetail={newsDetail} />
+      <READ_NEWS_ARTICLE routeId={router.query.newsId} />
+    </div>
+  ) : null;
 }
 
 export default index;
