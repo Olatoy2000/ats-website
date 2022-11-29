@@ -37,11 +37,11 @@ const newsArticleSample = {
 					email: "ryusuf@afexnigeria.com",
 					bio: "Head Tech and Innovation",
 					profile_pics:
-						"http://atsbk.afexats.com/media/media/profile_pic/raheem.jpg",
+						"https://atsbk.afexats.com/media/media/profile_pic/raheem.jpg",
 				},
 				image:
-					"http://atsbk.afexats.com/media/media/news_article/images/Bar_AVi5v91.jpg",
-				url: "http://atsbk.afexats.com/api/v1/news/1",
+					"https://atsbk.afexats.com/media/media/news_article/images/Bar_AVi5v91.jpg",
+				url: "https://atsbk.afexats.com/api/v1/news/1",
 			},
 		],
 	},
@@ -103,10 +103,10 @@ function RecentlyPosted() {
 											</p>
 										</Link>
 										<div className='flex gap-1 items-center py-1'>
-											<img
+											{/* <img
 												className='h-5'
 												src={author.profile_pics}
-											/>
+											/> */}
 											<div className='grid grid-flow-col items-center'>
 												<p className='text-[#777777] text-xs'>{author_name}</p>
 												<span className='text-[#999999] font-thin'>|</span>
@@ -149,10 +149,10 @@ function RecentlyPosted() {
 											</p>
 										</Link>
 										<div className='flex gap-1 items-center py-1'>
-											<img
+											{/* <img
 												className='h-5'
 												src={author.profile_pics}
-											/>
+											/> */}
 											<div className='grid grid-flow-col items-center'>
 												<p className='text-[#777777] text-xs'>{author_name}</p>
 												<span className='text-[#999999] font-thin'>|</span>
@@ -193,10 +193,10 @@ function RecentlyPosted() {
 										</p>
 									</Link>
 									<div className='flex gap-1 items-center py-1'>
-										<img
+										{/* <img
 											className='h-5'
 											src={author.profile_pics}
-										/>
+										/> */}
 										<div className='grid grid-flow-col items-center'>
 											<p className='text-[#777777] text-xs'>{author_name}</p>
 											<span className='text-[#999999] font-thin'>|</span>
