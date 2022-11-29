@@ -9,12 +9,12 @@ import useClipboard from "react-use-clipboard";
 import { Popover, Text, Button } from "@mantine/core";
 
 import {
-  FacebookShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  EmailShareButton,
-  LinkedinShareButton,
+	FacebookShareButton,
+	TwitterShareButton,
+	TelegramShareButton,
+	WhatsappShareButton,
+	EmailShareButton,
+	LinkedinShareButton,
 } from "react-share";
 import { url } from "inspector";
 import { useQuery } from "@tanstack/react-query";
@@ -42,7 +42,7 @@ function ProductManagement({ url, title }: Props) {
       .catch((e) => e)
   );
 
-  // console.log(data);
+	// console.log(data);
 
   const [isCopied, setCopied] = useClipboard(
     "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
