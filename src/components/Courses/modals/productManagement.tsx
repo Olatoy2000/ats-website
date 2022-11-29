@@ -21,15 +21,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 type Props = {
-  id: string;
+  url: string;
   title: string;
 };
 
-function ProductManagement({ id, title }: Props) {
+function ProductManagement({ url, title }: Props) {
   const { data, isLoading } = useQuery(["Courses-list"], async () =>
     axios({
       method: "get",
-      url: `http://aptbk.afexats.com/api/jobs/cohort/${id}`,
+      url: url,
       headers: {
         "api-key":
           "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
@@ -59,7 +59,7 @@ function ProductManagement({ id, title }: Props) {
       >
         <section className="flex flex-col items-center gap-1">
           <h1 className="font-extrabold text-[clamp(1rem,4vw,4.5rem)] leading-[4.75rem] text-semiBold-gostWhite">
-            {title} {id}
+            {title}
           </h1>
           <div className="flex items-center gap-1">
             <Icon

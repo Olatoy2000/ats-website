@@ -69,7 +69,7 @@ export default function MORE_BLOG_POST({routeId}: any) {
         >
           {blogDetail?.map((item: any, idx: number) =>
             item.id !== +routeId ? (
-              <Link href={`/blog/${item.id}`}>
+              <Link href={`/blogs/${item.id}`}>
                 <article
                   className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
                   key={idx}

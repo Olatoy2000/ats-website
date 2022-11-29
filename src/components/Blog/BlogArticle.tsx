@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import Placeholder from "./assets/placeholder.png";
 import { useQuery } from "@tanstack/react-query";
-import { BlogArticle } from "../../../pages/blog";
+import { BlogArticle } from "../../../pages/blogs";
 
 const blogSample = {
 	status: "success",

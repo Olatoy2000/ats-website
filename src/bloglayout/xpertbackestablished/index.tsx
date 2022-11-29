@@ -10,7 +10,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
         <Link href="/updates" className="self-end">
           <button className="bg-[#C81107] flex gap-4 justify-between p-2 focus-within:bg-black leading-6 text-white font-bold rounded-md items-center">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               width="32"
               height="32"
               viewBox="0 0 24 24"

@@ -29,11 +29,11 @@ const singleBlogSample = {
 					email: "egloria@afexnigeria.com",
 					bio: "Talent Management Analyst",
 					profile_pics:
-						"http://atsbk.afexats.com/media/media/profile_pic/glo.jpg",
+						"https://atsbk.afexats.com/media/media/profile_pic/glo.jpg",
 				},
-				url: "http://atsbk.afexats.com/api/v1/blogs/1",
+				url: "https://atsbk.afexats.com/api/v1/blogs/1",
 				image:
-					"http://atsbk.afexats.com/media/media/blog_article/images/GrainQ.jpg",
+					"https://atsbk.afexats.com/media/media/blog_article/images/GrainQ.jpg",
 				min_read: "less than a minute read",
 				author_fullname: "Gloria Eronmonsele",
 			},
@@ -94,7 +94,7 @@ function BaWasa() {
 												</span>{" "}
 												&nbsp;&nbsp; {min_read}
 											</p>
-											<Link href={`/blog/${id}`}>
+											<Link href={`/blogs/${id}`}>
 												<p className='text-[15px] text-[#2D3748] font-bold -mt-1'>
 													Read more
 												</p>
