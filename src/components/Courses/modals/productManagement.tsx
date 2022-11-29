@@ -29,7 +29,7 @@ function ProductManagement({ id, title }: Props) {
 	const { data, isLoading } = useQuery(["Courses-list"], async () =>
 		axios({
 			method: "get",
-			url: `http://aptbk.afexats.com/api/jobs/cohort/${id}`,
+			url: `https://aptbk.afexats.com/api/jobs/cohort/${id}`,
 			headers: {
 				"api-key":
 					"qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
