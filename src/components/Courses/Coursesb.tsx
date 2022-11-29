@@ -20,7 +20,7 @@ const CoursesSample = {
 		previous: null,
 		results: [
 			{
-				url: "http://aptbk.afexats.com/api/jobs/courses/1",
+				url: "https://aptbk.afexats.com/api/jobs/courses/1",
 				title: "Data Science",
 				image: "http://aptbk.afexats.com/media/course/Data-science.jpg",
 				description:
@@ -164,7 +164,7 @@ function Coursesb() {
 
 	const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
 		axios({
-			url: `http://aptbk.afexats.com/api/jobs/courses`,
+			url: `https://aptbk.afexats.com/api/jobs/courses`,
 			headers: {
 				"HASH-KEY":
 					"ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",

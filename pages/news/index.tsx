@@ -32,11 +32,11 @@ const newsArticleSample = {
 					email: "ryusuf@afexnigeria.com",
 					bio: "Head Tech and Innovation",
 					profile_pics:
-						"http://atsbk.afexats.com/media/media/profile_pic/raheem.jpg",
+						"https://atsbk.afexats.com/media/media/profile_pic/raheem.jpg",
 				},
 				image:
-					"http://atsbk.afexats.com/media/media/news_article/images/Bar_AVi5v91.jpg",
-				url: "http://atsbk.afexats.com/api/v1/news/1",
+					"https://atsbk.afexats.com/media/media/news_article/images/Bar_AVi5v91.jpg",
+				url: "https://atsbk.afexats.com/api/v1/news/1",
 			},
 		],
 	},

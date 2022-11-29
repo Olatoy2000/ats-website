@@ -116,7 +116,7 @@ function Navbar({ query, setQuery }: INavBar) {
 					/>
 					<button className='-ml-10'>
 						<svg
-							xmlns='http://www.w3.org/2000/svg'
+							xmlns='https://www.w3.org/2000/svg'
 							height='20'
 							preserveAspectRatio='xMidYMid meet'
 							viewBox='0 0 50 50'

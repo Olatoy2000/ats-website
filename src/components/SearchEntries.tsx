@@ -29,7 +29,7 @@ function SearchEntries() {
 					onClick={prevHandler}
 					className='bg-[#C81107] border flex justify-between px-2 gap-1 items-center rounded-md text[0.9374rem] text-white font-normal'>
 					<svg
-						xmlns='http://www.w3.org/2000/svg'
+						xmlns='https://www.w3.org/2000/svg'
 						width='20'
 						height='20'
 						viewBox='0 0 24 24'
@@ -62,7 +62,7 @@ function SearchEntries() {
 					className='bg-[#C81107] border flex justify-between px-2 gap-1 items-center rounded-md text[0.9374rem] text-white font-normal'>
 					Next
 					<svg
-						xmlns='http://www.w3.org/2000/svg'
+						xmlns='https://www.w3.org/2000/svg'
 						width='20'
 						height='20'
 						viewBox='0 0 24 24'

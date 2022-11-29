@@ -8,7 +8,7 @@ function SrollUpAnim() {
 				<button className='flex gap-2 items-center animate-bounce'>
 					<div className='px-2 py-5 rounded-full border-[color:var(--afex-grey)] border-2'>
 						<svg
-							xmlns='http://www.w3.org/2000/svg'
+							xmlns='https://www.w3.org/2000/svg'
 							height='32'
 							preserveAspectRatio='xMidYMid meet'
 							viewBox='0 0 1024 1024'>
