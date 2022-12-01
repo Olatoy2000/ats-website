@@ -8,86 +8,70 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 const authorsSample = {
-	status: "success",
+	success: true,
 	status_code: 200,
-	data: {
-		count: 5,
-		next: null,
-		previous: null,
-		results: [
-			{
-				id: 3,
-				first_name: "Raheem",
-				last_name: "Yusuf",
-				email: "ryusuf@afexnigeria.com",
-				bio: "Head, Technology and Innovation",
-				profile_pics: null,
-				url: "https://atsbk.afexats.com/api/v1/author/3",
-				twitter_link: null,
-				facebook_link: null,
-				instagram_link: null,
-			},
-			{
-				id: 4,
-				first_name: "Gloria",
-				last_name: "Eromonsele",
-				email: "geronmonsele@afexnigeria.com",
-				bio: "Talent Management Analyst",
-				profile_pics: null,
-				url: "https://atsbk.afexats.com/api/v1/author/4",
-				twitter_link: null,
-				facebook_link: null,
-				instagram_link: null,
-			},
-			{
-				id: 1,
-				first_name: "Gloria",
-				last_name: "Eronmonsele",
-				email: "egloria@afexnigeria.com",
-				bio: "Talent Management Analyst",
-				profile_pics:
-					"https://atsbk.afexats.com/media/media/profile_pic/glo.jpg",
-				url: "https://atsbk.afexats.com/api/v1/author/1",
-				twitter_link: null,
-				facebook_link: null,
-				instagram_link: null,
-			},
-			{
-				id: 5,
-				first_name: "Raji",
-				last_name: "Kamaldeen",
-				email: "kraji@afexnigeria.com",
-				bio: "MD,AFEX FAIR TRADE",
-				profile_pics:
-					"https://atsbk.afexats.com/media/media/profile_pic/KR.jpg",
-				url: "https://atsbk.afexats.com/api/v1/author/5",
-				twitter_link: null,
-				facebook_link: null,
-				instagram_link: null,
-			},
-			{
-				id: 2,
-				first_name: "Raheem",
-				last_name: "Yusuf",
-				email: "ryusuf@afexnigeria.com",
-				bio: "Head Tech and Innovation",
-				profile_pics:
-					"https://atsbk.afexats.com/media/media/profile_pic/raheem.jpg",
-				url: "https://atsbk.afexats.com/api/v1/author/2",
-				twitter_link: null,
-				facebook_link: null,
-				instagram_link: null,
-			},
-		],
-	},
-	message: "Successfully Retrieved",
+	data: [
+		{
+			id: 1,
+			first_name: "Gloria",
+			last_name: "Eronmonsele",
+			email: "geromonsele@afexnigeria.com",
+			bio: "Analyst, Talent Management",
+			profile_pics:
+				"https://atsbk.afexats.com/media/media/profile_pic/1649956831190.jfif",
+			url: "https://atsbk.afexats.com/api/v1/author/1",
+			twitter_link: null,
+			facebook_link: null,
+			instagram_link: null,
+		},
+		{
+			id: 2,
+			first_name: "Raheem",
+			last_name: "Yusuf",
+			email: "ryusuf@afexnigeria.com",
+			bio: "Head Of Software Engineering",
+			profile_pics:
+				"https://atsbk.afexats.com/media/media/profile_pic/1567321506330.jfif",
+			url: "https://atsbk.afexats.com/api/v1/author/2",
+			twitter_link: null,
+			facebook_link: null,
+			instagram_link: null,
+		},
+		{
+			id: 3,
+			first_name: "Rildwan",
+			last_name: "Olanrewaju",
+			email: "rolanrewaju@afexnigeria.com",
+			bio: "Analyst, Frontend Development",
+			profile_pics:
+				"https://atsbk.afexats.com/media/media/profile_pic/1618866906272.jfif",
+			url: "https://atsbk.afexats.com/api/v1/author/3",
+			twitter_link: null,
+			facebook_link: null,
+			instagram_link: null,
+		},
+		{
+			id: 4,
+			first_name: "Habeeb",
+			last_name: "Oluwo",
+			email: "holuwo@afexnigeria.com",
+			bio: "Associate, Backend Development",
+			profile_pics:
+				"https://atsbk.afexats.com/media/media/profile_pic/1516236128606.jfif",
+			url: "https://atsbk.afexats.com/api/v1/author/4",
+			twitter_link: null,
+			facebook_link: null,
+			instagram_link: null,
+		},
+	],
+	message: "Successfully",
 };
 type Authors = typeof authorsSample;
 function TopAuthors() {
 	const { data: topAuthors, isLoading } = useQuery<Authors>(
 		["Top-Authors"],
 		async () =>
-			axios("/api/v1/author")
+			axios("/api/v1/top-authors")
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
@@ -97,7 +81,7 @@ function TopAuthors() {
 			<h1 className='text-2xl font-bold flex gap-1'>
 				<span className='bg-[#C81107] text-white'>Top</span>Authors
 			</h1>
-			{topAuthors?.data?.results.map(
+			{topAuthors?.data?.map(
 				(
 					{
 						id,
@@ -117,7 +101,7 @@ function TopAuthors() {
 						key={idx}
 						className='flex py-9 gap-5 items-center'>
 						<img
-							className='md:h-[2.5rem] h-[4.5rem]'
+							className='md:h-10 h-16 rounded'
 							src={profile_pics ? profile_pics : Placeholder.src}
 						/>
 						<div className='flex-col'>
