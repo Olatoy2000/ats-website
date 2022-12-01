@@ -20,10 +20,10 @@ export default function Duration() {
         <img
           src={Clock.src}
           alt="clock under duration"
-          className="lg:w-[11rem] self-start md:self-center md:w-[8.3125rem] w-[5.625rem]"
+          className="lg:w-[11rem] self-start sm:self-center md:w-[8.3125rem] w-[5.625rem]"
         />
       </section>
-      <section className="flex flex-col md:hidden">
+      <section className="flex flex-col sm:hidden">
         <img src={Clock.src} alt="clock at mobile view" className="w-20 self-end" />
         <div>
           <h2 className="font-bold text-bold-darkCharcoal self-center text-[2rem] leading-10">

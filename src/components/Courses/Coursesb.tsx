@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyImage from "../../components/Courses/assets/image-5.png";
 import { openModal, closeAllModals } from "@mantine/modals";
 import ProductManagement from "./modals/productManagement";
@@ -162,21 +162,39 @@ function Coursesb() {
 	//     },
 	// ];
 
-  const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
-    axios({
-      url: `https://aptbk.afexats.com/api/jobs/courses`,
-      headers: {
-        "HASH-KEY":
-          "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-        "REQUEST-TS": "1667549939702",
-        "API-KEY":
-          "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
-      },
-      method: "get",
-    })
-      .then(({ data }) => data)
-      .catch((e) => e)
-  );
+//   const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
+//     axios({
+//       url: `https://aptbk.afexats.com/api/jobs/courses/`,
+//       headers: {
+//         "HASH-KEY":
+//           "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
+//         "REQUEST-TS": "1667549939702",
+//         "API-KEY":
+//           "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+//       },
+//       method: "get",
+//     })
+//       .then(({ data }) => data)
+//       .catch((e) => e)
+//   );
+
+	const [Courses, setCourses] = useState([])
+
+  useEffect(() => {
+	  axios({
+		  url: `https://aptbk.afexats.com/api/jobs/courses/`,
+		  headers: {
+			  "HASH-KEY":
+				  "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
+			  "REQUEST-TS": "1667549939702",
+			  "API-KEY":
+				  "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+		  },
+		  method: "get",
+	  })
+		  .then((response) => setCourses(response.data.data.results))
+		  .catch((e) => console.log(e))
+  }, [])
 
 	return (
 		<div className='pt-24'>
@@ -193,7 +211,7 @@ function Coursesb() {
 					future
 				</p>
 			</div>
-			{Courses?.data?.results.map(
+			{Courses?.map(
 				({ title, image, url, description }: any, idx: number) => (
 					<div
 						key={idx}

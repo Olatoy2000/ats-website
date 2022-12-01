@@ -15,7 +15,7 @@ export default function Testimonies() {
       style={{
         backgroundImage: `url(${TestimonyBack.src})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover`",
+        backgroundSize: "40% 80%",
       }}
     >
       <article className="flex items-center gap-2 mb-10">

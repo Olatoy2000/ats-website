@@ -3,7 +3,7 @@ import { clsx } from "@mantine/core";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useQuery } from "@tanstack/react-query"; 
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import test from "node:test";
 
 const testimonialFrontpageListSample = {
@@ -29,6 +29,13 @@ type Testimony = TestimonialFrontpageList["data"][number]
 
 function Testimonial(selected: any) {
   const [parent] = useAutoAnimate<HTMLDivElement>();
+  // const [testimonial, setTestimonial] = useState(null)
+
+  // useEffect(() => {
+  //     axios("/api/v1/tech-stars/testimonial-frontpage-list")
+  //       .then(({ data }) => setTestimonial(data))
+  //       .catch((e) => e)
+  // }, [])
 
   const { data: testimonialList, isLoading } = useQuery<TestimonialFrontpageList>(
         ["testimonial", "frontpage"],
@@ -87,8 +94,7 @@ function Testimonial(selected: any) {
               juggle.push(juggle.shift() as Testimony);
               setTestimonial(juggle);
             }
-          }}
-        >
+          }}>
           <ArrowRight2 size={32} />
         </button>
       </article>

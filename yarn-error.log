@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn run dev
+  /usr/local/bin/node /usr/local/bin/yarn add --dev @types/react-images-viewer
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -8,22 +8,26 @@ Yarn version:
   1.22.19
 
 Node version: 
-  16.17.0
+  16.16.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/odebunmiblessingajibola/Documents/ATS/Assessment2nd/package.json: Unexpected token < in JSON at position 2
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/@types%2freact-images-viewer: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
-  <<<<<<< Updated upstream
   	"name": "ats-website",
   	"version": "0.0.1",
   	"description": "ATS final assessment, website building",
@@ -61,6 +65,7 @@ npm manifest:
   		"react-highlighter": "^0.4.3",
   		"react-icon": "^1.0.0",
   		"react-icons": "^4.6.0",
+  		"react-images-viewer": "^1.7.1",
   		"react-qrcode-js": "^1.1.2",
   		"react-qrcode-logo": "^2.8.0",
   		"react-share": "^4.4.1",
@@ -103,70 +108,6 @@ npm manifest:
   		"final",
   		"assessment"
   	]
-  =======
-    "name": "ats-website",
-    "version": "0.0.1",
-    "description": "ATS final assessment, website building",
-    "main": "index.js",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/Olatoy2000/website-building.git"
-    },
-    "author": "Oladejo Toyyib",
-    "license": "UNLICENSED",
-    "dependencies": {
-      "@emotion/css": "^11.10.5",
-      "@emotion/react": "^11.10.5",
-      "@formkit/auto-animate": "^1.0.0-beta.3",
-      "@iconify/react": "^4.0.0",
-      "@mantine/core": "^5.6.3",
-      "@mantine/dates": "^5.6.3",
-      "@mantine/form": "^5.6.3",
-      "@mantine/hooks": "^5.6.3",
-      "@mantine/modals": "^5.7.1",
-      "dayjs": "^1.11.6",
-      "iconsax-react": "^0.0.8",
-      "next": "^13.0.1",
-      "react": "^18.2.0",
-      "react-countdown": "^2.3.3",
-      "react-dom": "^18.2.0",
-      "react-icon": "^1.0.0",
-      "react-icons": "^4.6.0",
-      "react-qrcode-js": "^1.1.2",
-      "react-qrcode-logo": "^2.8.0",
-      "react-spring": "^9.5.5",
-      "react-timer-hook": "^3.0.5",
-      "tailwind-scrollbar-hide": "^1.1.7",
-      "tailwindcss": "^3.2.1"
-    },
-    "devDependencies": {
-      "@iconify/react": "^4.0.0",
-      "@parcel/transformer-typescript-tsc": "^2.7.0",
-      "@types/node": "18.11.9",
-      "@types/react": "^18.0.24",
-      "@types/react-dom": "^18.0.8",
-      "autoprefixer": "^10.4.13",
-      "moment": "^2.29.4",
-      "parcel": "^2.7.0",
-      "postcss": "^8.4.18",
-      "process": "^0.11.10",
-      "typescript": "^4.8.4"
-    },
-    "bugs": {
-      "url": "https://github.com/Olatoy2000/website-building/issues"
-    },
-    "homepage": "https://github.com/Olatoy2000/website-building#readme",
-    "scripts": {
-      "dev": "next dev",
-      "start": "parcel src/index.html",
-      "build": "parcel build src/index.html"
-    },
-    "keywords": [
-      "ats",
-      "final",
-      "assessment"
-    ]
-  >>>>>>> Stashed changes
   }
 
 yarn manifest: 
@@ -221,6 +162,13 @@ Lockfile:
     integrity sha512-6mmljtAedFGTWu2p/8WIORGwy+61PLgOMPOdazc7YoJ9ZCWUyFy3A6CpPkRKLKD1ToAesxX8KGEViAiLo9N+7Q==
     dependencies:
       "@babel/helper-plugin-utils" "^7.18.6"
+  
+  "@babel/runtime@^7.1.2":
+    version "7.20.6"
+    resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.6.tgz#facf4879bfed9b5326326273a64220f099b0fce3"
+    integrity sha512-Q+8MqP7TiHMWzSfwiJwXCjyf4GYA4Dgw3emg/7xmwsdLJOZUp+nMqcOwOzzYheuM1rhDu8FSj2l0aoMygEuXuA==
+    dependencies:
+      regenerator-runtime "^0.13.11"
   
   "@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.18.3":
     version "7.20.1"
@@ -1551,6 +1499,15 @@ Lockfile:
       normalize-path "^3.0.0"
       picomatch "^2.0.4"
   
+  aphrodite@^2.2.2:
+    version "2.4.0"
+    resolved "https://registry.yarnpkg.com/aphrodite/-/aphrodite-2.4.0.tgz#ec1a2afa41ba7310a47a4f1fba27919d99572c91"
+    integrity sha512-1rVRlLco+j1YAT5aKEE8Wuw5zWV+tI41/quEheJAG0vNaGHE64iJ/a2SiVMz8Uc80VdP2/Hjlfd2bPJOWsqJuQ==
+    dependencies:
+      asap "^2.0.3"
+      inline-style-prefixer "^5.1.0"
+      string-hash "^1.1.3"
+  
   arg@^5.0.2:
     version "5.0.2"
     resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.2.tgz#c81433cc427c92c4dcf4865142dbca6f15acd59c"
@@ -1562,6 +1519,11 @@ Lockfile:
     integrity sha512-6y/ogyDTk/7YAe91T3E2PR1ALVKyM2QbTio5HwM+N1Q6CMlCKhvClyIjkckBswa0f2xJhjsfzIGa1yVSe1UMVA==
     dependencies:
       tslib "^2.0.0"
+  
+  asap@^2.0.3:
+    version "2.0.6"
+    resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
+    integrity sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==
   
   asynckit@^0.4.0:
     version "0.4.0"
@@ -1835,6 +1797,14 @@ Lockfile:
       loose-envify "^1.3.1"
       object-assign "^4.1.1"
   
+  css-in-js-utils@^2.0.0:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/css-in-js-utils/-/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
+    integrity sha512-PJF0SpJT+WdbVVt0AOYp9C8GnuruRlL/UFW7932nLWmFLQTaWEzTBQEx7/hn4BuV+WON75iAViSUJLiU3PKbpA==
+    dependencies:
+      hyphenate-style-name "^1.0.2"
+      isobject "^3.0.1"
+  
   css-select@^4.1.3:
     version "4.3.0"
     resolved "https://registry.yarnpkg.com/css-select/-/css-select-4.3.0.tgz#db7129b2846662fd8628cfc496abb2b59e41529b"
@@ -1926,6 +1896,13 @@ Lockfile:
     version "1.1.3"
     resolved "https://registry.yarnpkg.com/dlv/-/dlv-1.1.3.tgz#5c198a8a11453596e751494d49874bc7732f2e79"
     integrity sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
+  
+  dom-helpers@^3.4.0:
+    version "3.4.0"
+    resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.4.0.tgz#e9b369700f959f62ecde5a6babde4bccd9169af8"
+    integrity sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==
+    dependencies:
+      "@babel/runtime" "^7.1.2"
   
   dom-serializer@^1.0.1:
     version "1.4.1"
@@ -2035,6 +2012,11 @@ Lockfile:
     dependencies:
       md5.js "^1.3.4"
       safe-buffer "^5.1.1"
+  
+  exenv@^1.2.2:
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+    integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
   
   fast-deep-equal@^3.1.3:
     version "3.1.3"
@@ -2178,6 +2160,11 @@ Lockfile:
       domutils "^2.8.0"
       entities "^3.0.1"
   
+  hyphenate-style-name@^1.0.2:
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
+    integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
+  
   iconsax-react@^0.0.8:
     version "0.0.8"
     resolved "https://registry.yarnpkg.com/iconsax-react/-/iconsax-react-0.0.8.tgz#5e992e9bd4bb298da019b2c13f76de5e4bb8e4b4"
@@ -2202,6 +2189,13 @@ Lockfile:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
     integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
+  
+  inline-style-prefixer@^5.1.0:
+    version "5.1.2"
+    resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-5.1.2.tgz#e5a5a3515e25600e016b71e39138971228486c33"
+    integrity sha512-PYUF+94gDfhy+LsQxM0g3d6Hge4l1pAqOSOiZuHWzMvQEGsbRQ/ck2WioLqrY2ZkHyPgVUXxn+hrkF7D6QUGbA==
+    dependencies:
+      css-in-js-utils "^2.0.0"
   
   is-arrayish@^0.2.1:
     version "0.2.1"
@@ -2243,6 +2237,11 @@ Lockfile:
     version "7.0.0"
     resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
     integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
+  
+  isobject@^3.0.1:
+    version "3.0.1"
+    resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
+    integrity sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==
   
   jquery@^3.6.1:
     version "3.6.1"
@@ -2698,7 +2697,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
     integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
   
-  prop-types@^15.6.0, prop-types@^15.7.2, prop-types@^15.8.1:
+  prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
     version "15.8.1"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
     integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2792,10 +2791,25 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.6.0.tgz#f83eda179af5d02c047449a20b702c858653d397"
     integrity sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==
   
+  react-images-viewer@^1.7.1:
+    version "1.7.1"
+    resolved "https://registry.yarnpkg.com/react-images-viewer/-/react-images-viewer-1.7.1.tgz#b63f3a26c03c77fd50be4c960d7fccef6e09fca1"
+    integrity sha512-ZSdIObEO/DJrdOAUaGbWdugQmMEtv69RyaHyiUv8iWyB45bqynBU7ny4ghQkec+3yR/0DgQ4UYX+8LeduNFcpQ==
+    dependencies:
+      aphrodite "^2.2.2"
+      prop-types "^15.6.2"
+      react-scrolllock "^3.0.1"
+      react-transition-group "^2.4.0"
+  
   react-is@^16.13.1, react-is@^16.7.0:
     version "16.13.1"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+  
+  react-lifecycles-compat@^3.0.4:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+    integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
   react-qrcode-js@^1.1.2:
     version "1.1.2"
@@ -2816,6 +2830,13 @@ Lockfile:
     version "0.9.0"
     resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"
     integrity sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==
+  
+  react-scrolllock@^3.0.1:
+    version "3.0.2"
+    resolved "https://registry.yarnpkg.com/react-scrolllock/-/react-scrolllock-3.0.2.tgz#b1607cb5f6b8a3bce02c78e7dfb1cbe564c1e992"
+    integrity sha512-ZShCKvt4bxxhqngaegHsZuoTIUDt4QOHd0saJ/cfJAu0LwCOoRaQfRZe9UPT/bpDE944u/GhuTWBmGaW9YER7Q==
+    dependencies:
+      exenv "^1.2.2"
   
   react-share@^4.4.1:
     version "4.4.1"
@@ -2858,6 +2879,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-timer-hook/-/react-timer-hook-3.0.5.tgz#a8d930f99b180cd88da245965a26a17df3e7457b"
     integrity sha512-n+98SdmYvui2ne3KyWb3Ldu4k0NYQa3g/VzW6VEIfZJ8GAk/jJsIY700M8Nd2vNSTj05c7wKyQfJBqZ0x7zfiA==
   
+  react-transition-group@^2.4.0:
+    version "2.9.0"
+    resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
+    integrity sha512-+HzNTCHpeQyl4MJ/bdE0u6XRMe9+XG/+aL4mCxVN4DnPBQ0/5bfHWPDuOZUzYdMj94daZaZdCCc1Dzt9R/xSSg==
+    dependencies:
+      dom-helpers "^3.4.0"
+      loose-envify "^1.4.0"
+      prop-types "^15.6.2"
+      react-lifecycles-compat "^3.0.4"
+  
   react-use-clipboard@^1.0.9:
     version "1.0.9"
     resolved "https://registry.yarnpkg.com/react-use-clipboard/-/react-use-clipboard-1.0.9.tgz#d34d4d04500f77c606795d3756fc587ec93db8d2"
@@ -2899,6 +2930,11 @@ Lockfile:
     version "0.13.10"
     resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.10.tgz#ed07b19616bcbec5da6274ebc75ae95634bfc2ee"
     integrity sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==
+  
+  regenerator-runtime@^0.13.11:
+    version "0.13.11"
+    resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
+    integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
   
   resolve-from@^4.0.0:
     version "4.0.0"
@@ -2998,6 +3034,11 @@ Lockfile:
     integrity sha512-gCq3NDI2P35B2n6t76YJuOp7d6cN/C7Rt0577l91wllh0sY9ZBuw9KaSGqH/b0hzn3CWWJbpbW0W0WvQ1H/Q7g==
     dependencies:
       emitter-component "^1.1.1"
+  
+  string-hash@^1.1.3:
+    version "1.1.3"
+    resolved "https://registry.yarnpkg.com/string-hash/-/string-hash-1.1.3.tgz#e8aafc0ac1855b4666929ed7dd1275df5d6c811b"
+    integrity sha512-kJUvRUFK49aub+a7T1nNE66EJbZBMnBgoC1UbCZ5n6bsZKBRga4KgBRTMn/pFkeCZSYtNeSyMxPDM0AXWELk2A==
   
   string_decoder@^1.1.1:
     version "1.3.0"
