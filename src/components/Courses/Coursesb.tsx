@@ -162,21 +162,21 @@ function Coursesb() {
 	//     },
 	// ];
 
-	const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
-		axios({
-			url: `httpss://aptbk.afexats.com/api/jobs/courses`,
-			headers: {
-				"HASH-KEY":
-					"ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-				"REQUEST-TS": "1667549939702",
-				"API-KEY":
-					"qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
-			},
-			method: "get",
-		})
-			.then(({ data }) => data)
-			.catch((e) => e)
-	);
+  const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
+    axios({
+      url: `https://aptbk.afexats.com/api/jobs/courses`,
+      headers: {
+        "HASH-KEY":
+          "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
+        "REQUEST-TS": "1667549939702",
+        "API-KEY":
+          "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+      },
+      method: "get",
+    })
+      .then(({ data }) => data)
+      .catch((e) => e)
+  );
 
 	return (
 		<div className='pt-24'>
@@ -224,7 +224,7 @@ function Coursesb() {
                       children: (
                         <ProductManagement
                           title={title}
-                          id={url[url.length - 1]}
+                          url={url}
                         />
                       ),
                       classNames: {

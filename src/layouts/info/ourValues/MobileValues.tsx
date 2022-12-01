@@ -7,7 +7,7 @@ function MobileValues() {
   return (
     <Carousel
       className="w-28 h-28"
-     styles={{root: {}}}
+     styles={{viewport: {width: "20rem", height: "21rem"}, slide: {overflowX:"visible"}}}
       mx="auto"
       loop
       withControls={false}

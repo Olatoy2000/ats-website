@@ -3,6 +3,7 @@ import GuyWithLaptop from "./assets/new-man-with-laptop.jpg";
 import Background from "./assets/background.png";
 import Container from "../../components/Container";
 import Link from "next/link";
+import MrMustapha from "./assets/mustapha.png"
 import { useRouter } from "next/router";
 
 function LandingPage() {
@@ -13,8 +14,8 @@ function LandingPage() {
         className="pt-[6.25rem] mt-8 xl:flex xl:justify-between md:flex md:justify-between xl:gap-1 bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${Background.src})` }}
       >
-        <article className="flex flex-col md:mx-auto md:w-[30.625rem] pt-14 w-60 justify-start gap-3">
-          <div className="pt-6 text-[#313131] leading-[3.125rem] md:leading-[4.625rem] md:text-[3.875rem] lg:leading-[6.25rem] lg:text-[4.125rem] tracking-[-1.5px] font-black">
+        <article className="flex flex-col md:w-[30.625rem] pt-14 w-60 justify-start gap-3">
+          <div className="pt-6 text-[#313131] leading-[3.125rem] md:leading-[4.625rem] md:text-[3.875rem] text-[3rem] lg:leading-[6.25rem] lg:text-[4.125rem] tracking-[-1.5px] font-black">
             Begin Your Tech Journey
           </div>
           <div className="text-[clamp(0.875rem,1.125vw,1.125rem)] font-bold text-[#313131] pb-8">
@@ -27,9 +28,9 @@ function LandingPage() {
           </Link>
         </article>
         <img
-          src={GuyWithLaptop.src}
+          src={MrMustapha.src}
           alt="Man with Laptop"
-          className="xl:w-max lg:w-80 md:w-60 mt-12"
+          className="w-max lg:w-80 md:w-60 mt-12"
         />
       </section>
     </Container>

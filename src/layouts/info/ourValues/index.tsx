@@ -36,7 +36,7 @@ function OurValues() {
             <Card key={idx} {...props} />
           ))}
         </div>
-        {/* <MobileValues /> */}
+        <MobileValues />
         {/* <div 
         ref={scrollRefs}
         className="grid grid-flow-col items-center overflow-x-scroll scrollbar-hide duration-300 ease-in-out gap-10 pt-8 md:hidden"
