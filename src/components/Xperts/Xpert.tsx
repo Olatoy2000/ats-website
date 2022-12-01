@@ -77,7 +77,7 @@ function Xpert() {
 					/>
 				</div>
 			</Group>
-			<div className='grid lg:grid-cols-3 grid-cols-2 gap-8'>
+			<div className='grid lg:grid-cols-3 grid-cols-2 gap-10'>
 				{Xperts?.data?.results.map(
 					(
 						{ full_name, course, profile_picture, cohort }: any,
@@ -85,9 +85,9 @@ function Xpert() {
 					) => (
 						<div
 							key={idx}
-							className='place-items-center grid border-2 rounded-2xl shadow py-8'>
+							className='place-items-center grid border-2 rounded-2xl shadow py-12'>
 							<img
-								className='object-cover w-1/2 rounded-xl'
+								className='object-cover w-2/3 h-96 rounded-xl'
 								src={profile_picture}
 							/>
 

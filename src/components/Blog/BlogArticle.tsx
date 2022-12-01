@@ -154,7 +154,7 @@ function Blog({ query }: IBlog) {
 							className='flex flex-col pb-4 shadow rounded-md'>
 							<img
 								src={image ? image : Placeholder.src}
-								className='h-96 object-cover'
+								className='lg:w-96 lg:h-72 md:w-96 md:h-72 w-full h-72 object-cover'
 							/>
 							{/* <span>
 							{search === ""
@@ -180,8 +180,8 @@ function Blog({ query }: IBlog) {
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
-									src={author_image}
-									className='h-10'
+									src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
+									className='h-8'
 								/>
 								<div className='font-sans flex-1'>
 									<p className='text-[#C81107] text-xs font-semibold'>

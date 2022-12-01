@@ -38,8 +38,6 @@ function Navbar({ query, setQuery }: INavBar) {
 			.catch((e) => e)
 	);
 
-	console.log(data);
-
 	// useEffect(() => {
 	// 	items.push({ hash: `:~:search=${query}` });
 	// }, [query]);
@@ -49,9 +47,9 @@ function Navbar({ query, setQuery }: INavBar) {
 	return (
 		<Group
 			position='apart'
-			className='items-center py-10 pl-8 md:px-0 lg:px-0'
+			className='items-center py-10'
 			id='Navbar'>
-			<span className='text-[#C81107] lg:text-xl md:text-lg lg:flex md:flex hidden font-bold'>
+			<span className='text-[#C81107] lg:text-xl md:text-lg flex font-bold'>
 				ATS Updates
 			</span>
 
@@ -103,18 +101,17 @@ function Navbar({ query, setQuery }: INavBar) {
 						</Link>
 					</Menu.Dropdown>
 				</Menu>
-				<Input.Wrapper
-					className={clsx("flex w-52", { "opacity-70": noSearchBy })}>
+				<Input.Wrapper className={clsx("flex", { "opacity-70": noSearchBy })}>
 					<input
 						disabled={noSearchBy}
 						onChange={(e) => setQuery(e.target.value)}
-						className='placeholder:text-slate-400 flex flex-1 items-end bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 pr-10 sm:text-sm'
+						className='placeholder:text-slate-400 flex items-end bg-[#F7F8F9] border focus:outline-none rounded-md py-2 pl-4 sm:text-sm'
 						placeholder='Search'
 						type='text'
 						name='search'
 						value={query}
 					/>
-					<button className='-ml-10'>
+					<button className='-ml-6'>
 						<svg
 							xmlns='https://www.w3.org/2000/svg'
 							height='20'

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BlogArticle from "./BlogArticle/BlogArticle";
 import AfexNewsPic from "./AfexNewsPic/AfexNewsPic";
 import AFEXLearnMore from "./AFEXLearnMore";
@@ -16,8 +16,10 @@ import Navbar from "./Navbar/Navbar";
 
 //Updates page
 function Updates() {
+	const [keyword, setKeyword] = useState("");
+
 	return (
-		<main className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
+		<main className='flex flex-col mx-auto w-[85%] gap-10 max-w-screen-2xl'>
 			<Navbar
 				query={""}
 				setQuery={function (value: React.SetStateAction<string>): void {
@@ -27,10 +29,9 @@ function Updates() {
 			<BaWasa />
 			<BlogArticle />
 			<AfexNewsPic />
-			<div className='lg:flex lg:flex-row md:flex md:flex-row flex flex-col lg:gap-32 md:gap-56 '>
+			<div className='lg:flex lg:flex-row md:flex md:flex-row flex flex-col lg:gap-28 md:gap-52 '>
 				<div className='flex-1'>
-					<RecentlyPosted />
-					<SearchEntries />
+					<RecentlyPosted keyword={keyword} />
 				</div>
 				<div className='lg:w-[30%]'>
 					<TopAuthors />
@@ -38,9 +39,11 @@ function Updates() {
 					<Categories />
 					<TodayUpdates />
 					<ATSGallery />
-					<SearchTagsi />
-					<SrollUpAnim />
+					<SearchTagsi setKeyword={setKeyword} />
 				</div>
+			</div>
+			<div className='flex relative lg:justify-end md:justify-end justify-end sm:justify-center bottom-12'>
+				<SrollUpAnim />
 			</div>
 		</main>
 	);

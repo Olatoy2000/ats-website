@@ -69,20 +69,22 @@ function BaWasa() {
 					}: any,
 					idx: number
 				) =>
-					idx === 2 ? (
+					idx === 0 ? (
 						<div
-							className='lg:grid md:grid grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr] flex flex-col-reverse border border-[#E2E2E2] shadow rounded-md gap-12'
+							className='lg:grid lg:grid-flow-col md:grid md:grid-flow-col flex flex-col-reverse border border-[#E2E2E2] shadow rounded-md'
 							key={idx}>
-							<article className='md:pt-12 pl-8 flex flex-col gap-16'>
+							<article className='lg:px-8 md:px 8 pl-8 pr-3 flex flex-col'>
 								<div className='mb-10'>
-									<p className='text-[#2D3748] text-[clamp(1rem,2.5vw,2.25rem)] text-4xl font-bold py-4'>
-										{title}
-									</p>
+									<Link href={`/blogs/${id}`}>
+										<p className='text-[#2D3748] text-[clamp(1rem,2.5vw,2.25rem)] text-4xl font-bold pt-10'>
+											{title}
+										</p>
+									</Link>
 									<p className='text-base text-[#718096]'>{intro}</p>
 								</div>
-								<div className='flex gap-3 md:pt-28 pb-6 items-center'>
+								<div className='flex gap-3 pt-8 pb-4 items-center'>
 									<img
-										src={author_image}
+										src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
 										className='h-10 object-cover'
 									/>
 									<div className='font-sans flex-1'>
@@ -97,9 +99,9 @@ function BaWasa() {
 												&nbsp;&nbsp; {min_read}
 											</p>
 											<Link href={`/blogs/${id}`}>
-												<p className='text-[15px] text-[#2D3748] font-bold -mt-1'>
+												<span className='text-[15px] text-[#2D3748] font-bold -mt-1'>
 													Read more
-												</p>
+												</span>
 											</Link>
 										</span>
 									</div>
@@ -107,7 +109,7 @@ function BaWasa() {
 							</article>
 							<div>
 								<img
-									className='w-full h-full object-cover'
+									className='object-cover h-full'
 									src={image}
 								/>
 							</div>
