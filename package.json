@@ -36,6 +36,7 @@
 		"react-highlighter": "^0.4.3",
 		"react-icon": "^1.0.0",
 		"react-icons": "^4.6.0",
+		"react-images-viewer": "^1.7.1",
 		"react-qrcode-js": "^1.1.2",
 		"react-qrcode-logo": "^2.8.0",
 		"react-share": "^4.4.1",

@@ -7,7 +7,6 @@ import ATSGallery from "./ATSGallery/ATSGallery";
 import SearchTagsi from "./SearchTagsi";
 import SearchEntries from "./SearchEntries";
 import Categories from "./Categories";
-import ApplyNow from "./ApplyNow";
 import RecentlyPosted from "./RecentlyPosted/RecentlyPosted";
 import TopAuthors from "./TopAuthors/TopAuthors";
 import BaWasa from "./BaWasa/BaWasa";

@@ -1,9 +1,5 @@
 import React from "react";
 import Container from "../../../components/Container";
-import ThreeFriends from "./assets/three-friends.png";
-import FemaleTechBack from "./assets/second-down-bg.png";
-import BackFriendPhone from "./assets/iPhone 13/recphone.png";
-import ThreFriendPhone from "./assets/iPhone 13/threfriendphone.png";
 import backgroundFriendsWithArrow from "./assets/back-three-arrow.png";
 export default function TeamWork() {
   return (
@@ -26,7 +22,7 @@ export default function TeamWork() {
       </section>
       <section className="md:hidden flex flex-col gap-4">
         <div>
-          <img src={backgroundFriendsWithArrow.src} alt="" />
+          <img src={backgroundFriendsWithArrow.src} className="w-20" alt="" />
         </div>
         <div>
           <h2 className="text-bold-darkCharcoal text-end text-[2rem] leading-10 font-bold">

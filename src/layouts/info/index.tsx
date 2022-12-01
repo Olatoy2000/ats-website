@@ -9,7 +9,7 @@ export default function Information() {
   return (
     <section
       className="flex flex-col gap-10 my-24 pl-12 pb-12 bg-cover"
-      style={{ backgroundImage: `url(${NewInfoBackground.src})`, backgroundRepeat: "no-repeat", backgroundSize: "100%" }}
+      style={{ backgroundImage: `url(${NewInfoBackground.src})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}
     >
       <OurValues />
       <Duration />
