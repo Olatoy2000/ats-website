@@ -2,7 +2,6 @@ import { Icon } from "@iconify/react";
 import { Divider } from "@mantine/core";
 import { Fragment, useEffect, useState } from "react";
 import { Whatsapp, Link } from "iconsax-react";
-import ProductManagementBack from "./assets/pmback.png";
 // import setup from "./setup.json";
 import moment from "moment";
 import useClipboard from "react-use-clipboard";
@@ -74,7 +73,7 @@ function ProductManagement({ url, title }: Props) {
 	}, [])
 
 	const [isCopied, setCopied] = useClipboard(
-		"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+		"https://zippy-dango-7ea3fe.netlify.app/courses"
 	);
 	return (
 		<Fragment>
@@ -125,7 +124,7 @@ function ProductManagement({ url, title }: Props) {
 					<div className='flex gap-6'>
 						<EmailShareButton
 							url={
-								"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+								"https://zippy-dango-7ea3fe.netlify.app/courses"
 							}>
 							<button className='border-white text-white hover:bg-[#C81107] border rounded-md p-3'>
 								Refer a friend
@@ -151,7 +150,7 @@ function ProductManagement({ url, title }: Props) {
 						/>
 						<FacebookShareButton
 							url={
-								"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+								"https://zippy-dango-7ea3fe.netlify.app/courses"
 							}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -167,7 +166,7 @@ function ProductManagement({ url, title }: Props) {
 
 						<WhatsappShareButton
 							url={
-								"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+								"https://zippy-dango-7ea3fe.netlify.app/courses"
 							}>
 							<Whatsapp
 								size='24'
@@ -178,12 +177,12 @@ function ProductManagement({ url, title }: Props) {
 
 						<TelegramShareButton
 							url={
-								"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+								"https://zippy-dango-7ea3fe.netlify.app/courses"
 							}
 							children={undefined}></TelegramShareButton>
 						<LinkedinShareButton
 							url={
-								"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+								"https://zippy-dango-7ea3fe.netlify.app/courses"
 							}>
 							<Icon
 								icon='ri:linkedin-fill'
@@ -194,7 +193,7 @@ function ProductManagement({ url, title }: Props) {
 						</LinkedinShareButton>
 						<TwitterShareButton
 							url={
-								"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+								"https://zippy-dango-7ea3fe.netlify.app/courses"
 							}>
 							<Icon
 								icon='bytesize:twitter'
@@ -293,7 +292,7 @@ function ProductManagement({ url, title }: Props) {
 							<h4 className='uppercase font-bold'>Requirement</h4>
 							<p>{CourseDetail?.data.open_job.requirement}</p>
 						</div>
-					<a href={'https://ats-track-application.netlify.app?course='+title.toLocaleLowerCase().split(' ').join('-')}>
+						<a href={'https://ats-track-application.netlify.app?course='+title.toLocaleLowerCase().split(' ').join('-')}>
 							<button
 								id='app'
 								className='self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3'>
