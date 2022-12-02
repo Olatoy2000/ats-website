@@ -1,7 +1,6 @@
 import { Message2, Eye, Like1 } from "iconsax-react";
 import Container from "../../components/Container";
 import Link from "next/link";
-import XpertBack from "./assets/xpertback.png";
 
 export default function Xpertbackestablished({ blogDetail }: any) {
 	return (

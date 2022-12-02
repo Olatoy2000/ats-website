@@ -34,22 +34,17 @@ function index() {
     if (form.values.email === "") setErr("");
   }, [form.values]);
 
-  const setModalTrue = () => {
-    // navigator.geolocation.getCurrentPosition(
-    //   (position: any) => {
-    // console.log(position.coord.lat)
-    // },
-    //   (error: any) => console.log(error)
-    // );
-
+  const sendData = (lat: string, long: string) => {
     let email = form.values.email;
     if (/^\S+@\S+$/.test(email)) {
-      setIsLoading(true);
       var data = JSON.stringify({
         email: email,
-        location: "ibadan",
+        latitude: lat,
+        longitude: long,
         date_time: new Date().toISOString(),
       });
+      console.log(data);
+      
 
       var config = {
         method: "post",
@@ -75,6 +70,35 @@ function index() {
     } else {
       setErr("Invalid Email");
     }
+  }
+
+  const setModalTrue = () => {
+      setIsLoading(true);
+    navigator.geolocation.getCurrentPosition(
+            (position) => {
+              let userLocation = ''
+                const lat = String(position.coords.latitude);
+                const long = String(position.coords.longitude);
+                fetch(
+                    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`
+                )
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.city) userLocation = data.city;
+                        else userLocation = data.locality;
+                        sendData(lat, long)
+                    })
+                    .catch(() =>
+                        alert("Could not fetch location, please try again")
+                    );
+            },
+            () => {
+                console.log("errrrrooorrr");
+                alert("please accept location permission");
+              setIsLoading(false);
+
+            }
+        );
   };
 
 

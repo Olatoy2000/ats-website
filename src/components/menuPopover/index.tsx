@@ -61,13 +61,13 @@ export default function MenuPopover() {
 			<Menu.Target>
 				<img
 					src={PopUp.src}
-					className='hidden sm:block sm:fixed w-14 bottom-6 right-6 z-[400]'
+					className='block fixed w-14 bottom-6 right-6 z-[400]'
 					alt='pop-up'
 				/>
 			</Menu.Target>
 			<Menu.Dropdown className='border-2 boder-2-[#EAAEAD] rounded-2xl !left-auto right-5 !top-auto bottom-5 !fixed'>
 				<Menu.Label
-					className={`w-[400px] bg-no-repeat bg-cover border border-[#EAAEAD] rounded-tl-2xl rounded-tr-2xl flex gap-3 justify-start pl-8 py-4`}
+					className={`w-[260px] sm:w-[400px] bg-no-repeat bg-cover border border-[#EAAEAD] rounded-tl-2xl rounded-tr-2xl flex gap-3 justify-start pl-8 py-4`}
 					style={{
 						backgroundImage: `url(${RedOverlay.src})`,
 					}}>
@@ -87,7 +87,7 @@ export default function MenuPopover() {
 						</div>
 					</section>
 				</Menu.Label>
-				<Menu.Label className='w-[400px] flex flex-col gap-4'>
+				<Menu.Label className='w-[240px] sm:w-[400px] flex flex-col gap-4'>
 					<p className='text-[#C81107] text-[0.75rem] font-normal leading-4'>
 						Please fill out the form below and we will get back to you as soon
 						as possible.

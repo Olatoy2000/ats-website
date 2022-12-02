@@ -1,7 +1,5 @@
 import React, { useMemo, useState } from "react";
 import BackToUpdate from "../../src/components/backToUpdates";
-// import GroupPicture from "../../src/components/backToUpdates/assets/group-picture.png";
-// import GroupPicture2 from "../../src/components/backToUpdates/assets/group-picture2.png";
 import { Pagination } from "@mantine/core";
 import Container from "../../src/components/Container";
 import { usePagination } from "@mantine/hooks";
@@ -57,17 +55,27 @@ function index() {
 	);
 
 	const [page, onChange] = useState(1);
+	const [lowest, setLowest] = useState(1)
+	const [highest, setHighest] = useState(5)
 
-	const pagination = usePagination({ total: 20, page, onChange });
+	const pagination = usePagination({ total: 10, page, onChange });
 	const nextHandler = () => {
 		pagination.setPage(page + 1);
 		pagination.range;
+		setLowest(lowest + 5)
+		setHighest(highest + 5)
 	};
 
 	const prevHandler = () => {
 		pagination.setPage(page - 1);
 		pagination.range;
+		if (lowest !== 1) {
+			setLowest(lowest - 5)
+			setHighest(highest - 5)
+		}
 	};
+
+
 
 	//
 	return (
@@ -82,9 +90,10 @@ function index() {
 							</p>
 							<ul className='grid grid-cols-6 gap-[15px]'>
 								{pictures.map((item, id) => (
+									id + 1 <= highest && id + 1 >= lowest &&
 									<li key={id}>
 										<img
-											className='w-full object-cover'
+											className='w-full h-full object-cover'
 											src={process.env.NEXT_PUBLIC_BASE_URL + item.image}
 											alt='galleries of Afex tech stars'
 										/>
@@ -95,15 +104,10 @@ function index() {
 					))}
 				</section>
 				<section className='flex justify-between'>
-					<div
-						style={{ borderRadius: "5px", border: "1px solid #C4C4C4" }}
-						className='p-3'>
-						1-8 of 200 Entries
-					</div>
-					<article className='flex gap-3'>
+					<article className='flex justify-evenly w-full items-center gap-4'>
 						<button
 							onClick={prevHandler}
-							className='bg-[#C81107] border flex justify-between px-1 py-1 gap-1 items-center rounded-md text-[0.875rem] text-white font-normal'>
+							className='bg-[#C81107] justify-self-start border flex justify-between px-1 py-1 gap-1 items-center rounded-md text-[0.875rem] text-white font-normal'>
 							<svg
 								xmlns='https://www.w3.org/2000/svg'
 								width='20'
@@ -122,7 +126,7 @@ function index() {
 						</button>
 						<Pagination
 							page={pagination.active}
-							total={20}
+							total={10}
 							styles={{
 								item: {
 									"&[data-active]": {
@@ -134,7 +138,7 @@ function index() {
 						/>
 						<button
 							onClick={() => nextHandler()}
-							className='bg-[#C81107] border flex justify-between px-1 py-1 gap-1 items-center rounded-md text[0.875rem] text-white font-normal'>
+							className='bg-[#C81107] justify-self-end border flex justify-between px-1 py-1 gap-1 items-center rounded-md text[0.875rem] text-white font-normal'>
 							Next
 							<svg
 								xmlns='https://www.w3.org/2000/svg'

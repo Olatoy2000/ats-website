@@ -101,4 +101,3 @@ export default function MORE_BLOG_POST({ routeId }: any) {
 			</section>
 		</Container>
 	);
-}

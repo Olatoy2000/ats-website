@@ -1,99 +1,67 @@
-import Abraham from "./assets/abraham.png";
-import Samuel from "./assets/samuel.png";
-import Blessing from "./assets/blessing.png";
-import Davies from "./assets/davies.png";
-import Busola from "./assets/busola.png";
-
-import { CSSProperties, useState } from "react";
-import { StaticImageData } from "next/image";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { clsx } from "@mantine/core";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
+import { useQuery } from "@tanstack/react-query"; 
 import axios from "axios";
+import { useEffect, useState } from "react";
+import test from "node:test";
 
-type Testimony = Array<{
-  testimony: string;
-  style?: CSSProperties;
-  picture: StaticImageData;
-  name: string;
-  title: string;
-}>;
+const testimonialFrontpageListSample = {
+    status: "success",
+    status_code: "200",
+    data: [
+        {
+            id: 3,
+            tech_star_full_name: "Pastor Tunde",
+            testimonial: "ATS was worth a fortune to my company. I'm good to go.",
+            tech_star_profile_picture: "/media/tech_star_picture/MicrosoftTeams-image_2.png",
+            tech_star_cohort: "1.0",
+            tech_star_course: "Frontend Development"
+        },
+    ],
+    "message": "Successfully"
+}
 
-const testimony: Testimony = [
-  {
-    testimony:
-      "I have always dreamed of making cool, new projects while working as a startup. ATS makes this dream a reality and I would highly recommend this to young developers out there.",
-    picture: Samuel,
-    name: "Samuel",
-    style: { objectPosition: "bottom", width: "100%" },
-    title: "Backend developer",
-  },
-  {
-    testimony: "I have always dreamed of making cool project",
-    picture: Abraham,
-    name: "Abraham",
-    title: "Backend developer",
-  },
-
-  {
-    testimony: "I have always dreamed of making cool project",
-    picture: Davies,
-    name: "Davies",
-    title: "Product Management",
-  },
-  {
-    testimony: "I have always dreamed of making cool project",
-    picture: Busola,
-    style: { height: "100%" },
-    name: "Busola",
-    title: "Backend developer",
-  },
-  {
-    testimony:
-      "ATS has changed my life by enabling me to make a great living from behind my computer. if you are a software engineer looking to work remotely, I higly recommend that you check out ATS",
-    picture: Blessing,
-    style: { width: "100%" },
-    name: "Davies",
-    title: "Frontend developer",
-  },
-];
-
-type Props = {
-  selected: number;
-};
+type TestimonialFrontpageList = typeof testimonialFrontpageListSample;
+type Testimony = TestimonialFrontpageList["data"][number]
 
 // const [listRef] = autoAnimate();
 
-function Testimonial({ selected }: Props) {
+function Testimonial(selected: any) {
   const [parent] = useAutoAnimate<HTMLDivElement>();
-  const [testimonial, setTestimonial] = useState(testimony);
+  // const [testimonial, setTestimonial] = useState(null)
 
-  // var config = {
-  //   method: "get",
-  //   url: "http://atsbk.afexats.com/api/v1/tech-stars/testimonial-frontpage-list/",
-  //   headers: {},
-   
-  // };
+  // useEffect(() => {
+  //     axios("/api/v1/tech-stars/testimonial-frontpage-list")
+  //       .then(({ data }) => setTestimonial(data))
+  //       .catch((e) => e)
+  // }, [])
 
-  // axios(config)
-  //   .then(function (response) {
-  //     console.log(JSON.stringify(response.data));
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
+  const { data: testimonialList, isLoading } = useQuery<TestimonialFrontpageList>(
+        ["testimonial", "frontpage"],
+        async () =>
+            axios("/api/v1/tech-stars/testimonial-frontpage-list")
+                .then(({ data }) => data)
+                .catch((e) => e)
+    );
+    console.log(testimonialList)
+
+  const [testimonial, setTestimonial] = useState(testimonialList?.data)
+
 
   return (
     <div className="grid items-center gap-6">
       <h2 className="text-center min-h-[2rem]">
-        {testimonial[2]["testimony"]}
+        {testimonial?.[2]["testimonial"]}
       </h2>
       <article className="flex justify-between gap-8">
         <button
           onClick={() => {
-            const juggle = [...testimonial];
-            juggle.unshift(juggle.pop() as Testimony[number]);
-            setTestimonial(juggle);
+            if (testimonial) {
+              const juggle = [...testimonial];
+              juggle.unshift(juggle.pop() as Testimony);
+              setTestimonial(juggle);
+            }
           }}
         >
           <ArrowLeft2 size={32} />
@@ -103,15 +71,15 @@ function Testimonial({ selected }: Props) {
           style={{ gridTemplateColumns: "repeat(2, 1fr) 3fr repeat(2, 1fr)" }}
           ref={parent}
         >
-          {testimonial.map(({ picture }, idx) => (
-            <figure key={idx} className="min-h-[20rem] grid items-center">
+          {testimonialList?.data?.map(({ tech_star_profile_picture }, idx) => (
+            <figure key={idx} className="xl:min-h-[20rem] grid items-center">
               <div
                 className={clsx(
                   "items-center gap-6 grid shadow-2xl rounded-full aspect-square border-white overflow-hidden border-4"
                 )}
               >
                 <img
-                  src={picture.src}
+                  src={process.env.NEXT_PUBLIC_BASE_URL + tech_star_profile_picture}
                   className="object-cover w-full h-auto"
                   alt=""
                 />
@@ -121,17 +89,19 @@ function Testimonial({ selected }: Props) {
         </section>
         <button
           onClick={() => {
-            const juggle = [...testimonial];
-            juggle.push(juggle.shift() as Testimony[number]);
-            setTestimonial(juggle);
-          }}
-        >
+            if (testimonial) {
+              const juggle = [...testimonial];
+              juggle.push(juggle.shift() as Testimony);
+              setTestimonial(juggle);
+            }
+          }}>
           <ArrowRight2 size={32} />
         </button>
       </article>
       <div className="text-center">
-        <p>{testimonial[2]["name"]}</p>
-        <h2>{testimonial[2]["title"]}</h2>
+        <p>{testimonial?.[2]["tech_star_full_name"]}</p>
+        <h2>{testimonial?.[2]["tech_star_course"]}</h2>
+        <h2 className="mb-12">{testimonial?.[2]["tech_star_cohort"]}</h2>
       </div>
     </div>
   );
