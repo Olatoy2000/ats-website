@@ -7,40 +7,46 @@ import Container from "../../components/Container";
 import XpertLogo from "./assets/newxpert.png";
 
 export default function CommentBlog({ blogDetail }: any) {
-  const [paginate, setPaginate] = useState(5);
-  const [blogComment, setBlogComment] = useState(
-    blogDetail?.few_comments ?? []
-  );
+	const [paginate, setPaginate] = useState(5);
+	const [blogComment, setBlogComment] = useState(
+		blogDetail?.few_comments ?? []
+	);
 
-  const form = useForm({
-    initialValues: {
-      name: "",
-      description: "",
-      blog_article: blogDetail?.id ?? "",
-    },
-  });
+	const form = useForm({
+		initialValues: {
+			name: "",
+			description: "",
+			blog_article: blogDetail?.id ?? "",
+		},
+	});
 
-  const handleSubmit = (e: { preventDefault: () => any }) => {
-    e.preventDefault();
-    var data = form.values;
+	const handleSubmit = (e: { preventDefault: () => any }) => {
+		e.preventDefault();
+		var data = form.values;
 
-    var config = {
-      method: "post",
-      url: "https://atsbk.afexats.com/api/v1/comment",
-      data: data,
-    };
+		var config = {
+			method: "post",
+			url: "http://atsbk.afexats.com/api/v1/comment",
+			headers: {
+				"HASH-KEY":
+					"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+				"REQUEST-TS": "1669397556",
+				"API-KEY":
+					"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+			},
+			data: data,
+		};
 
-    axios(config)
-      .then(function (response) {
-        if (response.statusText === "Created") {
-          form.reset();
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
+		axios(config)
+			.then(function (response) {
+				if (response.statusText === "Created") {
+					form.reset();
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
   return (
     <Container>
       <section>
@@ -165,53 +171,52 @@ export default function CommentBlog({ blogDetail }: any) {
                   </button>
                 </article>
 
-                <h2 className="text-bold-japaneseIndigo font-extrabold">
-                  Comment
-                </h2>
-                <form>
-                  <TextInput
-                    {...form.getInputProps("name")}
-                    classNames={{
-                      root: "!p-0",
-                      input: "!border-none !p-2 !bg-transparent",
-                    }}
-                    type="text"
-                    className="bg-[#F9FAFB] align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md border border-[#DEDDDC]"
-                    placeholder="Full Name"
-                    required
-                  />
-                  <br />
-                  <Textarea
-                    {...form.getInputProps("description")}
-                    classNames={{
-                      root: "!mt-0 !p-0",
-                      input: "!bg-transparent !border-none",
-                    }}
-                    name=""
-                    id=""
-                    placeholder="Enter comment"
-                    className="bg-[#F9FAFB] resize-none align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md mt-4 border border-[#DEDDDC]"
-                    cols={30}
-                    minRows={10}
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="flex gap-3 mt-6 justify-center text-white p-3 w-full rounded-md items-center"
-                    style={{
-                      background:
-                        "linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
-                    }}
-                    onClick={(e) => handleSubmit(e)}
-                  >
-                    Comment
-                  </button>
-                </form>
-              </div>
-            </aside>
-          </section>
-        </section>
-      </section>
-    </Container>
-  );
+								<h2 className='text-bold-japaneseIndigo font-extrabold'>
+									Comment
+								</h2>
+								<form>
+									<TextInput
+										{...form.getInputProps("name")}
+										classNames={{
+											root: "!p-0",
+											input: "!border-none !p-2 !bg-transparent",
+										}}
+										type='text'
+										className='bg-[#F9FAFB] align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md border border-[#DEDDDC]'
+										placeholder='Full Name'
+										required
+									/>
+									<br />
+									<Textarea
+										{...form.getInputProps("description")}
+										classNames={{
+											root: "!mt-0 !p-0",
+											input: "!bg-transparent !border-none",
+										}}
+										name=''
+										id=''
+										placeholder='Enter comment'
+										className='bg-[#F9FAFB] resize-none align-start p-3 w-full placeholder:text-[#C9C8C6] rounded-md mt-4 border border-[#DEDDDC]'
+										cols={30}
+										minRows={10}
+										required
+									/>
+									<button
+										type='submit'
+										className='flex gap-3 mt-6 justify-center text-white p-3 w-full rounded-md items-center'
+										style={{
+											background:
+												"linear-gradient(168.79deg, #E1261C 28.64%, #8A0B04 136.7%)",
+										}}
+										onClick={(e) => handleSubmit(e)}>
+										Comment
+									</button>
+								</form>
+							</div>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</Container>
+	);
 }

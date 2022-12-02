@@ -28,7 +28,10 @@ function Newsletterprefoot() {
 					width='20'
 				/>
 
-				<FacebookShareButton url={""}>
+				<FacebookShareButton
+					url={
+						"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+					}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='27'
@@ -40,7 +43,10 @@ function Newsletterprefoot() {
 					</svg>
 				</FacebookShareButton>
 
-				<WhatsappShareButton url={""}>
+				<WhatsappShareButton
+					url={
+						"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+					}>
 					<Whatsapp
 						size='27'
 						color='#ffffff'
@@ -48,7 +54,10 @@ function Newsletterprefoot() {
 					/>
 				</WhatsappShareButton>
 
-				<LinkedinShareButton url={""}>
+				<LinkedinShareButton
+					url={
+						"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+					}>
 					<Icon
 						icon='icon-park-solid:instagram-one'
 						color='white'
@@ -56,7 +65,10 @@ function Newsletterprefoot() {
 					/>
 				</LinkedinShareButton>
 
-				<TwitterShareButton url={""}>
+				<TwitterShareButton
+					url={
+						"https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
+					}>
 					<Icon
 						icon='bytesize:twitter'
 						color='white'

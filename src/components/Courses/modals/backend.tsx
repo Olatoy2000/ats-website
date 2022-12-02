@@ -69,21 +69,9 @@ function BackEnd() {
         </section>
         <section className="flex flex-col mb-8 items-center justify-center gap-4">
           <div className="flex gap-6">
-<<<<<<< Updated upstream
-            <EmailShareButton
-              url={
-                "https://afex.ats.com/apply/frontend/56473888263783/enquiries?source=careersite"
-              }
-            >
-              <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
-                Refer a friend
-              </button>
-            </EmailShareButton>
-=======
             <button className="border-white text-white hover:bg-[#C81107] border rounded-md p-3">
               Refer a friend
             </button>
->>>>>>> Stashed changes
             <a href="#app">
               <button
                 className="p-3 text-white rounded-md"
