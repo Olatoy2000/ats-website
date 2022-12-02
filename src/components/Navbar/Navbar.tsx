@@ -38,8 +38,6 @@ function Navbar({ query, setQuery }: INavBar) {
 			.catch((e) => e)
 	);
 
-	console.log(data);
-
 	// useEffect(() => {
 	// 	items.push({ hash: `:~:search=${query}` });
 	// }, [query]);

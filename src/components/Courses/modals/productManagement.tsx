@@ -3,7 +3,7 @@ import { Divider } from "@mantine/core";
 import { Fragment, useEffect, useState } from "react";
 import { Whatsapp, Link } from "iconsax-react";
 import ProductManagementBack from "./assets/pmback.png";
-import setup from "./setup.json";
+// import setup from "./setup.json";
 import moment from "moment";
 import useClipboard from "react-use-clipboard";
 import { Popover, Text, Button } from "@mantine/core";
@@ -68,7 +68,6 @@ function ProductManagement({ url, title }: Props) {
 			method: "get",
 		})
 			.then((response) => {
-				console.log(response.data)
 				setCourseDetail(response.data)
 			})
 			.catch((e) => console.log(e))
@@ -91,11 +90,11 @@ function ProductManagement({ url, title }: Props) {
 					<h1 className='font-extrabold  text-[clamp(1rem,4vw,4.5rem)] leading-[4.75rem] text-semiBold-gostWhite'>
 						{CourseDetail?.data?.title}
 					</h1>
-					<div className='flex items-center gap-1'>
+					{/* <div className='flex items-center gap-1'>
 						<Icon
 							icon='ci:dot-02-s'
 							color={
-								+moment(setup.data.job.application_end_date).format("x") -
+								+moment(CourseDetail?.data?.job.application_end_date).format("x") -
 									+moment().format("x") >
 									0
 									? "#00ff38"
@@ -107,7 +106,7 @@ function ProductManagement({ url, title }: Props) {
 						<p
 							className={
 								"text-[1.125rem] leading-6 " +
-								(+moment(setup.data.job.application_end_date).format("x") -
+								(+moment(Courses?.data.job.application_end_date).format("x") -
 									+moment().format("x") >
 									0
 									? "text-bold-malachite"
@@ -120,7 +119,7 @@ function ProductManagement({ url, title }: Props) {
 								: "Closed"}{" "}
 							Application
 						</p>
-					</div>
+					</div> */}
 				</section>
 				<section className='flex z-50 flex-col mb-8 items-center justify-center gap-4'>
 					<div className='flex gap-6'>
@@ -287,37 +286,14 @@ function ProductManagement({ url, title }: Props) {
 									Cohort:{" "}
 									<span className='font-normal'>{CourseDetail?.data.open_job.cohort}</span>
 								</h5>
-								<h5 className='font-bold'>
-									Starting Date:{" "}
-									<span className='font-normal'>
-										{moment(setup.data.job.start_date).format("LL")}
-									</span>
-								</h5>
-								<h5 className='font-bold'>
-									Ending Date:{" "}
-									<span className='font-normal'>
-										{moment(setup.data.job.end_date).format("LL")}
-									</span>
-								</h5>
-								<h5 className='font-bold'>
-									Application Starting Date:{" "}
-									<span className='text-bold-malachite font-bold'>
-										{moment(setup.data.job.application_start_date).format("LL")}
-									</span>
-								</h5>
-								<h5 className='font-bold'>
-									Application Ending Date:{" "}
-									<span className='font-bold text-light-internationalOrange'>
-										{moment(setup.data.job.application_end_date).format("LL")}
-									</span>
-								</h5>
-							</div>
+								
+							</div>                                                                                                                                                                                                                                                                                                                                                       
 						</div>
 						<div>
 							<h4 className='uppercase font-bold'>Requirement</h4>
 							<p>{CourseDetail?.data.open_job.requirement}</p>
 						</div>
-						<a href={setup.data.job.apply_link}>
+					<a href={'https://ats-track-application.netlify.app?course='+title.toLocaleLowerCase().split(' ').join('-')}>
 							<button
 								id='app'
 								className='self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3'>

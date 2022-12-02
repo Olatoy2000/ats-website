@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Container from "../../../components/Container";
-import LadyInTech from "./assets/lady-in-tech.png";
 import LadyTechWithWhiteBack from "./assets/ladywithwhiteback.png"
 import Link from "next/link";
-import LadyInTechPhone from "./assets/ladyfriendphone.png";
+// import AppleLastBack from "./assets/applelandingpage.png";
+
 
 export default function Qualification() {
   return (
@@ -22,6 +22,7 @@ export default function Qualification() {
               Register Now
             </button>
           </Link>
+          
         </div>
         <img
           src={LadyTechWithWhiteBack.src}
@@ -41,6 +42,12 @@ export default function Qualification() {
             Industrial Training students.
           </p>
         </div>
+        <Link href="/courses">
+          <button className="join-button self-start py-3 px-6 rounded-lg font-bold text-white hover:bg-[#312541] leading-6">
+            Register Now
+          </button>
+        </Link>
+        {/* <img src={AppleLastBack.src} alt="" className="w-8" /> */}
       </section>
     </Container>
   );

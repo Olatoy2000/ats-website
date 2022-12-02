@@ -4,12 +4,24 @@ import { Fragment, useEffect, useState } from "react";
 export default function NewsBar() {
   const [newsBar, setNewsBar] = useState<any>(null);
   const fetchNewsBar = () => {
-    axios(`api/v1/nav-news`)
+    axios(`api/v1/nav-news`, {
+      method: "get",
+      url: "https://atsbk.afexats.com/api/v1/nav-news",
+      headers: {
+        "api-key": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+        "hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+        "request-ts": "1669397556",
+      }
+    }
+
+    )
       .then((response) => {
         setNewsBar(response.data.data);
       })
 
-      .catch(console.log);
+      .catch((error) => {
+        console.log(error)
+      })
   };
 
   useEffect(() => {

@@ -60,12 +60,12 @@ function index() {
 	// 		const response = await axios.get(
 	// 			`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs`
 	// 		);
-	// 		console.log(response);
-	// 		console.log("Hello from Nav");
+	// 		(response);
+	// 		("Hello from Nav");
 	// 		const news = await response.data.results;
 	// 		setNewsResult({ ...newsResult, loading: false, news });
 	// 	} catch (error) {
-	// 		console.log(error, "Error while fetching");
+	// 		(error, "Error while fetching");
 	// 	}
 	// };
 
@@ -85,7 +85,7 @@ function index() {
 	// 	};
 
 	// 	let response = await axios.request(reqOptions);
-	// 	console.log(response.data);
+	// 	(response.data);
 	// }
 
 	// useEffect(() => {
@@ -112,8 +112,8 @@ function index() {
 //   axios.defaults.headers.common["REQUEST-TS"] =
 //     process.env.NEXT_PUBLIC_REQUEST_TS;
 //   const response = await axios.get(`${process.env.BASE_URL}/api/v1/news`);
-//   console.log(response);
-//   console.log("Hello from Nav");
+//	(response);
+//   ("Hello from Nav");
 //   const news = await response.data;
 //   return {
 //     props: news,

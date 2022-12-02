@@ -27,7 +27,12 @@ export default function CommentBlog({ blogDetail }: any) {
     var config = {
       method: "post",
       url: "https://atsbk.afexats.com/api/v1/comment",
-      data: data,
+      headers: {
+        "API-KEY": "",
+        "HASH-KEY": "",
+        "REQUEST-TS": ""
+      }
+
     };
 
     axios(config)
@@ -48,7 +53,7 @@ export default function CommentBlog({ blogDetail }: any) {
           <article className="flex items-center mb-8 gap-5">
             <img src={XpertLogo.src} alt="xpert logo" className="w-20" />
             <div className="flex gap-2 flex-col">
-              <h3 className="text-light-internationalOrange text-[1.25rem] font-bold leading-7">
+              <h3 className="text-light-internationalOrange text-[clamp(0.75rem,1.25vw,1.25rem)] font-bold leading-3 md:leading-7">
                 {blogDetail?.author_fullname ?? ""}
               </h3>
               <p className="flex text-light-darkSilver leading-6 font-normal text-[1.18rem]">
@@ -124,8 +129,7 @@ export default function CommentBlog({ blogDetail }: any) {
                     onClick={() => {
                       setPaginate(10);
                       axios(
-                        `http://atsbk.afexats.com/api/v1/blogs-comments/${
-                          blogDetail?.id ?? ""
+                        `http://atsbk.afexats.com/api/v1/blogs-comments/${blogDetail?.id ?? ""
                         }`
                       )
                         .then((res) => {

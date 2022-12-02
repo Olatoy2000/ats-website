@@ -27,9 +27,9 @@ function QrCodeScan({ qrcode, showModal, setShowModal }: IQrCodeScan) {
   //   };
   //   axios(config)
   //     .then((response: { data: { data: any } }) =>
-  //       console.log(JSON.stringify(response.data.data))
+  //       (JSON.stringify(response.data.data))
   //     )
-  //     .catch(console.log);
+  //     
   // };
 
   // useEffect(() => {

@@ -30,7 +30,7 @@ export default function Testimonies() {
         </div>
         <div className="border-b border-b-[#9FA19C] flex-auto" />
       </article>
-      <Testimonial selected={selected} />
+      <Testimonial />
     </Container>
   );
 }
