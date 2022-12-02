@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Placeholder from "./assets/placeholder.png";
 import Link from "next/link";
 
-export default function MORE_BLOG_POST({ routeId }: any) {
+ function MORE_BLOG_POST({ routeId }: any) {
 	const scrollRefs = useRef<HTMLDivElement>(null);
 
 	const moveRight = () => {
@@ -100,4 +100,6 @@ export default function MORE_BLOG_POST({ routeId }: any) {
 				</div>
 			</section>
 		</Container>
-	);
+	)
+ };
+ export default MORE_BLOG_POST

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import MyImage from "../../components/Courses/assets/image-5.png";
 import { openModal, closeAllModals } from "@mantine/modals";
 import ProductManagement from "./modals/productManagement";
-import Frontend from "./modals/frontend";
-import Backend from "./modals/backend";
-import MobileApp from "./modals/mobileApp";
+// import Frontend from "./modals/frontend";
+// import Backend from "./modals/backend";
+// import MobileApp from "./modals/mobileApp";
 import { ModalSettings } from "@mantine/modals/lib/context";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -13,21 +13,21 @@ import Placeholder from "./assets/placeholder.png";
 //Courses page
 
 const CoursesSample = {
-  success: true,
-  data: {
-    count: 1,
-    next: null,
-    previous: null,
-    results: [
-      {
-        url: "https://aptbk.afexats.com/api/jobs/courses/1",
-        title: "Data Science",
-        image: "https://aptbk.afexats.com/media/course/Data-science.jpg",
-        description:
-          "This course is designed to provide you with basic working knowledge for using Excel spreadsheets for Data Analysis. It covers some of the first steps for working with spreadsheets and their usage in the process of analyzing data.  It includes plenty of videos, demos, and examples for you to learn, followed by step-by-step instructions for you to apply and practice on a live spreadsheet.\n\nExcel is an essential tool for working with data - whether for business, marketing, data analytics, or research. This course is suitable for those aspiring to take up Data Analysis or Data Science as a profession, as well as those who just want to use Excel for data analysis in their own domains. You will gain valuable experience in cleansing and wrangling data using functions and then analyze your data using techniques like filtering, sorting and creating pivot tables.   \n\nThis course starts with an introduction to spreadsheets like Microsoft Excel and Google Sheets and loading data from multiple formats. With this introduction you will then learn to perform some basic level data wrangling and cleansing tasks and continue to expand your knowledge of analyzing data through the use of filtering, sorting, and using pivot tables within the spreadsheet. By performing these tasks throughout the course, it will give you an understanding of how spreadsheets can be used as a data analysis tool and understand its limitations. \n\nThere is a strong focus on practice and applied learning in this course. With each lab, you will gain hands-on experience in manipulating data and begin to understand the important role of spreadsheets. Clean and analyze your data faster by understanding functions in the formatting of data. You will then convert your data to a pivot table and learn its features to make your data organized and readable. The final project enables you to show off your newly acquired data analysis skills. By the end of this course you will have worked with several data sets and spreadsheets and demonstrated the basics of cleaning and analyzing data all without having to learn any code. \n\nGetting started with Excel is made easy in this course. It does not require any prior experience with spreadsheets or coding. Nor does it require downloads or installation of any software. All you need is a device with a modern web browser, and ability to create a Microsoft account to access Excel online at no-cost.  However if you already have a desktop version of Excel, you can follow along quite easily as well.",
-      },
-    ],
-  },
+	success: true,
+	data: {
+		count: 1,
+		next: null,
+		previous: null,
+		results: [
+			{
+				url: "https://aptbk.afexats.com/api/jobs/courses/1",
+				title: "Data Science",
+				image: "https://aptbk.afexats.com/media/course/Data-science.jpg",
+				description:
+					"This course is designed to provide you with basic working knowledge for using Excel spreadsheets for Data Analysis. It covers some of the first steps for working with spreadsheets and their usage in the process of analyzing data.  It includes plenty of videos, demos, and examples for you to learn, followed by step-by-step instructions for you to apply and practice on a live spreadsheet.\n\nExcel is an essential tool for working with data - whether for business, marketing, data analytics, or research. This course is suitable for those aspiring to take up Data Analysis or Data Science as a profession, as well as those who just want to use Excel for data analysis in their own domains. You will gain valuable experience in cleansing and wrangling data using functions and then analyze your data using techniques like filtering, sorting and creating pivot tables.   \n\nThis course starts with an introduction to spreadsheets like Microsoft Excel and Google Sheets and loading data from multiple formats. With this introduction you will then learn to perform some basic level data wrangling and cleansing tasks and continue to expand your knowledge of analyzing data through the use of filtering, sorting, and using pivot tables within the spreadsheet. By performing these tasks throughout the course, it will give you an understanding of how spreadsheets can be used as a data analysis tool and understand its limitations. \n\nThere is a strong focus on practice and applied learning in this course. With each lab, you will gain hands-on experience in manipulating data and begin to understand the important role of spreadsheets. Clean and analyze your data faster by understanding functions in the formatting of data. You will then convert your data to a pivot table and learn its features to make your data organized and readable. The final project enables you to show off your newly acquired data analysis skills. By the end of this course you will have worked with several data sets and spreadsheets and demonstrated the basics of cleaning and analyzing data all without having to learn any code. \n\nGetting started with Excel is made easy in this course. It does not require any prior experience with spreadsheets or coding. Nor does it require downloads or installation of any software. All you need is a device with a modern web browser, and ability to create a Microsoft account to access Excel online at no-cost.  However if you already have a desktop version of Excel, you can follow along quite easily as well.",
+			},
+		],
+	},
 };
 
 function Coursesb() {
@@ -134,39 +134,39 @@ function Coursesb() {
 	//     },
 	// ];
 
-//   const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
-//     axios({
-//       url: `https://aptbk.afexats.com/api/jobs/courses/`,
-//       headers: {
-//         "HASH-KEY":
-//           "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-//         "REQUEST-TS": "1667549939702",
-//         "API-KEY":
-//           "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
-//       },
-//       method: "get",
-//     })
-//       .then(({ data }) => data)
-//       .catch((e) => e)
-//   );
+	//   const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
+	//     axios({
+	//       url: `https://aptbk.afexats.com/api/jobs/courses/`,
+	//       headers: {
+	//         "HASH-KEY":
+	//           "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
+	//         "REQUEST-TS": "1667549939702",
+	//         "API-KEY":
+	//           "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+	//       },
+	//       method: "get",
+	//     })
+	//       .then(({ data }) => data)
+	//       .catch((e) => e)
+	//   );
 
 	const [Courses, setCourses] = useState([])
 
-  useEffect(() => {
-	  axios({
-		  url: `https://aptbk.afexats.com/api/jobs/courses/`,
-		  headers: {
-			  "HASH-KEY":
-				  "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-			  "REQUEST-TS": "1667549939702",
-			  "API-KEY":
-				  "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
-		  },
-		  method: "get",
-	  })
-		  .then((response) => setCourses(response.data.data.results))
-		  .catch((e) => console.log(e))
-  }, [])
+	useEffect(() => {
+		axios({
+			url: `https://aptbk.afexats.com/api/jobs/courses/`,
+			headers: {
+				"HASH-KEY":
+					"ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
+				"REQUEST-TS": "1667549939702",
+				"API-KEY":
+					"qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+			},
+			method: "get",
+		})
+			.then((response) => setCourses(response.data.data.results))
+			.catch((e) => console.log(e))
+	}, [])
 
 	return (
 		<div className='pt-24'>
@@ -208,43 +208,43 @@ function Coursesb() {
 									{description.split("").splice(0, 205).join("") + "..."}
 								</p>
 
-                <button
-                  onClick={() => {
-                    openModal({
-                      children: (
-                        <ProductManagement
-                          title={title}
-                          url={url}
-                        />
-                      ),
-                      classNames: {
-                        inner: "rounded-none",
-                        header: "hidden",
-                        modal:
-                          "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
-                      },
-                      styles: {
-                        modal: {
-                          marginTop: "auto",
-                          marginBottom: "auto",
-                          width: "70vw",
-                          height: "80vh",
-                          padding: "0",
-                        },
-                      },
-                    });
-                  }}
-                  className="bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black"
-                >
-                  <span className="text-white">Read More</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        )
-      )}
-    </div>
-  );
+								<button
+									onClick={() => {
+										openModal({
+											children: (
+												<ProductManagement
+													title={title}
+													url={url}
+												/>
+											),
+											classNames: {
+												inner: "rounded-none",
+												header: "hidden",
+												modal:
+													"p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
+											},
+											styles: {
+												modal: {
+													marginTop: "auto",
+													marginBottom: "auto",
+													width: "70vw",
+													height: "80vh",
+													padding: "0",
+												},
+											},
+										});
+									}}
+									className="bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black"
+								>
+									<span className="text-white">Read More</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				)
+			)}
+		</div>
+	);
 }
 
 export default Coursesb;

@@ -79,7 +79,7 @@ const FAQ = () => {
 								{item?.question}
 							</Accordion.Control>
 							<Accordion.Panel className='font-bold bg-neutral-100'>
-								{item?.answer}
+								{String(item?.answer)}
 							</Accordion.Panel>
 						</Accordion.Item>
 					</Accordion>
