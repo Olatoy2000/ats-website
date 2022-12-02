@@ -1,12 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
-import MyImage from "./assets/image 5.png";
-import Gloria from "./assets/image 10.png";
-import Calendar from "./assets/image 11.png";
-import Clock from "./assets/image 12.png";
 import moment from "moment";
 import axios from "axios";
 import Placeholder from "./assets/placeholder.png";
-// import { Link } from "iconsax-react";
 import Link from "next/link";
 import ApplyNow from "../ApplyNow";
 import { useQuery } from "@tanstack/react-query";
@@ -49,12 +44,20 @@ function RecentlyPosted({ keyword }: Prop) {
 	const { data: newsArticle, isLoading } = useQuery<News>(
 		["News-Articles"],
 		async () =>
-			axios("/api/v1/news")
+			axios("/api/v1/news", {
+				headers: {
+					"HASH-KEY":
+						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+					"REQUEST-TS": "1669397556",
+					"API-KEY":
+						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+				},
+				method: "get",
+			})
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
 
-	// const articlesData = agricArticle;
 	return (
 		<div
 			className='grid grid-flow-row pb-9'
@@ -100,7 +103,7 @@ function RecentlyPosted({ keyword }: Prop) {
 											</span>
 											<Link href={`/news/${id}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-													{title}
+													{title.split("").splice(0, 50).join("") + " ..."}
 												</p>
 											</Link>
 											<div className='flex gap-1 items-center py-1'>
@@ -148,7 +151,7 @@ function RecentlyPosted({ keyword }: Prop) {
 											</span>
 											<Link href={`/news/${id}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-													{title}
+													{title.split("").splice(0, 50).join("") + " ..."}
 												</p>
 											</Link>
 											<div className='flex gap-1 items-center py-1'>
@@ -194,7 +197,7 @@ function RecentlyPosted({ keyword }: Prop) {
 										</span>
 										<Link href={`/news/${id}`}>
 											<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-												{title}
+												{title.split("").splice(0, 50).join("") + " ..."}
 											</p>
 										</Link>
 										<div className='flex gap-1 items-center py-1'>

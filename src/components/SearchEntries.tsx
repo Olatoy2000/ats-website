@@ -5,11 +5,15 @@ import React, { useState } from "react";
 //Pagination
 function SearchEntries() {
 	const [page, onChange] = useState(1);
+	const [lowest, setLowest] = useState(1);
+	const [highest, setHighest] = useState(10);
 
 	const pagination = usePagination({ total: 10, page, onChange });
 	const nextHandler = () => {
 		pagination.setPage(page + 1);
 		pagination.range;
+		setLowest(lowest + 10);
+		setHighest(highest + 10);
 	};
 
 	const prevHandler = () => {
@@ -18,12 +22,7 @@ function SearchEntries() {
 	};
 
 	return (
-		<section className='grid grid-flow-col gap-6 justify-between lg:pb-44 md:pb-44 sm:pb-20'>
-			{/* <div
-				style={{ borderRadius: "5px", border: "1px solid #C4C4C4" }}
-				className='p-3'>
-				1-8 of 200 Entries
-			</div> */}
+		<section className='grid place-items-center grid-flow-col gap-6 justify-between lg:pb-44 md:pb-44 sm:pb-20'>
 			<article className='flex gap-5'>
 				<button
 					onClick={prevHandler}
