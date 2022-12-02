@@ -27,7 +27,6 @@ function index() {
   useEffect(() => {
     const date = new Date();
     setTime(date.getHours());
-    console.log(time);
   }, [time]);
 
   useEffect(() => {
@@ -43,13 +42,16 @@ function index() {
         longitude: long,
         date_time: new Date().toISOString(),
       });
-      console.log(data);
-      
+    
+
 
       var config = {
         method: "post",
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
         headers: {
+          "API-KEY": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+          "hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+          "request-ts": "1669397556",
           "Content-Type": "application/json",
         },
         data: data,
@@ -73,32 +75,32 @@ function index() {
   }
 
   const setModalTrue = () => {
-      setIsLoading(true);
+    setIsLoading(true);
     navigator.geolocation.getCurrentPosition(
-            (position) => {
-              let userLocation = ''
-                const lat = String(position.coords.latitude);
-                const long = String(position.coords.longitude);
-                fetch(
-                    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`
-                )
-                    .then((res) => res.json())
-                    .then((data) => {
-                        if (data.city) userLocation = data.city;
-                        else userLocation = data.locality;
-                        sendData(lat, long)
-                    })
-                    .catch(() =>
-                        alert("Could not fetch location, please try again")
-                    );
-            },
-            () => {
-                console.log("errrrrooorrr");
-                alert("please accept location permission");
-              setIsLoading(false);
+      (position) => {
+        let userLocation = ''
+        const lat = String(position.coords.latitude);
+        const long = String(position.coords.longitude);
+        fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.city) userLocation = data.city;
+            else userLocation = data.locality;
+            sendData(lat, long)
+          })
+          .catch(() =>
+            alert("Could not fetch location, please try again")
+          );
+      },
+      () => {
+        ("errrrrooorrr");
+        alert("please accept location permission");
+        setIsLoading(false);
 
-            }
-        );
+      }
+    );
   };
 
 
@@ -146,7 +148,7 @@ function index() {
                   styles={{ input: { paddingBlock: "26px", border: "none" } }}
                   withAsterisk
                   label="Email"
-        
+
                   value={{}}
                   placeholder="Enter your working email address"
                   {...form.getInputProps("email")}
@@ -186,11 +188,10 @@ function index() {
                     Login access
                   </p>
                   <span
-                    className={`${
-                      time >= 8 && time <= 16
+                    className={`${time >= 8 && time <= 16
                         ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
                         : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
-                    }`}
+                      }`}
                   >
                     <Icon
                       icon="ci:dot-01-xs"
@@ -203,11 +204,10 @@ function index() {
                   </span>
                 </div>
                 <p
-                  className={`${
-                    time >= 8 && time <= 16
+                  className={`${time >= 8 && time <= 16
                       ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
                       : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
-                  }`}
+                    }`}
                 >
                   {time >= 8 && time < 16 ? "opens at 8am" : "closes at 5pm"}
                 </p>

@@ -35,7 +35,6 @@ function ContactUs() {
 	const [success, setSuccess] = useState(false);
 
 	const sendMessage = (values: FormValues) => {
-		console.log(values);
 		axios({
 			method: "post",
 			url: "https://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
@@ -52,7 +51,6 @@ function ContactUs() {
 		}).then((response) => {
 			if (response.status === 201) {
 				setSuccess(true);
-				console.log(response.data);
 				form.reset();
 				setTimeout(() => {
 					setSuccess(false);
@@ -66,15 +64,15 @@ function ContactUs() {
 	//   subject: string;
 	//   message: string;
 	// }) => {
-	//   console.log(obj);
+	//  (obj);
 	//   // axios({
 	//   //   method: "post",
 	//   //   url: "http://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
 	//   //   data: JSON.stringify(obj),
 	//   // })
 	//   //   .then((response) => {
-	//   //     console.log(response);
-	//   //     console.log(response.data);
+	//   //     (response);
+	//   //     (response.data);
 	//   //     if (response.status === 201) setSuccess(true);
 	//   //   })
 	//   //   .catch((error) => console.error(error));

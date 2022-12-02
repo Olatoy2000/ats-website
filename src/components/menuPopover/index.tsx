@@ -27,7 +27,6 @@ export default function MenuPopover() {
 	const [success, setSuccess] = useState(false);
 
 	function sendMessage(values: FormValues) {
-		console.log(values);
 		axios({
 			method: "post",
 			url: "https://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
@@ -44,7 +43,6 @@ export default function MenuPopover() {
 		}).then((response) => {
 			if (response.status === 201) {
 				setSuccess(true);
-				console.log(response.data);
 				form.reset();
 				setTimeout(() => {
 					setSuccess(false);

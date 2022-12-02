@@ -2,7 +2,8 @@ import Duration from "./duration";
 import OurValues from "./ourValues";
 import Qualification from "./qualification";
 import TeamWork from "./teamwork";
-import NewInfoBackground from "./assets/bg-big3.png"
+import NewInfoBackground from "./assets/bg-big3.png";
+import AppleLastBack from "./assets/applelandingpage.png";
 
 
 export default function Information() {
@@ -15,6 +16,7 @@ export default function Information() {
       <Duration />
       <TeamWork />
       <Qualification />
+      <img src={AppleLastBack.src} alt="" className="md:w-24 w-16 ml-24" />
     </section>
   );
 }

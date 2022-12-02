@@ -32,14 +32,21 @@ const FAQSample = {
 		],
 	},
 };
-type FAQ = typeof FAQSample;
+type Faq = typeof FAQSample["data"]["results"]
+
+
 const FAQ = () => {
-	const [faqs, setFaqs] = useState([])
+	const [faqs, setFaqs] = useState<Faq>([])
 
 	useEffect(() => {
 		axios({
 			method: 'get',
 			url: 'https://atsbk.afexats.com/api/v1/support/FAQ-list-create/',
+			headers: {
+				"api-key": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+				"hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+				"request-ts": "1669397556",
+			}
 		})
 			.then((response: { data: any; }) => {
 				setFaqs((response.data.data.results));
@@ -62,17 +69,17 @@ const FAQ = () => {
 			<div>
 				{/* {FAQ?.data?.results.map(({ question, answer }: any, idx: number) => ( */}
 				{faqs?.map((item, id) => (
-					<Accordion
+					<Accordion key={id}
 						variant='separated'
 						defaultValue='customization'>
 						<Accordion.Item
 							value='no-focus-ring'
-							className='border shadow-lg py-3'>
+							className='border mb-10 shadow-lg py-3'>
 							<Accordion.Control>
 								{item?.question}
 							</Accordion.Control>
 							<Accordion.Panel className='font-bold bg-neutral-100'>
-								{item.answer}
+								{item?.answer}
 							</Accordion.Panel>
 						</Accordion.Item>
 					</Accordion>

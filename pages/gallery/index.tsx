@@ -3,7 +3,7 @@ import BackToUpdate from "../../src/components/backToUpdates";
 import { Pagination } from "@mantine/core";
 import Container from "../../src/components/Container";
 import { usePagination } from "@mantine/hooks";
-import { useQuery } from "@tanstack/react-query";
+import { Query, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const galleryData = {
@@ -26,7 +26,14 @@ function index() {
 	const { data: galleryImages, isLoading } = useQuery<GalleryImages>(
 		["gallery-images"],
 		async () =>
-			axios("/api/v1/images")
+			axios("/api/v1/images", {
+				headers: {
+					"api-key": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+					"request-ts": "1669397556",
+					"hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+				},
+				method: "get"
+			})
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
