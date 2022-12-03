@@ -6,6 +6,8 @@ import { Whatsapp, Link } from "iconsax-react";
 import moment from "moment";
 import useClipboard from "react-use-clipboard";
 import { Popover, Text, Button } from "@mantine/core";
+import sha256 from 'crypto-js/sha256';
+import CryptoJS from 'crypto-js';
 
 import {
 	FacebookShareButton,
@@ -55,16 +57,21 @@ function ProductManagement({ url, title }: Props) {
 	const [CourseDetail, setCourseDetail] = useState<Course | null>(null)
 
 	useEffect(() => {
+
+		let requestTs = String(Date.now());
 		axios({
+			method: "get",
 			url: url,
 			headers: {
-				"HASH-KEY":
-					"ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-				"REQUEST-TS": "1667549939702",
-				"API-KEY":
-					"qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+				"API-KEY": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
+				"request-ts": requestTs,
+				"hash-key": sha256(
+					`${process.env.NEXT_PUBLIC_API_KEY_1} ` +
+					`${process.env.NEXT_PUBLIC_SECRET_KEY_1}` +
+					requestTs
+				).toString(CryptoJS.enc.Hex),
 			},
-			method: "get",
+			data: data,
 		})
 			.then((response) => {
 				setCourseDetail(response.data)
@@ -73,7 +80,7 @@ function ProductManagement({ url, title }: Props) {
 	}, [])
 
 	const [isCopied, setCopied] = useClipboard(
-		"https://zippy-dango-7ea3fe.netlify.app/courses"
+		"https://afex-tech-star-website.netlify.app/courses"
 	);
 	return (
 		<Fragment>
@@ -124,7 +131,7 @@ function ProductManagement({ url, title }: Props) {
 					<div className='flex gap-6'>
 						<EmailShareButton
 							url={
-								"https://zippy-dango-7ea3fe.netlify.app/courses"
+								"https://afex-tech-star-website.netlify.app/courses"
 							}>
 							<button className='border-white text-white hover:bg-[#C81107] border rounded-md p-3'>
 								Refer a friend
@@ -150,7 +157,7 @@ function ProductManagement({ url, title }: Props) {
 						/>
 						<FacebookShareButton
 							url={
-								"https://zippy-dango-7ea3fe.netlify.app/courses"
+								"https://afex-tech-star-website.netlify.app/courses"
 							}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -166,7 +173,7 @@ function ProductManagement({ url, title }: Props) {
 
 						<WhatsappShareButton
 							url={
-								"https://zippy-dango-7ea3fe.netlify.app/courses"
+								"https://afex-tech-star-website.netlify.app/courses"
 							}>
 							<Whatsapp
 								size='24'
@@ -177,12 +184,12 @@ function ProductManagement({ url, title }: Props) {
 
 						<TelegramShareButton
 							url={
-								"https://zippy-dango-7ea3fe.netlify.app/courses"
+								"https://afex-tech-star-website.netlify.app/courses"
 							}
 							children={undefined}></TelegramShareButton>
 						<LinkedinShareButton
 							url={
-								"https://zippy-dango-7ea3fe.netlify.app/courses"
+								"https://afex-tech-star-website.netlify.app/courses"
 							}>
 							<Icon
 								icon='ri:linkedin-fill'
@@ -193,7 +200,7 @@ function ProductManagement({ url, title }: Props) {
 						</LinkedinShareButton>
 						<TwitterShareButton
 							url={
-								"https://zippy-dango-7ea3fe.netlify.app/courses"
+								"https://afex-tech-star-website.netlify.app/courses"
 							}>
 							<Icon
 								icon='bytesize:twitter'
@@ -264,7 +271,7 @@ function ProductManagement({ url, title }: Props) {
 									</span>
 								</h5>
 								<h5 className='font-bold'>
-									Ending Date:
+									Ending Date:{" "}
 									<span className='font-normal'>
 										{CourseDetail?.data?.active_cohort.end_date}
 									</span>
@@ -285,14 +292,14 @@ function ProductManagement({ url, title }: Props) {
 									Cohort:{" "}
 									<span className='font-normal'>{CourseDetail?.data.open_job.cohort}</span>
 								</h5>
-								
-							</div>                                                                                                                                                                                                                                                                                                                                                       
+
+							</div>
 						</div>
 						<div>
 							<h4 className='uppercase font-bold'>Requirement</h4>
 							<p>{CourseDetail?.data.open_job.requirement}</p>
 						</div>
-						<a href={'https://ats-track-application.netlify.app?course='+title.toLocaleLowerCase().split(' ').join('-')}>
+						<a href={'https://ats-track-application.netlify.app?course=' + title.toLocaleLowerCase().split(' ').join('-')}>
 							<button
 								id='app'
 								className='self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3'>

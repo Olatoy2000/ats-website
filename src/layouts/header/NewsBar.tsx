@@ -1,8 +1,16 @@
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
+import CryptoJS from "crypto-js";
 
 export default function NewsBar() {
   const [newsBar, setNewsBar] = useState<any>(null);
+  var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+
+  var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+  // KEY = bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r
+  // IV = s6v9y$B&E)H@McQf
+
   const fetchNewsBar = () => {
     axios(`api/v1/nav-news`, {
       method: "get",
@@ -16,6 +24,16 @@ export default function NewsBar() {
 
     )
       .then((response) => {
+        console.log(key)
+        console.log(response.data)
+        // console.log((CryptoJS.AES.decrypt("Z/mx0Xmoy2y5L+N/L7oMQJH+VZT8x0gVodowDmiwDbQ=", key, { iv: iv }).toString(CryptoJS.enc.Utf8)))
+
+
+        // console.log(response.data.data.map((item) => (
+        //   CryptoJS.AES.decrypt(item.category_name, key, { iv: iv }).toString(CryptoJS.enc.Base64)
+        // )))
+        // var decrypted = CryptoJS.AES.decrypt(response.data, key, { iv: iv });
+        // console.log(decrypted.toString(CryptoJS.enc.Base64))
         setNewsBar(response.data.data);
       })
 
@@ -43,9 +61,9 @@ export default function NewsBar() {
                 {newsBar?.map((el: any, idx: number) => (
                   <li key={idx} className="whitespace-nowrap text-[#030000]">
                     <span className="text-[#DC372F] mr-2 text-[1.14rem] whitespace-nowrap font-bold">
-                      {el.category_name}:
+                      {CryptoJS.AES.decrypt(el.category_name, key, { iv: iv }).toString(CryptoJS.enc.Utf8)}
                     </span>
-                    {el.title}
+                    {CryptoJS.AES.decrypt(el.title, key, { iv: iv }).toString(CryptoJS.enc.Utf8)}
                   </li>
                 ))}
               </Fragment>

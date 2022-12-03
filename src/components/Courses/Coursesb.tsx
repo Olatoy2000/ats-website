@@ -9,6 +9,8 @@ import { ModalSettings } from "@mantine/modals/lib/context";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Placeholder from "./assets/placeholder.png";
+import sha256 from 'crypto-js/sha256';
+import CryptoJS from 'crypto-js';
 
 //Courses page
 
@@ -31,136 +33,20 @@ const CoursesSample = {
 };
 
 function Coursesb() {
-	// const coursesb: Array<{
-	//     coursesImage: string;
-	//     title: string;
-	//     coursesSnippets: string;
-	//     modal: ModalSettings;
-	// }> = [
-	//     {
-	//         coursesImage: MyImage.src,
-	//         title: "Product Management",
-	//         coursesSnippets:
-	//             "Our Product Management course exposes you to organizational functions that guide every step of the product's lifecycle. You will learn how to develop and position products that meet customers' needs and follow the right workflow to collaborate with other developers and designers.",
-	//         modal: {
-	//             children: <ProductManagement />,
-	//             classNames: {
-	//                 inner: "rounded-none",
-	//                 header: "hidden",
-	//                 modal: "p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
-	//             },
-	//             styles: {
-	//                 modal: {
-	//                     marginTop: "auto",
-	//                     marginBottom: "auto",
-	//                     width: "70vw",
-	//                     height: "80vh",
-	//                     padding: "0",
-	//                 },
-	//             },
-	//         },
-	//     },
-	//     {
-	//         coursesImage: MyImage.src,
-	//         title: "Frontend Development",
-	//         coursesSnippets:
-	//             "With our Frontend Developemnt course, you will learn about the day-to-day responsibilities of a web developer and get a general understanding of the core and underlying technologies that power the internet. You will learn how front-end developers create websites and applications that work well and are easy to maintain.",
-	//         modal: {
-	//             title: "Subscribe to newsletter",
-	//             children: <Frontend />,
-	//             classNames: {
-	//                 header: "hidden",
-	//                 modal: "p-0 overflow-y-scroll rounded-none",
-	//                 body: "",
-	//             },
-	//             styles: {
-	//                 modal: {
-	//                     marginTop: "auto",
-	//                     marginBottom: "auto",
-	//                     width: "70vw",
-	//                     height: "80vh",
-	//                     padding: "0",
-	//                 },
-	//             },
-	//         },
-	//     },
-	//     {
-	//         coursesImage: MyImage.src,
-	//         title: "Backend Development",
-	//         coursesSnippets:
-	//             "Our Backend Development course expose participants from entry-level to intermediate software engineering. At the tail of the course, you will be able to build robust software that meets business needs and management objectives",
-	//         modal: {
-	//             title: "Subscribe to newsletter",
-	//             children: <Backend />,
-	//             classNames: {
-	//                 header: "hidden",
-	//                 modal: "p-0 overflow-y-scroll rounded-none",
-	//                 body: "",
-	//             },
-	//             styles: {
-	//                 modal: {
-	//                     marginTop: "auto",
-	//                     marginBottom: "auto",
-	//                     width: "70vw",
-	//                     height: "80vh",
-	//                     padding: "0",
-	//                 },
-	//             },
-	//         },
-	//     },
-	//     {
-	//         coursesImage: MyImage.src,
-	//         title: "Mobile Management",
-	//         coursesSnippets:
-	//             "Introduces students to the complete process of mobile application development: covering design, planning, implementation, and testing. Includes panel events with professional software engineers, giving students a well-rounded exploration into app development, core coding concepts used to build simple iOS or Android apps and exciting opportunities in the tech industry.",
-	//         modal: {
-	//             title: "Subscribe to newsletter",
-	//             children: <MobileApp />,
-	//             classNames: {
-	//                 header: "hidden",
-	//                 modal: "p-0 overflow-y-scroll rounded-none",
-	//                 body: "",
-	//             },
-	//             styles: {
-	//                 modal: {
-	//                     marginTop: "auto",
-	//                     marginBottom: "auto",
-	//                     width: "70vw",
-	//                     height: "80vh",
-	//                     padding: "0",
-	//                 },
-	//             },
-	//         },
-	//     },
-	// ];
-
-	//   const { data: Courses, isLoading } = useQuery(["Courses-list"], async () =>
-	//     axios({
-	//       url: `https://aptbk.afexats.com/api/jobs/courses/`,
-	//       headers: {
-	//         "HASH-KEY":
-	//           "ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-	//         "REQUEST-TS": "1667549939702",
-	//         "API-KEY":
-	//           "qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
-	//       },
-	//       method: "get",
-	//     })
-	//       .then(({ data }) => data)
-	//       .catch((e) => e)
-	//   );
 
 	const [Courses, setCourses] = useState([])
 
 	useEffect(() => {
+		const requestTs = Date.now()
 		axios({
-			url: `https://aptbk.afexats.com/api/jobs/courses/`,
+			url: `${process.env.NEXT_PUBLIC_BASE_URL_1}/api/jobs/courses/`,
 			headers: {
-				"HASH-KEY":
-					"ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba",
-				"REQUEST-TS": "1667549939702",
-				"API-KEY":
-					"qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW",
+				"API-KEY": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
+				"request-ts": requestTs,
+				"hash-key": sha256(
+					`${process.env.NEXT_PUBLIC_API_KEY_1} ` +
+					`${process.env.NEXT_PUBLIC_SECRET_KEY_1}` + requestTs
+				).toString(CryptoJS.enc.Hex),
 			},
 			method: "get",
 		})
