@@ -40,13 +40,15 @@ function Testimonial() {
   const { data: testimonialList, isLoading } = useQuery<TestimonialFrontpageList>(
     ["testimonial", "frontpage"],
     async () =>
-      axios("/api/v1/tech-stars/testimonial-frontpage-list", {
+      // axios("/api/v1/tech-stars/testimonial-frontpage-list", {
+        axios({
         method: "get",
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/testimonial-frontpage-list`,
         headers: {
           "api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
           // "hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
           "request-ts": "1669397556",
+          "hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`
         }
 
       })

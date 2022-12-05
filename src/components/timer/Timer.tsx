@@ -1,6 +1,5 @@
 import axios from "axios";
 import sha256 from "crypto-js/sha256";
-import SHA256 from "crypto-js/sha256";
 import { data } from "jquery";
 import React, { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";

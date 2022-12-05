@@ -8,6 +8,7 @@ import { TextInput } from "@mantine/core";
 import QrCodeScan from "../../src/components/qrcode";
 import Loading from "../../src/components/loading";
 import axios from "axios";
+import CryptoJS from "crypto-js";
 
 function index() {
   const form = useForm({
@@ -34,6 +35,9 @@ function index() {
   }, [form.values]);
 
   const sendData = (lat: string, long: string) => {
+    var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+    var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
     let email = form.values.email;
     if (/^\S+@\S+$/.test(email)) {
       var data = JSON.stringify({
@@ -49,8 +53,8 @@ function index() {
         method: "post",
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
         headers: {
-          "API-KEY": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
-          "hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+          "API-KEY": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+          "hash-key": `${process.env.NEXT_PUBLIC_APP_HASH_KEY}`,
           "request-ts": "1669397556",
           "Content-Type": "application/json",
         },
@@ -60,7 +64,7 @@ function index() {
       axios(config)
         .then(function (response) {
           if (response.data.status_code === 201) {
-            setQrcode(response.data.data.image_base64);
+            setQrcode(CryptoJS.AES.decrypt(response.data.data.image_base64, key, { iv: iv }).toString(CryptoJS.enc.Utf8));
             setIsLoading(false);
             setShowModal(true);
           }

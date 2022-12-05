@@ -3,6 +3,7 @@ import { Accordion } from "@mantine/core";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import CryptoJS from "crypto-js";
 
 
 const FAQSample = {
@@ -37,14 +38,17 @@ type Faq = typeof FAQSample["data"]["results"]
 
 const FAQ = () => {
 	const [faqs, setFaqs] = useState<Faq>([])
+	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 
 	useEffect(() => {
+		const requestTs = String(Date.now())
 		axios({
 			method: 'get',
-			url: 'https://atsbk.afexats.com/api/v1/support/FAQ-list-create/',
+			url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/support/FAQ-list-create/`,
 			headers: {
-				"api-key": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
-				"hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 				"request-ts": "1669397556",
 			}
 		})
@@ -76,10 +80,10 @@ const FAQ = () => {
 							value='no-focus-ring'
 							className='border mb-10 shadow-lg py-3'>
 							<Accordion.Control>
-								{item?.question}
+								{CryptoJS.AES.decrypt(item?.question, key, { iv: iv }).toString(CryptoJS.enc.Utf8)}
 							</Accordion.Control>
 							<Accordion.Panel className='font-bold bg-neutral-100'>
-								{String(item?.answer)}
+								{CryptoJS.AES.decrypt(String(item?.answer), key, { iv: iv }).toString(CryptoJS.enc.Utf8)}
 							</Accordion.Panel>
 						</Accordion.Item>
 					</Accordion>

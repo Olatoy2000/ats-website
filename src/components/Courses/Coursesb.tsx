@@ -36,16 +36,16 @@ function Coursesb() {
 	// 	var iv = CryptoJS.enc.Utf8.parse("PL2LON7ZBLXq4a32le+FCQ==")
 
 	useEffect(() => {
-		const requestTs = String(Date.now())
+		let requestTs = String(Date.now())
 		axios({
 			url: `${process.env.NEXT_PUBLIC_BASE_URL_1}/api/jobs/courses/`,
 			headers: {
-				"api-key": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
+				"api-key": process.env.NEXT_PUBLIC_API_KEY_1,
 				"request-ts": requestTs,
 				"hash-key": sha256(
 					`${process.env.NEXT_PUBLIC_API_KEY_1} ` +
-					`${process.env.NEXT_PUBLIC_SECRET_KEY_1}` + requestTs
-				).toString(CryptoJS.enc.Hex),
+					`${process.env.NEXT_PUBLIC_SECRET_KEY_1}` +
+					requestTs).toString(CryptoJS.enc.Hex),
 			},
 			method: "get",
 		})

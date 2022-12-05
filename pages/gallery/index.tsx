@@ -5,6 +5,7 @@ import Container from "../../src/components/Container";
 import { usePagination } from "@mantine/hooks";
 import { Query, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import CryptoJS from "crypto-js";
 
 const galleryData = {
 	status: "success",
@@ -23,21 +24,27 @@ type GalleryImages = typeof galleryData;
 //Gallery in the Updates page
 
 function index() {
+	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+
 	const { data: galleryImages, isLoading } = useQuery<GalleryImages>(
 		["gallery-images"],
 		async () =>
-			axios("/api/v1/images", {
+			axios("/api/v1/album", {
+				baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 				headers: {
-					"api-key": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+					"api-key": process.env.NEXT_PUBLIC_APP_API_KEY,
 					"request-ts": "1669397556",
-					"hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+					"hash-key": process.env.NEXT_PUBLIC_HASH_KEY,
 				},
 				method: "get"
 			})
 				.then(({ data }) => data)
 				.catch((e) => e)
-	);
 
+	);
+	console.log(galleryImages)
 	const atsGallery = useMemo(
 		() =>
 			galleryImages?.data?.reduce(
