@@ -7,7 +7,7 @@ function Card(props: {
   subtitle: any;
 }) {
   return (
-    <div className="flex flex-col lg:w-[280px] sm:w-[300px] w-[300px]  xl:w-[300px] items-center justify-center gap-4 py-16 bg-white shadow-sm rounded-xl mx-auto  px-20 group hover:scale-110">
+    <div className="flex flex-col lg:w-[280px] sm:w-[300px] w-[260px]  xl:w-[300px] items-center justify-center gap-4 py-16 bg-white shadow-sm rounded-xl mx-auto  px-20 group hover:scale-110">
       <div className="relative w-24 h-24">
         <div className="absolute grid">
           <img

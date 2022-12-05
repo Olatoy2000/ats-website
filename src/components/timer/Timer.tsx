@@ -1,18 +1,16 @@
 import axios from "axios";
+import sha256 from "crypto-js/sha256";
+import SHA256 from "crypto-js/sha256";
+import { data } from "jquery";
 import React, { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
-
+import CryptoJS from 'crypto-js';
 
 interface ICountDown {
   time: Date;
 }
-
-
-
 function MyTimer({ time }: any) {
   const [applicationDate, setApplicationDate] = useState("")
-
-
   const { seconds, minutes, hours, days } = useTimer({
     expiryTimestamp: time,
     onExpire: () => console.warn("onExpire called"),
@@ -45,8 +43,7 @@ function MyTimer({ time }: any) {
             borderImageSource:
               "linear-gradient(160.86deg, rgba(255, 255, 255, 0.87) 2.3%, rgba(255, 159, 159, 0.4) 30.65%, rgba(255, 33, 33, 0.21) 73.2%, rgba(241, 210, 210, 0.58) 89.78%) borderBox",
           }}
-          className="timer box flex lg:px-10 md:px-6 px-4 gap-6 timer-gradient md:py-20 py-10"
-        >
+          className="timer box flex lg:px-10 md:px-6 px-4 gap-6 timer-gradient md:py-20 py-10">
           <div className="flex flex-col p gap-4 w-fit">
             <span className="font-['Jura'] p-4 font-bold md:text-[50px] text-[18px] md:leading-[50px] leading-6 bg-black py-2 px-4 rounded-lg">
               {days}
@@ -90,14 +87,20 @@ export default function App() {
   }, [time])
 
   const getTime = () => {
+
+    let requestTs = String(Date.now());
     var config = {
       method: 'get',
-      url: 'https://aptbk.afexats.com/api/jobs/latest-cohort',
+      url: `${process.env.NEXT_PUBLIC_BASE_URL_1}/api/jobs/latest-cohort`,
       headers: {
-        'HASH-KEY': 'ffefa32cfa2df9944ce9ad0212cc80169b1f7574fe09631a46756600d33238ba',
-        'REQUEST-TS': '1667549939702',
-        'API-KEY': 'qsMNjvnWL4aqOATjtjLoaoaRPw2Fec0jf43J5oB02Sv7hMELvfcwnOdzS9FQHOvW'
-      }
+        "request-ts": requestTs,
+        "api-key": process.env.NEXT_PUBLIC_APP_API_KEY_1,
+        "hash-key": sha256(
+          `${process.env.NEXT_PUBLIC_APP_API_KEY_1}` +
+          `${process.env.NEXT_PUBLIC_APP_SECRET_KEY_1}` +
+          requestTs).toString(),
+      },
+      data: data,
     };
 
     axios(config)

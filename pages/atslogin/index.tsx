@@ -42,7 +42,7 @@ function index() {
         longitude: long,
         date_time: new Date().toISOString(),
       });
-    
+
 
 
       var config = {
@@ -189,8 +189,8 @@ function index() {
                   </p>
                   <span
                     className={`${time >= 8 && time <= 16
-                        ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
-                        : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                      ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                      : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
                       }`}
                   >
                     <Icon
@@ -205,15 +205,15 @@ function index() {
                 </div>
                 <p
                   className={`${time >= 8 && time <= 16
-                      ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
-                      : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                    ? "text-light-metallicGreen text-[0.75rem] leading-4 whitespace-nowrap font-normal"
+                    : "text-light-internationalOrange text-[0.75rem] leading-4 whitespace-nowrap font-normal"
                     }`}
                 >
                   {time >= 8 && time < 16 ? "opens at 8am" : "closes at 5pm"}
                 </p>
               </div>
             </div>
-            <Link href="/adminlogin">
+            <Link href="https://admin-ats.netlify.app/login">
               <button
                 type="submit"
                 style={{

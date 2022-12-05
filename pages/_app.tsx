@@ -8,10 +8,10 @@ import { ModalsProvider } from "@mantine/modals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL;
-axios.defaults.headers.common["API-KEY"] = process.env.NEXT_PUBLIC_APP_API_KEY;
-axios.defaults.headers.common["HASH-KEY"] = process.env.HASH_KEY;
-axios.defaults.headers.common["REQUEST-TS"] = process.env.REQUEST_TS;
+// axios.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+// axios.defaults.headers.common["API-KEY"] = process.env.NEXT_PUBLIC_APP_API_KEY;
+// axios.defaults.headers.common["HASH-KEY"] = process.env.HASH_KEY;
+// axios.defaults.headers.common["REQUEST-TS"] = process.env.REQUEST_TS;
 
 const queryClient = new QueryClient();
 

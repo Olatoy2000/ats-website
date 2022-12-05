@@ -1,24 +1,22 @@
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 export default function NewsBar() {
   const [newsBar, setNewsBar] = useState<any>(null);
   var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-
   var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 
-  // KEY = bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r
-  // IV = s6v9y$B&E)H@McQf
-
   const fetchNewsBar = () => {
-    axios(`api/v1/nav-news`, {
+    const requestTs = String(Date.now())
+    axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/nav-news`, {
       method: "get",
-      url: "https://atsbk.afexats.com/api/v1/nav-news",
       headers: {
-        "api-key": "7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
-        "hash-key": "091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+        "api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
         "request-ts": "1669397556",
+        "hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`
+
       }
     }
 

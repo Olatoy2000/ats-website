@@ -63,10 +63,10 @@ function ProductManagement({ url, title }: Props) {
 			method: "get",
 			url: url,
 			headers: {
-				"API-KEY": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
+				"api-key": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
 				"request-ts": requestTs,
 				"hash-key": sha256(
-					`${process.env.NEXT_PUBLIC_API_KEY_1} ` +
+					`${process.env.NEXT_PUBLIC_APP_API_KEY_1} ` +
 					`${process.env.NEXT_PUBLIC_SECRET_KEY_1}` +
 					requestTs
 				).toString(CryptoJS.enc.Hex),
@@ -74,7 +74,7 @@ function ProductManagement({ url, title }: Props) {
 			data: data,
 		})
 			.then((response) => {
-				setCourseDetail(response.data)
+				setCourseDetail(response.data.data.results)
 			})
 			.catch((e) => console.log(e))
 	}, [])

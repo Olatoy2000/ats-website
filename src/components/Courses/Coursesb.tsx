@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import MyImage from "../../components/Courses/assets/image-5.png";
 import { openModal, closeAllModals } from "@mantine/modals";
 import ProductManagement from "./modals/productManagement";
-// import Frontend from "./modals/frontend";
-// import Backend from "./modals/backend";
-// import MobileApp from "./modals/mobileApp";
 import { ModalSettings } from "@mantine/modals/lib/context";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -35,13 +32,15 @@ const CoursesSample = {
 function Coursesb() {
 
 	const [Courses, setCourses] = useState([])
+	// var key = CryptoJS.enc.Utf8.parse("HmYOKQj7ZzF8cbeswYY9uLqbfMSUS2tI6Pz45zjylOM=");
+	// 	var iv = CryptoJS.enc.Utf8.parse("PL2LON7ZBLXq4a32le+FCQ==")
 
 	useEffect(() => {
-		const requestTs = Date.now()
+		const requestTs = String(Date.now())
 		axios({
 			url: `${process.env.NEXT_PUBLIC_BASE_URL_1}/api/jobs/courses/`,
 			headers: {
-				"API-KEY": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
+				"api-key": `${process.env.NEXT_PUBLIC_API_KEY_1}`,
 				"request-ts": requestTs,
 				"hash-key": sha256(
 					`${process.env.NEXT_PUBLIC_API_KEY_1} ` +
