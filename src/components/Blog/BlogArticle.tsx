@@ -5,6 +5,7 @@ import Link from "next/link";
 import Placeholder from "./assets/placeholder.png";
 import { useQuery } from "@tanstack/react-query";
 import { BlogArticle } from "../../../pages/blogs";
+import SearchEntries from "../SearchEntries";
 
 const blogSample = {
 	status: "success",
@@ -215,6 +216,7 @@ function Blog({ query }: IBlog) {
 					)
 				)}
 			</div>
+			<SearchEntries />
 		</div>
 	);
 }

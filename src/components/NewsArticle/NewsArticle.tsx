@@ -4,6 +4,7 @@ import axios from "axios";
 import Placeholder from "./assets/placeholder.png";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import SearchEntries from "../SearchEntries";
 
 //News Search page
 
@@ -221,6 +222,7 @@ function News({ query }: INews) {
 					)
 				)}
 			</div>
+			<SearchEntries />
 		</div>
 	);
 }

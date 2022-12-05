@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Blog from "../../src/components/Blog/BlogArticle";
 import Navbar from "../../src/components/Navbar/Navbar";
-import SearchEntries from "../../src/components/SearchEntries";
 import axios from "axios";
 
 const blogArticleSample = {
@@ -72,7 +71,6 @@ function index() {
 				setQuery={setQuery}
 			/>
 			<Blog query={query} />
-			<SearchEntries />
 		</div>
 	);
 }
