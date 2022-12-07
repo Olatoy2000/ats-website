@@ -110,9 +110,7 @@ function index() {
 
   return (
     <div className="relative">
-      {isLoading === true ? (
-        <Loading />
-      ) : showModal && qrcode ? (
+      {showModal && qrcode ? (
         <div className="z-10 absolute top-0 left-0 right-0 bottom-0">
           <QrCodeScan
             qrcode={qrcode}
@@ -246,6 +244,7 @@ function index() {
           <img src={QrCodeScanner.src} alt="qr code image" className="w-40" />
         </section>
       </div>
+      <Loading loading={isLoading} />
     </div>
   );
 }

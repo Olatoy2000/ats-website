@@ -16,22 +16,12 @@ export default function NewsBar() {
         "api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
         "request-ts": "1669397556", 
         "hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`
-
       }
     }
-
     )
       .then((response) => {
         console.log(key)
         console.log(response.data)
-        // console.log((CryptoJS.AES.decrypt("Z/mx0Xmoy2y5L+N/L7oMQJH+VZT8x0gVodowDmiwDbQ=", key, { iv: iv }).toString(CryptoJS.enc.Utf8)))
-
-
-        // console.log(response.data.data.map((item) => (
-        //   CryptoJS.AES.decrypt(item.category_name, key, { iv: iv }).toString(CryptoJS.enc.Base64)
-        // )))
-        // var decrypted = CryptoJS.AES.decrypt(response.data, key, { iv: iv });
-        // console.log(decrypted.toString(CryptoJS.enc.Base64))
         setNewsBar(response.data.data);
       })
 
