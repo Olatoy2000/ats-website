@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import MyImage from "../../components/Courses/assets/image-5.png";
+import React, { Fragment, useEffect, useState } from "react";
 import { openModal, closeAllModals } from "@mantine/modals";
 import ProductManagement from "./modals/productManagement";
-import { ModalSettings } from "@mantine/modals/lib/context";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import Placeholder from "./assets/placeholder.png";
 import sha256 from 'crypto-js/sha256';
 import CryptoJS from 'crypto-js';
@@ -29,28 +26,35 @@ const CoursesSample = {
 	},
 };
 
-function Coursesb() {
-
+const Coursesb = () => {
 	const [Courses, setCourses] = useState([])
-	// var key = CryptoJS.enc.Utf8.parse("HmYOKQj7ZzF8cbeswYY9uLqbfMSUS2tI6Pz45zjylOM=");
-	// 	var iv = CryptoJS.enc.Utf8.parse("PL2LON7ZBLXq4a32le+FCQ==")
+	var key = CryptoJS.enc.Base64.parse(
+		"HmYOKQj7ZzF8cbeswYY9uLqbfMSUS2tI6Pz45zjylOM=");
+	var iv = CryptoJS.enc.Base64.parse("PL2LON7ZBLXq4a32le+FCQ==");
+	const [pagination, setPagination] = useState(5)
 
 	useEffect(() => {
 		let requestTs = String(Date.now())
-		axios({
-			url: `${process.env.NEXT_PUBLIC_BASE_URL_1}/api/jobs/courses/`,
+		var config: AxiosRequestConfig = {
+			method: "get",
+			baseURL: process.env.NEXT_PUBLIC_BASE_URL_1,
+			url: `/api/jobs/courses`,
 			headers: {
-				"api-key": process.env.NEXT_PUBLIC_API_KEY_1,
+				"api-key": process.env.NEXT_PUBLIC_APP_API_KEY_1,
 				"request-ts": requestTs,
 				"hash-key": sha256(
-					`${process.env.NEXT_PUBLIC_API_KEY_1} ` +
-					`${process.env.NEXT_PUBLIC_SECRET_KEY_1}` +
-					requestTs).toString(CryptoJS.enc.Hex),
+					`${process.env.NEXT_PUBLIC_APP_API_KEY_1}` +
+					`${process.env.NEXT_PUBLIC_APP_SECRET_KEY_1}` + requestTs
+				).toString(CryptoJS.enc.Hex),
 			},
-			method: "get",
-		})
-			.then((response) => setCourses(response.data.data.results))
-			.catch((e) => console.log(e))
+		}
+		axios(config)
+			.then((response) => setCourses(JSON.parse(
+				CryptoJS.AES.decrypt(response.data.data, key, {
+					iv: iv,
+				}).toString(CryptoJS.enc.Utf8)
+			).results))
+			.catch((error) => console.log(error))
 	}, [])
 
 	return (
@@ -70,66 +74,84 @@ function Coursesb() {
 			</div>
 			{Courses?.map(
 				({ title, image, url, description }: any, idx: number) => (
-					<div
-						key={idx}
-						className='grid grid-flow-row pt-16'>
-						<div
-							className={
-								idx % 2 === 0
-									? "flex lg:flex-row md:flex-row flex-col border-2 rounded-2xl shadow h-max"
-									: "flex lg:flex-row-reverse md:flex-row-reverse flex-col border-2 rounded-2xl shadow h-max"
-							}>
-							<div className='min-w-[40%] p-6'>
-								<img
-									className='w-full object-scale-down'
-									src={image ? image : Placeholder.src}
-								/>
-							</div>
-							<div className='px-9 max-w-[60%] sm:max-w-full lg:pt-16 pt-7 pb-24 md:w-3/4'>
-								<h1 className='text-[#343434] lg:text-5xl md:text-3xl font-bold'>
-									{title}
-								</h1>
-								<p className="lg:text-lg font-['Mulish'] md:text-base pt-5 pb-10">
-									{description.split("").splice(0, 205).join("") + "..."}
-								</p>
+					idx < pagination ?
+						<Fragment key={idx}>
 
-								<button
-									onClick={() => {
-										openModal({
-											children: (
-												<ProductManagement
-													title={title}
-													url={url}
-												/>
-											),
-											classNames: {
-												inner: "rounded-none",
-												header: "hidden",
-												modal:
-													"p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
-											},
-											styles: {
-												modal: {
-													marginTop: "auto",
-													marginBottom: "auto",
-													width: "70vw",
-													height: "80vh",
-													padding: "0",
-												},
-											},
-										});
-									}}
-									className="bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black"
-								>
-									<span className="text-white">Read More</span>
-								</button>
+							<div
+								key={idx}
+								className='grid grid-flow-row pt-16'>
+								<div
+									className={
+										idx % 2 === 0
+											? "flex lg:flex-row md:flex-row flex-col border-2 rounded-2xl shadow h-max"
+											: "flex lg:flex-row-reverse md:flex-row-reverse flex-col border-2 rounded-2xl shadow h-max"
+									}>
+									<div className='min-w-[40%] p-6'>
+										<img
+											className='w-full object-scale-down'
+											src={image ? image : Placeholder.src}
+										/>
+									</div>
+									<div className='px-9 max-w-[60%] sm:max-w-full lg:pt-16 pt-7 pb-24 md:w-3/4'>
+										<h1 className='text-[#343434] lg:text-5xl md:text-3xl font-bold'>
+											{title}
+										</h1>
+										<p className="lg:text-lg font-['Mulish'] md:text-base pt-5 pb-10">
+											{description.split("").splice(0, 205).join("") + "..."}
+										</p>
+
+										<button
+											onClick={() => {
+												openModal({
+													children: (
+														<ProductManagement
+															title={title}
+															url={url}
+														/>
+													),
+													classNames: {
+														inner: "rounded-none",
+														header: "hidden",
+														modal:
+															"p-0 overflow-y-scroll scrollbar-hide rounded-t-lg",
+													},
+													styles: {
+														modal: {
+															marginTop: "auto",
+															marginBottom: "auto",
+															width: "70vw",
+															height: "80vh",
+															padding: "0",
+														},
+													},
+												});
+											}}
+											className="bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black"
+										>
+											<span className="text-white">Read More</span>
+										</button>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
+							
+						</Fragment>
+						: null
 				)
 			)}
+			<button onClick={() => {
+				pagination === 5 ?
+					setPagination(Courses.length)
+					: setPagination(5)
+			}} className="bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black"
+			>
+				<span className="text-white">{pagination === 5 ? "See More" : "See Less"}</span>
+			</button>
 		</div>
 	);
 }
 
 export default Coursesb;
+function then(arg0: (response: any) => void) {
+	throw new Error("Function not implemented.");
+}
+

@@ -7,6 +7,7 @@ import { Query, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 import Loading from "../../src/components/loading";
+import ImageViewer from "../../src/components/ImageViewer";
 
 const galleryData = {
 	status: "success",
@@ -29,6 +30,7 @@ function index() {
 	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 	const [images, setImages] = useState<any[]>([])
 	const [loading, setLoading] = useState(false)
+	const [viewPictures, setViewPictures] = useState([])
 
 	const { data: galleryImages, isLoading } = useQuery(
 		["gallery-images"],
@@ -77,6 +79,13 @@ function index() {
 			return Promise.resolve(categories).then(function (value) {
 				console.log(value);
 				setImages(value);
+				setViewPictures(value.reduce((acc, el, id) => {
+					el.images.map((item: any) => {
+						let obj = { src: CryptoJS.AES.decrypt(item.image, key, { iv: iv }).toString(CryptoJS.enc.Utf8) }
+						acc.push({ ...obj })
+					})
+					return acc
+				}, []))
 			});
 		})
 
@@ -108,6 +117,17 @@ function index() {
 	const [page, onChange] = useState(1);
 	const [lowest, setLowest] = useState(1)
 	const [highest, setHighest] = useState(5)
+	const [currentImage, setCurrentImage] = useState<number>(0)
+	const [openImage, setOpenImage] = useState(false)
+
+	const nextImage = () => {
+		setCurrentImage(curr => curr + 1)
+	}
+	const prevImage = () => {
+		if (currentImage > 0) {
+			setCurrentImage(curr => curr - 1)
+		}
+	}
 
 	const pagination = usePagination({ total: 10, page, onChange });
 	const nextHandler = () => {
@@ -149,6 +169,10 @@ function index() {
 											id + 1 <= highest && id + 1 >= lowest &&
 											<li key={idx}>
 												<img
+													onClick={() => {
+														setCurrentImage(idx)
+														setOpenImage(true)
+													}}
 													className='w-full h-full object-cover'
 													src={CryptoJS.AES.decrypt(obj.image, key, { iv: iv }).toString(CryptoJS.enc.Utf8)}
 													// {process.env.NEXT_PUBLIC_BASE_URL + item.image}
@@ -220,6 +244,7 @@ function index() {
 			</Container>
 			<Loading loading={isLoading} />
 			<Loading loading={loading} />
+			<ImageViewer images={viewPictures} gotoNext={nextImage} closeViewer={() => setOpenImage(false)} gotoPrevious={prevImage} currImg={currentImage} viewerIsOpen={openImage} />
 		</article>
 	);
 }
