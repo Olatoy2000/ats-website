@@ -133,7 +133,7 @@ const Coursesb = () => {
 									</div>
 								</div>
 							</div>
-							
+
 						</Fragment>
 						: null
 				)
@@ -142,7 +142,7 @@ const Coursesb = () => {
 				pagination === 5 ?
 					setPagination(Courses.length)
 					: setPagination(5)
-			}} className="bggradi rounded-lg lg:p-4 p-2 items-center group-hover:bg-black"
+			}} className="bggradi rounded-lg lg:p-4 p-2 items-center mt-8 group-hover:bg-black"
 			>
 				<span className="text-white">{pagination === 5 ? "See More" : "See Less"}</span>
 			</button>

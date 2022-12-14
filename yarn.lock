@@ -202,16 +202,16 @@
   resolved "https://registry.yarnpkg.com/@formkit/auto-animate/-/auto-animate-1.0.0-beta.3.tgz#d5eb724ccb44afba9348df32ce0b8bb10037a7ee"
   integrity sha512-glsi+ytwQpxT/Ctr9GtcIfVr4dO6mJ04mQbNU8MFSdCdqMopHtyfU5Fib0+9lNFIeR0luY4/0NW95/2R5pKsag==
 
-"@ibnlanre/cipher@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@ibnlanre/cipher/-/cipher-1.0.4.tgz#c938e9873c9b2b66df4228243ed51b7883f4b638"
-  integrity sha512-cauj6vLV1joUhFfx1q7Jx79tefV/UwSaj4OQZLs+U5FxTPc8f29kUVMNwnSt0ettXcXRCgye/m2MQUnDzUXFbw==
+"@ibnlanre/cipher@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ibnlanre/cipher/-/cipher-1.1.0.tgz#b032bd67c117cdde9392dddd7302ee65d0b04e3f"
+  integrity sha512-kukYFOOEcOrE4dp40v0dj7zL4TeuuCYHdQswu94joq9nyOq7s24/wTlqGC2/g2cQM04qTjtDfI/JRPI2ZRDpqw==
   dependencies:
     browserify-aes "^1.2.0"
     buffer "^6.0.3"
+    cipher-base "^1.0.4"
     randombytes "^2.1.0"
     safe-buffer "^5.2.1"
-    stream "^0.0.2"
 
 "@iconify/react@^4.0.0":
   version "4.0.0"
@@ -1575,7 +1575,7 @@ chrome-trace-event@^1.0.2:
   resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-1.0.3.tgz#1015eced4741e15d06664a957dbbf50d041e26ac"
   integrity sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==
 
-cipher-base@^1.0.0, cipher-base@^1.0.1:
+cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
   integrity sha512-Kkht5ye6ZGmwv40uUDZztayT2ThLQGfnj/T71N/XzeZeo3nf8foyW7zGTsPYkEya3m5f3cAypH+qe7YOrM1U2Q==
@@ -1861,11 +1861,6 @@ embla-carousel@7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-7.0.5.tgz#b43e590c072d06a5b11d4ce19d024f5f07a62862"
   integrity sha512-loRcu0La0F7bhEMwbvgpi14iaaIEdwacH1xoplnaYfwN4KMgECkiuLgu4lx+v6MYd6lSpg/bw7ZxEuLUwYjavg==
-
-emitter-component@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/emitter-component/-/emitter-component-1.1.1.tgz#065e2dbed6959bf470679edabeaf7981d1003ab6"
-  integrity sha512-G+mpdiAySMuB7kesVRLuyvYRqDmshB7ReKEVuyBPkzQlmiDiLrt7hHHIy4Aff552bgknVN7B2/d3lzhGO5dvpQ==
 
 entities@^2.0.0:
   version "2.2.0"
@@ -2921,13 +2916,6 @@ stable@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
   integrity sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==
-
-stream@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/stream/-/stream-0.0.2.tgz#7f5363f057f6592c5595f00bc80a27f5cec1f0ef"
-  integrity sha512-gCq3NDI2P35B2n6t76YJuOp7d6cN/C7Rt0577l91wllh0sY9ZBuw9KaSGqH/b0hzn3CWWJbpbW0W0WvQ1H/Q7g==
-  dependencies:
-    emitter-component "^1.1.1"
 
 string-hash@^1.1.3:
   version "1.1.3"

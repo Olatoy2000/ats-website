@@ -3,8 +3,10 @@ import { clsx } from "@mantine/core";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import test from "node:test";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 const testimonialFrontpageListSample = {
   status: "success",
@@ -24,13 +26,20 @@ const testimonialFrontpageListSample = {
 
 type TestimonialFrontpageList = typeof testimonialFrontpageListSample;
 type Testimony = TestimonialFrontpageList["data"][number]
-
 // const [listRef] = autoAnimate();
+
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+const decrypt = (element: any) => {
+  return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(CryptoJS.enc.Utf8)
+}
 
 function Testimonial() {
   const [parent] = useAutoAnimate<HTMLDivElement>();
-  // const [testimonial, setTestimonial] = useState(null)
 
+  // const [testimonial, setTestimonial] = useState(null)
   // useEffect(() => {
   //     axios("/api/v1/tech-stars/testimonial-frontpage-list")
   //       .then(({ data }) => setTestimonial(data))
@@ -41,7 +50,7 @@ function Testimonial() {
     ["testimonial", "frontpage"],
     async () =>
       // axios("/api/v1/tech-stars/testimonial-frontpage-list", {
-        axios({
+      axios({
         method: "get",
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/testimonial-frontpage-list`,
         headers: {
@@ -55,17 +64,20 @@ function Testimonial() {
         .then(({ data }) => data)
         .catch((e) => e)
   );
-  
-  const [testimonial, setTestimonial] = useState<Testimony[]>([])
-  
- useEffect(() => {
-   setTestimonial(testimonialList?.data?? [])
- }, [testimonialList])
+
+  const [testimonial, setTestimonial] = useState<Testimony[] | null>(null)
+
+  useEffect(() => {
+    if (testimonialList?.data) {
+      console.log(testimonialList.data)
+      setTestimonial(testimonialList.data)
+    }
+  }, [testimonialList])
 
   return (
     <div className="grid items-center lg:gap-6 md:gap-4 gap-2">
       <h2 className="text-center min-h-[2rem]">
-        {testimonial?.[2]?.["testimonial"]}
+        {testimonial && decrypt(testimonial[2]["testimonial"])}
       </h2>
       <article className="flex justify-between gap-8">
         <button
@@ -92,7 +104,7 @@ function Testimonial() {
                 )}
               >
                 <img
-                  src={process.env.NEXT_PUBLIC_BASE_URL + tech_star_profile_picture}
+                  src={tech_star_profile_picture && (process.env.NEXT_PUBLIC_BASE_URL + decrypt(tech_star_profile_picture))}
                   className="object-cover w-full h-auto"
                   alt=""
                 />
@@ -112,9 +124,9 @@ function Testimonial() {
         </button>
       </article>
       <div className="text-center">
-        <p className="text-[clamp(0.625rem,1vw,1rem)]">{testimonial?.[2]?.["tech_star_full_name"]}</p>
-        <h2 className="text-[clamp(0.625rem,1vw,1rem)]">{testimonial?.[2]?.["tech_star_course"]}</h2>
-        <h2 className="mb-12 text-[clamp(0.625rem,1vw,1rem)]">{testimonial?.[2]?.["tech_star_cohort"]}</h2>
+        <p className="text-[clamp(0.625rem,1vw,1rem)]">{testimonial && decrypt(testimonial?.[2]?.["tech_star_full_name"])}</p>
+        <h2 className="text-[clamp(0.625rem,1vw,1rem)]">{testimonial && decrypt(testimonial?.[2]?.["tech_star_course"])}</h2>
+        <h2 className="mb-12 text-[clamp(0.625rem,1vw,1rem)]">{testimonial && decrypt(testimonial?.[2]?.["tech_star_cohort"])}</h2>
       </div>
     </div>
   );

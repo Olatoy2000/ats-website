@@ -9,6 +9,23 @@ import QrCodeScan from "../../src/components/qrcode";
 import Loading from "../../src/components/loading";
 import axios from "axios";
 import CryptoJS from "crypto-js";
+// const cipher = require("@ibnlanre/cipher")
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+// console.log(new cipher({ encryption_key: "bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r", initialization_vector: "s6v9y$B&E)H@McQf" }))
+const encrypt = (element: any) => {
+  let data = CryptoJS.AES.encrypt(
+    element,
+    key,
+    {
+      iv: iv,
+    }
+  ).ciphertext
+  return CryptoJS.pad.Pkcs7.pad(data, 32)
+}
+
 
 function index() {
   const form = useForm({
@@ -35,31 +52,35 @@ function index() {
   }, [form.values]);
 
   const sendData = (lat: string, long: string) => {
-    var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-    var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 
     let email = form.values.email;
+    console.log(encrypt(email))
+
     if (/^\S+@\S+$/.test(email)) {
-      var data = JSON.stringify({
-        email: email,
-        latitude: lat,
-        longitude: long,
-        date_time: new Date().toISOString(),
-      });
+      var data = {
+        email: encrypt(email),
+        latitude: encrypt(lat),
+        longitude: encrypt(long),
+        date_time: encrypt(new Date().toISOString()),
+      };
+
+      console.log(data)
 
 
 
       var config = {
         method: "post",
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/tech-stars/QR-code-generator/`,
+        url: process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/tech-stars/QR-code-generator/`,
         headers: {
-          "API-KEY": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
-          "hash-key": `${process.env.NEXT_PUBLIC_APP_HASH_KEY}`,
+          "API-KEY": process.env.NEXT_PUBLIC_API_KEY,
+          "hash-key": process.env.NEXT_PUBLIC_HASH_KEY,
           "request-ts": "1669397556",
           "Content-Type": "application/json",
         },
         data: data,
       };
+
+      console.log(config)
 
       axios(config)
         .then(function (response) {
@@ -73,7 +94,8 @@ function index() {
           setErr("Email does not exist");
           setIsLoading(false);
         });
-    } else {
+    }
+    else {
       setErr("Invalid Email");
     }
   }
@@ -94,8 +116,10 @@ function index() {
             else userLocation = data.locality;
             sendData(lat, long)
           })
-          .catch(() =>
+          .catch((error) => {
+            console.log(error)
             alert("Could not fetch location, please try again")
+          }
           );
       },
       () => {

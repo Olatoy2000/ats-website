@@ -74,6 +74,9 @@ function MyTimer({ time }: any) {
 }
 
 export default function App() {
+  var key = CryptoJS.enc.Base64.parse(
+    "HmYOKQj7ZzF8cbeswYY9uLqbfMSUS2tI6Pz45zjylOM=");
+  var iv = CryptoJS.enc.Base64.parse("PL2LON7ZBLXq4a32le+FCQ==");
   const [time, setTime] = useState<number | null>(null)
   const [gotten, setGotten] = useState(false)
 
@@ -86,25 +89,27 @@ export default function App() {
   }, [time])
 
   const getTime = () => {
-
     let requestTs = String(Date.now());
     var config = {
       method: 'get',
-      url: `${process.env.NEXT_PUBLIC_BASE_URL_1}/api/jobs/latest-cohort`,
+      baseURL: process.env.NEXT_PUBLIC_BASE_URL_1,
+      url: `/api/jobs/latest-cohort`,
       headers: {
         "request-ts": requestTs,
         "api-key": process.env.NEXT_PUBLIC_APP_API_KEY_1,
         "hash-key": sha256(
           `${process.env.NEXT_PUBLIC_APP_API_KEY_1}` +
           `${process.env.NEXT_PUBLIC_APP_SECRET_KEY_1}` +
-          requestTs).toString(),
+          requestTs).toString(CryptoJS.enc.Hex),
       },
-      data: data,
     };
 
     axios(config)
-      .then(function (response) {
-        let time = new Date(response.data.data[0].application_end_date);
+      .then((response) => {
+        // let time = new Date(response.data.data[0].application_end_date);
+        console.log(response.data)
+        let time = new Date(JSON.parse(CryptoJS.AES.decrypt(response.data[0].application_end_date, key, { iv: iv }).toString(CryptoJS.enc.Utf8)))
+        // let time = new Date(response.data.data[0].application_end_date)
         setTime(time.setSeconds(time.getSeconds()))
       })
       .catch(function (error) {
@@ -113,7 +118,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div className="time">
       {gotten ? <MyTimer time={time} /> : null}
     </div>
   );
