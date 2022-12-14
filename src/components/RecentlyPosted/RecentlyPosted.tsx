@@ -5,6 +5,7 @@ import Placeholder from "./assets/placeholder.png";
 import Link from "next/link";
 import ApplyNow from "../ApplyNow";
 import { useQuery } from "@tanstack/react-query";
+import CryptoJS from "crypto-js";
 
 const newsArticleSample = {
 	status: "success",
@@ -41,10 +42,12 @@ type Prop = {
 };
 type News = typeof newsArticleSample;
 function RecentlyPosted({ keyword }: Prop) {
+	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 	const { data: newsArticle, isLoading } = useQuery<News>(
 		["News-Articles"],
 		async () =>
-			axios("/api/v1/news", {
+			axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/news`, {
 				headers: {
 					"HASH-KEY":
 						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
@@ -94,39 +97,79 @@ function RecentlyPosted({ keyword }: Prop) {
 										className='flex flex-col lg:flex lg:flex-row md:flex-row md:flex sm:flex sm:flex-col gap-4'>
 										<img
 											className='object-cover self-center lg:w-96 md:w-96 w-96 h-72 sm:w-full sm:h-72 rounded'
-											src={image ? image : Placeholder.src}
+											src={
+												process.env.NEXT_PUBLIC_BASE_URL +
+												CryptoJS.AES.decrypt(
+													image ? image : Placeholder.src,
+													key,
+													{
+														iv: iv,
+													}
+												).toString(CryptoJS.enc.Utf8)
+											}
 										/>
 
 										<div className='md:h-max h-max'>
 											<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
-												{category_name}
+												{CryptoJS.AES.decrypt(category_name, key, {
+													iv: iv,
+												}).toString(CryptoJS.enc.Utf8)}
 											</span>
 											<Link href={`/news/${id}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-													{title.split("").splice(0, 50).join("") + " ..."}
+													{CryptoJS.AES.decrypt(title, key, {
+														iv: iv,
+													})
+														.toString(CryptoJS.enc.Utf8)
+														.split("")
+														.splice(0, 50)
+														.join("") + " ..."}
 												</p>
 											</Link>
 											<div className='flex gap-1 items-center py-1'>
 												<img
 													className='h-6'
-													src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
+													src={
+														process.env.NEXT_PUBLIC_BASE_URL +
+														CryptoJS.AES.decrypt(author_image, key, {
+															iv: iv,
+														}).toString(CryptoJS.enc.Utf8)
+													}
 												/>
 												<div className='grid grid-flow-col items-center'>
 													<p className='text-[#777777] text-xs'>
-														{author_name}
+														{CryptoJS.AES.decrypt(author_name, key, {
+															iv: iv,
+														}).toString(CryptoJS.enc.Utf8)}
 													</p>
 													<span className='text-[#999999] font-thin'>|</span>
 													&nbsp;&nbsp;
 													<p className='text-[#777777] text-xs'>
-														{moment(created_at).format("ll").split(",")[0]}
+														{
+															moment(
+																CryptoJS.AES.decrypt(created_at, key, {
+																	iv: iv,
+																}).toString(CryptoJS.enc.Utf8)
+															)
+																.format("ll")
+																.split(",")[0]
+														}
 													</p>
 													&nbsp;&nbsp;
 													<span className='text-[#999999] font-thin'>|</span>
-													<p className='text-[#777777] text-xs'>{min_read}</p>
+													<p className='text-[#777777] text-xs'>
+														{min_read &&
+															CryptoJS.AES.decrypt(min_read, key, {
+																iv: iv,
+															}).toString(CryptoJS.enc.Utf8)}
+													</p>
 												</div>
 											</div>
 											<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
-												{intro + "..."}&nbsp;&nbsp;
+												{CryptoJS.AES.decrypt(intro + "...", key, {
+													iv: iv,
+												}).toString(CryptoJS.enc.Utf8)}
+												&nbsp;&nbsp;
 												<Link href={`/news/${id}`}>
 													<span className='text-[#C81107]'>Read more</span>
 												</Link>
@@ -142,39 +185,78 @@ function RecentlyPosted({ keyword }: Prop) {
 										className='flex flex-col lg:flex lg:flex-row md:flex-row md:flex sm:flex sm:flex-col gap-4'>
 										<img
 											className='object-cover self-center lg:w-96 md:w-96 w-96 h-72 sm:w-full sm:h-72 rounded'
-											src={image ? image : Placeholder.src}
+											src={
+												process.env.NEXT_PUBLIC_BASE_URL +
+												CryptoJS.AES.decrypt(
+													image ? image : Placeholder.src,
+													key,
+													{
+														iv: iv,
+													}
+												).toString(CryptoJS.enc.Utf8)
+											}
 										/>
 
 										<div className='md:h-max h-max'>
 											<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
-												{category_name}
+												{CryptoJS.AES.decrypt(category_name, key, {
+													iv: iv,
+												}).toString(CryptoJS.enc.Utf8)}
 											</span>
 											<Link href={`/news/${id}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-													{title.split("").splice(0, 50).join("") + " ..."}
+													{CryptoJS.AES.decrypt(title, key, {
+														iv: iv,
+													})
+														.toString(CryptoJS.enc.Utf8)
+														.split("")
+														.splice(0, 50)
+														.join("") + " ..."}
 												</p>
 											</Link>
 											<div className='flex gap-1 items-center py-1'>
 												<img
 													className='h-6'
-													src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
+													src={
+														process.env.NEXT_PUBLIC_BASE_URL +
+														CryptoJS.AES.decrypt(author_image, key, {
+															iv: iv,
+														}).toString(CryptoJS.enc.Utf8)
+													}
 												/>
 												<div className='grid grid-flow-col items-center'>
 													<p className='text-[#777777] text-xs'>
-														{author_name}
+														{CryptoJS.AES.decrypt(author_name, key, {
+															iv: iv,
+														}).toString(CryptoJS.enc.Utf8)}
 													</p>
 													<span className='text-[#999999] font-thin'>|</span>
 													&nbsp;&nbsp;
 													<p className='text-[#777777] text-xs'>
-														{moment(created_at).format("ll").split(",")[0]}
+														{
+															moment(
+																CryptoJS.AES.decrypt(created_at, key, {
+																	iv: iv,
+																}).toString(CryptoJS.enc.Utf8)
+															)
+																.format("ll")
+																.split(",")[0]
+														}
 													</p>
 													&nbsp;&nbsp;
 													<span className='text-[#999999] font-thin'>|</span>
-													<p className='text-[#777777] text-xs'>{min_read}</p>
+													<p className='text-[#777777] text-xs'>
+														{CryptoJS.AES.decrypt(min_read, key, {
+															iv: iv,
+														}).toString(CryptoJS.enc.Utf8)}
+													</p>
 												</div>
 											</div>
 											<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
-												{intro + "..."}&nbsp;&nbsp;
+												{CryptoJS.AES.decrypt(intro + "...", key, {
+													iv: iv,
+												}).toString(CryptoJS.enc.Utf8)}
+												&nbsp;&nbsp;
 												<Link href={`/news/${id}`}>
 													<span className='text-[#C81107]'>Read more</span>
 												</Link>
@@ -188,37 +270,79 @@ function RecentlyPosted({ keyword }: Prop) {
 									className='flex flex-col lg:flex lg:flex-row md:flex-row md:flex sm:flex sm:flex-col gap-4'>
 									<img
 										className='object-cover self-center lg:w-96 md:w-96 w-96 h-72 sm:w-full sm:h-72 rounded'
-										src={image ? image : Placeholder.src}
+										src={
+											process.env.NEXT_PUBLIC_BASE_URL +
+											CryptoJS.AES.decrypt(
+												image ? image : Placeholder.src,
+												key,
+												{
+													iv: iv,
+												}
+											).toString(CryptoJS.enc.Utf8)
+										}
 									/>
 
 									<div className='md:h-max h-max'>
 										<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
-											{category_name}
+											{CryptoJS.AES.decrypt(category_name, key, {
+												iv: iv,
+											}).toString(CryptoJS.enc.Utf8)}
 										</span>
 										<Link href={`/news/${id}`}>
 											<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-												{title.split("").splice(0, 50).join("") + " ..."}
+												{CryptoJS.AES.decrypt(title, key, {
+													iv: iv,
+												})
+													.toString(CryptoJS.enc.Utf8)
+													.split("")
+													.splice(0, 50)
+													.join("") + " ..."}
 											</p>
 										</Link>
 										<div className='flex gap-1 items-center py-1'>
 											<img
 												className='h-6'
-												src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
+												src={
+													process.env.NEXT_PUBLIC_BASE_URL +
+													CryptoJS.AES.decrypt(author_image, key, {
+														iv: iv,
+													}).toString(CryptoJS.enc.Utf8)
+												}
 											/>
 											<div className='grid grid-flow-col items-center'>
-												<p className='text-[#777777] text-xs'>{author_name}</p>
+												<p className='text-[#777777] text-xs'>
+													{CryptoJS.AES.decrypt(author_name, key, {
+														iv: iv,
+													}).toString(CryptoJS.enc.Utf8)}
+												</p>
 												<span className='text-[#999999] font-thin'>|</span>
 												&nbsp;&nbsp;
 												<p className='text-[#777777] text-xs'>
-													{moment(created_at).format("ll").split(",")[0]}
+													{
+														moment(
+															CryptoJS.AES.decrypt(created_at, key, {
+																iv: iv,
+															}).toString(CryptoJS.enc.Utf8)
+														)
+															.format("ll")
+															.split(",")[0]
+													}
 												</p>
 												&nbsp;&nbsp;
 												<span className='text-[#999999] font-thin'>|</span>
-												<p className='text-[#777777] text-xs'>{min_read}</p>
+												<span className='text-[#777777] text-xs'>
+													{min_read &&
+														CryptoJS.AES.decrypt(min_read, key, {
+															iv: iv,
+														}).toString(CryptoJS.enc.Utf8)}
+												</span>
 											</div>
 										</div>
 										<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
-											{intro + "..."}&nbsp;&nbsp;
+											{CryptoJS.AES.decrypt(intro + "...", key, {
+												iv: iv,
+											}).toString(CryptoJS.enc.Utf8)}
+											&nbsp;&nbsp;
 											<Link href={`/news/${id}`}>
 												<span className='text-[#C81107]'>Read more</span>
 											</Link>

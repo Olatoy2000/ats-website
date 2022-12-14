@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import News from "../../src/components/NewsArticle/NewsArticle";
 import Navbar from "../../src/components/Navbar/Navbar";
-import SearchEntries from "../../src/components/SearchEntries";
 import axios from "axios";
 
 //The newssearch in the Updates of the landing page
@@ -52,7 +51,6 @@ function index() {
 				setQuery={setQuery}
 			/>
 			<News query={query} />
-			<SearchEntries />
 		</div>
 	);
 }
