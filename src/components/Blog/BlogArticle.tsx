@@ -124,11 +124,9 @@ function Blog({ query }: IBlog) {
 	const { data: blogs, isLoading } = useQuery(["blogs", query], async () =>
 		axios(query ? `/api/v1/search-blog/?q=${query}` : "/api/v1/blogs", {
 			headers: {
-				"HASH-KEY":
-					"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-				"REQUEST-TS": "1669397556",
-				"API-KEY":
-					"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+				"request-ts": "1669397556",
+				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 			},
 			method: "get",
 		})
