@@ -98,12 +98,9 @@ function BlogArticle() {
 							key={idx}
 							className='flex flex-col pb-4 shadow lg:w-96 md:w-80 w-64 rounded-md'>
 							<img
-								src={
-									process.env.NEXT_PUBLIC_BASE_URL +
-									CryptoJS.AES.decrypt(image ? image : Placeholder.src, key, {
-										iv: iv,
-									}).toString(CryptoJS.enc.Utf8)
-								}
+								src={CryptoJS.AES.decrypt(image, key, {
+									iv: iv,
+								}).toString(CryptoJS.enc.Utf8)}
 								className='w-96 h-72 object-cover'
 							/>
 							<Link href={`/blogs/${id}`}>
