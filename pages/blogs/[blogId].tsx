@@ -4,6 +4,16 @@ import Xpertbackestablished from "../../src/bloglayout/xpertbackestablished";
 import MORE_BLOG_POST from "../../src/moreblogpostview";
 import { useRouter } from "next/router";
 import axios from "axios";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function index() {
 	const router = useRouter();
@@ -14,11 +24,9 @@ function index() {
 			method: "get",
 			url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
 			headers: {
-				"HASH-KEY":
-					"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-				"REQUEST-TS": "1669397556",
-				"API-KEY":
-					"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+				"request-ts": "1669397556",
+				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 			},
 		};
 
@@ -36,9 +44,9 @@ function index() {
 	}, [router.query.blogId]);
 	return blogDetail ? (
 		<div>
-			<Xpertbackestablished blogDetail={blogDetail} />
-			<CommentBlog blogDetail={blogDetail} />
-			<MORE_BLOG_POST routeId={router.query.blogId} />
+			<Xpertbackestablished blogDetail={decrypt(blogDetail)} />
+			<CommentBlog blogDetail={decrypt(blogDetail)} />
+			<MORE_BLOG_POST routeId={decrypt(router.query.blogId)} />
 		</div>
 	) : null;
 }

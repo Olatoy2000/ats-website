@@ -3,6 +3,8 @@ import AFEXLogo from "./assets/afex-logo.png";
 import Link from "next/link";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 const NewsletterSample = {
 	success: true,
@@ -19,18 +21,23 @@ const NewsletterSample = {
 	message: "Successfully",
 };
 type Newsletter = typeof NewsletterSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function Newsletter() {
 	const { data: newsletter, isLoading } = useQuery<Newsletter>(
 		["Newsletter"],
 		async () =>
-			axios("/api/v1/newsletter/2", {
+			axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/newsletter/2`, {
 				headers: {
-					"HASH-KEY":
-						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-					"REQUEST-TS": "1669397556",
-					"API-KEY":
-						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+					"request-ts": "1669397556",
+					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 				},
 				method: "get",
 			})
@@ -39,60 +46,19 @@ function Newsletter() {
 	);
 	return (
 		<div className='pt-10 pb-16'>
-			<img
-				className='object-cover pb-8'
-				src={AFEXLogo.src}
-			/>
 			<div>
-				{/* {newsletter?.data?.map(
-					({ title, content, subject }: any, idx: number) => ( */}
-				<article
-					// key={idx}
-					className='lg:text-base text-sm'>
-					<p className=''>{newsletter?.data?.title}</p>
-					<p className='pt-10'>{newsletter?.data?.content}</p>
-					{/* <ol className='list-inside list-decimal py-3'>
-								<li>Product Management</li>
-								<li>Front-end Development</li>
-								<li>Back-end Development</li>
-								<li>Mobile App Development</li>
-								<li>Product Design</li>
-							</ol>
-
-							<p className='py-3'>
-								Apply and share the application link with friends and family and
-								start a career in any of the 5 courses we offer for complete
-								beginners who want to begin a career and join the future
-								workforce.
-							</p>
-							<p className='py-3'>
-								One more thing, it's not to just know Coding, Product design
-								etc. See your course (backend, frontend etc) as sand. If you
-								give two people sand, one will make sand castle and the other
-								will make glass that would have multiple uses, think about the
-								difference between these two people. We want to give you SAND
-								and give you what will make you glass maker. Join the future.
-							</p>
-							<p className='pt-3'>AFEX Tech Hub.</p>
-							<p>
-								Christiana Oyinade House, Beside First Bank, Iwo Road, Ibadan.
-							</p>
-							<span className='pb-3 text-[#C81107]'>
-								<a
-									href='https://afex-tech-stars.com/jobs'
-									target='_blank'>
-									https://afex-tech-stars.com/jobs
-								</a>
-							</span> */}
-				</article>
-				{/* )
-				)} */}
+				<img
+					className='object-cover pb-8'
+					src={AFEXLogo.src}
+				/>
 			</div>
-			{/* <Link href='/courses'>
-				<button className='bggradi rounded-lg lg:p-5 p-3 items-center group-hover:bg-black'>
-					<span className='text-white'>Apply Now</span>
-				</button>
-			</Link> */}
+
+			<article className='lg:text-base text-sm'>
+				<p className=''>{newsletter && decrypt(newsletter.data.title)}</p>
+				<p className='pt-10'>
+					{newsletter && decrypt(newsletter.data?.content)}
+				</p>
+			</article>
 		</div>
 	);
 }

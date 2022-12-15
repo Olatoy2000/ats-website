@@ -5,6 +5,8 @@ import Placeholder from "./assets/placeholder.png";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import SearchEntries from "../SearchEntries";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 //News Search page
 
@@ -122,18 +124,29 @@ interface INews {
 	query?: string;
 }
 
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
+
 function News({ query }: INews) {
 	const { data: news, isLoading } = useQuery(["news", query], async () =>
-		axios(query ? `/api/v1/search-news/?q=${query}` : "/api/v1/news", {
-			headers: {
-				"HASH-KEY":
-					"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-				"REQUEST-TS": "1669397556",
-				"API-KEY":
-					"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
-			},
-			method: "get",
-		})
+		axios(
+			query
+				? process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/search-news/?q=${query}`
+				: process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/news`,
+			{
+				headers: {
+					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+					"request-ts": "1669397556",
+					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+				},
+				method: "get",
+			}
+		)
 			.then(({ data }) => data)
 			.catch((e) => e)
 	);
@@ -166,7 +179,7 @@ function News({ query }: INews) {
 							key={idx}
 							className='flex flex-col pb-4 shadow rounded-md'>
 							<img
-								src={image ? image : Placeholder.src}
+								src={image && decrypt(image) ? decrypt(image) : Placeholder.src}
 								className='lg:w-96 lg:h-72 md:w-96 md:h-72 w-full h-72 object-cover'
 							/>
 							{/* <span>
@@ -188,26 +201,28 @@ function News({ query }: INews) {
 										)} */}
 
 							<Link href={`/news/${id}`}>
-								<p className='text-[#2D3748] text-xl font-bold p-4'>{title}</p>
+								<p className='text-[#2D3748] text-xl font-bold p-4'>
+									{title && decrypt(title)}
+								</p>
 							</Link>
 							<p className='text-[#718096] flex-1 text-sm px-4'>
-								{intro + "..."}
+								{intro && decrypt(intro + "...")}
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
-									src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
+									src={process.env.NEXT_PUBLIC_BASE_URL + decrypt(author_image)}
 									className='h-8'
 								/>
 								<div className='font-sans flex-1'>
 									<p className='text-[#C81107] text-xs font-semibold'>
-										{author_name}
+										{author_name && decrypt(author_name)}
 									</p>
 									<span className='flex gap-3 justify-between items-center'>
 										<p className='text-[#6F6F70] font-semibold text-[10px]'>
 											<span>
-												{moment(created_at).format("ll").split(",")[0]}
+												{moment(decrypt(created_at)).format("ll").split(",")[0]}
 											</span>{" "}
-											&nbsp;&nbsp; {min_read}
+											&nbsp;&nbsp; {min_read && decrypt(min_read)}
 										</p>
 										<Link href={`/news/${id}`}>
 											<span className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>

@@ -41,19 +41,22 @@ type Prop = {
 	keyword: string;
 };
 type News = typeof newsArticleSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 function RecentlyPosted({ keyword }: Prop) {
-	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 	const { data: newsArticle, isLoading } = useQuery<News>(
 		["News-Articles"],
 		async () =>
 			axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/news`, {
 				headers: {
-					"HASH-KEY":
-						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-					"REQUEST-TS": "1669397556",
-					"API-KEY":
-						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+					"request-ts": "1669397556",
+					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 				},
 				method: "get",
 			})
@@ -97,33 +100,18 @@ function RecentlyPosted({ keyword }: Prop) {
 										className='flex flex-col lg:flex lg:flex-row md:flex-row md:flex sm:flex sm:flex-col gap-4'>
 										<img
 											className='object-cover self-center lg:w-96 md:w-96 w-96 h-72 sm:w-full sm:h-72 rounded'
-											src={
-												process.env.NEXT_PUBLIC_BASE_URL +
-												CryptoJS.AES.decrypt(
-													image ? image : Placeholder.src,
-													key,
-													{
-														iv: iv,
-													}
-												).toString(CryptoJS.enc.Utf8)
-											}
+											src={decrypt(image) ? decrypt(image) : Placeholder.src}
 										/>
 
 										<div className='md:h-max h-max'>
 											<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
-												{CryptoJS.AES.decrypt(category_name, key, {
-													iv: iv,
-												}).toString(CryptoJS.enc.Utf8)}
+												{decrypt(category_name)}
 											</span>
 											<Link href={`/news/${id}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-													{CryptoJS.AES.decrypt(title, key, {
-														iv: iv,
-													})
-														.toString(CryptoJS.enc.Utf8)
-														.split("")
-														.splice(0, 50)
-														.join("") + " ..."}
+													{decrypt(
+														title.split("").splice(0, 50).join("") + " ..."
+													)}
 												</p>
 											</Link>
 											<div className='flex gap-1 items-center py-1'>
@@ -131,26 +119,18 @@ function RecentlyPosted({ keyword }: Prop) {
 													className='h-6'
 													src={
 														process.env.NEXT_PUBLIC_BASE_URL +
-														CryptoJS.AES.decrypt(author_image, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)
+														decrypt(author_image)
 													}
 												/>
 												<div className='grid grid-flow-col items-center'>
 													<p className='text-[#777777] text-xs'>
-														{CryptoJS.AES.decrypt(author_name, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)}
+														{decrypt(author_name)}
 													</p>
 													<span className='text-[#999999] font-thin'>|</span>
 													&nbsp;&nbsp;
 													<p className='text-[#777777] text-xs'>
 														{
-															moment(
-																CryptoJS.AES.decrypt(created_at, key, {
-																	iv: iv,
-																}).toString(CryptoJS.enc.Utf8)
-															)
+															moment(decrypt(created_at))
 																.format("ll")
 																.split(",")[0]
 														}
@@ -158,17 +138,12 @@ function RecentlyPosted({ keyword }: Prop) {
 													&nbsp;&nbsp;
 													<span className='text-[#999999] font-thin'>|</span>
 													<p className='text-[#777777] text-xs'>
-														{min_read &&
-															CryptoJS.AES.decrypt(min_read, key, {
-																iv: iv,
-															}).toString(CryptoJS.enc.Utf8)}
+														{min_read && decrypt(min_read)}
 													</p>
 												</div>
 											</div>
 											<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
-												{CryptoJS.AES.decrypt(intro + "...", key, {
-													iv: iv,
-												}).toString(CryptoJS.enc.Utf8)}
+												{decrypt(intro + "...")}
 												&nbsp;&nbsp;
 												<Link href={`/news/${id}`}>
 													<span className='text-[#C81107]'>Read more</span>
@@ -185,33 +160,17 @@ function RecentlyPosted({ keyword }: Prop) {
 										className='flex flex-col lg:flex lg:flex-row md:flex-row md:flex sm:flex sm:flex-col gap-4'>
 										<img
 											className='object-cover self-center lg:w-96 md:w-96 w-96 h-72 sm:w-full sm:h-72 rounded'
-											src={
-												process.env.NEXT_PUBLIC_BASE_URL +
-												CryptoJS.AES.decrypt(
-													image ? image : Placeholder.src,
-													key,
-													{
-														iv: iv,
-													}
-												).toString(CryptoJS.enc.Utf8)
-											}
+											src={decrypt(image) ? decrypt(image) : Placeholder.src}
 										/>
 
 										<div className='md:h-max h-max'>
 											<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
-												{CryptoJS.AES.decrypt(category_name, key, {
-													iv: iv,
-												}).toString(CryptoJS.enc.Utf8)}
+												{decrypt(category_name)}
 											</span>
 											<Link href={`/news/${id}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-													{CryptoJS.AES.decrypt(title, key, {
-														iv: iv,
-													})
-														.toString(CryptoJS.enc.Utf8)
-														.split("")
-														.splice(0, 50)
-														.join("") + " ..."}
+													{decrypt(title).split("").splice(0, 50).join("") +
+														" ..."}
 												</p>
 											</Link>
 											<div className='flex gap-1 items-center py-1'>
@@ -219,26 +178,18 @@ function RecentlyPosted({ keyword }: Prop) {
 													className='h-6'
 													src={
 														process.env.NEXT_PUBLIC_BASE_URL +
-														CryptoJS.AES.decrypt(author_image, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)
+														decrypt(author_image)
 													}
 												/>
 												<div className='grid grid-flow-col items-center'>
 													<p className='text-[#777777] text-xs'>
-														{CryptoJS.AES.decrypt(author_name, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)}
+														{decrypt(author_name)}
 													</p>
 													<span className='text-[#999999] font-thin'>|</span>
 													&nbsp;&nbsp;
 													<p className='text-[#777777] text-xs'>
 														{
-															moment(
-																CryptoJS.AES.decrypt(created_at, key, {
-																	iv: iv,
-																}).toString(CryptoJS.enc.Utf8)
-															)
+															moment(decrypt(created_at))
 																.format("ll")
 																.split(",")[0]
 														}
@@ -246,16 +197,12 @@ function RecentlyPosted({ keyword }: Prop) {
 													&nbsp;&nbsp;
 													<span className='text-[#999999] font-thin'>|</span>
 													<p className='text-[#777777] text-xs'>
-														{CryptoJS.AES.decrypt(min_read, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)}
+														{decrypt(min_read)}
 													</p>
 												</div>
 											</div>
 											<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
-												{CryptoJS.AES.decrypt(intro + "...", key, {
-													iv: iv,
-												}).toString(CryptoJS.enc.Utf8)}
+												{decrypt(intro + "...")}
 												&nbsp;&nbsp;
 												<Link href={`/news/${id}`}>
 													<span className='text-[#C81107]'>Read more</span>
@@ -270,33 +217,17 @@ function RecentlyPosted({ keyword }: Prop) {
 									className='flex flex-col lg:flex lg:flex-row md:flex-row md:flex sm:flex sm:flex-col gap-4'>
 									<img
 										className='object-cover self-center lg:w-96 md:w-96 w-96 h-72 sm:w-full sm:h-72 rounded'
-										src={
-											process.env.NEXT_PUBLIC_BASE_URL +
-											CryptoJS.AES.decrypt(
-												image ? image : Placeholder.src,
-												key,
-												{
-													iv: iv,
-												}
-											).toString(CryptoJS.enc.Utf8)
-										}
+										src={decrypt(image) ? decrypt(image) : Placeholder.src}
 									/>
 
 									<div className='md:h-max h-max'>
 										<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
-											{CryptoJS.AES.decrypt(category_name, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											{decrypt(category_name)}
 										</span>
 										<Link href={`/news/${id}`}>
 											<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
-												{CryptoJS.AES.decrypt(title, key, {
-													iv: iv,
-												})
-													.toString(CryptoJS.enc.Utf8)
-													.split("")
-													.splice(0, 50)
-													.join("") + " ..."}
+												{decrypt(title).split("").splice(0, 50).join("") +
+													" ..."}
 											</p>
 										</Link>
 										<div className='flex gap-1 items-center py-1'>
@@ -304,26 +235,18 @@ function RecentlyPosted({ keyword }: Prop) {
 												className='h-6'
 												src={
 													process.env.NEXT_PUBLIC_BASE_URL +
-													CryptoJS.AES.decrypt(author_image, key, {
-														iv: iv,
-													}).toString(CryptoJS.enc.Utf8)
+													decrypt(author_image)
 												}
 											/>
 											<div className='grid grid-flow-col items-center'>
 												<p className='text-[#777777] text-xs'>
-													{CryptoJS.AES.decrypt(author_name, key, {
-														iv: iv,
-													}).toString(CryptoJS.enc.Utf8)}
+													{decrypt(author_name)}
 												</p>
 												<span className='text-[#999999] font-thin'>|</span>
 												&nbsp;&nbsp;
 												<p className='text-[#777777] text-xs'>
 													{
-														moment(
-															CryptoJS.AES.decrypt(created_at, key, {
-																iv: iv,
-															}).toString(CryptoJS.enc.Utf8)
-														)
+														moment(decrypt(created_at))
 															.format("ll")
 															.split(",")[0]
 													}
@@ -331,17 +254,12 @@ function RecentlyPosted({ keyword }: Prop) {
 												&nbsp;&nbsp;
 												<span className='text-[#999999] font-thin'>|</span>
 												<span className='text-[#777777] text-xs'>
-													{min_read &&
-														CryptoJS.AES.decrypt(min_read, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)}
+													{min_read && decrypt(min_read)}
 												</span>
 											</div>
 										</div>
 										<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
-											{CryptoJS.AES.decrypt(intro + "...", key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											{decrypt(intro + "...")}
 											&nbsp;&nbsp;
 											<Link href={`/news/${id}`}>
 												<span className='text-[#C81107]'>Read more</span>

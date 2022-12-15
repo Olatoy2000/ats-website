@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 const weekXpertSample = {
 	success: true,
@@ -26,21 +28,30 @@ const weekXpertSample = {
 	message: "Successfully",
 };
 type weekXpert = typeof weekXpertSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function XpertsWeek() {
 	const { data: weekXpert, isLoading } = useQuery<weekXpert>(
 		["Xpert-of-the-Week"],
 		async () =>
-			axios("/api/v1/tech-stars/recent-xpert-of-the-week/", {
-				headers: {
-					"HASH-KEY":
-						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-					"REQUEST-TS": "1669397556",
-					"API-KEY":
-						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
-				},
-				method: "get",
-			})
+			axios(
+				process.env.NEXT_PUBLIC_BASE_URL +
+					`/api/v1/tech-stars/recent-xpert-of-the-week/`,
+				{
+					headers: {
+						"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+						"request-ts": "1669397556",
+						"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+					},
+					method: "get",
+				}
+			)
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
@@ -60,46 +71,51 @@ function XpertsWeek() {
 					<div className='w-72'>
 						<img
 							className='object-cover rounded-xl w-full h-72'
-							src={`${process.env.NEXT_PUBLIC_BASE_URL}${weekXpert?.data?.tech_star_profile_picture}`}
+							src={`${process.env.NEXT_PUBLIC_BASE_URL}${
+								weekXpert && decrypt(weekXpert.data.tech_star_profile_picture)
+							}`}
 						/>
 					</div>
 
 					<div className='pt-4'>
 						<p className='text-[#47494E] font-bold lg:text-lg md:text-base'>
-							{weekXpert?.data?.tech_star_full_name}
+							{weekXpert && decrypt(weekXpert.data.tech_star_full_name)}
 						</p>
 						<p className='text-[#47494E] md:text-sm lg:text-base'>
-							{weekXpert?.data?.tech_star_course}
+							{weekXpert && decrypt(weekXpert.data.tech_star_course)}
 						</p>
 						<p className='text-[#47494E] md:text-sm lg:text-base'>
-							{weekXpert?.data?.tech_star_cohort}
+							{weekXpert && decrypt(weekXpert.data.tech_star_cohort)}
 						</p>
 					</div>
 				</div>
 				<div>
 					<p className='lg:text-2xl md:text-xl pb-6 lg:leading-9 md:leading-9 leading-9'>
-						{weekXpert?.data?.interview?.["About Myself"]}
+						{weekXpert && decrypt(weekXpert.data.interview?.["About Myself"])}
 					</p>
 					<p className='lg:text-2xl md:text-xl pb-6 lg:leading-9 md:leading-9 leading-9'>
-						{
-							weekXpert?.data?.interview?.[
-								"If you could hang out with any famous person, who would you choose and why?"
-							]
-						}
+						{weekXpert &&
+							decrypt(
+								weekXpert.data.interview?.[
+									"If you could hang out with any famous person, who would you choose and why?"
+								]
+							)}
 					</p>
 					<p className='lg:text-2xl md:text-xl pb-6 lg:leading-9 md:leading-9 leading-9'>
-						{
-							weekXpert?.data?.interview?.[
-								"The Zombie apocalypse is coming, mention three Xperts you want on your team."
-							]
-						}
+						{weekXpert &&
+							decrypt(
+								weekXpert.data.interview?.[
+									"The Zombie apocalypse is coming, mention three Xperts you want on your team."
+								]
+							)}
 					</p>
 					<p className='lg:text-2xl md:text-xl lg:leading-9 md:leading-9 leading-9'>
-						{
-							weekXpert?.data?.interview?.[
-								"What would you like Xperts to remember you by when you leave AFEX?"
-							]
-						}
+						{weekXpert &&
+							decrypt(
+								weekXpert.data.interview?.[
+									"What would you like Xperts to remember you by when you leave AFEX?"
+								]
+							)}
 					</p>
 				</div>
 			</div>

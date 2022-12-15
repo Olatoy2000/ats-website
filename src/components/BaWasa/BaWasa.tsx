@@ -1,6 +1,4 @@
 import React from "react";
-import MyImage from "./assets/image 5.png";
-import MyImage2 from "./assets/image 2.png";
 import Link from "next/link";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -43,10 +41,15 @@ const singleBlogSample = {
 	message: "Successfully Retrieved",
 };
 type Blogs = typeof singleBlogSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function BaWasa() {
-	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 	const { data: singleBlog, isLoading } = useQuery<Blogs>(
 		["Single-Blog-Article"],
 		async () =>
@@ -87,50 +90,35 @@ function BaWasa() {
 								<div className='mb-10'>
 									<Link href={`/blogs/${id}`}>
 										<p className='text-[#2D3748] text-[clamp(1rem,2.5vw,2.25rem)] text-4xl font-bold pt-10'>
-											{CryptoJS.AES.decrypt(title, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											{decrypt(title)}
 										</p>
 									</Link>
 									<p className='text-base text-[#718096]'>
-										{CryptoJS.AES.decrypt(intro + "...", key, {
-											iv: iv,
-										}).toString(CryptoJS.enc.Utf8)}
+										{decrypt(intro + "...")}
 									</p>
 								</div>
 								<div className='flex gap-3 pt-8 pb-4 items-center'>
 									<img
 										src={
-											process.env.NEXT_PUBLIC_BASE_URL +
-											CryptoJS.AES.decrypt(author_image, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)
+											process.env.NEXT_PUBLIC_BASE_URL + decrypt(author_image)
 										}
 										className='h-10 object-cover'
 									/>
 									<div className='font-sans flex-1'>
 										<p className='text-[#C81107] text-xs font-semibold'>
-											{CryptoJS.AES.decrypt(author_fullname, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											{decrypt(author_fullname)}
 										</p>
 										<span className='flex justify-between items-center'>
 											<p className='text-[#6F6F70] font-semibold text-[10px]'>
 												<span>
 													{
-														moment(
-															CryptoJS.AES.decrypt(created_at, key, {
-																iv: iv,
-															}).toString(CryptoJS.enc.Utf8)
-														)
+														moment(decrypt(created_at))
 															.format("ll")
 															.split(",")[0]
 													}
 												</span>{" "}
 												&nbsp;&nbsp;
-												{CryptoJS.AES.decrypt(min_read, key, {
-													iv: iv,
-												}).toString(CryptoJS.enc.Utf8)}
+												{decrypt(min_read)}
 											</p>
 											<Link href={`/blogs/${id}`}>
 												<span className='text-[15px] text-[#2D3748] font-bold -mt-1'>
@@ -144,19 +132,7 @@ function BaWasa() {
 							<div>
 								<img
 									className='object-cover h-full'
-									src={
-										CryptoJS.AES.decrypt(image, key, {
-											iv: iv,
-										}).toString(CryptoJS.enc.Utf8)
-
-										// `${process.env.NEXT_PUBLIC_BASE_URL}+${CryptoJS.AES.decrypt(
-										// 	image,
-										// 	key,
-										// 	{
-										// 		iv: iv,
-										// 	}
-										// ).toString(CryptoJS.enc.Utf8)}`
-									}
+									src={decrypt(image)}
 								/>
 							</div>
 						</div>
