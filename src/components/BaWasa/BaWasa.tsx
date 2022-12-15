@@ -145,7 +145,6 @@ function BaWasa() {
 								<img
 									className='object-cover h-full'
 									src={
-										process.env.NEXT_PUBLIC_BASE_URL +
 										CryptoJS.AES.decrypt(image, key, {
 											iv: iv,
 										}).toString(CryptoJS.enc.Utf8)
