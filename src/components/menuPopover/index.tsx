@@ -6,7 +6,22 @@ import RedOverlay from "./assets/red-overlay.png";
 import ReceivedMessage from "./assets/receivedmess.png";
 import axios from "axios";
 import { useForm } from "@mantine/form";
+import CryptoJS from "crypto-js";
 
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+
+
+const encrypt = (element: any) => {
+	return CryptoJS.AES.encrypt(
+		(element),
+		key,
+		{
+			iv: iv,
+		}
+	).toString()
+}
 interface FormValues {
 	fullName: string;
 	email: string;
@@ -26,20 +41,26 @@ export default function MenuPopover() {
 
 	const [success, setSuccess] = useState(false);
 
-	function sendMessage(values: FormValues) {
+	const sendMessage = (values: FormValues) => {
+
+		var data = {
+			fullName: encrypt(values.fullName),
+			email: encrypt(values.email),
+			subject: encrypt(values.subject),
+			message: encrypt(values.message),
+		}
 		axios({
 			method: "post",
 			url: "https://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
 			headers: {
-				"HASH-KEY":
-					"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-				"REQUEST-TS": "1669397556",
-				"API-KEY":
-					"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+				"api-key": process.env.NEXT_PUBLIC_API_KEY,
+				"hash-key": process.env.NEXT_PUBLIC_HASH_KEY,
+				"request-ts": "1669397556",
+				"Content-Type": "application/json",
 			},
-			data: JSON.stringify({
-				...values,
-			}),
+			data: data,
+
+
 		}).then((response) => {
 			if (response.status === 201) {
 				setSuccess(true);
@@ -48,7 +69,10 @@ export default function MenuPopover() {
 					setSuccess(false);
 				}, 5000);
 			}
-		});
+		})
+			.catch((error) => {
+			console.log(error)
+		})
 	}
 
 	return (

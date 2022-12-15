@@ -13,17 +13,15 @@ import CryptoJS from "crypto-js";
 
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
 var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
-
 // console.log(new cipher({ encryption_key: "bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r", initialization_vector: "s6v9y$B&E)H@McQf" }))
 const encrypt = (element: any) => {
-  let data = CryptoJS.AES.encrypt(
-    element,
+  return CryptoJS.AES.encrypt(
+    (element),
     key,
     {
       iv: iv,
     }
-  ).ciphertext
-  return CryptoJS.pad.Pkcs7.pad(data, 32)
+  ).toString()
 }
 
 

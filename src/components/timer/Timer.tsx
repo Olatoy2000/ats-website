@@ -106,10 +106,9 @@ export default function App() {
 
     axios(config)
       .then((response) => {
-        // let time = new Date(response.data.data[0].application_end_date);
-        console.log(response.data)
-        let time = new Date(JSON.parse(CryptoJS.AES.decrypt(response.data[0].application_end_date, key, { iv: iv }).toString(CryptoJS.enc.Utf8)))
-        // let time = new Date(response.data.data[0].application_end_date)
+        let timeBk = JSON.parse(CryptoJS.AES.decrypt(response.data.data, key, { iv: iv }).toString(CryptoJS.enc.Utf8))
+        timeBk = timeBk[0].application_end_date
+        let time = new Date(timeBk)
         setTime(time.setSeconds(time.getSeconds()))
       })
       .catch(function (error) {
