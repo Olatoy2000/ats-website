@@ -6,6 +6,8 @@ import Placeholder from "./assets/placeholder.png";
 import { useQuery } from "@tanstack/react-query";
 import { BlogArticle } from "../../../pages/blogs";
 import SearchEntries from "../SearchEntries";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 const blogSample = {
 	status: "success",
@@ -120,16 +122,29 @@ interface IBlog {
 	query?: string;
 }
 
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
+
 function Blog({ query }: IBlog) {
 	const { data: blogs, isLoading } = useQuery(["blogs", query], async () =>
-		axios(query ? `/api/v1/search-blog/?q=${query}` : "/api/v1/blogs", {
-			headers: {
-				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
-				"request-ts": "1669397556",
-				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
-			},
-			method: "get",
-		})
+		axios(
+			query
+				? process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/search-blog/?q=${query}`
+				: process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/blogs`,
+			{
+				headers: {
+					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+					"request-ts": "1669397556",
+					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+				},
+				method: "get",
+			}
+		)
 			.then(({ data }) => data)
 			.catch((e) => e)
 	);
@@ -161,7 +176,7 @@ function Blog({ query }: IBlog) {
 							key={idx}
 							className='flex flex-col pb-4 shadow rounded-md'>
 							<img
-								src={image ? image : Placeholder.src}
+								src={image && decrypt(image) ? decrypt(image) : Placeholder.src}
 								className='lg:w-96 lg:h-72 md:w-96 md:h-72 w-full h-72 object-cover'
 							/>
 							{/* <span>
@@ -182,25 +197,30 @@ function Blog({ query }: IBlog) {
 											)
 										)} */}
 
-							<p className='text-[#2D3748] text-xl font-bold p-4'>{title}</p>
+							<p className='text-[#2D3748] text-xl font-bold p-4'>
+								{title && decrypt(title)}
+							</p>
 							<p className='text-[#718096] flex-1 text-sm px-4'>
-								{intro + "..."}
+								{intro && decrypt(intro + "...")}
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
-									src={process.env.NEXT_PUBLIC_BASE_URL + author_image}
+									src={
+										author_image &&
+										process.env.NEXT_PUBLIC_BASE_URL + decrypt(author_image)
+									}
 									className='h-8'
 								/>
 								<div className='font-sans flex-1'>
 									<p className='text-[#C81107] text-xs font-semibold'>
-										{author_fullname}
+										{author_fullname && decrypt(author_fullname)}
 									</p>
 									<span className='flex gap-3 justify-between items-center'>
 										<p className='text-[#6F6F70] font-semibold text-[10px]'>
 											<span>
-												{moment(created_at).format("ll").split(",")[0]}
+												{moment(decrypt(created_at)).format("ll").split(",")[0]}
 											</span>{" "}
-											&nbsp;&nbsp; {min_read}
+											&nbsp;&nbsp; {min_read && decrypt(min_read)}
 										</p>
 										<Link href={`/blogs/${id}`}>
 											<span className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>

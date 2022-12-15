@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 // const TotalVisitorsSample = {
 // 	success: true,
@@ -23,6 +25,13 @@ const TodayUpdatesSample = {
 	message: "Successfully",
 };
 type TodayUpdates = typeof TodayUpdatesSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function TodayUpdates() {
 	// const { data: total_visitors } = useQuery<TotalVisitors>(
@@ -37,13 +46,11 @@ function TodayUpdates() {
 	const { data: TodayUpdates, isLoading } = useQuery<TodayUpdates>(
 		["Todays-Updates"],
 		async () =>
-			axios("/api/v1/updates", {
+			axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/updates`, {
 				headers: {
-					"hash-key":
-						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
+					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
 					"request-ts": "1669397556",
-					"api-key":
-						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 				},
 				method: "get",
 			})
@@ -59,14 +66,14 @@ function TodayUpdates() {
 			<div className='grid gap-6 grid-flow-col grid-rows-2'>
 				<div className='bg-[#F9E3E3] rounded-md text-center flex flex-col justify-center py-10'>
 					<p className='text-[#C81107] lg:text-2xl md:text-xl font-bold text-center'>
-						{TodayUpdates?.data?.latest_post}
+						{TodayUpdates && decrypt(TodayUpdates.data.latest_post)}
 					</p>
 					<p className='text-[#222222] lg:text-base md:text-sm'>New Posts</p>
 				</div>
 
 				<div className='bg-[#F9E3E3] rounded-md text-center flex flex-col justify-center'>
 					<p className='text-[#C81107] lg:text-2xl md:text-xl font-bold text-center'>
-						{TodayUpdates?.data?.total_visitors}
+						{TodayUpdates && decrypt(TodayUpdates.data.total_visitors)}
 					</p>
 					<p className='text-[#222222] lg:text-base md:text-sm'>
 						Total Visitors
@@ -75,14 +82,14 @@ function TodayUpdates() {
 
 				<div className='bg-[#F9E3E3] rounded-md text-center flex flex-col justify-center'>
 					<p className='text-[#C81107] lg:text-2xl md:text-xl font-bold text-center'>
-						{TodayUpdates?.data?.total_news}
+						{TodayUpdates && decrypt(TodayUpdates.data.total_news)}
 					</p>
 					<p className='text-[#222222] lg:text-base md:text-sm'>News Posted</p>
 				</div>
 
 				<div className='bg-[#F9E3E3] rounded-md text-center flex flex-col justify-center'>
 					<p className='text-[#C81107] lg:text-2xl md:text-xl font-bold text-center'>
-						{TodayUpdates?.data?.total_blogs}
+						{TodayUpdates && decrypt(TodayUpdates.data.total_blogs)}
 					</p>
 					<p className='text-[#222222] lg:text-base md:text-sm'>Blog Posted</p>
 				</div>

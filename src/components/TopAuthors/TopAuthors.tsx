@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Gloria from "./assets/image 10.png";
 import Facebook from "./assets/facebook.png";
 import Twitter from "./assets/Twitter.png";
 import Instagram from "./assets/Instagram.png";
@@ -67,20 +66,23 @@ const authorsSample = {
 	],
 	message: "Successfully",
 };
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 type Authors = typeof authorsSample;
 function TopAuthors() {
-	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 	const { data: topAuthors, isLoading } = useQuery<Authors>(
 		["Top-Authors"],
 		async () =>
 			axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/top-authors`, {
 				headers: {
-					"HASH-KEY":
-						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-					"REQUEST-TS": "1669397556",
-					"API-KEY":
-						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
+					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+					"request-ts": "1669397556",
+					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
 				},
 				method: "get",
 			})
@@ -114,64 +116,39 @@ function TopAuthors() {
 						className='flex py-9 gap-5 items-center'>
 						<img
 							className='md:h-10 h-16 rounded'
-							src={
-								process.env.NEXT_PUBLIC_BASE_URL +
-								CryptoJS.AES.decrypt(profile_pics, key, {
-									iv: iv,
-								}).toString(CryptoJS.enc.Utf8)
-								// ?
-								//  {CryptoJS.AES.decrypt(profile_pics, key, {
-								// 			iv: iv,
-								// 		}).toString(CryptoJS.enc.Utf8)}
-								// 		: {CryptoJS.AES.decrypt(Placeholder.src, key, {
-								// 			iv: iv,
-								// 		}).toString(CryptoJS.enc.Utf8)}
-							}
+							src={decrypt(profile_pics)}
 						/>
 						<div className='flex-col'>
 							<p className='text-[#222222] lg:text-base md:text-xs font-bold'>
-								{CryptoJS.AES.decrypt(`${first_name}`, key, {
-									iv: iv,
-								}).toString(CryptoJS.enc.Utf8)}{" "}
-								{CryptoJS.AES.decrypt(`${last_name}`, key, {
-									iv: iv,
-								}).toString(CryptoJS.enc.Utf8)}
+								{decrypt(`${first_name}`)} {decrypt(`${last_name}`)}
 							</p>
 							<p className='text-[#666666] lg:text-base md:text-xs'>
-								{CryptoJS.AES.decrypt(bio, key, {
-									iv: iv,
-								}).toString(CryptoJS.enc.Utf8)}
+								{decrypt(bio)}
 							</p>
 							<span className='flex gap-2 md:pt-1'>
-								<a href={`/category/${facebook_link}`}>
+								<a href={`/category/${decrypt(facebook_link)}`}>
 									<button className='bg-[#C81107] md:w-5 md:p-1'>
 										<img
 											className='md:m-auto'
-											src={CryptoJS.AES.decrypt(Facebook.src, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											src={Facebook.src}
 										/>
 									</button>
 								</a>
 
-								<a href={`/category/${twitter_link}`}>
+								<a href={`/category/${decrypt(twitter_link)}`}>
 									<button className='bg-[transparent] md:w-5 border'>
 										<img
 											className='md:m-auto md:h-4'
-											src={CryptoJS.AES.decrypt(Twitter.src, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											src={Twitter.src}
 										/>
 									</button>
 								</a>
 
-								<a href={`/category/${instagram_link}`}>
+								<a href={`/category/${decrypt(instagram_link)}`}>
 									<button className='bg-[transparent] md:w-5 border'>
 										<img
 											className='md:m-auto md:h-4'
-											src={CryptoJS.AES.decrypt(Instagram.src, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											src={Instagram.src}
 										/>
 									</button>
 								</a>

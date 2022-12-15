@@ -39,6 +39,13 @@ const blogArticleSample = {
 	message: "Successfully Retrieved",
 };
 type Blogs = typeof blogArticleSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 function BlogArticle() {
 	const scrollRefs = useRef<HTMLDivElement>(null);
 
@@ -54,9 +61,6 @@ function BlogArticle() {
 		scrollRefs.current!.scrollLeft = scrollRefs.current!.scrollLeft - width;
 	};
 
-	var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-	var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
-
 	const { data: blogArticle, isLoading } = useQuery<Blogs>(
 		["Blog-Article"],
 		async () =>
@@ -71,7 +75,6 @@ function BlogArticle() {
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
-	console.log(blogArticle);
 
 	return (
 		<>
@@ -98,56 +101,32 @@ function BlogArticle() {
 							key={idx}
 							className='flex flex-col pb-4 shadow lg:w-96 md:w-80 w-64 rounded-md'>
 							<img
-								src={CryptoJS.AES.decrypt(image, key, {
-									iv: iv,
-								}).toString(CryptoJS.enc.Utf8)}
+								src={decrypt(image) ? decrypt(image) : Placeholder.src}
 								className='w-96 h-72 object-cover'
 							/>
 							<Link href={`/blogs/${id}`}>
 								<p className='text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold p-4'>
-									{CryptoJS.AES.decrypt(title, key, {
-										iv: iv,
-									}).toString(CryptoJS.enc.Utf8)}
+									{decrypt(title)}
 								</p>
 							</Link>
 							<p className='text-[#718096] flex-1 text-sm px-4'>
-								{CryptoJS.AES.decrypt(intro + "...", key, { iv: iv }).toString(
-									CryptoJS.enc.Utf8
-								)}
+								{decrypt(intro + "...")}
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
-									src={
-										process.env.NEXT_PUBLIC_BASE_URL +
-										CryptoJS.AES.decrypt(author_image, key, {
-											iv: iv,
-										}).toString(CryptoJS.enc.Utf8)
-									}
+									src={process.env.NEXT_PUBLIC_BASE_URL + decrypt(author_image)}
 									className='h-8'
 								/>
 								<div className='font-sans flex-1'>
 									<p className='text-[#C81107] text-xs font-semibold'>
-										{CryptoJS.AES.decrypt(author_fullname, key, {
-											iv: iv,
-										}).toString(CryptoJS.enc.Utf8)}
+										{decrypt(author_fullname)}
 									</p>
 									<span className='flex justify-between items-center'>
 										<p className='text-[#6F6F70] font-semibold text-[10px]'>
 											<span>
-												{
-													moment(
-														CryptoJS.AES.decrypt(created_at, key, {
-															iv: iv,
-														}).toString(CryptoJS.enc.Utf8)
-													)
-														.format("ll")
-														.split(",")[0]
-												}
+												{moment(decrypt(created_at)).format("ll").split(",")[0]}
 											</span>
-											&nbsp;&nbsp;{" "}
-											{CryptoJS.AES.decrypt(min_read, key, {
-												iv: iv,
-											}).toString(CryptoJS.enc.Utf8)}
+											&nbsp;&nbsp; {decrypt(min_read)}
 										</p>
 										<Link href={`/blogs/${id}`}>
 											<span className='text-[15px] text-[#2D3748] font-bold -mt-1'>

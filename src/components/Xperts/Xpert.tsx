@@ -3,6 +3,8 @@ import { Group, Select } from "@mantine/core";
 import Xpertsimg from "../Xperts/assets/xpertspic.png";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 const XpertsSample = {
 	status: "success",
@@ -27,21 +29,31 @@ const XpertsSample = {
 	message: "Successfully Retrieved",
 };
 type Xperts = typeof XpertsSample;
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function Xpert() {
 	const { data: Xperts, isLoading } = useQuery<Xperts>(
 		["Xperts-details"],
 		async () =>
-			axios("/api/v1/tech-stars/tech-star-list-create/", {
-				headers: {
-					"HASH-KEY":
-						"091fdc6ac81fde9d5bccc8aa0e52f504a2a5a71ad51624b094c26f6e51502b5a",
-					"REQUEST-TS": "1669397556",
-					"API-KEY":
-						"7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZ",
-				},
-				method: "get",
-			})
+			axios(
+				process.env.NEXT_PUBLIC_BASE_URL +
+					`/api/v1/tech-stars/tech-star-list-create/`,
+				{
+					headers: {
+						"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+						"request-ts": "1669397556",
+						"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+					},
+
+					method: "get",
+				}
+			)
 				.then(({ data }) => data)
 				.catch((e) => e)
 	);
@@ -97,18 +109,18 @@ function Xpert() {
 							className='place-items-center grid border-2 rounded-2xl shadow py-12'>
 							<img
 								className='object-cover w-2/3 h-96 rounded-xl'
-								src={profile_picture}
+								src={decrypt(profile_picture)}
 							/>
 
 							<div className='text-center pt-4'>
 								<p className='text-[#47494E] font-bold lg:text-lg md:text-base'>
-									{full_name}
+									{decrypt(full_name)}
 								</p>
 								<p className='text-[#47494E] md:text-sm lg:text-base'>
-									{course}
+									{decrypt(course)}
 								</p>
 								<p className='text-[#47494E] md:text-sm lg:text-base'>
-									{cohort}
+									{decrypt(cohort)}
 								</p>
 							</div>
 						</div>
