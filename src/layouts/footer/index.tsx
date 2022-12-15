@@ -66,7 +66,7 @@ function Footer() {
 							<Link href='/contactUs'>
 								<li className='pb-2'>Contact Us</li>
 							</Link>
-							<Link href='/privacyPolicy'>
+							<Link href='/PrivacyPolicy'>
 								<li className='pb-2'>Privacy Policy</li>
 							</Link>
 						</ul>

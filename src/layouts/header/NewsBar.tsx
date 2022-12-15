@@ -14,14 +14,12 @@ export default function NewsBar() {
       method: "get",
       headers: {
         "api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
-        "request-ts": "1669397556", 
+        "request-ts": "1669397556",
         "hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`
       }
     }
     )
       .then((response) => {
-        console.log(key)
-        console.log(response.data)
         setNewsBar(response.data.data);
       })
 

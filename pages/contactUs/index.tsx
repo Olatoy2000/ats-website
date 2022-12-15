@@ -58,7 +58,7 @@ function ContactUs() {
 			method: "post",
 			url: "https://atsbk.afexats.com/api/v1/support/contact-us-list-create/",
 			headers: {
-				"API-KEY": process.env.NEXT_PUBLIC_API_KEY,
+				"api-key": process.env.NEXT_PUBLIC_API_KEY,
 				"hash-key": process.env.NEXT_PUBLIC_HASH_KEY,
 				"request-ts": "1669397556",
 				"Content-Type": "application/json",
