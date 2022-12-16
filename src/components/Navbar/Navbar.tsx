@@ -12,11 +12,20 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import CryptoJS from "crypto-js";
+import sha256 from "crypto-js/sha256";
 
 interface INavBar {
 	query: string;
 	setQuery: Dispatch<SetStateAction<string>>;
 }
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	);
+};
 
 function Navbar({ query, setQuery }: INavBar) {
 	// const renderSearch = () => {
@@ -33,7 +42,14 @@ function Navbar({ query, setQuery }: INavBar) {
 	const path = pathname.slice(1);
 
 	const { data, isLoading } = useQuery([path, "filter"], async () =>
-		axios("/api/v1/" + path)
+		axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/` + path, {
+			headers: {
+				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+				"request-ts": "1669397556",
+				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+			},
+			method: "get",
+		})
 			.then(({ data }) => data)
 			.catch((e) => e)
 	);
