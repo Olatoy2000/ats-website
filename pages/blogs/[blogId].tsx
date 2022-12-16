@@ -9,11 +9,6 @@ import sha256 from "crypto-js/sha256";
 
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
 var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
-const decrypt = (element: any) => {
-	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
-		CryptoJS.enc.Utf8
-	);
-};
 
 function index() {
 	const router = useRouter();
@@ -44,9 +39,9 @@ function index() {
 	}, [router.query.blogId]);
 	return blogDetail ? (
 		<div>
-			<Xpertbackestablished blogDetail={decrypt(blogDetail)} />
-			<CommentBlog blogDetail={decrypt(blogDetail)} />
-			<MORE_BLOG_POST routeId={decrypt(router.query.blogId)} />
+			<Xpertbackestablished blogDetail={(blogDetail)} />
+			<CommentBlog blogDetail={(blogDetail)} />
+			<MORE_BLOG_POST routeId={(router.query.blogId)} />
 		</div>
 	) : null;
 }

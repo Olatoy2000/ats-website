@@ -300,7 +300,7 @@ function ProductManagement({ url, title }: Props) {
 							<h4 className='uppercase font-bold'>Requirement</h4>
 							<p>{CourseDetail?.open_job.requirement}</p>
 						</div>
-						<a href={'https://ats-track-application.netlify.app?course=' + title.toLocaleLowerCase().split(' ').join('-')}>
+						<a href={'https://ats-track-application.netlify.app?course=' + title.toLocaleLowerCase().split(' ').join('-') + `&&id=${CourseDetail.open_job.id}`}>
 							<button
 								id='app'
 								className='self-center bg-light-internationalOrange w-full rounded-md text-white px-16 py-3'>

@@ -200,13 +200,13 @@ function News({ query }: INews) {
 											)
 										)} */}
 
-							<Link href={`/news/${id}`}>
+							<Link href={`/news/${decrypt(id)}`}>
 								<p className='text-[#2D3748] text-xl font-bold p-4'>
 									{title && decrypt(title)}
 								</p>
 							</Link>
 							<p className='text-[#718096] flex-1 text-sm px-4'>
-								{intro && decrypt(intro + "...")}
+								{decrypt(intro) && decrypt(intro + "...")}
 							</p>
 							<div className='flex gap-3 pt-10 items-center px-4'>
 								<img
@@ -224,7 +224,7 @@ function News({ query }: INews) {
 											</span>{" "}
 											&nbsp;&nbsp; {min_read && decrypt(min_read)}
 										</p>
-										<Link href={`/news/${id}`}>
+										<Link href={`/news/${decrypt(id)}`}>
 											<span className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
 												Read more
 											</span>

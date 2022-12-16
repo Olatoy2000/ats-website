@@ -88,7 +88,7 @@ function BaWasa() {
 							key={idx}>
 							<article className='lg:px-8 md:px 8 pl-8 pr-3 flex flex-col'>
 								<div className='mb-10'>
-									<Link href={`/blogs/${id}`}>
+									<Link href={`/blogs/${decrypt(id)}`}>
 										<p className='text-[#2D3748] text-[clamp(1rem,2.5vw,2.25rem)] text-4xl font-bold pt-10'>
 											{decrypt(title)}
 										</p>
@@ -120,7 +120,7 @@ function BaWasa() {
 												&nbsp;&nbsp;
 												{decrypt(min_read)}
 											</p>
-											<Link href={`/blogs/${id}`}>
+											<Link href={`/blogs/${decrypt(id)}`}>
 												<span className='text-[15px] text-[#2D3748] font-bold -mt-1'>
 													Read more
 												</span>

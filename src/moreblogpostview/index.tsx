@@ -6,6 +6,19 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Placeholder from "./assets/placeholder.png";
 import Link from "next/link";
+import CryptoJS from "crypto-js";
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	)
+		;
+};
+
+
 
  function MORE_BLOG_POST({ routeId }: any) {
 	const scrollRefs = useRef<HTMLDivElement>(null);
@@ -74,21 +87,21 @@ import Link from "next/link";
 					className='mb-6 overflow-x-hidden scroll-smooth  gap-8 flex'>
 					{blogDetail?.map((item: any, idx: number) =>
 						item.id !== +routeId ? (
-							<Link href={`/blog/${item.id}`}>
+							<Link href={`/blog/${decrypt(item.id)}`}>
 								<article
 									className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
 									key={idx}>
 									<img
-										src={item.image ? item.image : Placeholder.src}
+										src={decrypt(item.image)}
 										alt=''
 										className='w-full'
 									/>
 									<div className='flex justify-start items-end gap-2 flex-col'>
 										<h5 className='text-[#020202] text-[14px] font-bold leading-4'>
-											{item.title}
+											{decrypt(item.title)}
 										</h5>
 										<p className='flex text-[#020202] leading-4 font-normal text-[0.75rem]'>
-											{item.intro
+											{decrypt(item.intro)
 												.split("")
 												.map((item: any, id: number) => id < 100 && item)}
 										</p>

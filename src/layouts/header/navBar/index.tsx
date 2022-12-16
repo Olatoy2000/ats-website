@@ -7,7 +7,7 @@ import Container from "../../../components/Container";
 import AfexLogo from "./assets/afex-logo.png";
 import Link from "next/link";
 
-const navLinks = ["Home", "Courses", "Xpert", "Updates"];
+const navLinks = [{ name: "Home", href: "/" }, { name: "Courses", href: "/courses" }, { name: "Xpert", href: "/xpert" }, { name: "Updates", href: "/updates" }];
 
 function MenuList() {
 	const { asPath } = useRouter();
@@ -20,12 +20,12 @@ function MenuList() {
 					className={clsx(
 						"md:rounded-xl leading-6 p-3 md:px-8 md:py-4 md:text-center",
 						"md:rounded-xl leading-6 p-3 md:px-6 md:text-center",
-						el.toLocaleLowerCase() === asPath.slice(1) ||
-							(el === "Home" && asPath === "/")
+						el.name.toLocaleLowerCase() === asPath.slice(1) ||
+							(el.name === "Home" && asPath === "/")
 							? "bg-[#C81107]  text-[#F2F2F2]"
 							: "text-black"
 					)}>
-					<Link href={el === "Home" ? "/" : el.toLocaleLowerCase()}>{el}</Link>
+					<Link href={el.href}>{el.name}</Link>
 				</li>
 			))}
 		</ul>

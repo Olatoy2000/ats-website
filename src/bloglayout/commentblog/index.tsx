@@ -5,6 +5,27 @@ import moment from "moment";
 import { Fragment, useState } from "react";
 import Container from "../../components/Container";
 import XpertLogo from "./assets/newxpert.png";
+import CryptoJS from "crypto-js";
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+
+const encrypt = (element: any) => {
+  return CryptoJS.AES.encrypt(
+    (element),
+    key,
+    {
+      iv: iv,
+    }
+  ).toString()
+}
+
+const decrypt = (element: any) => {
+  return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+    CryptoJS.enc.Utf8
+  )
+    ;
+};
 
 export default function CommentBlog({ blogDetail }: any) {
 	const [paginate, setPaginate] = useState(5);
@@ -16,7 +37,7 @@ export default function CommentBlog({ blogDetail }: any) {
 		initialValues: {
 			name: "",
 			description: "",
-			blog_article: blogDetail?.id ?? "",
+			blog_article: blogDetail?.id,
 		},
 	});
 
@@ -38,12 +59,12 @@ export default function CommentBlog({ blogDetail }: any) {
 		};
 
 		axios(config)
-			.then(function (response) {
+			.then((response) => {
 				if (response.statusText === "Created") {
 					form.reset();
 				}
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				console.log(error);
 			});
 	};
@@ -55,17 +76,17 @@ export default function CommentBlog({ blogDetail }: any) {
             <img src={XpertLogo.src} alt="xpert logo" className="w-20" />
             <div className="flex gap-2 flex-col">
               <h3 className="text-light-internationalOrange text-[clamp(0.75rem,1.25vw,1.25rem)] font-bold leading-3 md:leading-7">
-                {blogDetail?.author_fullname ?? ""}
+                {decrypt(blogDetail.author_fullname)}
               </h3>
               <p className="flex text-light-darkSilver leading-6 font-normal text-[1.18rem]">
-                {moment(blogDetail?.created_at).format("ll").split(",")[0]}{" "}
-                &nbsp; &#8226; {blogDetail?.min_read ?? ""}
+                {moment(decrypt(blogDetail?.created_at)).format("ll").split(",")[0]}{" "}
+                &nbsp; &#8226; {decrypt(blogDetail.min_read)}
               </p>
             </div>
           </article>
           <section className="grid gap-16 grid-cols-[1fr_300px]">
             <article className="leading-8 text-justify text-[1.125rem] text-light-completeBlack font-normal">
-              {blogDetail?.description ?? ""}
+              {decrypt(blogDetail?.description)}
             </article>
             <aside>
               <h3 className="leading-7 mb-10 text-[1.75rem] text-bold-japaneseIndigo font-bold">
@@ -90,19 +111,19 @@ export default function CommentBlog({ blogDetail }: any) {
                               &nbsp;{" "}
                               <span className="leading-4 text-[0.625rem] font-normal text-bold-blackOlive">
                                 {
-                                  moment(el.created_at)
+                                  moment(decrypt(el.created_at))
                                     .format("ll")
                                     .split(",")[0]
                                 }
                               </span>
                             </p>
-                            <p>{el.description}</p>
+                            <p>{decrypt(el.description)}</p>
                           </div>
                         </div>
                       </Fragment>
                     ) : null
                   )}
-                  {blogComment?.length < 5 &&
+                  {blogComment.length < 5 &&
                     Array(4 - blogComment?.length).fill(
                       <Fragment>
                         <div className="flex gap-6 items-center">
@@ -134,7 +155,7 @@ export default function CommentBlog({ blogDetail }: any) {
                         }`
                       )
                         .then((res) => {
-                          setBlogComment(res.data.data);
+                          console.log(res.data.data);
                         })
                         .catch(console.error);
                     }}

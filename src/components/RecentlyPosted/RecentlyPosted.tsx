@@ -107,7 +107,7 @@ function RecentlyPosted({ keyword }: Prop) {
 											<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 												{decrypt(category_name)}
 											</span>
-											<Link href={`/news/${id}`}>
+											<Link href={`/news/${decrypt(id)}`}>
 												<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
 													{decrypt(
 														title.split("").splice(0, 50).join("") + " ..."
@@ -224,7 +224,7 @@ function RecentlyPosted({ keyword }: Prop) {
 										<span className='bg-[#F9E3E3] text-[#666666] text-xs md:p-1'>
 											{decrypt(category_name)}
 										</span>
-										<Link href={`/news/${id}`}>
+										<Link href={`/news/${decrypt(id)}`}>
 											<p className='font-bold md:[clamp(1rem,2.5vw,2.25rem)] lg:text-2xl pt-2'>
 												{decrypt(title).split("").splice(0, 50).join("") +
 													" ..."}
@@ -261,7 +261,7 @@ function RecentlyPosted({ keyword }: Prop) {
 										<p className='text-[#555555] lg:text-base md:text-xs md:pb-8'>
 											{decrypt(intro + "...")}
 											&nbsp;&nbsp;
-											<Link href={`/news/${id}`}>
+											<Link href={`/news/${decrypt(id)}`}>
 												<span className='text-[#C81107]'>Read more</span>
 											</Link>
 										</p>

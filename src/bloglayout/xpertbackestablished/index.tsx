@@ -1,8 +1,39 @@
 import { Message2, Eye, Like1 } from "iconsax-react";
 import Container from "../../components/Container";
 import Link from "next/link";
+import CryptoJS from "crypto-js";
+import axios from "axios";
+import router from "next/router";
+
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	)
+		;
+};
 
 export default function Xpertbackestablished({ blogDetail }: any) {
+	// let config = {
+	// 	method: "get",
+	// 	url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
+	// 	headers: {
+	// 		"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+	// 		"request-ts": "1669397556",
+	// 		"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+	// 	},
+	// };
+
+	// axios(config)
+	// 	.then((response) => {
+	// 		blogDetail(response.data.data);
+	// 	})
+	// 	.catch((error) => {
+	// 		console.log(error);
+	// 	});
+
 	return (
 		<Container>
 			<section className='flex flex-col gap-8 mb-10'>
@@ -35,16 +66,17 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 				<article
 					className='flex z-[-1] justify-center pb-4 items-center pt-28 flex-col gap-8'
 					style={{
-						background: `url(${blogDetail?.image ?? ""})`,
+						background: `url(${decrypt(blogDetail.image)})`,
 						backgroundRepeat: "no-repeat",
 						backgroundSize: "cover",
 						position: "relative",
+						backgroundPosition: "100%",
 						objectFit: "cover",
-						height: "40vh",
+						// height: "55vh",
 					}}>
 					<div className='absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-40'></div>
 					<p className=' text-light-antiFlashWhite leading-12 z-20 text-center  font-bold text-[clamp(1.5rem,4vw,3.5rem)] pb-32'>
-						{blogDetail?.title ?? ""}
+						{decrypt(blogDetail.title)}
 					</p>
 					<section className='flex gap-5 items-center justify-center'>
 						<div className='flex gap-2 items-center z-20'>
@@ -53,7 +85,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 								color='#FFF'
 							/>
 							<p className='text-white number font-semibold text-[1.5rem] leading-7'>
-								{blogDetail?.likes_count ?? ""}
+								{decrypt(blogDetail.likes_count)}
 							</p>
 						</div>
 						<div className='flex gap-2 items-center z-20'>
@@ -63,7 +95,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 								size={30}
 							/>
 							<p className='text-white number font-semibold text-[1.5rem] leading-7'>
-								{blogDetail?.comment_count ?? ""}
+								{decrypt(blogDetail.comment_count)}
 							</p>
 						</div>
 						<div className='flex gap-2 items-center z-20'>
@@ -72,7 +104,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 								color='#FFF'
 							/>
 							<p className='text-white number font-semibold text-[1.5rem] leading-7'>
-								{blogDetail?.views_count ?? ""}
+								{decrypt(blogDetail.views_count)}
 							</p>
 						</div>
 					</section>
