@@ -15,7 +15,7 @@ const decrypt = (element: any) => {
 		;
 };
 
-export default function Xpertbackestablished({ blogDetail }: any) {
+export default function XpertBackEstablished({ blogDetail }: any) {
 	// let config = {
 	// 	method: "get",
 	// 	url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
@@ -66,7 +66,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 				<article
 					className='flex z-[-1] justify-center pb-4 items-center pt-28 flex-col gap-8'
 					style={{
-						background: `url(${decrypt(blogDetail.image)})`,
+						background: `url(${decrypt(blogDetail?.image ?? "")})`,
 						backgroundRepeat: "no-repeat",
 						backgroundSize: "cover",
 						position: "relative",
@@ -76,7 +76,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 					}}>
 					<div className='absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-40'></div>
 					<p className=' text-light-antiFlashWhite leading-12 z-20 text-center  font-bold text-[clamp(1.5rem,4vw,3.5rem)] pb-32'>
-						{decrypt(blogDetail.title)}
+						{decrypt(blogDetail?.title ?? "")}
 					</p>
 					<section className='flex gap-5 items-center justify-center'>
 						<div className='flex gap-2 items-center z-20'>
@@ -85,7 +85,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 								color='#FFF'
 							/>
 							<p className='text-white number font-semibold text-[1.5rem] leading-7'>
-								{decrypt(blogDetail.likes_count)}
+								{decrypt(blogDetail?.likes_count ?? "")}
 							</p>
 						</div>
 						<div className='flex gap-2 items-center z-20'>
@@ -95,7 +95,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 								size={30}
 							/>
 							<p className='text-white number font-semibold text-[1.5rem] leading-7'>
-								{decrypt(blogDetail.comment_count)}
+								{decrypt(blogDetail?.comment_count ?? "")}
 							</p>
 						</div>
 						<div className='flex gap-2 items-center z-20'>
@@ -104,7 +104,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 								color='#FFF'
 							/>
 							<p className='text-white number font-semibold text-[1.5rem] leading-7'>
-								{decrypt(blogDetail.views_count)}
+								{decrypt(blogDetail?.views_count ?? "")}
 							</p>
 						</div>
 					</section>

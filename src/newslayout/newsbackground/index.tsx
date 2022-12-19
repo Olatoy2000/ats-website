@@ -50,7 +50,7 @@ export default function NewsBackground({ newsDetail }: any) {
         <article
           className="flex z-[-1] justify-center items-center pt-28 flex-col gap-8"
           style={{
-            background: `url(${decrypt(newsDetail.image)})`,
+            background: `url(${decrypt(newsDetail?.image ?? "")})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             position: "relative",
@@ -61,7 +61,7 @@ export default function NewsBackground({ newsDetail }: any) {
         >
           <div className="absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-50"></div>
           <p className=" text-light-antiFlashWhite leading-[4rem] z-20 text-center font-bold text-[clamp(1.5rem,3.5vw,4rem)]">
-            {decrypt(newsDetail.title)}
+            {decrypt(newsDetail?.title ?? "")}
           </p>
           <div className="flex gap-2 items-center z-50 justify-center">
             <TagRight color="#9FA19C" variant="Bulk" size={24} />

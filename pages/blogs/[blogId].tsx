@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CommentBlog from "../../src/bloglayout/commentblog";
-import Xpertbackestablished from "../../src/bloglayout/xpertbackestablished";
+import XpertBackEstablished from "../../src/bloglayout/xpertbackestablished";
 import MORE_BLOG_POST from "../../src/moreblogpostview";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -39,7 +39,7 @@ function index() {
 	}, [router.query.blogId]);
 	return blogDetail ? (
 		<div>
-			<Xpertbackestablished blogDetail={(blogDetail)} />
+			<XpertBackEstablished blogDetail={(blogDetail)} />
 			<CommentBlog blogDetail={(blogDetail)} />
 			<MORE_BLOG_POST routeId={(router.query.blogId)} />
 		</div>

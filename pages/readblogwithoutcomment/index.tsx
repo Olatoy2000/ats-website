@@ -1,12 +1,12 @@
 import React from "react";
 import AllowCommentBlog from "../../src/allowcommentblog";
 import MORE_BLOG_POST from "../../src/bloglayout/moreblogpost";
-import Xpertbackestablished from "../../src/bloglayout/xpertbackestablished";
+import XpertBackEstablished from "../../src/bloglayout/xpertbackestablished";
 
 function index() {
   return (
     <section>
-      <Xpertbackestablished />
+      <XpertBackEstablished />
       <AllowCommentBlog />
       <MORE_BLOG_POST />
     </section>
