@@ -8,8 +8,8 @@ function index() {
   return (
     <div>
       <XpertBackEstablished />
-      <CommentBlog />
-      <MORE_BLOG_POST />
+       <CommentBlog />
+      <MORE_BLOG_POST /> 
     </div>
   );
 }

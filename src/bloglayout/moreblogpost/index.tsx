@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Container from "../../components/Container";
 import CryptoJS from "crypto-js";
-import GrassLand from "./assets/grassland.png";
 
 
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
@@ -17,79 +16,7 @@ const decrypt = (element: any) => {
 		;
 };
 export default function MORE_BLOG_POST() {
-	// const MORE_BLOG_POST = [
-	//   {
-	//     id: 1,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 2,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 3,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 4,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 5,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 6,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 7,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 8,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 9,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	//   {
-	//     id: 10,
-	//     picture: GrassLand.src,
-	//     title: "Ways Commodity Exchanges can help...",
-	//     subTitle:
-	//       "Lorem ipsum dolor sit amet tor, sodales arcu quis, malesuada...",
-	//   },
-	// ];
-
+	
 	const scrollRefs = useRef<HTMLDivElement>(null);
 
 	const moveRight = () => {
