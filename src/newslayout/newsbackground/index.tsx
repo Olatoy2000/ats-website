@@ -54,9 +54,9 @@ export default function NewsBackground({ newsDetail }: any) {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             position: "relative",
-            backgroundPosition: "100% 100%",
+            backgroundPosition: "100%",
             objectFit: "cover",
-            // height: "40vh",
+            height: "80vh",
           }}
         >
           <div className="absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-50"></div>

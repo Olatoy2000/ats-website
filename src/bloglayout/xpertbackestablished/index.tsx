@@ -72,7 +72,7 @@ export default function Xpertbackestablished({ blogDetail }: any) {
 						position: "relative",
 						backgroundPosition: "100%",
 						objectFit: "cover",
-						// height: "55vh",
+						height: "80vh",
 					}}>
 					<div className='absolute left-0 right-0 bottom-0 top-0 bg-[#020000] opacity-40'></div>
 					<p className=' text-light-antiFlashWhite leading-12 z-20 text-center  font-bold text-[clamp(1.5rem,4vw,3.5rem)] pb-32'>

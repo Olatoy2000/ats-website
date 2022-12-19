@@ -39,12 +39,6 @@ function ContactUs() {
 		},
 	});
 
-	// const [values, setValues] = useState({
-	//   full_name: "",
-	//   email: "",
-	//   subject: "",
-	//   message: "",
-	// });
 	const [success, setSuccess] = useState(false);
 
 	const sendMessage = (values: FormValues) => {

@@ -9,11 +9,9 @@ import QrCodeScan from "../../src/components/qrcode";
 import Loading from "../../src/components/loading";
 import axios from "axios";
 import CryptoJS from "crypto-js";
-// const cipher = require("@ibnlanre/cipher")
 
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
 var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
-// console.log(new cipher({ encryption_key: "bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r", initialization_vector: "s6v9y$B&E)H@McQf" }))
 const encrypt = (element: any) => {
   return CryptoJS.AES.encrypt(
     (element),

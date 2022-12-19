@@ -43,8 +43,14 @@ export default function CommentBlog({ blogDetail }: any) {
 
 	const handleSubmit = (e: { preventDefault: () => any }) => {
 		e.preventDefault();
-		var data = form.values;
 
+    var data = {
+      name: encrypt(form.values.name),
+      description: encrypt(form.values.description)
+    }
+// data = encrypt {
+//   name: encrypt(form.values.comment)
+// }
 		var config = {
 			method: "post",
 			url: "http://atsbk.afexats.com/api/v1/comment",
@@ -106,7 +112,7 @@ export default function CommentBlog({ blogDetail }: any) {
                           <div className="flex self-center flex-col gap-4">
                             <p className="text-bold-blackOlive justify-start">
                               <span className="text-[1rem] block font-bold">
-                                {el.name}
+                                {decrypt(el.name)}
                               </span>{" "}
                               &nbsp;{" "}
                               <span className="leading-4 text-[0.625rem] font-normal text-bold-blackOlive">

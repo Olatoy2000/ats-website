@@ -4,8 +4,18 @@ import { ArrowCircleRight2, ArrowCircleLeft2 } from "iconsax-react";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Container from "../../components/Container";
+import CryptoJS from "crypto-js";
 import GrassLand from "./assets/grassland.png";
 
+
+var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
+const decrypt = (element: any) => {
+	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
+		CryptoJS.enc.Utf8
+	)
+		;
+};
 export default function MORE_BLOG_POST() {
 	// const MORE_BLOG_POST = [
 	//   {
@@ -153,16 +163,16 @@ export default function MORE_BLOG_POST() {
 							className={`grid gap-4 py-4 duration-1000 grid-cols-[150px_150px]`}
 							key={idx}>
 							<img
-								src={blogDetail.image}
+								src={decrypt(blogDetail.image)}
 								alt=''
 								className='w-full'
 							/>
 							<div className='flex justify-end items-end gap-2 flex-col'>
 								<h5 className='text-[#020202] text-[1rem] font-bold leading-6'>
-									{blogDetail.title}
+									{decrypt(blogDetail.title)}
 								</h5>
 								<p className='flex text-[#020202] leading-4 font-normal text-[0.75rem]'>
-									{blogDetail.description}
+									{decrypt(blogDetail.description)}
 								</p>
 							</div>
 						</article>
