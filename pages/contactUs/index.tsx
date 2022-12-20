@@ -1,15 +1,7 @@
 import LoginBakground from "./assets/atslogin.png";
 import React, { useEffect, useState } from "react";
-import InstagramHandle from "./assets/ig.png";
-import FacebookHandle from "./assets/fb.png";
-import LinkedinHandle from "./assets/linkedinpage.png";
-import TwitterHandle from "./assets/tweethandle.png";
 import ReceivedMessage from "./assets/receivedmess.png";
 import axios from "axios";
-import Twitter from "./assets/twitter.png";
-import LinkedIn from "./assets/linkedin.png";
-import Facebook from "./assets/facebook.png";
-import Instagram from "./assets/instagram.png";
 import { useForm } from "@mantine/form";
 import { Button, Textarea, TextInput } from "@mantine/core";
 import CryptoJS from "crypto-js";
