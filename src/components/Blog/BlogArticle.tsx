@@ -197,9 +197,11 @@ function Blog({ query }: IBlog) {
 											)
 										)} */}
 
-							<p className='text-[#2D3748] text-xl font-bold p-4'>
-								{title && decrypt(title)}
-							</p>
+							<Link href={`/blogs/${decrypt(id)}`}>
+								<p className='text-[#2D3748] text-xl font-bold p-4'>
+									{title && decrypt(title)}
+								</p>
+							</Link>
 							<p className='text-[#718096] flex-1 text-sm px-4'>
 								{intro && decrypt(intro + "...")}
 							</p>
