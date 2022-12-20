@@ -104,7 +104,7 @@ function BlogArticle() {
 								src={decrypt(image) ? decrypt(image) : Placeholder.src}
 								className='w-96 h-72 object-cover'
 							/>
-							<Link href={`/blogs/${id}`}>
+							<Link href={`/blogs/${decrypt(id)}`}>
 								<p className='text-[#2D3748] text-[clamp(1rem,1.5vw,1.25rem)] font-bold p-4'>
 									{decrypt(title)}
 								</p>
