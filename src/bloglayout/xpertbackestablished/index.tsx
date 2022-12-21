@@ -16,24 +16,6 @@ const decrypt = (element: any) => {
 };
 
 export default function XpertBackEstablished({ blogDetail }: any) {
-	// let config = {
-	// 	method: "get",
-	// 	url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/blogs/${router.query.blogId}`,
-	// 	headers: {
-	// 		"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
-	// 		"request-ts": "1669397556",
-	// 		"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
-	// 	},
-	// };
-
-	// axios(config)
-	// 	.then((response) => {
-	// 		blogDetail(response.data.data);
-	// 	})
-	// 	.catch((error) => {
-	// 		console.log(error);
-	// 	});
-
 	return (
 		<Container>
 			<section className='flex flex-col gap-8 mb-10'>

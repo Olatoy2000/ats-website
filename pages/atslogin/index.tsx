@@ -30,8 +30,8 @@ function index() {
     },
   });
 
-  // const [pass, setPass] = useState("");
-  // const [value, setValue] = useState('')
+  
+
   const [time, setTime] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
