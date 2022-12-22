@@ -7,7 +7,6 @@ import { Button, Textarea, TextInput } from "@mantine/core";
 import CryptoJS from "crypto-js";
 import { Icon } from "@iconify/react";
 
-
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
 var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 
@@ -34,6 +33,7 @@ function ContactUs() {
   });
 
   const [success, setSuccess] = useState(false);
+  const [ContactUs, setContactUs] = useState("");
 
   const sendMessage = (values: FormValues) => {
     var data = {
@@ -56,6 +56,7 @@ function ContactUs() {
       .then((response) => {
         console.log(response);
         if (response.status === 201) {
+          setContactUs(encrypt(response.data.data.results));
           setSuccess(true);
           form.reset();
           setTimeout(() => {
@@ -154,7 +155,7 @@ function ContactUs() {
               size="xl"
               {...form.getInputProps("message")}
             />
-            <Button 
+            <Button
               className="bg-[#C81107] self-end hover:bg-[#C81107] font-['Mulish'] rounded-xl text-white py-3 px-6"
               type="submit"
               mt="md"
