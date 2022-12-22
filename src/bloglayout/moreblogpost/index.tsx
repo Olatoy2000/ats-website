@@ -6,17 +6,14 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../../components/Container";
 import CryptoJS from "crypto-js";
 
-
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
 var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 const decrypt = (element: any) => {
 	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
 		CryptoJS.enc.Utf8
-	)
-		;
+	);
 };
 export default function MORE_BLOG_POST() {
-	
 	const scrollRefs = useRef<HTMLDivElement>(null);
 
 	const moveRight = () => {

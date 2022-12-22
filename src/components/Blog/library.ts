@@ -1,13 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import moment from "moment";
-import axios from "axios";
-import Link from "next/link";
-import Placeholder from "./assets/placeholder.png";
-import { useQuery } from "@tanstack/react-query";
-import { BlogArticle } from "../../../pages/blogs";
-import SearchEntries from "../SearchEntries";
 import CryptoJS from "crypto-js";
-import sha256 from "crypto-js/sha256";
+
+const key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
+const iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
 
 const blogSample = {
 	status: "success",
@@ -36,7 +30,7 @@ const blogSample = {
 	},
 };
 
-type BlogSample = typeof blogSample;
+export type BlogSample = typeof blogSample;
 
 const blogSearchSample = {
 	status: "success",
@@ -114,131 +108,16 @@ const blogSearchSample = {
 	message: "Successfully Retrieved",
 };
 
-type BlogSearchSample = typeof blogSearchSample;
-
-type BlogQuery = BlogSample | BlogSearchSample;
-
-interface IBlog {
-	query?: string;
+export function isBlogSample(value?: BlogQuery): value is BlogSample {
+	return value ? Object.hasOwn(value?.data, "results") : false;
 }
 
-var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
-var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
-const decrypt = (element: any) => {
+export type BlogSearchSample = typeof blogSearchSample;
+
+export type BlogQuery = BlogSample | BlogSearchSample;
+
+export const decrypt = (element: any) => {
 	return CryptoJS.AES.decrypt(element, key, { iv: iv }).toString(
 		CryptoJS.enc.Utf8
 	);
 };
-
-function Blog({ query }: IBlog) {
-	const { data: blogs, isLoading } = useQuery(["blogs", query], async () =>
-		axios(
-			query
-				? process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/search-blog/?q=${query}`
-				: process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/blogs`,
-			{
-				headers: {
-					"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
-					"request-ts": "1669397556",
-					"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
-				},
-				method: "get",
-			}
-		)
-			.then(({ data }) => data)
-			.catch((e) => e)
-	);
-
-	return (
-		<div className='flex flex-col gap-9'>
-			<h1 className='flex bg-[#C81107] w-20 lg:p-3 p-2 text-white text-2xl font-bold'>
-				Blog
-			</h1>
-			<div className='grid gap-9 lg:grid-cols-3 md:grid-cols-2'>
-				{(query
-					? (blogs as BlogSearchSample)?.data?.hits
-					: (blogs as BlogSample)?.data?.results
-				)?.map(
-					(
-						{
-							id,
-							title,
-							intro,
-							created_at,
-							author_image,
-							image,
-							min_read,
-							author_fullname,
-						}: any,
-						idx: number
-					) => (
-						<div
-							key={idx}
-							className='flex flex-col pb-4 shadow rounded-md'>
-							<img
-								src={image && decrypt(image) ? decrypt(image) : Placeholder.src}
-								className='lg:w-96 lg:h-72 md:w-96 md:h-72 w-full h-72 object-cover'
-							/>
-							{/* <span>
-							{search === ""
-								? text
-								: text
-										.split(re)
-										.filter((part) => part !== "")
-										.map((part, i) =>
-											re.test(part) ? (
-												<div
-													className='bg-[yellow]'
-													key={part + i}>
-													{part}
-												</div>
-											) : (
-												part
-											)
-										)} */}
-
-							<Link href={`/blogs/${decrypt(id)}`}>
-								<p className='text-[#2D3748] text-xl font-bold p-4'>
-									{title && decrypt(title)}
-								</p>
-							</Link>
-							<p className='text-[#718096] flex-1 text-sm px-4'>
-								{intro && decrypt(intro + "...")}
-							</p>
-							<div className='flex gap-3 pt-10 items-center px-4'>
-								<img
-									src={
-										author_image &&
-										process.env.NEXT_PUBLIC_BASE_URL + decrypt(author_image)
-									}
-									className='h-8'
-								/>
-								<div className='font-sans flex-1'>
-									<p className='text-[#C81107] text-xs font-semibold'>
-										{author_fullname && decrypt(author_fullname)}
-									</p>
-									<span className='flex gap-3 justify-between items-center'>
-										<p className='text-[#6F6F70] font-semibold text-[10px]'>
-											<span>
-												{moment(decrypt(created_at)).format("ll").split(",")[0]}
-											</span>{" "}
-											&nbsp;&nbsp; {min_read && decrypt(min_read)}
-										</p>
-										<Link href={`/blogs/${decrypt(id)}`}>
-											<span className='text-[15px] text-[#2D3748] font-bold md:-mt-1'>
-												Read more
-											</span>
-										</Link>
-									</span>
-								</div>
-							</div>
-						</div>
-					)
-				)}
-			</div>
-			<SearchEntries />
-		</div>
-	);
-}
-
-export default Blog;
