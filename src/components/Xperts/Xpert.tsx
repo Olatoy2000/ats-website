@@ -75,7 +75,7 @@ function Xpert() {
 						Meet our team of Xperts
 					</p>
 				</article>
-				<div className='lg:p-0 md:p-0 p-0 sm:pt-12'>
+				<div className='lg:p-0 md:p-0 p-0sm:pt-12'>
 					<Select
 						allowDeselect
 						className='flex items-center gap-2 rounded-md focus:outline-none -mt-8'

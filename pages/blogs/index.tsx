@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Blog from "../../src/components/Blog/BlogArticle";
+import Blog from "../../src/components/Blog";
 import Navbar from "../../src/components/Navbar/Navbar";
 import axios from "axios";
 
