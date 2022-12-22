@@ -154,7 +154,7 @@ function ContactUs() {
               size="xl"
               {...form.getInputProps("message")}
             />
-            <Button
+            <Button 
               className="bg-[#C81107] self-end hover:bg-[#C81107] font-['Mulish'] rounded-xl text-white py-3 px-6"
               type="submit"
               mt="md"
