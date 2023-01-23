@@ -3,7 +3,8 @@ import Navbar from "../../src/components/Navbar/Navbar";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
-import { type NewsSample } from "../../src/components/NewsArticle/library";
+// import { NewsSample } from "../../src/components/NewsArticle/library";
+import { NewsSample } from "../../src/components/NewsArticle/NewsArticle";
 
 //The newssearch in the Updates of the landing page
 
@@ -58,11 +59,12 @@ function index() {
 			},
 			method: "get",
 		})
+
 			.then(({ data }) => data)
 			.catch((e) => e)
 	);
-
-
+		
+console.log(data)
 
 	return (
 		<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
@@ -71,7 +73,7 @@ function index() {
 				setQuery={setQuery}
 				path={path}
 			/>
-			<NewsSample data={data} />
+			<NewsSample query={data} />
 		</div>
 	);
 }
