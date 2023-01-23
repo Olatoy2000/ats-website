@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import News from "../../src/components/NewsArticle/NewsArticle";
+import React, { useState } from "react";
 import Navbar from "../../src/components/Navbar/Navbar";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { useQuery } from "@tanstack/react-query";
+import { type NewsSample } from "../../src/components/NewsArticle/library";
 
 //The newssearch in the Updates of the landing page
 
@@ -44,13 +46,32 @@ const newsArticleSample = {
 export type NewsArticle = typeof newsArticleSample;
 function index() {
 	const [query, setQuery] = useState("");
+	const { pathname } = useRouter();
+	const path = pathname.slice(1);
+
+	const { data, isLoading } = useQuery([path, "filter"], async () =>
+		axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/` + path, {
+			headers: {
+				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
+				"request-ts": "1669397556",
+				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
+			},
+			method: "get",
+		})
+			.then(({ data }) => data)
+			.catch((e) => e)
+	);
+
+
+
 	return (
 		<div className='flex flex-col mx-auto w-[85%] gap-9 max-w-screen-2xl'>
 			<Navbar
 				query={query}
 				setQuery={setQuery}
+				path={path}
 			/>
-			<News query={query} />
+			<NewsSample data={data} />
 		</div>
 	);
 }

@@ -7,17 +7,14 @@ import {
 } from "react";
 import { Menu, Group, Button, clsx, Input } from "@mantine/core";
 import { Icon } from "@iconify/react";
-import { useRouter } from "next/router";
-
-import axios from "axios";
 import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
 import CryptoJS from "crypto-js";
 import sha256 from "crypto-js/sha256";
 
 interface INavBar {
 	query: string;
 	setQuery: Dispatch<SetStateAction<string>>;
+	path: string;
 }
 var key = CryptoJS.enc.Utf8.parse("bQeThWmZq4t7w9z$C&F)J@NcRfUjXn2r");
 var iv = CryptoJS.enc.Utf8.parse("s6v9y$B&E)H@McQf");
@@ -27,7 +24,8 @@ const decrypt = (element: any) => {
 	);
 };
 
-function Navbar({ query, setQuery }: INavBar) {
+function Navbar({ query, setQuery, path }: INavBar) {
+
 	// const renderSearch = () => {
 	// 	let blogs = <h1>We couldn't find any blog with your search query</h1>;
 	// 	if (result.blogs.length > 1) {
@@ -38,22 +36,7 @@ function Navbar({ query, setQuery }: INavBar) {
 	// };
 
 	const [isOpened, setIsOpened] = useState(false);
-	const { pathname } = useRouter();
-	const path = pathname.slice(1);
-
-	const { data, isLoading } = useQuery([path, "filter"], async () =>
-		axios(process.env.NEXT_PUBLIC_BASE_URL + `/api/v1/` + path, {
-			headers: {
-				"api-key": `${process.env.NEXT_PUBLIC_APP_API_KEY}`,
-				"request-ts": "1669397556",
-				"hash-key": `${process.env.NEXT_PUBLIC_HASH_KEY}`,
-			},
-			method: "get",
-		})
-			.then(({ data }) => data)
-			.catch((e) => e)
-	);
-
+	
 	// useEffect(() => {
 	// 	items.push({ hash: `:~:search=${query}` });
 	// }, [query]);
